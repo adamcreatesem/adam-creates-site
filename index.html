@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADAM CREATES | Custom Websites & Web Apps</title>
+  <meta name="description" content="ADAM CREATES — Custom websites, web apps, and automation. I build digital tools that work — from landing pages to candidate portals." />
+  <meta name="keywords" content="web development, web apps, automation, Google Apps Script, Ethiopia" />
+  <meta name="author" content="ADAM CREATES" />
+  <meta property="og:title" content="ADAM CREATES | Custom Websites & Web Apps" />
+  <meta property="og:description" content="Custom websites, web apps, and automation — every project crafted with purpose, precision, and creative fire." />
+  <link rel="icon" type="image/png" href="/adam-creates-logo.png" />
+  <link rel="apple-touch-icon" href="/adam-creates-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+<body>
+
+  <!-- ========== PRELOADER ========== -->
+  <div class="preloader" id="preloader">
+    <img src="/adam-creates-logo.png" alt="ADAM CREATES" class="preloader-logo-img" />
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <div class="logo-mark">
+          <img src="/adam-creates-logo.png" alt="ADAM CREATES" class="logo-img" />
+        </div>
+        <span class="logo-title">ADAM CREATES</span>
+      </a>
+      <div class="nav-right">
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="mobile-backdrop" id="mobileBackdrop"></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero section-alt" id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="hero-badge">✦ Available For Projects</span>
+          <h1 class="hero-title">
+            <span class="hero-title-line">I Make Things</span>
+            <span class="hero-title-line text-highlight">That Work.</span>
+          </h1>
+          <p class="hero-desc">
+            Custom websites, web apps, and smart automation — 
+            every project is crafted with purpose, precision, and a touch of creative fire.
+          </p>
+          <div class="hero-morph">
+            <span class="hero-morph-prefix">✦</span>
+            <span class="hero-morph-text" id="heroMorphText">
+              <span class="morph-in">Web Development</span>
+            </span>
+          </div>
+          <div class="hero-buttons">
+            <a href="#work" class="btn btn-primary">
+              <span>See My Work</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <span>Start a Project</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-3d-wrapper" id="hero3d-container"></div>
+          <div class="hero-visual-label">✦ ADAM CREATES</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <i class="fas fa-arrow-down"></i>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">About</span>
+        <h2 class="section-title">The Person Behind the Pixels</h2>
+      </div>
+      <div class="about-wrap">
+        <div class="about-card reveal">
+          <div class="about-card-icon">
+            <i class="fas fa-sparkles"></i>
+          </div>
+          <h3>Hey, I'm Adam</h3>
+          <p>
+            I build custom websites, create web apps, and automate 
+            workflows with Google Apps Script. Basically, I take ideas and 
+            turn them into something real — something that looks good 
+            and actually works.
+          </p>
+          <p>
+            I believe creativity and reliability go hand in hand. Whether it's a 
+            landing page, a candidate management portal, or a data sync tool, 
+            I bring the same energy: thoughtful, detail-oriented, and committed 
+            to delivering work that makes an impact.
+          </p>
+        </div>
+        <div class="about-highlights">
+          <div class="about-highlight reveal">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <h4>Creative Approach</h4>
+              <p>Every project starts with a strong concept before a single line of code or frame is cut.</p>
+            </div>
+          </div>
+          <div class="about-highlight reveal">
+            <i class="fas fa-bolt"></i>
+            <div>
+              <h4>Reliable Delivery</h4>
+              <p>Clear communication, realistic timelines, and work that exceeds expectations — every time.</p>
+            </div>
+          </div>
+          <div class="about-highlight reveal">
+            <i class="fas fa-handshake"></i>
+            <div>
+              <h4>Client-First Mindset</h4>
+              <p>Your goals are my goals. I listen, adapt, and deliver what actually serves your needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">What I Do Best</h2>
+        <p class="section-desc">
+          Three areas I focus on — built through real projects and a 
+          drive to create work that actually works.
+        </p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Web Development</h3>
+          <p>Responsive, fast-loading websites built with modern tools and clean, maintainable code.</p>
+          <div class="skill-card-tags">
+            <span>HTML/CSS</span><span>JavaScript</span><span>Vite</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3>Web Apps</h3>
+          <p>Functional web applications powered by Google Apps Script and Google Sheets — no backend needed.</p>
+          <div class="skill-card-tags">
+            <span>Google Apps Script</span><span>Google Sheets</span><span>Webhooks</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>Automation</h3>
+          <p>Google Workspace automation that saves hours — auto-folder creation, data sync, and custom triggers.</p>
+          <div class="skill-card-tags">
+            <span>Google Apps Script</span><span>Triggers</span><span>Sheets API</span>
+          </div>
+        </div>
+      </div>
+      <!-- Skill Proficiency Bars -->
+      <div class="skill-bars-section reveal">
+        <div class="skill-bars-header">
+          <span class="section-tag">Proficiency</span>
+          <h3 class="skill-bars-title">Tech Stack & Expertise</h3>
+        </div>
+        <div class="skill-bars-grid">
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">HTML &amp; CSS</span>
+              <span class="skill-bar-pct" data-target="95">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="95"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">JavaScript</span>
+              <span class="skill-bar-pct" data-target="88">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="88"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">Vite &amp; Build Tools</span>
+              <span class="skill-bar-pct" data-target="85">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">Google Apps Script</span>
+              <span class="skill-bar-pct" data-target="92">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="92"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">Google Sheets API</span>
+              <span class="skill-bar-pct" data-target="85">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">Webhooks &amp; APIs</span>
+              <span class="skill-bar-pct" data-target="80">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="80"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">UI/UX Design</span>
+              <span class="skill-bar-pct" data-target="78">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="78"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-info">
+              <span class="skill-bar-label">Automation Workflows</span>
+              <span class="skill-bar-pct" data-target="90">0%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="90"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Skill Globe Container -->
+      <div class="skills-3d-section" id="skills3d-container" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Services</span>
+        <h2 class="section-title">What I Can Do For You</h2>
+        <p class="section-desc">
+          End-to-end solutions tailored to your needs — from initial idea 
+          through final delivery and beyond.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="srv-card reveal">
+          <div class="srv-icon"><i class="fas fa-globe"></i></div>
+          <h3>Web Development</h3>
+          <p>Custom websites that are fast, responsive, and built to convert. From landing pages to full business sites.</p>
+          <ul class="srv-features">
+            <li><i class="fas fa-check"></i> Business & portfolio sites</li>
+            <li><i class="fas fa-check"></i> Landing pages</li>
+            <li><i class="fas fa-check"></i> Performance optimization</li>
+          </ul>
+          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="srv-card reveal">
+          <div class="srv-icon"><i class="fas fa-cogs"></i></div>
+          <h3>Web Apps</h3>
+          <p>Functional web applications powered by Google Apps Script and Google Sheets — portals, dashboards, and internal tools.</p>
+          <ul class="srv-features">
+            <li><i class="fas fa-check"></i> Candidate management portals</li>
+            <li><i class="fas fa-check"></i> Dashboard & data tools</li>
+            <li><i class="fas fa-check"></i> Google Sheets integration</li>
+          </ul>
+          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="srv-card reveal">
+          <div class="srv-icon"><i class="fas fa-robot"></i></div>
+          <h3>Automation</h3>
+          <p>Google Workspace automation that saves hours — auto-generated folders, data sync, and custom triggers with Apps Script.</p>
+          <ul class="srv-features">
+            <li><i class="fas fa-check"></i> Folder creation & org</li>
+            <li><i class="fas fa-check"></i> Data sync & notifications</li>
+            <li><i class="fas fa-check"></i> Custom Google triggers</li>
+          </ul>
+          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TECH MARQUEE ========== -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-content" id="marqueeContent">
+        <span>HTML/CSS</span><span>•</span><span>JavaScript</span><span>•</span><span>Vite</span><span>•</span><span>Google Apps Script</span><span>•</span><span>Google Sheets</span><span>•</span><span>Webhooks</span><span>•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== WHAT I CAN BUILD ========== -->
+  <section class="work section" id="work">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Capabilities</span>
+        <h2 class="section-title">What I Can Build For You</h2>
+        <p class="section-desc">
+          Every project starts with a conversation. Here's the kind of work I 
+          specialize in — whether it's from scratch, a redesign, or a full system.
+        </p>
+      </div>
+      <div class="work-bento">
+        <!-- Featured Card (large, left) -->
+        <div class="work-card work-card--featured reveal">
+          <div class="work-preview work-preview--1">
+            <div class="work-placeholder">
+              <div class="wp-content">
+                <div class="wp-icon"><i class="fas fa-briefcase"></i></div>
+                <span class="wp-label">Live Project</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-body">
+            <span class="work-badge">Web Dev</span>
+            <h3>Tahlia Employment Agency</h3>
+            <p>Corporate website for a foreign employment agency — responsive, bilingual-ready, with service showcases and a professional brand presence.</p>
+            <div class="work-tech">
+              <span>HTML/CSS</span><span>JavaScript</span><span>Vite</span>
+            </div>
+            <a href="https://tahliafea.netlify.app/" target="_blank" rel="noopener noreferrer" class="work-cta">Visit Site <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+
+        <!-- Secondary Card (right) -->
+        <div class="work-card work-card--secondary reveal">
+          <div class="work-preview work-preview--3">
+            <div class="work-placeholder">
+              <div class="wp-content">
+                <div class="wp-icon"><i class="fas fa-rocket"></i></div>
+                <span class="wp-label">Examples</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-body">
+            <span class="work-badge">I Can Build</span>
+            <h3>What I Can Build For You</h3>
+            <p>From corporate sites to candidate portals, automation tools to dashboards — your idea, built right.</p>
+            <div class="work-examples">
+              <div class="work-example-item">
+                <i class="fas fa-globe"></i>
+                <span>Corporate Websites</span>
+              </div>
+              <div class="work-example-item">
+                <i class="fas fa-users"></i>
+                <span>Candidate Portals</span>
+              </div>
+              <div class="work-example-item">
+                <i class="fas fa-robot"></i>
+                <span>Automation Tools</span>
+              </div>
+              <div class="work-example-item">
+                <i class="fas fa-chart-simple"></i>
+                <span>Dashboards</span>
+              </div>
+            </div>
+            <a href="#contact" class="work-cta">Build Yours <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ========== PROCESS ========== -->
+  <section class="process section" id="process">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Process</span>
+        <h2 class="section-title">How I Work</h2>
+        <p class="section-desc">
+          A straightforward, transparent process from idea to delivery — no 
+          surprises, just great results.
+        </p>
+      </div>
+      <div class="process-timeline reveal">
+        <div class="p-step reveal">
+          <div class="p-step-num">01</div>
+          <div class="p-step-body">
+            <div class="p-step-icon"><i class="fas fa-comments"></i></div>
+            <h3>Discovery Call</h3>
+            <p>We talk through your goals, audience, and vision. I ask questions, take notes, and map out the path forward.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">02</div>
+          <div class="p-step-body">
+            <div class="p-step-icon"><i class="fas fa-pencil-ruler"></i></div>
+            <h3>Planning & Design</h3>
+            <p>I sketch concepts, wireframe layouts, and define the creative direction. You review and give feedback.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">03</div>
+          <div class="p-step-body">
+            <div class="p-step-icon"><i class="fas fa-cogs"></i></div>
+            <h3>Build & Refine</h3>
+            <p>            The real work happens — code is written, designs come to life. We iterate until it's right.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">04</div>
+          <div class="p-step-body">
+            <div class="p-step-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Deliver & Support</h3>
+            <p>Final delivery, launch, and post-project support. I don't disappear after the files are sent.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Common Questions</h2>
+        <p class="section-desc">Quick answers to the things people usually ask before we start working together.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q">
+            <span>How long does a typical project take?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>It depends on the scope. A website takes 1–3 weeks, branding 1–2 weeks, and other projects vary. I'll give you a clear timeline during our first chat.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">
+            <span>How does pricing work?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>Fixed pricing for defined projects, or hourly for ongoing work. Payment is split — 50% to start, 50% on completion. Everything is agreed upfront, no surprises.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">
+            <span>Can we work together remotely?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>Absolutely. I work with clients worldwide. We'll communicate via email or video calls — whatever works best for you.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">
+            <span>Do you offer revisions?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>Yes — every project includes revision rounds. I work closely with you throughout so the final result is exactly what you envisioned.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">
+            <span>What do you need from me to get started?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>For websites: your goals, brand assets, and content. For branding: your vision and target audience. I'll guide you through everything.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Contact</span>
+        <h2 class="section-title">Let's Make It Happen</h2>
+        <p class="section-desc">
+          Got a project, an idea, or just curious? Reach out and let's talk 
+          about what I can do for you.
+        </p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-card reveal">
+          <div class="contact-card-row">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:adamdiditfirst@gmail.com">adamdiditfirst@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card-row">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+251930642657">+251 93 064 2657</a>
+            </div>
+          </div>
+          <div class="contact-card-row">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Response Time</h4>
+              <p>Within 24 hours</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm" data-netlify="true" name="contact-project">
+          <input type="hidden" name="form-name" value="contact-project" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">What do you need?</label>
+            <select id="service" name="service">
+              <option value="">Select a service</option>
+              <option value="web-development">Web Development</option>
+              <option value="web-apps">Web Apps</option>
+              <option value="automation">Automation</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell me about your project</label>
+            <textarea id="message" name="message" rows="4" placeholder="What are you looking for? Goals, timeline, budget..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2 class="cta-banner-title">Got a Project in Mind?</h2>
+      <p class="cta-banner-desc">
+        Let's talk about what you need, and I'll turn it into something 
+        real — on time, on budget, and better than you imagined.
+      </p>
+      <div class="cta-banner-actions">
+        <a href="#contact" class="btn btn-primary btn-cta-banner">
+          <span>Start a Project</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-mark">
+              <img src="/adam-creates-logo.png" alt="ADAM CREATES" class="footer-logo-img" />
+            </div>
+            <span>ADAM CREATES</span>
+          </div>
+          <p>Bringing ideas to life through custom websites, web apps, and automation.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Web Apps</a></li>
+            <li><a href="#services">Automation</a></li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> ADAM CREATES. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#" class="legal-link" data-page="privacy">Privacy</a>
+          <a href="#" class="legal-link" data-page="terms">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== LEGAL MODALS ========== -->
+  <div class="legal-modal" id="legalModal">
+    <div class="legal-modal-overlay"></div>
+    <div class="legal-modal-content">
+      <button class="legal-modal-close" aria-label="Close">&times;</button>
+      <div id="legalModalBody"></div>
+    </div>
+  </div>
+
+
+
+  <!-- ========== 3D CONTAINERS (Three.js canvas targets) ========== -->
+  <div class="three-container three-container--bg-particles" id="particles3d-container" aria-hidden="true"></div>
+  <div class="three-container three-container--liquid" id="liquid3d-container" aria-hidden="true"></div>
+
+  <!-- ========== PARALLAX SHAPES ========== -->
+  <div class="parallax-container" id="parallaxContainer" aria-hidden="true">
+    <div class="parallax-shape parallax-shape--square" data-speed="0.3" style="top: 15%; left: 8%;"></div>
+    <div class="parallax-shape parallax-shape--circle" data-speed="0.5" style="top: 40%; right: 5%;"></div>
+    <div class="parallax-shape parallax-shape--diamond" data-speed="0.2" style="top: 70%; left: 12%;"></div>
+    <div class="parallax-shape parallax-shape--bar" data-speed="0.4" style="top: 25%; right: 15%;"></div>
+    <div class="parallax-shape parallax-shape--circle" data-speed="0.6" style="top: 85%; right: 25%;"></div>
+    <div class="parallax-shape parallax-shape--square" data-speed="0.15" style="top: 55%; left: 80%;"></div>
+  </div>
+
+  <!-- ========== FLOATING SOCIAL BAR ========== -->
+  <div class="floating-socials" id="floatingSocials">
+    <a href="https://www.instagram.com/_adamcreates_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="floating-social-link">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://t.me/adamcreatesbot" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="floating-social-link">
+      <i class="fab fa-telegram-plane"></i>
+    </a>
+    <a href="mailto:adamdiditfirst@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" class="floating-social-link">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+
+
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ========== SOUND TOGGLE ========== -->
+  <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+    <i class="fas fa-volume-off"></i>
+  </button>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

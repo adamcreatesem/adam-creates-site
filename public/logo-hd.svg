@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3B30"/>
+      <stop offset="100%" stop-color="#D92D23"/>
+    </linearGradient>
+  </defs>
+  <!-- Background square with brutalist border -->
+  <rect width="500" height="500" rx="0" fill="url(#bg)"/>
+  <rect x="12" y="12" width="476" height="476" rx="0" fill="none" stroke="#1A1A1A" stroke-width="24"/>
+  <!-- Stylized letter A -->
+  <path d="M250 60 L380 410 H330 L295 310 H205 L170 410 H120 L250 60Z" fill="#FFFFFF"/>
+  <!-- Inner cutout for the A crossbar -->
+  <path d="M215 250 H285 L310 320 H190 Z" fill="url(#bg)"/>
+</svg>
