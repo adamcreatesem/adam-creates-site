@@ -2,3 +2,9 @@ node_modules/
 dist/
 .vite/
 *.log
+
+# Freebuff internal
+.freebuff/
+
+# stale backups
+src-backup/
