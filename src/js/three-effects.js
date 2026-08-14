@@ -21,7 +21,7 @@ export function initHeroAtom() {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-  camera.position.z = 5;
+  camera.position.z = 6.2;
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(width, height);
@@ -106,7 +106,7 @@ export function initHeroAtom() {
   scene.add(neutronGroup);
 
   // ── Orbital Ring 1 (horizontal, red) ──
-  const ring1Geo = new THREE.TorusGeometry(1.4, 0.015, 48, 64);
+  const ring1Geo = new THREE.TorusGeometry(1.3, 0.015, 48, 64);
   const ring1Mat = new THREE.MeshPhysicalMaterial({
     color: 0xFF3B30,
     transparent: true,
@@ -119,7 +119,7 @@ export function initHeroAtom() {
   scene.add(ring1);
 
   // ── Orbital Ring 2 (tilted, gold) ──
-  const ring2Geo = new THREE.TorusGeometry(1.7, 0.012, 48, 64);
+  const ring2Geo = new THREE.TorusGeometry(1.55, 0.012, 48, 64);
   const ring2Mat = new THREE.MeshPhysicalMaterial({
     color: 0xFFD700,
     transparent: true,
@@ -133,7 +133,7 @@ export function initHeroAtom() {
   scene.add(ring2);
 
   // ── Orbital Ring 3 (vertical, blue) ──
-  const ring3Geo = new THREE.TorusGeometry(2.0, 0.01, 32, 64);
+  const ring3Geo = new THREE.TorusGeometry(1.8, 0.01, 32, 64);
   const ring3Mat = new THREE.MeshPhysicalMaterial({
     color: 0x6B9FFF,
     transparent: true,
@@ -181,7 +181,7 @@ export function initHeroAtom() {
   // Electrons on ring 1 (3 electrons)
   const electrons1 = [];
   for (let i = 0; i < 3; i++) {
-    const e = createElectron(0xFF3B30, 1.4, (i / 3) * Math.PI * 2);
+    const e = createElectron(0xFF3B30, 1.3, (i / 3) * Math.PI * 2);
     scene.add(e.group);
     electrons1.push(e);
   }
@@ -189,14 +189,14 @@ export function initHeroAtom() {
   // Electrons on ring 2 (2 electrons)
   const electrons2 = [];
   for (let i = 0; i < 2; i++) {
-    const e = createElectron(0xFFD700, 1.7, (i / 2) * Math.PI * 2);
+    const e = createElectron(0xFFD700, 1.55, (i / 2) * Math.PI * 2);
     scene.add(e.group);
     electrons2.push(e);
   }
 
   // Electrons on ring 3 (1 electron)
   const electrons3 = [];
-  const e3 = createElectron(0x6B9FFF, 2.0, 0);
+  const e3 = createElectron(0x6B9FFF, 1.8, 0);
   scene.add(e3.group);
   electrons3.push(e3);
 

@@ -48,7 +48,6 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#hero" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#process">Process</a></li>
@@ -152,137 +151,6 @@
     </div>
   </section>
 
-  <!-- ========== SKILLS ========== -->
-  <section class="skills section" id="skills">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Expertise</span>
-        <h2 class="section-title">What I Do Best</h2>
-        <p class="section-desc">
-          Three areas I focus on — built through real projects and a 
-          drive to create work that actually works.
-        </p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card reveal">
-          <div class="skill-card-head">
-            <i class="fas fa-code"></i>
-          </div>
-          <h3>Web Development</h3>
-          <p>Responsive, fast-loading websites built with modern tools and clean, maintainable code.</p>
-          <div class="skill-card-tags">
-            <span>HTML/CSS</span><span>JavaScript</span><span>Vite</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-card-head">
-            <i class="fas fa-globe"></i>
-          </div>
-          <h3>Web Apps</h3>
-          <p>Functional web applications powered by Google Apps Script and Google Sheets — no backend needed.</p>
-          <div class="skill-card-tags">
-            <span>Google Apps Script</span><span>Google Sheets</span><span>Webhooks</span>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-card-head">
-            <i class="fas fa-robot"></i>
-          </div>
-          <h3>Automation</h3>
-          <p>Google Workspace automation that saves hours — auto-folder creation, data sync, and custom triggers.</p>
-          <div class="skill-card-tags">
-            <span>Google Apps Script</span><span>Triggers</span><span>Sheets API</span>
-          </div>
-        </div>
-      </div>
-      <!-- Skill Proficiency Bars -->
-      <div class="skill-bars-section reveal">
-        <div class="skill-bars-header">
-          <span class="section-tag">Proficiency</span>
-          <h3 class="skill-bars-title">Tech Stack & Expertise</h3>
-        </div>
-        <div class="skill-bars-grid">
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">HTML &amp; CSS</span>
-              <span class="skill-bar-pct" data-target="95">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="95"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">JavaScript</span>
-              <span class="skill-bar-pct" data-target="88">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="88"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">Vite &amp; Build Tools</span>
-              <span class="skill-bar-pct" data-target="85">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="85"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">Google Apps Script</span>
-              <span class="skill-bar-pct" data-target="92">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="92"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">Google Sheets API</span>
-              <span class="skill-bar-pct" data-target="85">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="85"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">Webhooks &amp; APIs</span>
-              <span class="skill-bar-pct" data-target="80">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="80"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">UI/UX Design</span>
-              <span class="skill-bar-pct" data-target="78">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="78"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item reveal">
-            <div class="skill-bar-info">
-              <span class="skill-bar-label">Automation Workflows</span>
-              <span class="skill-bar-pct" data-target="90">0%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="90"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3D Skill Globe Container -->
-      <div class="skills-3d-section" id="skills3d-container" aria-hidden="true"></div>
-    </div>
-  </section>
-
   <!-- ========== SERVICES ========== -->
   <section class="services section" id="services">
     <div class="container">
@@ -330,6 +198,8 @@
           <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
+      <!-- 3D Skill Globe (ambient) -->
+      <div class="skills-3d-section" id="skills3d-container" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -346,11 +216,10 @@
   <section class="work section" id="work">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Capabilities</span>
-        <h2 class="section-title">What I Can Build For You</h2>
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Recent Work</h2>
         <p class="section-desc">
-          Every project starts with a conversation. Here's the kind of work I 
-          specialize in — whether it's from scratch, a redesign, or a full system.
+          Real projects, shipped — built to work and made to last.
         </p>
       </div>
       <div class="work-bento">
@@ -375,41 +244,6 @@
           </div>
         </div>
 
-        <!-- Secondary Card (right) -->
-        <div class="work-card work-card--secondary reveal">
-          <div class="work-preview work-preview--3">
-            <div class="work-placeholder">
-              <div class="wp-content">
-                <div class="wp-icon"><i class="fas fa-rocket"></i></div>
-                <span class="wp-label">Examples</span>
-              </div>
-            </div>
-          </div>
-          <div class="work-body">
-            <span class="work-badge">I Can Build</span>
-            <h3>What I Can Build For You</h3>
-            <p>From corporate sites to candidate portals, automation tools to dashboards — your idea, built right.</p>
-            <div class="work-examples">
-              <div class="work-example-item">
-                <i class="fas fa-globe"></i>
-                <span>Corporate Websites</span>
-              </div>
-              <div class="work-example-item">
-                <i class="fas fa-users"></i>
-                <span>Candidate Portals</span>
-              </div>
-              <div class="work-example-item">
-                <i class="fas fa-robot"></i>
-                <span>Automation Tools</span>
-              </div>
-              <div class="work-example-item">
-                <i class="fas fa-chart-simple"></i>
-                <span>Dashboards</span>
-              </div>
-            </div>
-            <a href="#contact" class="work-cta">Build Yours <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -627,7 +461,6 @@
           <ul>
             <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#work">Work</a></li>
             <li><a href="#process">Process</a></li>
@@ -689,6 +522,9 @@
     </a>
     <a href="mailto:adamdiditfirst@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" class="floating-social-link">
       <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://github.com/adamcreatesem" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="floating-social-link">
+      <i class="fab fa-github"></i>
     </a>
   </div>
 

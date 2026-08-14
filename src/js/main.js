@@ -163,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = [
       { id: 'hero', light: '#FAF7F3', dark: '#161616' },
       { id: 'about', light: '#FFFFFF', dark: '#1A1A1A' },
-      { id: 'skills', light: '#F5F0EB', dark: '#121212' },
       { id: 'services', light: '#FFFFFF', dark: '#1A1A1A' },
       { id: 'work', light: '#FAF7F3', dark: '#161616' },
       { id: 'process', light: '#FFFFFF', dark: '#1A1A1A' },
@@ -457,49 +456,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   initMagneticButtons();
-
-  // ---------- Animated Skill Bars ----------
-  function initSkillBars() {
-    const bars = document.querySelectorAll('.skill-bar-fill');
-    const pcts = document.querySelectorAll('.skill-bar-pct');
-    if (!bars.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const fill = entry.target;
-          const pct = fill.closest('.skill-bar-item').querySelector('.skill-bar-pct');
-          const target = parseInt(fill.dataset.width, 10);
-
-          // Animate fill bar
-          fill.style.width = '0%';
-          requestAnimationFrame(() => {
-            fill.style.width = target + '%';
-          });
-
-          // Animate counter
-          if (pct) {
-            const targetVal = parseInt(pct.dataset.target, 10);
-            let current = 0;
-            const step = Math.max(1, Math.floor(targetVal / 40));
-            const counter = setInterval(() => {
-              current += step;
-              if (current >= targetVal) {
-                current = targetVal;
-                clearInterval(counter);
-              }
-              pct.textContent = current + '%';
-            }, 30);
-          }
-
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    bars.forEach(bar => observer.observe(bar));
-  }
-  initSkillBars();
 
   // ---------- Marquee Duplicate for Infinite Scroll ----------
   function initMarquee() {
