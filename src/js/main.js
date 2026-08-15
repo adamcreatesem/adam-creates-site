@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
       })
       .catch(() => {
-        submitBtn.innerHTML = '<span>Something went wrong — please email me directly</span> <i class=\"fas fa-exclamation-triangle\"></i>';
+        submitBtn.innerHTML = '<span>Something went wrong. Please email me directly</span> <i class=\"fas fa-exclamation-triangle\"></i>';
         submitBtn.classList.add('state-error');
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
