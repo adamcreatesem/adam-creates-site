@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141414"/>
+      <stop offset="1" stop-color="#1A1A1A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFD700"/>
+      <stop offset="1" stop-color="#FFAA00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- subtle grid -->
+  <g stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="480" x2="1200" y2="480"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- accent bar -->
+  <rect x="90" y="150" width="56" height="8" rx="4" fill="url(#gold)"/>
+
+  <!-- brand name -->
+  <text x="90" y="310" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="88" fill="#FFFFFF" letter-spacing="2">ADAM CREATES</text>
+
+  <!-- tagline -->
+  <text x="90" y="392" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="52" fill="#FFD700">I Build Things That Work</text>
+
+  <!-- sub line -->
+  <text x="90" y="468" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="30" fill="#A0A0A0">Websites · AI Automation · WhatsApp Systems · Voice AI</text>
+
+  <!-- bottom left mark -->
+  <text x="90" y="556" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="22" fill="#666666">adamcreates.netlify.app</text>
+
+  <!-- red accent dot -->
+  <circle cx="1144" cy="90" r="18" fill="#FF3B30"/>
+</svg>
