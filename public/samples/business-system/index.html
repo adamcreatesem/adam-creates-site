@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bole Mart: Business Management System (Concept Demo)</title>
+<meta name="description" content="Interactive concept demo of a business management system: dashboard, orders, customers, stock, reports, staff, settings. Not a real system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#101827; --side-ink:#cbd5e1; --accent:#4f46e5; --accent-l:#6366f1; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  .topbar { background:var(--side); color:#fff; }
+  .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
+  .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
+  .top-actions { display:flex; align-items:center; gap:1rem; }
+  .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#cbd5e1; }
+
+  .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
+  .sidebar { background:var(--side); border-radius:12px; padding:1rem; align-self:start; position:sticky; top:1rem; }
+  .side-item { display:flex; align-items:center; gap:.7rem; padding:.68rem .8rem; border-radius:8px; font-size:.84rem; color:var(--side-ink); cursor:pointer; margin-bottom:.2rem; }
+  .side-item:hover { background:rgba(255,255,255,.07); color:#fff; }
+  .side-item.active { background:var(--accent); color:#fff; font-weight:600; }
+  .side-item .n { margin-left:auto; font-family:'JetBrains Mono'; font-size:.66rem; background:rgba(255,255,255,.1); padding:.12rem .45rem; border-radius:99px; }
+  .side-item.active .n { background:rgba(255,255,255,.22); }
+
+  .main { display:grid; gap:1.3rem; align-content:start; }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.05rem 1.15rem; }
+  .kpi b { font-size:1.5rem; font-weight:800; display:block; letter-spacing:-.02em; }
+  .kpi span { font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); font-weight:600; }
+  .kpi.warn b { color:var(--warn); }
+  .kpi.danger b { color:var(--danger); }
+  .kpi.ok b { color:var(--ok); }
+
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:center; padding:.95rem 1.25rem; border-bottom:1px solid var(--line); gap:1rem; flex-wrap:wrap; }
+  .card-head h3 { font-size:.95rem; font-weight:700; }
+  .card-head .hint { font-size:.68rem; color:var(--dim); font-family:'JetBrains Mono'; }
+  .btn { display:inline-block; font-weight:600; font-size:.78rem; padding:.6rem 1.05rem; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer; }
+  .btn-accent { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-accent:hover { background:var(--accent-l); }
+  .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
+
+  table { width:100%; border-collapse:collapse; font-size:.84rem; }
+  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
+  .pill.ok { background:var(--ok-bg); color:var(--ok); }
+  .pill.warn { background:var(--warn-bg); color:var(--warn); }
+  .pill.danger { background:var(--danger-bg); color:var(--danger); }
+  .pill.new { background:#eef2ff; color:var(--accent); }
+  .mono { font-family:'JetBrains Mono'; font-size:.76rem; }
+  .dim { color:var(--dim); }
+
+  .chart { display:flex; align-items:flex-end; gap:.8rem; padding:1.4rem 1.4rem 1.2rem; height:170px; }
+  .chart .bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem; height:100%; justify-content:flex-end; }
+  .chart .bar i { width:100%; max-width:44px; background:var(--accent); border-radius:6px 6px 0 0; min-height:4px; opacity:.85; }
+  .chart .bar:nth-child(7) i, .chart .bar.hl i { background:var(--gold); }
+  .chart .bar span { font-size:.62rem; color:var(--dim); font-weight:600; }
+
+  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.8rem; padding:1.2rem; }
+  .form-row label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .form-row input, .form-row select { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; }
+  .form-row input:focus, .form-row select:focus { outline:none; border-color:var(--accent); }
+  .form-actions { padding:0 1.2rem 1.2rem; display:flex; gap:.8rem; }
+
+  .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; padding:1.4rem; }
+  .settings-grid .field label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .settings-grid .field input { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; margin-bottom:1rem; }
+  .switch-row { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; border-bottom:1px solid var(--line); }
+  .switch-row:last-child { border-bottom:none; }
+  .switch-row b { font-size:.85rem; }
+  .switch-row p { font-size:.72rem; color:var(--dim); }
+  .switch { position:relative; width:42px; height:24px; background:#d5dbe4; border-radius:99px; cursor:pointer; transition:background .15s; flex-shrink:0; }
+  .switch.on { background:var(--ok); }
+  .switch::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+  .switch.on::after { left:21px; }
+
+  .note { font-size:.72rem; color:var(--dim); padding:.95rem 1.25rem; background:var(--bg); border-top:1px solid var(--line); font-family:'JetBrains Mono'; }
+  footer { text-align:center; font-size:.7rem; color:var(--dim); padding:1.4rem 0; border-top:1px solid var(--line); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:900px) {
+    .layout { grid-template-columns:1fr; }
+    .kpis { grid-template-columns:repeat(2,1fr); }
+    .settings-grid { grid-template-columns:1fr; }
+    .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+    .side-item { margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT DEMO · DATA RESETS · NOT A REAL SYSTEM</div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Bole Mart <small>Management System · Concept Demo</small></div>
+    <div class="today" id="today"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-item active" data-view="dashboard">📊 Dashboard</div>
+    <div class="side-item" data-view="orders">🧾 Orders <span class="n" id="nOrders">0</span></div>
+    <div class="side-item" data-view="customers">👥 Customers <span class="n" id="nCustomers">0</span></div>
+    <div class="side-item" data-view="stock">📦 Stock <span class="n" id="nLow">0</span></div>
+    <div class="side-item" data-view="reports">📈 Reports</div>
+    <div class="side-item" data-view="staff">🧑‍💼 Staff</div>
+    <div class="side-item" data-view="settings">⚙️ Settings</div>
+  </aside>
+
+  <div class="main">
+    <!-- DASHBOARD -->
+    <div id="view-dashboard">
+      <div class="kpis">
+        <div class="kpi ok"><b id="kSales">ETB 0</b><span>Today's sales</span></div>
+        <div class="kpi"><b id="kOrders">0</b><span>Orders today</span></div>
+        <div class="kpi"><b id="kCustomers">0</b><span>Customers</span></div>
+        <div class="kpi warn"><b id="kLow">0</b><span>Low-stock items</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Recent Orders</h3><span class="hint">Live · sample data</span></div>
+        <table>
+          <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody id="recentRows"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Weekly Sales</h3><span class="hint">ETB</span></div>
+        <div class="chart" id="weekChart"></div>
+      </div>
+    </div>
+
+    <!-- ORDERS -->
+    <div id="view-orders" hidden>
+      <div class="card">
+        <div class="card-head"><h3>All Orders</h3><button class="btn btn-accent btn-sm" id="openAdd">+ Add Order</button></div>
+        <div id="addFormWrap"></div>
+        <table>
+          <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th></th></tr></thead>
+          <tbody id="orderRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CUSTOMERS -->
+    <div id="view-customers" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Customer List</h3><span class="hint">Orders · spend · segment</span></div>
+        <table>
+          <thead><tr><th>ID</th><th>Customer</th><th>Phone</th><th>Orders</th><th>Total spent</th><th>Last order</th><th>Segment</th></tr></thead>
+          <tbody id="customerRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- STOCK -->
+    <div id="view-stock" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Inventory</h3><span class="hint">Reorder alerts · expiry flags</span></div>
+        <table>
+          <thead><tr><th>Item</th><th>SKU</th><th>Qty</th><th>Reorder at</th><th>Expires</th><th>Status</th></tr></thead>
+          <tbody id="stockRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- REPORTS -->
+    <div id="view-reports" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Weekly Sales (ETB)</h3><span class="hint">7 days</span></div>
+        <div class="chart" id="weekChart2"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Top Products</h3><span class="hint">This month</span></div>
+        <table>
+          <thead><tr><th>Product</th><th>Units</th><th>Revenue</th></tr></thead>
+          <tbody id="topRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- STAFF -->
+    <div id="view-staff" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Staff Roster</h3><span class="hint">Roles · shifts</span></div>
+        <table>
+          <thead><tr><th>Name</th><th>Role</th><th>Shift</th><th>Phone</th><th>Status</th></tr></thead>
+          <tbody id="staffRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="view-settings" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Business Settings</h3><span class="hint">Connects to WhatsApp on order</span></div>
+        <div class="settings-grid">
+          <div>
+            <div class="field"><label>Business name</label><input id="setName" value="Bole Mart" /></div>
+            <div class="field"><label>Address</label><input id="setAddr" value="Bole Road, Addis Ababa" /></div>
+            <div class="field"><label>Phone</label><input id="setPhone" value="+251 91 000 00 00" /></div>
+            <div class="field"><label>WhatsApp number</label><input id="setWa" value="+251 91 000 00 00" /></div>
+          </div>
+          <div>
+            <div class="switch-row"><div><b>WhatsApp auto-replies</b><p>Answers customer messages with order info</p></div><div class="switch on" data-switch="auto"></div></div>
+            <div class="switch-row"><div><b>SMS reminders</b><p>Reminds customers their order is ready</p></div><div class="switch on" data-switch="sms"></div></div>
+            <div class="switch-row"><div><b>Email receipts</b><p>Sends a receipt after payment</p></div><div class="switch" data-switch="mail"></div></div>
+            <div class="switch-row"><div><b>Daily sales report</b><p>Delivered to WhatsApp every evening</p></div><div class="switch on" data-switch="report"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">// Try it: click a section on the left, add an order, toggle settings. All data is fictional and resets on reload.</div>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="year"></span> Bole Mart, interactive concept demo of a business management system</div>
+  <div>Fictional data · Not a real business or system</div>
+</footer>
+
+<script>
+  const yearEl = document.getElementById('year');
+  yearEl.textContent = new Date().getFullYear();
+  document.getElementById('today').textContent = new Date().toDateString();
+
+  // ---------- DEMO DATA ----------
+  const ORDERS = [
+    { id:'SO-2411', customer:'Hanna Girma', items:'Bread x2, Milk', total:340, status:'delivered' },
+    { id:'SO-2410', customer:'Dawit Tesfaye', items:'Rice 5kg, Oil 1L', total:1250, status:'delivered' },
+    { id:'SO-2409', customer:'Sara Mohammed', items:'Sugar 2kg, Coffee', total:580, status:'paid' },
+    { id:'SO-2408', customer:'Yonas Abebe', items:'Detergent, Soap', total:410, status:'paid' },
+    { id:'SO-2407', customer:'Meron Bekele', items:'Pasta, Tomato', total:265, status:'new' },
+    { id:'SO-2406', customer:'Kaleb Hailu', items:'Batteries, Bulb', total:520, status:'new' },
+  ];
+  const CUSTOMERS = [
+    { id:'C-101', name:'Hanna Girma', phone:'+251 91 234 5678', orders:24, spent:18400, last:'Today', seg:'vip' },
+    { id:'C-102', name:'Dawit Tesfaye', phone:'+251 92 345 6789', orders:18, spent:12750, last:'Yesterday', seg:'regular' },
+    { id:'C-103', name:'Sara Mohammed', phone:'+251 93 456 7890', orders:12, spent:8900, last:'2 days ago', seg:'regular' },
+    { id:'C-104', name:'Yonas Abebe', phone:'+251 94 567 8901', orders:9, spent:6700, last:'3 days ago', seg:'regular' },
+    { id:'C-105', name:'Meron Bekele', phone:'+251 95 678 9012', orders:3, spent:980, last:'Today', seg:'newcust' },
+    { id:'C-106', name:'Kaleb Hailu', phone:'+251 96 789 0123', orders:1, spent:520, last:'Today', seg:'newcust' },
+  ];
+  const STOCK = [
+    { item:'Bread (loaf)', sku:'BR-01', qty:46, reorder:30, status:'ok', exp:'2026-09-05' },
+    { item:'Rice 5kg', sku:'RI-05', qty:18, reorder:15, status:'ok', exp:'2027-04-30' },
+    { item:'Cooking Oil 1L', sku:'OL-01', qty:9, reorder:12, status:'low', exp:'2027-02-28' },
+    { item:'Sugar 2kg', sku:'SU-02', qty:24, reorder:20, status:'ok', exp:'2026-12-15' },
+    { item:'Coffee 250g', sku:'CF-25', qty:0, reorder:10, status:'out', exp:'2027-05-20' },
+    { item:'Detergent 1kg', sku:'DT-01', qty:7, reorder:10, status:'low', exp:'2027-08-01' },
+    { item:'Milk 1L', sku:'MK-01', qty:30, reorder:15, status:'ok', exp:'2026-08-25' },
+  ];
+  const WEEK = [ {d:'Mon',v:8200},{d:'Tue',v:6400},{d:'Wed',v:9100},{d:'Thu',v:7350},{d:'Fri',v:11200},{d:'Sat',v:14800},{d:'Sun',v:12450} ];
+  const TOP = [
+    { p:'Bread', u:320, r:6400 },
+    { p:'Cooking Oil 1L', u:140, r:12600 },
+    { p:'Sugar 2kg', u:95, r:11400 },
+    { p:'Milk 1L', u:210, r:7350 },
+    { p:'Coffee 250g', u:64, r:11520 },
+  ];
+  const STAFF = [
+    { name:'Abel Mekonnen', role:'Manager', shift:'08:00-17:00', phone:'+251 91 111 2222', status:'active' },
+    { name:'Selamawit Kass', role:'Cashier', shift:'08:00-14:00', phone:'+251 92 222 3333', status:'active' },
+    { name:'Biruk Tola', role:'Stock clerk', shift:'14:00-20:00', phone:'+251 93 333 4444', status:'active' },
+    { name:'Ruth Alem', role:'Cashier', shift:'14:00-20:00', phone:'+251 94 444 5555', status:'leave' },
+  ];
+
+  // ---------- RENDER HELPERS ----------
+  const pill = s => ({
+    delivered: '<span class="pill ok">Delivered</span>',
+    paid: '<span class="pill ok">Paid</span>',
+    new: '<span class="pill new">New</span>',
+    ok: '<span class="pill ok">In stock</span>',
+    low: '<span class="pill warn">Low</span>',
+    out: '<span class="pill danger">Out</span>',
+    soon: '<span class="pill warn">Expiring soon</span>',
+    expired: '<span class="pill danger">Expired</span>',
+    active: '<span class="pill ok">Active</span>',
+    leave: '<span class="pill warn">On leave</span>',
+    vip: '<span class="pill warn">VIP</span>',
+    regular: '<span class="pill ok">Regular</span>',
+    newcust: '<span class="pill new">New</span>',
+  }[s] || '<span class="pill">' + s + '</span>');
+
+  const fmt = n => 'ETB ' + n.toLocaleString();
+  const orderAction = o => o.status === 'new'
+    ? `<button class="btn btn-sm" onclick="advance('${o.id}')">Confirm</button>`
+    : o.status === 'paid'
+      ? `<button class="btn btn-sm" onclick="advance('${o.id}')">Mark done</button>`
+      : '-';
+
+  function renderAll() {
+    document.getElementById('kSales').textContent = fmt(24850);
+    document.getElementById('kOrders').textContent = ORDERS.length;
+    document.getElementById('kCustomers').textContent = CUSTOMERS.length;
+    const low = STOCK.filter(s => s.status !== 'ok').length;
+    document.getElementById('kLow').textContent = low;
+    document.getElementById('nOrders').textContent = ORDERS.length;
+    document.getElementById('nCustomers').textContent = CUSTOMERS.length;
+    document.getElementById('nLow').textContent = low;
+
+    document.getElementById('recentRows').innerHTML = ORDERS.slice(0, 4).map(o =>
+      `<tr><td class="mono">${o.id}</td><td><b>${o.customer}</b></td><td>${o.items}</td><td class="mono">${fmt(o.total)}</td><td>${pill(o.status)}</td></tr>`).join('');
+
+    document.getElementById('orderRows').innerHTML = ORDERS.map(o =>
+      `<tr><td class="mono">${o.id}</td><td><b>${o.customer}</b></td><td>${o.items}</td><td class="mono">${fmt(o.total)}</td><td>${pill(o.status)}</td><td>${orderAction(o)}</td></tr>`).join('');
+
+    document.getElementById('customerRows').innerHTML = CUSTOMERS.map(c =>
+      `<tr><td class="mono">${c.id}</td><td><b>${c.name}</b></td><td class="mono">${c.phone}</td><td class="mono">${c.orders}</td><td class="mono">${fmt(c.spent)}</td><td>${c.last}</td><td>${pill(c.seg)}</td></tr>`).join('');
+
+    const expLabel = exp => {
+      const days = Math.round((new Date(exp) - new Date('2026-08-16')) / 86400000);
+      if (days < 0) return '<span class="pill expired">Expired</span>';
+      if (days <= 60) return '<span class="pill soon">Expiring soon</span>';
+      return '';
+    };
+    document.getElementById('stockRows').innerHTML = STOCK.map(s =>
+      `<tr><td><b>${s.item}</b></td><td class="mono">${s.sku}</td><td class="mono">${s.qty}</td><td class="mono">${s.reorder}</td><td class="mono">${s.exp} ${expLabel(s.exp)}</td><td>${pill(s.status)}</td></tr>`).join('');
+
+    document.getElementById('topRows').innerHTML = TOP.map(x =>
+      `<tr><td><b>${x.p}</b></td><td class="mono">${x.u}</td><td class="mono">${fmt(x.r)}</td></tr>`).join('');
+
+    document.getElementById('staffRows').innerHTML = STAFF.map(x =>
+      `<tr><td><b>${x.name}</b></td><td>${x.role}</td><td class="mono">${x.shift}</td><td class="mono">${x.phone}</td><td>${pill(x.status)}</td></tr>`).join('');
+
+    const max = Math.max(...WEEK.map(w => w.v));
+    const chart = (id) => document.getElementById(id).innerHTML = WEEK.map(w =>
+      `<div class="bar ${w.d === 'Sat' ? 'hl' : ''}"><i style="height:${Math.round(w.v / max * 100)}%"></i><span>${w.d}</span></div>`).join('');
+    chart('weekChart'); chart('weekChart2');
+  }
+
+  // ---------- ACTIONS ----------
+  window.advance = (id) => {
+    const o = ORDERS.find(x => x.id === id);
+    if (o) o.status = o.status === 'new' ? 'paid' : o.status === 'paid' ? 'delivered' : o.status;
+    renderAll();
+  };
+
+  document.getElementById('openAdd').addEventListener('click', () => {
+    const wrap = document.getElementById('addFormWrap');
+    wrap.innerHTML = `
+      <div class="form-row">
+        <div><label>Customer name</label><input id="aName" placeholder="e.g. Hanna Girma" /></div>
+        <div><label>Item</label><input id="aItem" placeholder="e.g. Bread x2" /></div>
+        <div><label>Qty</label><input id="aQty" type="number" value="1" /></div>
+        <div><label>Total (ETB)</label><input id="aTotal" type="number" placeholder="500" /></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-accent" id="saveOrder">Save Order</button>
+        <button class="btn" id="cancelOrder">Cancel</button>
+      </div>`;
+    document.getElementById('cancelOrder').addEventListener('click', () => wrap.innerHTML = '');
+    document.getElementById('saveOrder').addEventListener('click', () => {
+      const name = document.getElementById('aName').value.trim() || 'Walk-in customer';
+      const item = document.getElementById('aItem').value.trim() || 'Misc items';
+      const total = Number(document.getElementById('aTotal').value) || 200;
+      const id = 'SO-' + (2400 + ORDERS.length + 10);
+      ORDERS.unshift({ id, customer: name, items: item, total, status: 'new' });
+      wrap.innerHTML = `<div class="note" style="border:none;background:transparent;color:var(--ok);">✓ Saved: ${name} · ${fmt(total)}</div>`;
+      renderAll();
+    });
+  });
+
+  document.querySelectorAll('.switch').forEach(s => {
+    s.addEventListener('click', () => s.classList.toggle('on'));
+  });
+
+  // ---------- VIEW SWITCHING ----------
+  const views = ['dashboard', 'orders', 'customers', 'stock', 'reports', 'staff', 'settings'];
+  document.querySelectorAll('.side-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.side-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      views.forEach(v => document.getElementById('view-' + v).hidden = v !== item.dataset.view);
+    });
+  });
+
+  renderAll();
+</script>
+</body>
+</html>

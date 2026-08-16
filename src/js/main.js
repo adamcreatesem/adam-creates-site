@@ -1,5 +1,5 @@
 /* ========================================
-   ADAM CREATES — Main JavaScript
+   ADAM CREATES: Main JavaScript
    ======================================== */
 
 import {
@@ -15,7 +15,7 @@ import { initScrollWorld } from './scroll-world/index.js';
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  // ── Initialize 3D Effects ──
+  // Initialize 3D Effects
   init3DMouseTracking();
 
   setTimeout(() => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBgParticles();
   }, 300);
 
-  // ── Initialize Scroll World (Horizon Landscape) ──
+  // Initialize Scroll World (Horizon Landscape)
   // Delayed slightly to let the page settle, then start the terrain
   const destroyScrollWorld = initScrollWorld();
 
@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: 'hero', light: '#FAF7F3', dark: '#161616' },
       { id: 'about', light: '#FFFFFF', dark: '#1A1A1A' },
       { id: 'services', light: '#FFFFFF', dark: '#1A1A1A' },
+      { id: 'for-you', light: '#FAF7F3', dark: '#161616' },
       { id: 'work', light: '#FAF7F3', dark: '#161616' },
       { id: 'process', light: '#FFFFFF', dark: '#1A1A1A' },
       { id: 'faq', light: '#F5F0EB', dark: '#121212' },
@@ -852,91 +853,103 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initParallax();
 
-  // ── Business-Type Modal (For Your Business) ──
+  // Business-Type Modal (For Your Business)
   const FIT_CONTENT = {
     restaurants: {
       tag: 'Restaurants & Cafes',
-      intro: 'Your food is great — but people can\u2019t find it. We fix the part between the kitchen and the customer.',
-      get: ['A website that shows your menu, prices, and photos', 'QR menu customers scan at the table', 'WhatsApp ordering — no third-party apps or fees', 'Your real reviews front and center'],
+      intro: 'Your food is great, but people can\u2019t find it. We fix the part between the kitchen and the customer.',
+      get: ['A website that shows your menu, prices, and photos', 'QR menu customers scan at the table', 'WhatsApp ordering, no third-party apps or fees', 'Your real reviews front and center'],
       does: ['More people find you on Google', 'Customers see the menu before they walk in', 'Orders come to your phone directly', 'You keep every birr instead of paying app commissions'],
-      sample: 'See a sample restaurant site \u2192'
+      sample: 'See a sample restaurant site \u2192',
+      preview: '/restaurant/'
     },
     guesthouses: {
       tag: 'Guest Houses & Hotels',
-      intro: 'Booking.com takes 15\u201320% of every stay. Your own site brings guests back to you directly.',
-      get: ['A direct-booking website with real photos', 'Book Direct button — WhatsApp or call, no middleman', 'Guest reviews pulled from your real listings', 'Occupancy at a glance'],
+      intro: 'Booking.com takes 15-20% of every stay. Your own site brings guests back to you directly.',
+      get: ['A direct-booking website with real photos', 'Book Direct button, WhatsApp or call, no middleman', 'Guest reviews pulled from your real listings', 'Occupancy at a glance'],
       does: ['Returning guests book you directly', 'You stop paying the OTA commission', 'Your rooms stay full with less effort', 'Diaspora guests find you on Google'],
-      sample: 'See a sample guest house site \u2192'
+      sample: 'See a sample guest house site \u2192',
+      preview: '/guesthouse/'
     },
     clinics: {
       tag: 'Clinics & Hospitals',
-      intro: 'Patients wait 60\u2013180 minutes — it\u2019s the #1 complaint about clinics in Addis. Booking fixes it.',
+      intro: 'Patients wait 60-180 minutes, the #1 complaint about clinics in Addis. Booking fixes it.',
       get: ['Appointment booking + automatic reminders', 'Patient records that are easy to search', 'A professional site that builds trust', 'Follow-up reminders patients actually receive'],
       does: ['No-show rate drops', 'Your staff stops managing paper diaries', 'Patients feel their time is respected', 'You look established and serious'],
-      sample: 'See a sample clinic site \u2192'
+      sample: 'See a sample clinic site \u2192',
+      preview: '/clinic/'
     },
     travel: {
       tag: 'Travel Agencies',
       intro: 'You sell journeys, but your own booking journey starts from zero. We build the bridge.',
       get: ['Package & itinerary pages that sell', 'Inquiry form + WhatsApp automation', 'Tour photos that make people want to go', 'Customer follow-up that never forgets'],
-      does: ['Inquiries come to one place', 'Leads get answered fast — even at night', 'Packages are easy to share on WhatsApp', 'You look bigger than your size'],
-      sample: 'See a sample travel site \u2192'
+      does: ['Inquiries come to one place', 'Leads get answered fast, even at night', 'Packages are easy to share on WhatsApp', 'You look bigger than your size'],
+      sample: 'See a sample travel site \u2192',
+      preview: '/travel/'
     },
     construction: {
       tag: 'Construction & Real Estate',
       intro: 'People buy with their eyes. Show them what you\u2019ve built and they\u2019ll trust you with what they\u2019re building.',
       get: ['A portfolio that shows completed projects', 'Quote requests that come to your WhatsApp', 'Property listings with real photos', 'A professional brand for bids and clients'],
       does: ['Clients see proof before they call', 'Quote requests arrive ready to answer', 'You win more bids with a real presence', 'Referrals have somewhere to land'],
-      sample: 'See a sample construction site \u2192'
+      sample: 'See a sample construction site \u2192',
+      preview: '/real-estate/'
     },
     schools: {
       tag: 'Schools & Training',
       intro: 'Parents choose with trust. An academic, credible site is the difference between maybe and enrolled.',
       get: ['A site that shows mission, programs, and results', 'Enrollment inquiries + fee tracking', 'Accreditation and achievements front and center', 'A calendar parents can see'],
       does: ['Parents trust you before visiting', 'Enrollment inquiries come organized', 'Your reputation is visible to everyone', 'Students\u2019 families find you on Google'],
-      sample: 'See a sample school site \u2192'
+      sample: 'See a sample school site \u2192',
+      preview: '/school/'
     },
     retail: {
       tag: 'Shops & Retail',
       intro: 'Your shop closes at 9pm. Your catalog shouldn\u2019t have to.',
       get: ['A catalog customers can browse anytime', 'Stock list that\u2019s easy to update', 'WhatsApp ordering with prefilled messages', 'A Google presence that brings walk-ins'],
       does: ['Customers check stock before traveling', 'Orders arrive on your phone', 'You look professional on every platform', 'Sales keep happening after closing time'],
-      sample: 'See a sample shop site \u2192'
+      sample: 'See a sample shop site \u2192',
+      preview: '/retail/'
     },
     beauty: {
       tag: 'Salons, Gyms & More',
-      intro: 'Appointments, memberships, and repeat clients — handled without the clipboard.',
+      intro: 'Appointments, memberships, and repeat clients, handled without the clipboard.',
       get: ['Online booking + reminders', 'Client history at your fingertips', 'Membership and package tracking', 'A site that shows your work beautifully'],
       does: ['No-shows drop with reminders', 'Clients book without calling', 'Packages renew on schedule', 'Your work is your best advertisement'],
-      sample: 'See a sample salon site \u2192'
+      sample: 'See a sample salon site \u2192',
+      preview: '/salon/'
     },
     pharmacies: {
       tag: 'Pharmacies',
-      intro: '40% of pharmacies lose money to expired stock. Track it before it expires — not after.',
+      intro: '40% of pharmacies lose money to expired stock. Track it before it expires, not after.',
       get: ['Stock with expiry-date alerts', 'Sales log that\u2019s audit-ready', 'Reorder reminders before you run out', 'A site that lists what you actually carry'],
       does: ['Less money lost to expiry', 'You\u2019re ready when inspectors ask', 'Never out of your best sellers', 'Customers find you when they need you'],
-      sample: 'See a sample pharmacy site \u2192'
+      sample: 'See a sample pharmacy site \u2192',
+      preview: '/pharmacy/'
     },
     bakeries: {
       tag: 'Bakeries & Food Makers',
       intro: 'You\u2019re a maker, not a bookkeeper. Let the system count while you bake.',
-      get: ['Product list with real photos', 'Ingredient stock tracking', 'Production log — what you made and sold', 'Wholesale orders organized'],
+      get: ['Product list with real photos', 'Ingredient stock tracking', 'Production log, what you made and sold', 'Wholesale orders organized'],
       does: ['You know what sold before it\u2019s gone', 'Ingredients never run out mid-batch', 'Wholesale customers order smoothly', 'Your brand looks as good as your bread'],
-      sample: 'See a sample bakery site \u2192'
+      sample: 'See a sample bakery site \u2192',
+      preview: '/bakery/'
     },
     events: {
       tag: 'Event Planners & Photographers',
-      intro: 'Your work is stunning — let your website carry that weight while you\u2019re on the job.',
+      intro: 'Your work is stunning, let your website carry that weight while you\u2019re on the job.',
       get: ['A portfolio that sells your style', 'Package pages with clear pricing', 'Deposit & payment tracking', 'Inquiry form + fast follow-up'],
       does: ['Couples find you on Google', 'Packages answer questions before you do', 'Deposits are never forgotten', 'Your best work does the talking'],
-      sample: 'See a sample events site \u2192'
+      sample: 'See a sample events site \u2192',
+      preview: '/wedding/'
     },
     auto: {
       tag: 'Auto, Garages & Parts',
       intro: 'Every car has a story. Track it, and your customers never have to explain theirs twice.',
-      get: ['Job tracking for every vehicle', 'Vehicle history — no more \u201cwhat did we do last time?\u201d', 'Booking for service slots', 'A site that looks as solid as your work'],
+      get: ['Job tracking for every vehicle', 'Vehicle history, no more \u201cwhat did we do last time?\u201d', 'Booking for service slots', 'A site that looks as solid as your work'],
       does: ['Jobs never fall through the cracks', 'Customers get updates without asking', 'Repeat visits come automatically', 'You look like the shop people trust'],
-      sample: 'See a sample auto site \u2192'
+      sample: 'See a sample auto site \u2192',
+      preview: '/auto-garage/'
     }
   };
 
@@ -957,8 +970,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const openModal = (key) => {
-      const pool = currentLang === 'am' ? FIT_CONTENT_AM : FIT_CONTENT;
-      const c = pool[key] || FIT_CONTENT[key];
+      const c = FIT_CONTENT[key];
       if (!c) return;
       lastFocus = document.activeElement;
       tagEl.textContent = c.tag;
@@ -967,6 +979,8 @@ document.addEventListener('DOMContentLoaded', () => {
       getEl.innerHTML = c.get.map((li) => `<li>${li}</li>`).join('');
       doesEl.innerHTML = c.does.map((li) => `<li>${li}</li>`).join('');
       sampleEl.textContent = c.sample;
+      sampleEl.dataset.preview = c.preview || '';
+      sampleEl.dataset.title = c.tag + ' Sample';
       fitModal.hidden = false;
       document.body.style.overflow = 'hidden';
       fitModal.querySelector('.fit-modal-close').focus();
@@ -983,13 +997,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Sample Preview Modal (mini window) ──
+  // Sample Preview Modal (mini window)
   const previewModal = document.getElementById('previewModal');
   if (previewModal) {
     const iframe = document.getElementById('previewIframe');
     const titleEl = document.getElementById('previewModalTitle');
     const openFull = document.getElementById('previewOpenFull');
-    // Samples ship inside this site at /samples/ — works everywhere
+    // Samples ship inside this site at /samples/, works everywhere
     const SAMPLES_BASE = '/samples';
 
     const closePreview = () => {
@@ -1010,6 +1024,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.work-preview-btn').forEach((btn) => {
       btn.addEventListener('click', () => openPreview(btn.dataset.preview, btn.dataset.title));
     });
+    const fitSampleBtn = document.getElementById('fitModalSample');
+    if (fitSampleBtn) {
+      fitSampleBtn.addEventListener('click', () => {
+        const path = fitSampleBtn.dataset.preview;
+        if (path) openPreview(path, fitSampleBtn.dataset.title || 'Sample');
+      });
+    }
+
     previewModal.querySelectorAll('[data-preview-close]').forEach((el) => {
       el.addEventListener('click', closePreview);
     });
@@ -1017,166 +1039,4 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape' && !previewModal.hidden) closePreview();
     });
   }
-
-  // ── Language toggle (English / Amharic) ──
-  const I18N = {
-    'nav.home': { en: 'Home', am: 'መነሻ' },
-    'nav.about': { en: 'About', am: 'ስለ እኔ' },
-    'nav.services': { en: 'Services', am: 'አገልግሎቶች' },
-    'nav.work': { en: 'Work', am: 'ስራዎቼ' },
-    'nav.foryou': { en: 'For Your Business', am: 'ለንግድዎ' },
-    'nav.faq': { en: 'FAQ', am: 'ጥያቄዎች' },
-    'nav.talk': { en: "Let's Talk", am: 'እንነጋገር' },
-    'nav.contact': { en: 'Contact', am: 'ያግኙኝ' },
-    'hero.badge': { en: '✦ Available For Projects', am: '✦ ለፕሮጀክቶች ዝግጁ' },
-    'hero.line1': { en: 'I Build', am: 'የሚሰሩ' },
-    'hero.line2': { en: 'Things That Work.', am: 'ነገሮችን እገነባለሁ።' },
-    'hero.desc': { en: 'I design the solution, direct the build, and ship it working.', am: 'መፍትሄውን እቀርጻለሁ፣ ግንባታውን እመራለሁ፣ የሚሰራ ሆኖ አስረክባለሁ።' },
-    'hero.seeWork': { en: 'See My Work', am: 'ስራዎቼን ይመልከቱ' },
-    'hero.start': { en: 'Start a Project', am: 'ፕሮጀክት ይጀምሩ' },
-    'about.tag': { en: 'About', am: 'ስለ እኔ' },
-    'about.title': { en: 'The Person Behind the Work', am: 'ከስራዎቹ ጀርባ ያለው ሰው' },
-    'about.hi': { en: "Hey, I'm Adam", am: 'ሰላም፣ አዳም ነኝ' },
-    'about.p1': { en: 'I build things that work — websites, web apps, automation, voice systems, and content. AI is the fastest tool in my kit, and I use it openly, because the work is mine.', am: 'የሚሰሩ ነገሮችን እገነባለሁ — ድህረ ገጾች፣ ዌብ መተግበሪያዎች፣ አውቶሜሽን፣ የድምጽ ሲስተሞች እና ኮንቴንት። AI በእኔ ኪት ውስጥ ፈጣኑ መሳሪያ ነው፣ በግልጽ እጠቀምበታለሁ፣ ምክንያቱም ስራው የእኔ ነው።' },
-    'about.p2': { en: 'I translate between English, Arabic, and Amharic.', am: 'በእንግሊዝኛ፣ በአረብኛ እና በአማርኛ እተረጉማለሁ።' },
-    'about.h1': { en: 'Creative Approach', am: 'የፈጠራ አቀራረብ' },
-    'about.h1.d': { en: 'Every project starts with a strong concept before a single line of code or frame is cut.', am: 'እያንዳንዱ ፕሮጀክት አንድም የኮድ መስመር ወይም ፍሬም ከመቁረጡ በፊት በጠንካራ አስተሳሰብ ይጀምራል።' },
-    'about.h2': { en: 'Reliable Delivery', am: 'አስተማማኝ አቅርቦት' },
-    'about.h2.d': { en: 'Clear communication, realistic timelines, and work that exceeds expectations, every time.', am: 'ግልጽ ግንኙነት፣ ተጨባጭ የጊዜ ገደቦች፣ እና ከተስፋ በላይ የሆነ ስራ — ሁልጊዜም።' },
-    'about.h3': { en: 'Client-First Mindset', am: 'ደንበኛን የማስቀደም አመለካከት' },
-    'about.h3.d': { en: 'Your goals are my goals. I listen, adapt, and deliver what actually serves your needs.', am: 'ግቦችዎ የእኔ ግቦች ናቸው። አዳምጣለሁ፣ እላምዳለሁ፣ እና ፍላጎትዎን የሚያገለግልን አስረክባለሁ።' },
-    'services.tag': { en: 'Services', am: 'አገልግሎቶች' },
-    'services.title': { en: 'What I Can Do For You', am: 'ምን ማድረግ እንደምችል' },
-    'services.desc': { en: 'Seven ways I can help.', am: 'ሰባት የመርዳት መንገዶች።' },
-    'services.s1': { en: 'AI Automation & Integration', am: 'AI አውቶሜሽን እና ውህደት' },
-    'services.s1.d': { en: 'AI agents that operate your real tools, via Composio (100+ integrations).', am: 'በኮምፖሲዮ (ከ100 በላይ ውህደቶች) እውነተኛ መሳሪያዎችዎን የሚያንቀሳቅሱ AI ወኪሎች።' },
-    'services.s2': { en: 'WhatsApp Business Systems', am: 'የWhatsApp ቢዝነስ ሲስተሞች' },
-    'services.s2.d': { en: 'Trilingual automated replies (English, Arabic, Amharic), voice notes, and AI voice replies.', am: 'የሶስት ቋንቋ አውቶማቲክ መልሶች (እንግሊዝኛ፣ አረብኛ፣ አማርኛ)፣ የድምጽ ማስታወሻዎች እና AI የድምጽ መልሶች።' },
-    'services.s3': { en: 'Voice AI & Translation', am: 'የድምጽ AI እና ትርጉም' },
-    'services.s3.d': { en: 'TTS and transcription in 32+ languages, plus translation between English, Arabic, and Amharic.', am: 'ከ32 በላይ ቋንቋዎች TTS እና ቅጂ፣ በተጨማሪም በእንግሊዝኛ፣ አረብኛ እና አማርኛ መካከል ትርጉም።' },
-    'services.s4': { en: 'Data Pipelines & Reporting', am: 'የዳታ ፓይፕላይን እና ሪፖርት' },
-    'services.s4.d': { en: 'Spreadsheet to clean reports, delivered automatically.', am: 'ከተመን ሉህ ወደ ንጹህ ሪፖርቶች፣ በራስ-ሰር የሚደርሱ።' },
-    'services.s5': { en: 'Websites & Web Apps', am: 'ድህረ ገጾች እና ዌብ መተግበሪያዎች' },
-    'services.s5.d': { en: 'Custom sites and apps, designed by me and built with AI collaboration.', am: 'በእኔ የተነደፉ እና በAI ትብብር የተገነቡ ብጁ ጣቢያዎች እና መተግበሪያዎች።' },
-    'services.s6': { en: 'Research & Scraping', am: 'ምርምር እና ውሂብ መሰብሰብ' },
-    'services.s6.d': { en: 'Lead generation, competitor analysis, and market intelligence.', am: 'ደንበኛ ማፍራት፣ የተፎካካሪ ትንተና እና የገበያ መረጃ።' },
-    'services.s7': { en: 'Content Creation (Images & Video)', am: 'ኮንቴንት መፍጠር (ምስሎች እና ቪዲዮ)' },
-    'services.s7.d': { en: 'AI-generated images and short videos for social and ads.', am: 'ለማህበራዊ ሚዲያ እና ለማስታወቂያ AI የተፈጠሩ ምስሎች እና አጫጭር ቪዲዮዎች።' },
-    'services.cta': { en: 'Discuss This', am: 'ይህን ይወያዩ' },
-    'foryou.tag': { en: 'For Your Business', am: 'ለንግድዎ' },
-    'foryou.title': { en: "Whatever You Run, There's a Fit", am: 'የሚያንቀሳቅሱት ሁሉ፣ የሚስማማ አለው' },
-    'foryou.desc': { en: 'Websites, systems, and automation for every kind of business in Addis Ababa.', am: 'በአዲስ አበባ ለሚገኙ ሁሉም አይነት ንግዶች ድህረ ገጾች፣ ሲስተሞች እና አውቶሜሽን።' },
-    'fit.restaurants': { en: 'Restaurants & Cafes', am: 'ምግብ ቤቶች እና ካፌዎች' },
-    'fit.restaurants.d': { en: 'Website + QR menu + reviews + sales log', am: 'ድህረ ገጽ + QR ሜኑ + ግምገማዎች + የሽያጭ መዝገብ' },
-    'fit.guesthouses': { en: 'Guest Houses & Hotels', am: 'የእንግዳ ማረፊያዎች እና ሆቴሎች' },
-    'fit.guesthouses.d': { en: 'Direct booking + occupancy + real reviews', am: 'ቀጥታ ቦታ ማስያዝ + ሙላት + እውነተኛ ግምገማዎች' },
-    'fit.clinics': { en: 'Clinics & Hospitals', am: 'ክሊኒኮች እና ሆስፒታሎች' },
-    'fit.clinics.d': { en: 'Appointments + reminders + patient records', am: 'ቀጠሮዎች + ማስታወሻዎች + የህመምተኛ መዝገቦች' },
-    'fit.travel': { en: 'Travel Agencies', am: 'የጉዞ ኤጀንሲዎች' },
-    'fit.travel.d': { en: 'Packages + itineraries + inquiry automation', am: 'ፓኬጆች + የጉዞ መርሃ ግብሮች + የጥያቄ አውቶሜሽን' },
-    'fit.construction': { en: 'Construction & Real Estate', am: 'ኮንስትራክሽን እና ሪል እስቴት' },
-    'fit.construction.d': { en: 'Portfolio + quotes + WhatsApp automation', am: 'ፖርትፎሊዮ + ጥቅሶች + WhatsApp አውቶሜሽን' },
-    'fit.schools': { en: 'Schools & Training', am: 'ትምህርት ቤቶች እና ስልጠና' },
-    'fit.schools.d': { en: 'Enrollment + credibility + fee tracking', am: 'ምዝገባ + ተዓማኒነት + የክፍያ ክትትል' },
-    'fit.retail': { en: 'Shops & Retail', am: 'ሱቆች እና ችርቻሮ' },
-    'fit.retail.d': { en: 'Catalog + stock list + WhatsApp ordering', am: 'ካታሎግ + የእቃ ዝርዝር + WhatsApp ማዘዝ' },
-    'fit.beauty': { en: 'Salons, Gyms & More', am: 'ሳሎኖች፣ ጂሞች እና ሌሎችም' },
-    'fit.beauty.d': { en: 'Booking + client history + memberships', am: 'ቦታ ማስያዝ + የደንበኛ ታሪክ + አባልነቶች' },
-    'fit.pharmacies': { en: 'Pharmacies', am: 'ፋርማሲዎች' },
-    'fit.pharmacies.d': { en: 'Stock + expiry alerts + compliance-ready records', am: 'ክምችት + የጊዜ ማስጠንቀቂያ + ለህግ ዝግጁ መዝገቦች' },
-    'fit.bakeries': { en: 'Bakeries & Food Makers', am: 'ዳቦ ቤቶች እና የምግብ አምራቾች' },
-    'fit.bakeries.d': { en: 'Product list + ingredient stock + production log', am: 'የምርት ዝርዝር + የጥሬ እቃ ክምችት + የምርት መዝገብ' },
-    'fit.events': { en: 'Event Planners & Photographers', am: 'የዝግጅት አዘጋጆች እና ፎቶግራፍ አንሺዎች' },
-    'fit.events.d': { en: 'Portfolio + packages + deposit tracking', am: 'ፖርትፎሊዮ + ፓኬጆች + የተረከብ ክትትል' },
-    'fit.auto': { en: 'Auto, Garages & Parts', am: 'መኪና፣ ጋራጆች እና መለዋወጫዎች' },
-    'fit.auto.d': { en: 'Job tracking + vehicle history + bookings', am: 'የስራ ክትትል + የተሽከርካሪ ታሪክ + ቦታ ማስያዝ' },
-    'foryou.tax': { en: '"Your tax bill is decided by someone guessing your sales. I give you real records — then your tax is based on what you actually earned, not a guess."', am: '"የታክስ መጠንዎ የሚወሰነው ሽያጭዎን በመገመት ነው። እውነተኛ መዝገቦችን እሰጥዎታለሁ — ከዚያ ታክስዎ በግምት ሳይሆን ባገኙት ትክክለኛ ገቢ ላይ ይመሰረታል።"' },
-    'foryou.tax.note': { en: 'Manual receipts are now illegal in Ethiopia. Be ready when the tax office asks.', am: 'በኢትዮጵያ በእጅ የሚሰጡ ደረሰኞች አሁን ህገ-ወጥ ናቸው። የግብር ቢሮ ሲጠይቅ ዝግጁ ይሁኑ።' },
-    'modal.get': { en: 'What you get', am: 'ምን ያገኛሉ' },
-    'modal.does': { en: 'What it does for your business', am: 'ለንግድዎ ምን ያደርጋል' },
-    'work.tag': { en: 'Portfolio', am: 'ፖርትፎሊዮ' },
-    'work.title': { en: 'Recent Work', am: 'የቅርብ ስራዎች' },
-    'work.desc': { en: 'Real projects, shipped and built to last — plus concept samples for every kind of business.', am: 'እውነተኛ ፕሮጀክቶች፣ የተረከቡ እና ዘላቂ ሆነው የተገነቡ — በተጨማሪም ለሁሉም አይነት ንግድ የናሙና ጣቢያዎች።' },
-    'process.tag': { en: 'Process', am: 'ሂደት' },
-    'process.title': { en: 'How I Work', am: 'እንዴት እሰራለሁ' },
-    'process.desc': { en: 'From idea to delivery, no surprises.', am: 'ከሀሳብ እስከ አቅርቦት፣ ያለ ምንም ድንገተኛ።' },
-    'process.p1': { en: 'Discovery Call', am: 'የመጀመሪያ ውይይት' },
-    'process.p1.d': { en: 'We talk through your goals and map out the path.', am: 'ስለ ግቦችዎ እንወያያለን እና መንገዱን እንቀርጻለን።' },
-    'process.p2': { en: 'Planning & Design', am: 'እቅድ እና ንድፍ' },
-    'process.p2.d': { en: 'I sketch concepts and you give feedback.', am: 'ሀሳቦችን እሳለሁ እና አስተያየት ይሰጣሉ።' },
-    'process.p3': { en: 'Build & Refine', am: 'ግንባታ እና ማጣራት' },
-    'process.p3.d': { en: 'I build it, test it, and refine it until it works.', am: 'እገነባለሁ፣ እሞክራለሁ፣ እስከሚሰራ ድረስ አጣራለሁ።' },
-    'process.p4': { en: 'Deliver & Support', am: 'አቅርቦት እና ድጋፍ' },
-    'process.p4.d': { en: "Final delivery and support. I don't disappear after launch.", am: 'የመጨረሻ አቅርቦት እና ድጋፍ። ከመጀመር በኋላ አልጠፋም።' },
-    'faq.tag': { en: 'FAQ', am: 'ጥያቄዎች' },
-    'faq.title': { en: 'Common Questions', am: 'የተለመዱ ጥያቄዎች' },
-    'faq.desc': { en: 'Quick answers before we start.', am: 'ከመጀመራችን በፊት ፈጣን መልሶች።' },
-    'faq.q1': { en: 'How long does a typical project take?', am: 'የተለመደ ፕሮጀክት ምን ያህል ጊዜ ይወስዳል?' },
-    'faq.a1': { en: "A website takes 1 to 3 weeks. I'll give you a clear timeline in our first chat.", am: 'ድህረ ገጽ ከ1 እስከ 3 ሳምንት ይወስዳል። በመጀመሪያ ውይይታችን ግልጽ የጊዜ ሰሌዳ እሰጥዎታለሁ።' },
-    'faq.q2': { en: 'How does pricing work?', am: 'ዋጋ እንዴት ይወሰናል?' },
-    'faq.a2': { en: 'Fixed pricing, split 50% to start and 50% on completion. Agreed upfront.', am: 'ቋሚ ዋጋ፣ 50% ለመጀመር እና 50% ሲጠናቀቅ። ከመጀመሪያው ይስማማለን።' },
-    'faq.q3': { en: 'Can we work together remotely?', am: 'በርቀት አብረን መስራት እንችላለን?' },
-    'faq.a3': { en: 'Yes, I work with clients worldwide via email or video calls.', am: 'አዎ፣ በኢሜል ወይም በቪዲዮ ጥሪ ከዓለም ዙሪያ ካሉ ደንበኞች ጋር እሰራለሁ።' },
-    'faq.q4': { en: 'Do you offer revisions?', am: 'ክለሳ ይሰጣሉ?' },
-    'faq.a4': { en: 'Yes, every project includes revisions.', am: 'አዎ፣ እያንዳንዱ ፕሮጀክት ክለሳዎችን ያካትታል።' },
-    'faq.q5': { en: 'What do you need from me to get started?', am: 'ለመጀመር ከእኔ ምን ያስፈልግዎታል?' },
-    'faq.a5': { en: "Your goals, brand assets, and content. I'll guide you through it.", am: 'ግቦችዎ፣ የብራንድ ንብረቶች እና ኮንቴንት። በሙሉ እመራዎታለሁ።' },
-    'cta.title': { en: 'Got a Project in Mind?', am: 'በአእምሮዎ ፕሮጀክት አለ?' },
-    'cta.desc': { en: "Let's talk about what you need.", am: 'ስለሚፈልጉት እንነጋገር።' },
-    'cta.start': { en: 'Start a Project', am: 'ፕሮጀክት ይጀምሩ' },
-    'contact.tag': { en: 'Contact', am: 'ያግኙኝ' },
-    'contact.title': { en: "Let's Make It Happen", am: 'እንፈጽመው' },
-    'contact.desc': { en: "Got a project, an idea, or just curious? Reach out and let's talk about what I can do for you.", am: 'ፕሮጀክት፣ ሀሳብ፣ ወይም ዝም ብለው ማወቅ ይፈልጋሉ? ያነጋግሩኝ እና ምን ማድረግ እንደምችል እንወያይ።' },
-    'footer.desc': { en: 'Bringing ideas to life through custom websites, web apps, and automation.', am: 'ሀሳቦችን በብጁ ድህረ ገጾች፣ ዌብ መተግበሪያዎች እና አውቶሜሽን ወደ ህይወት ማምጣት።' },
-    'footer.nav': { en: 'Navigation', am: 'መሄጃ' },
-    'footer.services': { en: 'Services', am: 'አገልግሎቶች' },
-  };
-
-  // Amharic versions of the business-type modals (FIT_CONTENT)
-  const FIT_CONTENT_AM = {
-    restaurants: { tag: 'ምግብ ቤቶች እና ካፌዎች', intro: 'ምግብዎ ጥሩ ነው — ግን ሰዎች ሊያገኙት አይችሉም። በኩሽና እና በደንበኛ መካከል ያለውን ክፍተት እንፈታለን።', get: ['ሜኑዎን፣ ዋጋዎን እና ፎቶዎችን የሚያሳይ ድህረ ገጽ', 'ደንበኞች በጠረጴዛ ላይ የሚቃኙት QR ሜኑ', 'WhatsApp ማዘዝ — ያለ ሶስተኛ ወገን መተግበሪያዎች ወይም ክፍያዎች', 'እውነተኛ ግምገማዎችዎ በፊት ላይ'], does: ['ብዙ ሰዎች በGoogle ያገኙዎታል', 'ደንበኞች ከመግባታቸው በፊት ሜኑውን ያያሉ', 'ትዕዛዞች በቀጥታ ወደ ስልክዎ ይደርሳሉ', 'ከመተግበሪያ ኮሚሽን ይልቅ ገንዘብዎን ሙሉ በሙሉ ያቆያሉ'], sample: 'የናሙና ምግብ ቤት ጣቢያ ይመልከቱ →' },
-    guesthouses: { tag: 'የእንግዳ ማረፊያዎች እና ሆቴሎች', intro: 'Booking.com ከእያንዳንዱ ቆይታ 15–20% ይወስዳል። የራስዎ ጣቢያ እንግዶችን በቀጥታ ወደ እርስዎ ይመልሳል።', get: ['እውነተኛ ፎቶዎች ያሉት ቀጥተኛ ቦታ ማስያዣ ድህረ ገጽ', 'Book Direct አዝራር — WhatsApp ወይም ጥሪ፣ ያለ አማላጅ', 'ከእውነተኛ ዝርዝሮችዎ የተወሰዱ የእንግዳ ግምገማዎች', 'ሙላትዎ በአንድ እይታ'], does: ['የተመለሱ እንግዶች በቀጥታ ያስይዛሉ', 'የOTA ኮሚሽን መክፈል ያቆማሉ', 'ክፍሎችዎ በትንሽ ጥረት ሙሉ ሆነው ይቆያሉ', 'ዲያስፖራ እንግዶች በGoogle ያገኙዎታል'], sample: 'የናሙና እንግዳ ማረፊያ ጣቢያ ይመልከቱ →' },
-    clinics: { tag: 'ክሊኒኮች እና ሆስፒታሎች', intro: 'ታካሚዎች 60–180 ደቂቃ ይጠብቃሉ — በአዲስ አበባ ስለ ክሊኒኮች ቁጥር አንድ ቅሬታ ነው። ቦታ ማስያዝ ይፈታዋል።', get: ['ቀጠሮ ማስያዝ + አውቶማቲክ ማስታወሻዎች', 'በቀላሉ የሚፈለጉ የታካሚ መዝገቦች', 'እምነትን የሚገነባ ሙያዊ ጣቢያ', 'ታካሚዎች የሚደርሳቸው የክትትል ማስታወሻዎች'], does: ['ያልተገኙ ቀጠሮዎች ይቀንሳሉ', 'ሰራተኞችዎ የወረቀት መዝገብ ማስተዳደር ያቆማሉ', 'ታካሚዎች ጊዜያቸው እንደተከበረ ይሰማቸዋል', 'ሙያዊ እና ከባድ ሆነው ይታያሉ'], sample: 'የናሙና ክሊኒክ ጣቢያ ይመልከቱ →' },
-    travel: { tag: 'የጉዞ ኤጀንሲዎች', intro: 'ጉዞዎችን ይሸጣሉ፣ ግን የራስዎ የቦታ ማስያዣ ሂደት ከዜሮ ይጀምራል። ድልድዩን እንገነባለን።', get: ['የሚሸጡ የፓኬጅ እና የጉዞ መርሃ ግብር ገጾች', 'የጥያቄ ቅጽ + WhatsApp አውቶሜሽን', 'ሰዎች እንዲሄዱ የሚያደርጉ የጉዞ ፎቶዎች', 'የማይረሳ የደንበኛ ክትትል'], does: ['ጥያቄዎች ወደ አንድ ቦታ ይመጣሉ', 'መሪዎች በፍጥነት — ሌሊትም ቢሆን — ይመለሳሉ', 'ፓኬጆች በWhatsApp ለማጋራት ቀላል', 'ከመጠንዎ በላይ ትልቅ ሆነው ይታያሉ'], sample: 'የናሙና ጉዞ ጣቢያ ይመልከቱ →' },
-    construction: { tag: 'ኮንስትራክሽን እና ሪል እስቴት', intro: 'ሰዎች በዓይናቸው ይገዛሉ። የገነቡትን አሳዩዋቸው እና የሚገነቡትን ያምኑዎታል።', get: ['የተጠናቀቁ ፕሮጀክቶችን የሚያሳይ ፖርትፎሊዮ', 'በቀጥታ ወደ WhatsApp የሚመጡ የጥቅስ ጥያቄዎች', 'በእውነተኛ ፎቶዎች የንብረት ዝርዝሮች', 'ለጨረታዎች እና ደንበኞች ሙያዊ ብራንድ'], does: ['ደንበኞች ከመጥራታቸው በፊት ማስረጃ ያያሉ', 'የጥቅስ ጥያቄዎች ለመመለስ ዝግጁ ሆነው ይደርሳሉ', 'በእውነተኛ መገኘት ብዙ ጨረታዎች ያሸንፋሉ', 'ማጣቀሻዎች የሚያርፉበት ቦታ አላቸው'], sample: 'የናሙና ኮንስትራክሽን ጣቢያ ይመልከቱ →' },
-    schools: { tag: 'ትምህርት ቤቶች እና ስልጠና', intro: 'ወላጆች በእምነት ይመርጣሉ። ሙያዊ ድህረ ገጽ በምናልባት እና በተመዘገበ መካከል ያለው ልዩነት ነው።', get: ['ተልዕኮ፣ ፕሮግራሞች እና ውጤቶችን የሚያሳይ ጣቢያ', 'የምዝገባ ጥያቄዎች + የክፍያ ክትትል', 'እውቅና እና ስኬቶች ግንባር ቀደም', 'ወላጆች የሚያዩት የቀን መቁጠሪያ'], does: ['ወላጆች ከመጎብኘታቸው በፊት ያምኑዎታል', 'የምዝገባ ጥያቄዎች የተደራጁ ይመጣሉ', 'ስምዎ ለሁሉም ይታያል', 'ተማሪ ቤተሰቦች በGoogle ያገኙዎታል'], sample: 'የናሙና ትምህርት ቤት ጣቢያ ይመልከቱ →' },
-    retail: { tag: 'ሱቆች እና ችርቻሮ', intro: 'ሱቅዎ በ9 ይዘጋል። ካታሎግዎ መዘጋት የለበትም።', get: ['ደንበኞች በማንኛውም ጊዜ የሚመለከቱት ካታሎግ', 'ለማዘመን ቀላል የእቃ ዝርዝር', 'በተሞላ መልዕክት WhatsApp ማዘዝ', 'ደንበኞችን የሚያመጣ የGoogle መገኘት'], does: ['ደንበኞች ከመሄዳቸው በፊት እቃው መኖሩን ይፈትሻሉ', 'ትዕዛዞች ወደ ስልክዎ ይደርሳሉ', 'በሁሉም መድረክ ላይ ሙያዊ ሆነው ይታያሉ', 'ከመዝጊያ ጊዜ በኋላም ሽያጭ ይቀጥላል'], sample: 'የናሙና ሱቅ ጣቢያ ይመልከቱ →' },
-    beauty: { tag: 'ሳሎኖች፣ ጂሞች እና ሌሎችም', intro: 'ቀጠሮዎች፣ አባልነቶች እና ተደጋጋሚ ደንበኞች — ያለ ወረቀት የሚስተናገዱ።', get: ['የመስመር ላይ ቦታ ማስያዝ + ማስታወሻዎች', 'የደንበኛ ታሪክ በጣት ጫፍዎ', 'የአባልነት እና ፓኬጅ ክትትል', 'ስራዎን በሚያምር ሁኔታ የሚያሳይ ጣቢያ'], does: ['በማስታወሻዎች ያልመጡ ደንበኞች ይቀንሳሉ', 'ደንበኞች ሳይደውሉ ያስይዛሉ', 'ፓኬጆች በሰሌዳው ይታደሳሉ', 'ስራዎ ምርጥ ማስታወቂያዎ ነው'], sample: 'የናሙና ሳሎን ጣቢያ ይመልከቱ →' },
-    pharmacies: { tag: 'ፋርማሲዎች', intro: '40% የሚሆኑ ፋርማሲዎች በጊዜው ባልተሸጠ ክምችት ገንዘብ ያጣሉ። ከመበላሹ በፊት ይከታተሉት — ከተበላሸ በኋላ አይደለም።', get: ['የጊዜ ማስጠንቀቂያ ያለው ክምችት', 'ለኦዲት ዝግጁ የሽያጭ መዝገብ', 'ከማለቁ በፊት የማዘዝ ማስታወሻዎች', 'የሚሸከሙትን የሚዘረዝር ጣቢያ'], does: ['በመበላሸት የሚጠፋ ገንዘብ ይቀንሳል', 'ተቆጣጣሪዎች ሲጠይቁ ዝግጁ ነዎት', 'ምርጥ ሽያጮችዎ ከመጥፋት ይታደጋሉ', 'ደንበኞች በሚፈልጉበት ጊዜ ያገኙዎታል'], sample: 'የናሙና ፋርማሲ ጣቢያ ይመልከቱ →' },
-    bakeries: { tag: 'ዳቦ ቤቶች እና የምግብ አምራቾች', intro: 'እርስዎ ሰሪ ነዎት፣ መጽሐፍ ጠባቂ አይደሉም። እርስዎ ሲጋግሩ ሲስተሙ ይቁጠር።', get: ['በእውነተኛ ፎቶዎች የምርት ዝርዝር', 'የጥሬ እቃ ክምችት ክትትል', 'የምርት መዝገብ — ምን አዘጋጅተዋል እና ሸጠዋል', 'የተደራጁ የጅምላ ትዕዛዞች'], does: ['ምርት ከማለቁ በፊት ምን እንደሸጡ ያውቃሉ', 'ጥሬ እቃ በመሃል ስራ አያልቅም', 'የጅምላ ደንበኞች በተቀላጠፈ ያዝዛሉ', 'ብራንድዎ እንደ ዳቦዎ ጥሩ ይመስላል'], sample: 'የናሙና ዳቦ ቤት ጣቢያ ይመልከቱ →' },
-    events: { tag: 'የዝግጅት አዘጋጆች እና ፎቶግራፍ አንሺዎች', intro: 'ስራዎ አስደናቂ ነው — በስራ ላይ እያሉ ድህረ ገጹ ያንን ክብደት ይሸከም።', get: ['ስልትዎን የሚሸጥ ፖርትፎሊዮ', 'ግልጽ ዋጋ ያላቸው የፓኬጅ ገጾች', 'የተረከብ እና የክፍያ ክትትል', 'የጥያቄ ቅጽ + ፈጣን ክትትል'], does: ['ጥንዶች በGoogle ያገኙዎታል', 'ፓኬጆች ከእርስዎ በፊት ጥያቄዎችን ይመልሳሉ', 'ተረከቦች አይረሱም', 'ምርጥ ስራዎ ይናገራል'], sample: 'የናሙና ዝግጅት ጣቢያ ይመልከቱ →' },
-    auto: { tag: 'መኪና፣ ጋራጆች እና መለዋወጫዎች', intro: 'እያንዳንዱ መኪና ታሪክ አለው። ይከታተሉት፣ ደንበኞችዎ ታሪካቸውን ሁለት ጊዜ መናገር አይጠበቅባቸውም።', get: ['ለእያንዳንዱ ተሽከርካሪ የስራ ክትትል', 'የተሽከርካሪ ታሪክ — ምን አደረግን? የሚለው ጥያቄ ያበቃል', 'ለአገልግሎት ቦታ ማስያዝ', 'እንደ ስራዎ ጠንካራ የሚመስል ጣቢያ'], does: ['ስራዎች አይረሱም', 'ደንበኞች ሳይጠይቁ መረጃ ያገኛሉ', 'ተደጋጋሚ ጉብኝቶች በራስ-ሰር ይመጣሉ', 'ሰዎች የሚያምኑት ሱቅ ሆነው ይታያሉ'], sample: 'የናሙና አውቶ ጣቢያ ይመልከቱ →' },
-  };
-
-  let currentLang = localStorage.getItem('lang') || 'en';
-  const langToggle = document.getElementById('langToggle');
-
-  const applyLang = (lang) => {
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-    document.documentElement.lang = lang;
-    if (langToggle) langToggle.textContent = lang === 'am' ? 'English' : 'አማርኛ';
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const key = el.dataset.i18n;
-      const entry = I18N[key];
-      if (entry && entry[lang]) el.textContent = entry[lang];
-    });
-    // Re-render open fit modal with the new language
-    const fitModal = document.getElementById('fitModal');
-    if (fitModal && !fitModal.hidden) {
-      const openBtn = document.querySelector('.fit-item.active');
-      if (openBtn) openBtn.click();
-    }
-  };
-
-  // Respect ?lang=am on load
-  const urlLang = new URLSearchParams(window.location.search).get('lang');
-  if (urlLang === 'am') applyLang('am');
-  else applyLang(localStorage.getItem('lang') || 'en');
-
-  if (langToggle) {
-    langToggle.addEventListener('click', () => applyLang(currentLang === 'am' ? 'en' : 'am'));
-  }
-
-  console.log('✨ ADAM CREATES initialized with 3D effects');
 });

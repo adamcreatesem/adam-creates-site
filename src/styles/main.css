@@ -1,5 +1,5 @@
 /* ========================================
-   ADAM CREATES — Main Stylesheet
+   ADAM CREATES: Main Stylesheet
    ======================================== */
 
 /* --- Business-Type Modal --- */
@@ -136,6 +136,22 @@
   font-weight: 700;
   color: var(--color-primary-dark);
   margin-bottom: 20px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.fit-modal-sample:hover {
+  text-decoration: underline;
+}
+.fit-modal-sample:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .fit-modal-cta {
@@ -544,37 +560,6 @@ ul { list-style: none; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; }
 
-.lang-toggle-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 12px;
-  height: 36px;
-  background: transparent;
-  border: 2px solid transparent;
-  color: var(--color-text-muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin: 0 4px;
-  border-radius: 4px;
-}
-
-.lang-toggle-btn:hover {
-  color: var(--color-highlight);
-  border-color: var(--color-border);
-  background: var(--color-bg-card);
-}
-
-html[lang="am"] body { font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif; }
-html[lang="am"] .logo-title,
-html[lang="am"] .hero-title,
-html[lang="am"] .section-title,
-html[lang="am"] h1, html[lang="am"] h2, html[lang="am"] h3, html[lang="am"] h4 {
-  font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif;
-  letter-spacing: 0;
-}
 
 .theme-toggle-btn {
   display: flex;
@@ -1175,6 +1160,11 @@ html[lang="am"] h1, html[lang="am"] h2, html[lang="am"] h3, html[lang="am"] h4 {
 
 
 /* --- FOR YOUR BUSINESS --- */
+.for-you {
+  background: var(--color-bg-section);
+  border-bottom: 3px solid var(--color-border);
+}
+
 .fit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1236,6 +1226,14 @@ html[lang="am"] h1, html[lang="am"] h2, html[lang="am"] h3, html[lang="am"] h4 {
   color: var(--color-text);
   line-height: 1.6;
   margin-bottom: 10px;
+}
+
+.tax-pitch-body {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  max-width: 720px;
+  margin: 0 auto 14px;
 }
 
 .tax-pitch-note {

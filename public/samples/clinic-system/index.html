@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Selam Health System — Clinic Records &amp; Booking (Concept Demo)</title>
+<title>Selam Health System: Clinic Records &amp; Booking (Concept Demo)</title>
 <meta name="description" content="Interactive concept demo of a clinic management system: booking, patient records, reminders. Not a real system." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -74,7 +74,7 @@
 </style>
 </head>
 <body>
-<div class="sample-flag">CONCEPT DEMO — DATA RESETS · NOT A REAL SYSTEM</div>
+<div class="sample-flag">CONCEPT DEMO · DATA RESETS · NOT A REAL SYSTEM</div>
 
 <div class="topbar">
   <div class="topbar-inner">
@@ -152,7 +152,7 @@
 </div>
 
 <footer>
-  <div>© <span id="year"></span> Selam Health Center — interactive concept demo</div>
+  <div>© <span id="year"></span> Selam Health Center, interactive concept demo</div>
   <div>Fictional data · Not a real clinic or system</div>
 </footer>
 
@@ -165,7 +165,7 @@
   const PATIENTS = [
     { id:'P-1001', name:'Almaz Kebede', last:'02 Aug 2026', cond:'Hypertension', next:'16 Sep 2026' },
     { id:'P-1002', name:'Dawit Haile', last:'28 Jul 2026', cond:'Diabetes (T2)', next:'12 Sep 2026' },
-    { id:'P-1003', name:'Hana Girma', last:'11 Aug 2026', cond:'Prenatal — 3rd tri', next:'25 Aug 2026' },
+    { id:'P-1003', name:'Hana Girma', last:'11 Aug 2026', cond:'Prenatal, 3rd tri', next:'25 Aug 2026' },
     { id:'P-1004', name:'Yonas Tadesse', last:'05 Aug 2026', cond:'Post-op check', next:'19 Aug 2026' },
     { id:'P-1005', name:'Sara Mohammed', last:'30 Jul 2026', cond:'Asthma', next:'10 Sep 2026' },
   ];
@@ -263,7 +263,7 @@
       const time = document.getElementById('fTime').value;
       const reason = document.getElementById('fReason').value.trim() || 'General consult';
       APPOINTMENTS.unshift({ patient: name, date, time, reason, status: 'confirmed' });
-      wrap.innerHTML = `<div class="note" style="border:none; background:transparent; color:var(--teal);">✓ Booked — ${name} · ${date} ${time}. It's now in Today and Appointments above.</div>`;
+      wrap.innerHTML = `<div class="note" style="border:none; background:transparent; color:var(--teal);">✓ Booked: ${name} · ${date} ${time}. It's now in Today and Appointments above.</div>`;
       renderAll();
     });
   });
