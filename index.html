@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/adam-creates-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Ethiopic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="/src/styles/main.css" />
 </head>
@@ -47,6 +47,7 @@
         <span class="logo-title">ADAM CREATES</span>
       </a>
       <div class="nav-right">
+        <button class="lang-toggle-btn" id="langToggle" type="button" aria-label="Switch language">አማርኛ</button>
         <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
           <i class="fas fa-moon"></i>
         </button>
@@ -56,13 +57,13 @@
       </div>
       <div class="mobile-backdrop" id="mobileBackdrop"></div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#for-you">For Your Business</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+        <li><a href="#hero" class="active" data-i18n="nav.home">Home</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="#work" data-i18n="nav.work">Work</a></li>
+        <li><a href="#for-you" data-i18n="nav.foryou">For Your Business</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.talk">Let's Talk</a></li>
       </ul>
     </div>
   </nav>
@@ -72,12 +73,12 @@
     <div class="container">
       <div class="hero-inner">
         <div class="hero-text">
-          <span class="hero-badge">✦ Available For Projects</span>
+          <span class="hero-badge" data-i18n="hero.badge">✦ Available For Projects</span>
           <h1 class="hero-title">
-            <span class="hero-title-line">I Build</span>
-            <span class="hero-title-line text-highlight">Things That Work.</span>
+            <span class="hero-title-line" data-i18n="hero.line1">I Build</span>
+            <span class="hero-title-line text-highlight" data-i18n="hero.line2">Things That Work.</span>
           </h1>
-          <p class="hero-desc">
+          <p class="hero-desc" data-i18n="hero.desc">
             I design the solution, direct the build, and ship it working.
           </p>
           <div class="hero-morph">
@@ -88,11 +89,11 @@
           </div>
           <div class="hero-buttons">
             <a href="#work" class="btn btn-primary">
-              <span>See My Work</span>
+              <span data-i18n="hero.seeWork">See My Work</span>
               <i class="fas fa-arrow-right"></i>
             </a>
             <a href="#contact" class="btn btn-outline">
-              <span>Start a Project</span>
+              <span data-i18n="hero.start">Start a Project</span>
             </a>
           </div>
         </div>
@@ -112,21 +113,21 @@
   <section class="about section" id="about">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">About</span>
-        <h2 class="section-title">The Person Behind the Work</h2>
+        <span class="section-tag" data-i18n="about.tag">About</span>
+        <h2 class="section-title" data-i18n="about.title">The Person Behind the Work</h2>
       </div>
       <div class="about-wrap">
         <div class="about-card reveal">
           <div class="about-card-icon">
             <i class="fas fa-sparkles"></i>
           </div>
-          <h3>Hey, I'm Adam</h3>
-          <p>
+          <h3 data-i18n="about.hi">Hey, I'm Adam</h3>
+          <p data-i18n="about.p1">
             I build things that work — websites, web apps, automation, voice
             systems, and content. AI is the fastest tool in my kit, and I use
             it openly, because the work is mine.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             I translate between English, Arabic, and Amharic.
           </p>
         </div>
@@ -134,22 +135,22 @@
           <div class="about-highlight reveal">
             <i class="fas fa-lightbulb"></i>
             <div>
-              <h4>Creative Approach</h4>
-              <p>Every project starts with a strong concept before a single line of code or frame is cut.</p>
+              <h4 data-i18n="about.h1">Creative Approach</h4>
+              <p data-i18n="about.h1.d">Every project starts with a strong concept before a single line of code or frame is cut.</p>
             </div>
           </div>
           <div class="about-highlight reveal">
             <i class="fas fa-bolt"></i>
             <div>
-              <h4>Reliable Delivery</h4>
-              <p>Clear communication, realistic timelines, and work that exceeds expectations, every time.</p>
+              <h4 data-i18n="about.h2">Reliable Delivery</h4>
+              <p data-i18n="about.h2.d">Clear communication, realistic timelines, and work that exceeds expectations, every time.</p>
             </div>
           </div>
           <div class="about-highlight reveal">
             <i class="fas fa-handshake"></i>
             <div>
-              <h4>Client-First Mindset</h4>
-              <p>Your goals are my goals. I listen, adapt, and deliver what actually serves your needs.</p>
+              <h4 data-i18n="about.h3">Client-First Mindset</h4>
+              <p data-i18n="about.h3.d">Your goals are my goals. I listen, adapt, and deliver what actually serves your needs.</p>
             </div>
           </div>
         </div>
@@ -161,60 +162,60 @@
   <section class="services section" id="services">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Services</span>
-        <h2 class="section-title">What I Can Do For You</h2>
-        <p class="section-desc">
+        <span class="section-tag" data-i18n="services.tag">Services</span>
+        <h2 class="section-title" data-i18n="services.title">What I Can Do For You</h2>
+        <p class="section-desc" data-i18n="services.desc">
           Seven ways I can help.
         </p>
       </div>
       <div class="services-grid">
         <div class="srv-card reveal">
           <div class="srv-icon"><i class="fas fa-robot"></i></div>
-          <h3>AI Automation & Integration</h3>
-          <p>AI agents that operate your real tools, via Composio (100+ integrations).</p>
-          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="services.s1">AI Automation & Integration</h3>
+          <p data-i18n="services.s1.d">AI agents that operate your real tools, via Composio (100+ integrations).</p>
+          <a href="#contact" class="srv-cta"><span data-i18n="services.cta">Discuss This</span> <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="srv-card reveal">
           <div class="srv-icon"><i class="fab fa-whatsapp"></i></div>
-          <h3>WhatsApp Business Systems</h3>
-          <p>Trilingual automated replies (English, Arabic, Amharic), voice notes, and AI voice replies.</p>
-          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="services.s2">WhatsApp Business Systems</h3>
+          <p data-i18n="services.s2.d">Trilingual automated replies (English, Arabic, Amharic), voice notes, and AI voice replies.</p>
+          <a href="#contact" class="srv-cta"><span data-i18n="services.cta">Discuss This</span> <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="srv-card reveal">
           <div class="srv-icon"><i class="fas fa-microphone-alt"></i></div>
-          <h3>Voice AI & Translation</h3>
-          <p>TTS and transcription in 32+ languages, plus translation between English, Arabic, and Amharic.</p>
-          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="services.s3">Voice AI & Translation</h3>
+          <p data-i18n="services.s3.d">TTS and transcription in 32+ languages, plus translation between English, Arabic, and Amharic.</p>
+          <a href="#contact" class="srv-cta"><span data-i18n="services.cta">Discuss This</span> <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="srv-card reveal">
           <div class="srv-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Data Pipelines & Reporting</h3>
-          <p>Spreadsheet to clean reports, delivered automatically.</p>
-          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="services.s4">Data Pipelines & Reporting</h3>
+          <p data-i18n="services.s4.d">Spreadsheet to clean reports, delivered automatically.</p>
+          <a href="#contact" class="srv-cta"><span data-i18n="services.cta">Discuss This</span> <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="srv-card reveal">
           <div class="srv-icon"><i class="fas fa-globe"></i></div>
-          <h3>Websites & Web Apps</h3>
-          <p>Custom sites and apps, designed by me and built with AI collaboration.</p>
-          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="services.s5">Websites & Web Apps</h3>
+          <p data-i18n="services.s5.d">Custom sites and apps, designed by me and built with AI collaboration.</p>
+          <a href="#contact" class="srv-cta"><span data-i18n="services.cta">Discuss This</span> <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="srv-card reveal">
           <div class="srv-icon"><i class="fas fa-search"></i></div>
-          <h3>Research & Scraping</h3>
-          <p>Lead generation, competitor analysis, and market intelligence.</p>
-          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="services.s6">Research & Scraping</h3>
+          <p data-i18n="services.s6.d">Lead generation, competitor analysis, and market intelligence.</p>
+          <a href="#contact" class="srv-cta"><span data-i18n="services.cta">Discuss This</span> <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="srv-card reveal">
           <div class="srv-icon"><i class="fas fa-clapperboard"></i></div>
-          <h3>Content Creation (Images & Video)</h3>
-          <p>AI-generated images and short videos for social and ads.</p>
-          <a href="#contact" class="srv-cta">Discuss This <i class="fas fa-arrow-right"></i></a>
+          <h3 data-i18n="services.s7">Content Creation (Images & Video)</h3>
+          <p data-i18n="services.s7.d">AI-generated images and short videos for social and ads.</p>
+          <a href="#contact" class="srv-cta"><span data-i18n="services.cta">Discuss This</span> <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 <!-- 3D Skill Globe (ambient) -->
@@ -226,32 +227,32 @@
   <section class="for-you section" id="for-you">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">For Your Business</span>
-        <h2 class="section-title">Whatever You Run, There's a Fit</h2>
-        <p class="section-desc">
+        <span class="section-tag" data-i18n="foryou.tag">For Your Business</span>
+        <h2 class="section-title" data-i18n="foryou.title">Whatever You Run, There's a Fit</h2>
+        <p class="section-desc" data-i18n="foryou.desc">
           Websites, systems, and automation for every kind of business in Addis Ababa.
         </p>
       </div>
       <div class="fit-grid">
-        <button class="fit-item reveal" type="button" data-fit="restaurants" aria-haspopup="dialog"><h3>Restaurants &amp; Cafes</h3><p>Website + QR menu + reviews + sales log</p></button>
-        <button class="fit-item reveal" type="button" data-fit="guesthouses" aria-haspopup="dialog"><h3>Guest Houses &amp; Hotels</h3><p>Direct booking + occupancy + real reviews</p></button>
-        <button class="fit-item reveal" type="button" data-fit="clinics" aria-haspopup="dialog"><h3>Clinics &amp; Hospitals</h3><p>Appointments + reminders + patient records</p></button>
-        <button class="fit-item reveal" type="button" data-fit="travel" aria-haspopup="dialog"><h3>Travel Agencies</h3><p>Packages + itineraries + inquiry automation</p></button>
-        <button class="fit-item reveal" type="button" data-fit="construction" aria-haspopup="dialog"><h3>Construction &amp; Real Estate</h3><p>Portfolio + quotes + WhatsApp automation</p></button>
-        <button class="fit-item reveal" type="button" data-fit="schools" aria-haspopup="dialog"><h3>Schools &amp; Training</h3><p>Enrollment + credibility + fee tracking</p></button>
-        <button class="fit-item reveal" type="button" data-fit="retail" aria-haspopup="dialog"><h3>Shops &amp; Retail</h3><p>Catalog + stock list + WhatsApp ordering</p></button>
-        <button class="fit-item reveal" type="button" data-fit="beauty" aria-haspopup="dialog"><h3>Salons, Gyms &amp; More</h3><p>Booking + client history + memberships</p></button>
-        <button class="fit-item reveal" type="button" data-fit="pharmacies" aria-haspopup="dialog"><h3>Pharmacies</h3><p>Stock + expiry alerts + compliance-ready records</p></button>
-        <button class="fit-item reveal" type="button" data-fit="bakeries" aria-haspopup="dialog"><h3>Bakeries &amp; Food Makers</h3><p>Product list + ingredient stock + production log</p></button>
-        <button class="fit-item reveal" type="button" data-fit="events" aria-haspopup="dialog"><h3>Event Planners &amp; Photographers</h3><p>Portfolio + packages + deposit tracking</p></button>
-        <button class="fit-item reveal" type="button" data-fit="auto" aria-haspopup="dialog"><h3>Auto, Garages &amp; Parts</h3><p>Job tracking + vehicle history + bookings</p></button>
+        <button class="fit-item reveal" type="button" data-fit="restaurants" aria-haspopup="dialog"><h3 data-i18n="fit.restaurants">Restaurants &amp; Cafes</h3><p data-i18n="fit.restaurants.d">Website + QR menu + reviews + sales log</p></button>
+        <button class="fit-item reveal" type="button" data-fit="guesthouses" aria-haspopup="dialog"><h3 data-i18n="fit.guesthouses">Guest Houses &amp; Hotels</h3><p data-i18n="fit.guesthouses.d">Direct booking + occupancy + real reviews</p></button>
+        <button class="fit-item reveal" type="button" data-fit="clinics" aria-haspopup="dialog"><h3 data-i18n="fit.clinics">Clinics &amp; Hospitals</h3><p data-i18n="fit.clinics.d">Appointments + reminders + patient records</p></button>
+        <button class="fit-item reveal" type="button" data-fit="travel" aria-haspopup="dialog"><h3 data-i18n="fit.travel">Travel Agencies</h3><p data-i18n="fit.travel.d">Packages + itineraries + inquiry automation</p></button>
+        <button class="fit-item reveal" type="button" data-fit="construction" aria-haspopup="dialog"><h3 data-i18n="fit.construction">Construction &amp; Real Estate</h3><p data-i18n="fit.construction.d">Portfolio + quotes + WhatsApp automation</p></button>
+        <button class="fit-item reveal" type="button" data-fit="schools" aria-haspopup="dialog"><h3 data-i18n="fit.schools">Schools &amp; Training</h3><p data-i18n="fit.schools.d">Enrollment + credibility + fee tracking</p></button>
+        <button class="fit-item reveal" type="button" data-fit="retail" aria-haspopup="dialog"><h3 data-i18n="fit.retail">Shops &amp; Retail</h3><p data-i18n="fit.retail.d">Catalog + stock list + WhatsApp ordering</p></button>
+        <button class="fit-item reveal" type="button" data-fit="beauty" aria-haspopup="dialog"><h3 data-i18n="fit.beauty">Salons, Gyms &amp; More</h3><p data-i18n="fit.beauty.d">Booking + client history + memberships</p></button>
+        <button class="fit-item reveal" type="button" data-fit="pharmacies" aria-haspopup="dialog"><h3 data-i18n="fit.pharmacies">Pharmacies</h3><p data-i18n="fit.pharmacies.d">Stock + expiry alerts + compliance-ready records</p></button>
+        <button class="fit-item reveal" type="button" data-fit="bakeries" aria-haspopup="dialog"><h3 data-i18n="fit.bakeries">Bakeries &amp; Food Makers</h3><p data-i18n="fit.bakeries.d">Product list + ingredient stock + production log</p></button>
+        <button class="fit-item reveal" type="button" data-fit="events" aria-haspopup="dialog"><h3 data-i18n="fit.events">Event Planners &amp; Photographers</h3><p data-i18n="fit.events.d">Portfolio + packages + deposit tracking</p></button>
+        <button class="fit-item reveal" type="button" data-fit="auto" aria-haspopup="dialog"><h3 data-i18n="fit.auto">Auto, Garages &amp; Parts</h3><p data-i18n="fit.auto.d">Job tracking + vehicle history + bookings</p></button>
       </div>
       <div class="tax-pitch reveal">
-        <p class="tax-pitch-quote">
+        <p class="tax-pitch-quote" data-i18n="foryou.tax">
           "Your tax bill is decided by someone guessing your sales. I give you real records —
           then your tax is based on what you actually earned, not a guess."
         </p>
-        <p class="tax-pitch-note">Manual receipts are now illegal in Ethiopia. Be ready when the tax office asks.</p>
+        <p class="tax-pitch-note" data-i18n="foryou.tax.note">Manual receipts are now illegal in Ethiopia. Be ready when the tax office asks.</p>
       </div>
     </div>
   </section>
@@ -267,11 +268,11 @@
         <p class="fit-modal-intro" id="fitModalIntro"></p>
         <div class="fit-modal-cols">
           <div>
-            <h4>What you get</h4>
+            <h4 data-i18n="modal.get">What you get</h4>
             <ul class="fit-modal-list" id="fitModalGet"></ul>
           </div>
           <div>
-            <h4>What it does for your business</h4>
+            <h4 data-i18n="modal.does">What it does for your business</h4>
             <ul class="fit-modal-list" id="fitModalDoes"></ul>
           </div>
         </div>
@@ -315,9 +316,9 @@
   <section class="work section" id="work">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">Recent Work</h2>
-        <p class="section-desc">
+        <span class="section-tag" data-i18n="work.tag">Portfolio</span>
+        <h2 class="section-title" data-i18n="work.title">Recent Work</h2>
+        <p class="section-desc" data-i18n="work.desc">
           Real projects, shipped and built to last — plus concept samples for every kind of business.
         </p>
       </div>
@@ -569,9 +570,9 @@
   <section class="process section" id="process">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Process</span>
-        <h2 class="section-title">How I Work</h2>
-        <p class="section-desc">
+        <span class="section-tag" data-i18n="process.tag">Process</span>
+        <h2 class="section-title" data-i18n="process.title">How I Work</h2>
+        <p class="section-desc" data-i18n="process.desc">
           From idea to delivery, no surprises.
         </p>
       </div>
@@ -580,32 +581,32 @@
           <div class="p-step-num">01</div>
           <div class="p-step-body">
             <div class="p-step-icon"><i class="fas fa-comments"></i></div>
-            <h3>Discovery Call</h3>
-            <p>We talk through your goals and map out the path.</p>
+            <h3 data-i18n="process.p1">Discovery Call</h3>
+            <p data-i18n="process.p1.d">We talk through your goals and map out the path.</p>
           </div>
         </div>
         <div class="p-step reveal">
           <div class="p-step-num">02</div>
           <div class="p-step-body">
             <div class="p-step-icon"><i class="fas fa-pencil-ruler"></i></div>
-            <h3>Planning & Design</h3>
-            <p>I sketch concepts and you give feedback.</p>
+            <h3 data-i18n="process.p2">Planning & Design</h3>
+            <p data-i18n="process.p2.d">I sketch concepts and you give feedback.</p>
           </div>
         </div>
         <div class="p-step reveal">
           <div class="p-step-num">03</div>
           <div class="p-step-body">
             <div class="p-step-icon"><i class="fas fa-cogs"></i></div>
-            <h3>Build & Refine</h3>
-            <p>I build it, test it, and refine it until it works.</p>
+            <h3 data-i18n="process.p3">Build & Refine</h3>
+            <p data-i18n="process.p3.d">I build it, test it, and refine it until it works.</p>
           </div>
         </div>
         <div class="p-step reveal">
           <div class="p-step-num">04</div>
           <div class="p-step-body">
             <div class="p-step-icon"><i class="fas fa-rocket"></i></div>
-            <h3>Deliver & Support</h3>
-            <p>Final delivery and support. I don't disappear after launch.</p>
+            <h3 data-i18n="process.p4">Deliver & Support</h3>
+            <p data-i18n="process.p4.d">Final delivery and support. I don't disappear after launch.</p>
           </div>
         </div>
       </div>
@@ -616,54 +617,54 @@
   <section class="faq section" id="faq">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">FAQ</span>
-        <h2 class="section-title">Common Questions</h2>
-        <p class="section-desc">Quick answers before we start.</p>
+        <span class="section-tag" data-i18n="faq.tag">FAQ</span>
+        <h2 class="section-title" data-i18n="faq.title">Common Questions</h2>
+        <p class="section-desc" data-i18n="faq.desc">Quick answers before we start.</p>
       </div>
       <div class="faq-list">
         <div class="faq-item reveal">
           <div class="faq-q">
-            <span>How long does a typical project take?</span>
+            <span data-i18n="faq.q1">How long does a typical project take?</span>
             <i class="fas fa-plus"></i>
           </div>
           <div class="faq-a">
-            <p>A website takes 1 to 3 weeks. I'll give you a clear timeline in our first chat.</p>
+            <p data-i18n="faq.a1">A website takes 1 to 3 weeks. I'll give you a clear timeline in our first chat.</p>
           </div>
         </div>
         <div class="faq-item reveal">
           <div class="faq-q">
-            <span>How does pricing work?</span>
+            <span data-i18n="faq.q2">How does pricing work?</span>
             <i class="fas fa-plus"></i>
           </div>
           <div class="faq-a">
-            <p>Fixed pricing, split 50% to start and 50% on completion. Agreed upfront.</p>
+            <p data-i18n="faq.a2">Fixed pricing, split 50% to start and 50% on completion. Agreed upfront.</p>
           </div>
         </div>
         <div class="faq-item reveal">
           <div class="faq-q">
-            <span>Can we work together remotely?</span>
+            <span data-i18n="faq.q3">Can we work together remotely?</span>
             <i class="fas fa-plus"></i>
           </div>
           <div class="faq-a">
-            <p>Yes, I work with clients worldwide via email or video calls.</p>
+            <p data-i18n="faq.a3">Yes, I work with clients worldwide via email or video calls.</p>
           </div>
         </div>
         <div class="faq-item reveal">
           <div class="faq-q">
-            <span>Do you offer revisions?</span>
+            <span data-i18n="faq.q4">Do you offer revisions?</span>
             <i class="fas fa-plus"></i>
           </div>
           <div class="faq-a">
-            <p>Yes, every project includes revisions.</p>
+            <p data-i18n="faq.a4">Yes, every project includes revisions.</p>
           </div>
         </div>
         <div class="faq-item reveal">
           <div class="faq-q">
-            <span>What do you need from me to get started?</span>
+            <span data-i18n="faq.q5">What do you need from me to get started?</span>
             <i class="fas fa-plus"></i>
           </div>
           <div class="faq-a">
-            <p>Your goals, brand assets, and content. I'll guide you through it.</p>
+            <p data-i18n="faq.a5">Your goals, brand assets, and content. I'll guide you through it.</p>
           </div>
         </div>
       </div>
@@ -673,13 +674,13 @@
   <!-- ========== CTA BANNER ========== -->
   <section class="cta-banner">
     <div class="container">
-      <h2 class="cta-banner-title">Got a Project in Mind?</h2>
-      <p class="cta-banner-desc">
+      <h2 class="cta-banner-title" data-i18n="cta.title">Got a Project in Mind?</h2>
+      <p class="cta-banner-desc" data-i18n="cta.desc">
         Let's talk about what you need.
       </p>
       <div class="cta-banner-actions">
         <a href="#contact" class="btn btn-primary btn-cta-banner">
-          <span>Start a Project</span>
+          <span data-i18n="cta.start">Start a Project</span>
           <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -690,9 +691,9 @@
   <section class="contact section" id="contact">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Contact</span>
-        <h2 class="section-title">Let's Make It Happen</h2>
-        <p class="section-desc">
+        <span class="section-tag" data-i18n="contact.tag">Contact</span>
+        <h2 class="section-title" data-i18n="contact.title">Let's Make It Happen</h2>
+        <p class="section-desc" data-i18n="contact.desc">
           Got a project, an idea, or just curious? Reach out and let's talk 
           about what I can do for you.
         </p>
@@ -771,28 +772,28 @@
             </div>
             <span>ADAM CREATES</span>
           </div>
-          <p>Bringing ideas to life through custom websites, web apps, and automation.</p>
+          <p data-i18n="footer.desc">Bringing ideas to life through custom websites, web apps, and automation.</p>
         </div>
         <div class="footer-links">
-          <h4>Navigation</h4>
+          <h4 data-i18n="footer.nav">Navigation</h4>
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#for-you">For Your Business</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#work" data-i18n="nav.work">Work</a></li>
+            <li><a href="#for-you" data-i18n="nav.foryou">For Your Business</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-links">
-          <h4>Services</h4>
+          <h4 data-i18n="footer.services">Services</h4>
           <ul>
-            <li><a href="#services">Websites &amp; Web Apps</a></li>
-            <li><a href="#services">WhatsApp Business Systems</a></li>
-            <li><a href="#services">Voice AI &amp; Translation</a></li>
-            <li><a href="#services">AI Automation</a></li>
-            <li><a href="#services">Content &amp; Social</a></li>
+            <li><a href="#services" data-i18n="services.s5">Websites &amp; Web Apps</a></li>
+            <li><a href="#services" data-i18n="services.s2">WhatsApp Business Systems</a></li>
+            <li><a href="#services" data-i18n="services.s3">Voice AI &amp; Translation</a></li>
+            <li><a href="#services" data-i18n="services.s1">AI Automation</a></li>
+            <li><a href="#services" data-i18n="services.s7">Content &amp; Social</a></li>
           </ul>
         </div>
       </div>

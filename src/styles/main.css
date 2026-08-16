@@ -544,6 +544,38 @@ ul { list-style: none; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; }
 
+.lang-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  height: 36px;
+  background: transparent;
+  border: 2px solid transparent;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 4px;
+  border-radius: 4px;
+}
+
+.lang-toggle-btn:hover {
+  color: var(--color-highlight);
+  border-color: var(--color-border);
+  background: var(--color-bg-card);
+}
+
+html[lang="am"] body { font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif; }
+html[lang="am"] .logo-title,
+html[lang="am"] .hero-title,
+html[lang="am"] .section-title,
+html[lang="am"] h1, html[lang="am"] h2, html[lang="am"] h3, html[lang="am"] h4 {
+  font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif;
+  letter-spacing: 0;
+}
+
 .theme-toggle-btn {
   display: flex;
   align-items: center;
