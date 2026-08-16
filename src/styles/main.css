@@ -157,6 +157,124 @@
   .fit-modal-body { padding: 24px 20px; }
 }
 
+/* --- Sample Preview Modal (mini window) --- */
+.preview-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.preview-modal[hidden] { display: none; }
+
+.preview-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(3px);
+  animation: fitFade 0.2s ease;
+}
+
+.preview-modal-panel {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-section);
+  border: 3px solid var(--color-border);
+  border-top: 8px solid var(--color-accent);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.4);
+  animation: fitPop 0.25s ease;
+}
+
+.preview-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.preview-modal-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.preview-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.preview-open-full {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.preview-open-full:hover { color: var(--color-primary); }
+
+.preview-modal-close {
+  width: 32px;
+  height: 32px;
+  background: var(--color-white);
+  border: 2px solid var(--color-border);
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.preview-modal-close:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: rotate(90deg);
+}
+
+.preview-modal-frame {
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+}
+
+.preview-modal-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  min-height: 60vh;
+}
+
+.preview-modal-note {
+  padding: 10px 16px;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  border-top: 2px solid var(--color-border-light);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.work-preview-btn {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+.work-preview-btn:hover { color: var(--color-primary-dark); }
+.work-preview-btn i { margin-right: 4px; }
+
 /* --- Design Tokens --- */
 :root {
   --color-primary: #FF3B30;

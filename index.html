@@ -284,6 +284,24 @@
     </div>
   </div>
 
+  <!-- ========== SAMPLE PREVIEW MODAL ========== -->
+  <div class="preview-modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle" hidden>
+    <div class="preview-modal-backdrop" data-preview-close></div>
+    <div class="preview-modal-panel">
+      <div class="preview-modal-head">
+        <span class="preview-modal-title" id="previewModalTitle">Sample Preview</span>
+        <div class="preview-modal-actions">
+          <a class="preview-open-full" id="previewOpenFull" href="#" target="_blank" rel="noopener noreferrer">Open Full Site <i class="fas fa-external-link-alt"></i></a>
+          <button class="preview-modal-close" type="button" data-preview-close aria-label="Close">&times;</button>
+        </div>
+      </div>
+      <div class="preview-modal-frame">
+        <iframe id="previewIframe" title="Sample website preview" loading="lazy"></iframe>
+      </div>
+      <p class="preview-modal-note">Fictional sample — made to order for each business. Not a real business.</p>
+    </div>
+  </div>
+
   <!-- ========== TECH MARQUEE ========== -->
   <div class="marquee-section">
     <div class="marquee-track">
@@ -300,7 +318,7 @@
         <span class="section-tag">Portfolio</span>
         <h2 class="section-title">Recent Work</h2>
         <p class="section-desc">
-          Real projects, shipped and built to last.
+          Real projects, shipped and built to last — plus concept samples for every kind of business.
         </p>
       </div>
       <div class="work-bento">
@@ -323,53 +341,92 @@
         <!-- Concept samples: what I can build per business type -->
         <div class="work-card work-card--secondary reveal">
           <div class="work-preview work-preview--shot">
-            <img src="/work-albaraka.jpg" alt="Restaurant website concept" class="work-shot-img" />
+            <img src="/sample-restaurant.jpg" alt="Restaurant website sample" class="work-shot-img" />
           </div>
           <div class="work-body">
-            <span class="work-badge">Concept · Restaurant</span>
-            <h3>Restaurant Concept</h3>
-            <p>Menu-first design with real reviews, direct call booking, and a brand identity that matches the kitchen.</p>
-            <div class="work-tech"><span>Website</span><span>Menu</span><span>Branding</span></div>
-            <span class="work-note">Concept sample — made to order for each restaurant</span>
+            <span class="work-badge">Sample · Restaurant</span>
+            <h3>Restaurant Sample</h3>
+            <p>Menu-first design with QR menu, WhatsApp ordering, and a brand identity that matches the kitchen.</p>
+            <div class="work-tech"><span>Website</span><span>QR Menu</span><span>Ordering</span></div>
+            <button class="work-note work-preview-btn" type="button" data-preview="/restaurant/" data-title="Restaurant Sample">Preview <i class="fas fa-eye"></i></button>
           </div>
         </div>
 
         <div class="work-card work-card--secondary reveal">
           <div class="work-preview work-preview--shot">
-            <img src="/work-daylin.jpg" alt="Guest house website concept" class="work-shot-img" />
+            <img src="/sample-guesthouse.jpg" alt="Guest house website sample" class="work-shot-img" />
           </div>
           <div class="work-body">
-            <span class="work-badge">Concept · Guest House</span>
-            <h3>Guest House Concept</h3>
-            <p>Direct booking without the 15–20% OTA commission, with real photos and verified guest reviews.</p>
-            <div class="work-tech"><span>Website</span><span>Direct Booking</span><span>Reviews</span></div>
-            <span class="work-note">Concept sample — made to order for each guest house</span>
+            <span class="work-badge">Sample · Guest House</span>
+            <h3>Guest House Sample</h3>
+            <p>Direct booking without the 15–20% OTA commission — WhatsApp booking and rooms that sell themselves.</p>
+            <div class="work-tech"><span>Website</span><span>Direct Booking</span><span>WhatsApp</span></div>
+            <button class="work-note work-preview-btn" type="button" data-preview="/guesthouse/" data-title="Guest House Sample">Preview <i class="fas fa-eye"></i></button>
           </div>
         </div>
 
         <div class="work-card work-card--secondary reveal">
           <div class="work-preview work-preview--shot">
-            <img src="/work-wib.jpg" alt="Garden guest house website concept" class="work-shot-img" />
+            <img src="/sample-clinic.jpg" alt="Clinic website sample with booking" class="work-shot-img" />
           </div>
           <div class="work-body">
-            <span class="work-badge">Concept · Hospitality</span>
-            <h3>Garden Retreat Concept</h3>
-            <p>Arch-framed photography and a calm, bookable design for garden and courtyard properties.</p>
-            <div class="work-tech"><span>Website</span><span>Booking</span><span>Design</span></div>
-            <span class="work-note">Concept sample — made to order for each property</span>
+            <span class="work-badge">Sample · Clinic</span>
+            <h3>Clinic Sample</h3>
+            <p>Appointment booking + reminders + patient records — the system that ends the waiting-room bottleneck.</p>
+            <div class="work-tech"><span>Website</span><span>Booking</span><span>Records</span></div>
+            <button class="work-note work-preview-btn" type="button" data-preview="/clinic/" data-title="Clinic Sample">Preview <i class="fas fa-eye"></i></button>
           </div>
         </div>
 
         <div class="work-card work-card--secondary reveal">
           <div class="work-preview work-preview--shot">
-            <img src="/work-nazareth.jpg" alt="School website concept" class="work-shot-img" />
+            <img src="/sample-school.jpg" alt="School website sample" class="work-shot-img" />
           </div>
           <div class="work-body">
-            <span class="work-badge">Concept · School</span>
-            <h3>School Concept</h3>
+            <span class="work-badge">Sample · School</span>
+            <h3>School Sample</h3>
             <p>Academic identity with mission, accreditation, and enrollment CTAs — built to earn parents' trust.</p>
             <div class="work-tech"><span>Website</span><span>Enrollment</span><span>Branding</span></div>
-            <span class="work-note">Concept sample — made to order for each school</span>
+            <button class="work-note work-preview-btn" type="button" data-preview="/school/" data-title="School Sample">Preview <i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+
+        <div class="work-card work-card--secondary reveal">
+          <div class="work-preview work-preview--shot">
+            <img src="/sample-garden-retreat.jpg" alt="Garden retreat website sample" class="work-shot-img" />
+          </div>
+          <div class="work-body">
+            <span class="work-badge">Sample · Hospitality</span>
+            <h3>Garden Retreat Sample</h3>
+            <p>Arch-framed photography and a calm, bookable design for garden and courtyard properties.</p>
+            <div class="work-tech"><span>Website</span><span>Booking</span><span>Design</span></div>
+            <button class="work-note work-preview-btn" type="button" data-preview="/garden-retreat/" data-title="Garden Retreat Sample">Preview <i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+
+        <div class="work-card work-card--secondary reveal">
+          <div class="work-preview work-preview--shot">
+            <img src="/sample-salon.jpg" alt="Salon website sample" class="work-shot-img" />
+          </div>
+          <div class="work-body">
+            <span class="work-badge">Sample · Salon</span>
+            <h3>Salon Sample</h3>
+            <p>Booking with reminders, client history, and package tracking — no more clipboard and phone tag.</p>
+            <div class="work-tech"><span>Website</span><span>Booking</span><span>Clients</span></div>
+            <button class="work-note work-preview-btn" type="button" data-preview="/salon/" data-title="Salon Sample">Preview <i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+
+        <div class="work-card work-card--secondary reveal">
+          <div class="work-preview work-preview--shot">
+            <img src="/sample-bakery.jpg" alt="Bakery website sample" class="work-shot-img" />
+          </div>
+          <div class="work-body">
+            <span class="work-badge">Sample · Bakery</span>
+            <h3>Bakery Sample</h3>
+            <p>Fresh daily menu, WhatsApp ordering, and product tracking — the counter without the queue.</p>
+            <div class="work-tech"><span>Website</span><span>Ordering</span><span>Menu</span></div>
+            <button class="work-note work-preview-btn" type="button" data-preview="/bakery/" data-title="Bakery Sample">Preview <i class="fas fa-eye"></i></button>
           </div>
         </div>
       </div>

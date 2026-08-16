@@ -982,5 +982,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Sample Preview Modal (mini window) ──
+  const previewModal = document.getElementById('previewModal');
+  if (previewModal) {
+    const iframe = document.getElementById('previewIframe');
+    const titleEl = document.getElementById('previewModalTitle');
+    const openFull = document.getElementById('previewOpenFull');
+    // Samples live on the local samples server in dev; swap base on deploy
+    const SAMPLES_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:4990'
+      : 'https://samples.adamcreates.netlify.app';
+
+    const closePreview = () => {
+      previewModal.hidden = true;
+      iframe.src = 'about:blank';
+      document.body.style.overflow = '';
+    };
+
+    const openPreview = (path, title) => {
+      titleEl.textContent = title;
+      openFull.href = SAMPLES_BASE + path;
+      iframe.src = SAMPLES_BASE + path;
+      previewModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      previewModal.querySelector('.preview-modal-close').focus();
+    };
+
+    document.querySelectorAll('.work-preview-btn').forEach((btn) => {
+      btn.addEventListener('click', () => openPreview(btn.dataset.preview, btn.dataset.title));
+    });
+    previewModal.querySelectorAll('[data-preview-close]').forEach((el) => {
+      el.addEventListener('click', closePreview);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !previewModal.hidden) closePreview();
+    });
+  }
+
   console.log('✨ ADAM CREATES initialized with 3D effects');
 });
