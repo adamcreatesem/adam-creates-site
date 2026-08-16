@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BuildWerk Equipment: Rental (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional equipment rental. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --orange:#e05d2b; --orange-deep:#c2471a; --dark:#23262d; --dark-2:#1a1d23; --ink:#1a1d23; --ink-soft:#5c616b; --white:#fff; --smoke:#f2f2ef; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:var(--dark); color:var(--white); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; text-transform:uppercase; letter-spacing:.03em; color:var(--orange); }
+  .brand small { display:block; font-family:'Inter'; font-size:.58rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-size:.88rem; font-weight:600; color:rgba(255,255,255,.85); }
+  nav a:hover { color:var(--orange); }
+  .hero { padding:10rem 0 5.5rem; background:radial-gradient(1200px 500px at 80% -10%, rgba(224,93,43,.35), transparent), var(--dark-2); color:var(--white); }
+  .hero-inner { display:grid; grid-template-columns:1.1fr .9fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.7rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--orange); margin-bottom:1rem; }
+  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2.4rem,5.5vw,3.9rem); line-height:1; letter-spacing:-.02em; margin-bottom:1rem; }
+  .hero-sub { color:rgba(255,255,255,.72); max-width:29rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.9rem; }
+  .btn-solid { background:var(--orange); color:var(--white); }
+  .btn-ghost { border:2px solid rgba(255,255,255,.4); color:var(--white); }
+  .big-nums { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.14); }
+  .num { background:var(--dark-2); padding:1.3rem 1.1rem; }
+  .num b { font-family:'Space Grotesk'; font-size:1.7rem; color:var(--orange); }
+  .num span { display:block; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-top:.2rem; }
+  section { padding:5rem 0; }
+  .section-label { font-size:.7rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--orange); margin-bottom:.8rem; }
+  .section-title { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.9rem,4vw,2.6rem); letter-spacing:-.01em; margin-bottom:.8rem; }
+  .section-note { color:var(--ink-soft); max-width:34rem; }
+  .mach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2rem; }
+  .mach { border:1px solid #e2e0da; border-top:5px solid var(--orange); background:var(--smoke); padding:1.4rem; }
+  .mach .rate { font-family:'Space Grotesk'; font-weight:700; font-size:1.3rem; }
+  .mach .rate small { font-size:.85rem; color:var(--ink-soft); }
+  .mach h3 { font-family:'Space Grotesk'; font-weight:700; font-size:1.15rem; margin:.3rem 0 .2rem; }
+  .mach p { font-size:.84rem; color:var(--ink-soft); }
+  .how { background:var(--dark); color:var(--white); }
+  .how .wrap { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+  .how-step b { display:block; font-family:'Space Grotesk'; font-size:1.4rem; text-transform:uppercase; color:var(--orange); margin-bottom:.3rem; }
+  .how-step span { font-size:.9rem; color:rgba(255,255,255,.7); }
+  .book { background:var(--orange); color:var(--white); text-align:center; }
+  .book .wrap { padding:1.2rem 0; }
+  .book h2 { color:var(--white); }
+  .book .section-label { color:#ffe0d0; }
+  .book p { color:rgba(255,255,255,.85); max-width:34rem; margin:0 auto 1.6rem; }
+  footer { border-top:3px solid var(--dark); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--orange); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .mach-grid{grid-template-columns:1fr;} .how .wrap{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">BuildWerk<small>EQUIPMENT RENTAL · CONCEPT</small></a>
+    <nav>
+      <a href="#machines">Machines</a>
+      <a href="#how">How It Works</a>
+      <a href="#book">Rent</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample equipment rental · Addis Ababa</p>
+        <h1>Heavy Gear,<br />Light Process.</h1>
+        <p class="hero-sub">Excavators, mixers, generators, and scaffolding, delivered to your site with a WhatsApp quote in minutes. A sample for a fictional rental company.</p>
+        <div>
+          <a class="btn btn-solid" href="#book">Get a Quote</a>
+          <a class="btn btn-ghost" href="#machines">See Machines</a>
+        </div>
+      </div>
+      <div class="big-nums">
+        <div class="num"><b>40+</b><span>Machines in Stock</span></div>
+        <div class="num"><b>Same Day</b><span>Site Delivery</span></div>
+        <div class="num"><b>24/7</b><span>Support Line</span></div>
+        <div class="num"><b>2 hr</b><span>Quote Time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="machines">
+    <div class="wrap">
+      <p class="section-label">Machines</p>
+      <h2 class="section-title">Rent by the Day or Week</h2>
+      <div class="mach-grid">
+        <div class="mach"><span class="rate">6,500 ETB<small>/day</small></span><h3>Excavator</h3><p>20 ton, operator included on request.</p></div>
+        <div class="mach"><span class="rate">950 ETB<small>/day</small></span><h3>Concrete Mixer</h3><p>Diesel and electric models.</p></div>
+        <div class="mach"><span class="rate">1,200 ETB<small>/day</small></span><h3>Scaffolding</h3><p>Full sets, delivered and erected.</p></div>
+        <div class="mach"><span class="rate">1,800 ETB<small>/day</small></span><h3>Generator</h3><p>5 kVA to 100 kVA.</p></div>
+        <div class="mach"><span class="rate">750 ETB<small>/day</small></span><h3>Compactor</h3><p>Plate and rammer types.</p></div>
+        <div class="mach"><span class="rate">600 ETB<small>/day</small></span><h3>Power Tools</h3><p>Drills, cutters, and grinders in kits.</p></div>
+      </div>
+      <p class="section-note" style="margin-top:1.2rem;">Weekly rates save 20%. Damaged or late gear is billed at the plain daily rate, no fine print.</p>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="how-step"><b>1 · Send</b><span>Your site and machine on WhatsApp.</span></div>
+      <div class="how-step"><b>2 · Confirm</b><span>Price and delivery time in minutes.</span></div>
+      <div class="how-step"><b>3 · Work</b><span>Machine arrives, crew starts, you pay on pickup.</span></div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <p class="section-label">Rent online</p>
+      <h2 class="section-title">Machine on Site Tomorrow</h2>
+      <p>Send the machine name and your site location. We reply with price and delivery time. Sample booking, connected on order.</p>
+      <a class="btn btn-solid" href="#top">Get a Quote on WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> BuildWerk Equipment, a fictional concept sample</div>
+    <div>Sample yard · around Kazanchis, Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

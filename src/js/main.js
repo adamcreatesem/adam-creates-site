@@ -950,6 +950,54 @@ document.addEventListener('DOMContentLoaded', () => {
       does: ['Jobs never fall through the cracks', 'Customers get updates without asking', 'Repeat visits come automatically', 'You look like the shop people trust'],
       sample: 'See a sample auto site \u2192',
       preview: '/auto-garage/'
+    },
+    lawfirms: {
+      tag: 'Law Firms & Legal Offices',
+      intro: 'Clients choose counsel with trust. A serious, professional site is the difference between a call and a missed case.',
+      get: ['Practice areas and partner profiles', 'Consultation requests straight to WhatsApp', 'A presence that looks established and credible', 'Client reviews front and center'],
+      does: ['Clients trust you before they call', 'Consult requests arrive organized', 'Your firm looks bigger than its size', 'Referrals have somewhere professional to land'],
+      sample: 'See a sample law firm site →',
+      preview: '/law-firm.html'
+    },
+    carrental: {
+      tag: 'Car & Vehicle Rental',
+      intro: 'Your fleet sits idle unless people can see it. List every car with its rate and let bookings come to you.',
+      get: ['Fleet listings with photos and rates', 'Availability checks by date', 'Bookings confirmed on WhatsApp', 'A professional look that beats the middlemen'],
+      does: ['Cars rent while you sleep', 'Bookings never get lost in calls', 'Rates are clear before customers ask', 'You compete with the big agencies'],
+      sample: 'See a sample car rental site →',
+      preview: '/car-rental.html'
+    },
+    equipment: {
+      tag: 'Equipment & Machinery Rental',
+      intro: 'Construction and event clients search first, call second. Show your catalog and they will book your machines.',
+      get: ['Machinery catalog with daily rates', 'Rental requests with dates and duration', 'Availability that updates in real time', 'A site that looks as solid as your equipment'],
+      does: ['Rental requests arrive complete', 'Customers compare before they call', 'Idle equipment days shrink', 'Contractors find you on Google'],
+      sample: 'See a sample equipment rental site →',
+      preview: '/equipment-rental.html'
+    },
+    tickets: {
+      tag: 'Ticket Offices & Booking',
+      intro: 'Flights, buses, and events: if your schedule is not online, customers book with whoever is.',
+      get: ['Schedules, fares, and seat availability', 'Booking requests confirmed by message', 'Departure reminders that reduce no-shows', 'A site that handles the busy season'],
+      does: ['Customers book without queuing', 'Seat availability is always current', 'No-shows drop with reminders', 'You sell beyond walk-in hours'],
+      sample: 'See a sample ticket office site →',
+      preview: '/ticket-office.html'
+    },
+    tourism: {
+      tag: 'Tour Operators & Travel',
+      intro: 'You sell journeys, but your own booking journey starts from zero. We build the bridge.',
+      get: ['Tour pages with dates, group size, and price', 'Booking requests straight to WhatsApp', 'Route photos that make people want to go', 'Follow-up that never forgets a lead'],
+      does: ['Bookings land without phone tag', 'Deposits and reminders on schedule', 'Packages are easy to share on WhatsApp', 'You look bigger than your size'],
+      sample: 'See a sample tour operator site →',
+      preview: '/tourism-operator.html'
+    },
+    fashionrental: {
+      tag: 'Fashion & Clothing Rental',
+      intro: 'Bridal and party wear only earns while it is rented. Let customers see sizes and dates online, and reserve in seconds.',
+      get: ['A closet catalog with sizes and rates', 'Date blocking so pieces never double-book', 'Reservations confirmed on WhatsApp', 'A look as sharp as the pieces'],
+      does: ['Pieces book without showroom visits', 'Double bookings disappear', 'Returns and deposits stay tracked', 'New arrivals reach repeat renters'],
+      sample: 'See a sample fashion rental site →',
+      preview: '/fashion-rental.html'
     }
   };
 

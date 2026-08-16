@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EthioTicket Office: Tickets (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional ticket office. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --blue:#1f6feb; --blue-deep:#1657bd; --cream:#fbf8f2; --ink:#20262e; --ink-soft:#5d6670; --white:#fff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:var(--white); border-bottom:1px solid #e4e0d8; }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-family:'Lora',serif; font-weight:600; font-size:1.3rem; color:var(--blue-deep); }
+  .brand small { display:block; font-family:'Inter'; font-size:.58rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-size:.88rem; font-weight:600; color:var(--ink-soft); }
+  nav a:hover { color:var(--blue); }
+  .hero { padding:9rem 0 5rem; background:linear-gradient(160deg,var(--cream),#fff 60%); }
+  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.7rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--blue); margin-bottom:1rem; }
+  h1 { font-family:'Lora',serif; font-size:clamp(2.1rem,5vw,3.2rem); font-weight:600; line-height:1.1; margin-bottom:1rem; }
+  .hero-sub { color:var(--ink-soft); max-width:29rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.9rem; }
+  .btn-solid { background:var(--blue); color:var(--white); }
+  .btn-ghost { border:2px solid var(--blue); color:var(--blue); }
+  .hero-fig img { border-radius:16px; aspect-ratio:4/3; object-fit:cover; width:100%; }
+  section { padding:5rem 0; }
+  .section-label { font-size:.7rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--blue); margin-bottom:.8rem; }
+  .section-title { font-family:'Lora',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:600; margin-bottom:.8rem; }
+  .section-note { color:var(--ink-soft); max-width:34rem; }
+  .tk-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2rem; }
+  .tk { border:1px solid #e0ddd5; border-radius:14px; overflow:hidden; }
+  .tk .top { background:var(--blue); color:var(--white); padding:.8rem 1rem; font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  .tk .body { padding:1.1rem 1rem; }
+  .tk .body b { display:block; font-family:'Lora'; font-size:1.05rem; margin-bottom:.3rem; }
+  .tk .body p { font-size:.82rem; color:var(--ink-soft); }
+  .tk .body .go { display:inline-block; margin-top:.6rem; font-size:.8rem; font-weight:700; color:var(--blue); }
+  .steps { background:var(--blue); color:var(--white); }
+  .steps .wrap { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+  .step b { display:block; font-family:'Lora'; font-size:1.4rem; margin-bottom:.3rem; }
+  .step span { font-size:.9rem; color:rgba(255,255,255,.8); }
+  .office { background:var(--cream); text-align:center; }
+  .office .wrap { padding:1.2rem 0; }
+  .office p { color:var(--ink-soft); max-width:34rem; margin:0 auto 1.6rem; }
+  .hours { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem; max-width:36rem; margin-inline:auto; }
+  .hours div { border:1px solid #ddd8cc; border-radius:10px; padding:1rem; background:var(--white); }
+  .hours b { display:block; font-size:.9rem; margin-bottom:.2rem; }
+  .hours span { font-size:.8rem; color:var(--ink-soft); }
+  footer { border-top:1px solid #e4e0d8; padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--blue); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .tk-grid{grid-template-columns:1fr 1fr;} .steps .wrap{grid-template-columns:1fr;} .hours{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">EthioTicket<small>TICKET OFFICE · CONCEPT</small></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#steps">How It Works</a>
+      <a href="#office">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample ticket office · Addis Ababa</p>
+        <h1>Your Ticket,<br />Sorted in One Stop.</h1>
+        <p class="hero-sub">Air, bus, event, and Hajj and Umrah tickets, with WhatsApp confirmations and reminders. A sample for a fictional office.</p>
+        <div>
+          <a class="btn btn-solid" href="#office">Message the Office</a>
+          <a class="btn btn-ghost" href="#services">Ticket Types</a>
+        </div>
+      </div>
+      <div class="hero-fig">
+        <img src="../img/travel-2.jpg" alt="Travel scene at the sample ticket office" />
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="section-label">Ticket Types</p>
+      <h2 class="section-title">What We Book</h2>
+      <div class="tk-grid">
+        <div class="tk"><div class="top">Air</div><div class="body"><b>Domestic &amp; International</b><p>Fares compared, documents checked, booking confirmed.</p><span class="go">Ask on WhatsApp</span></div></div>
+        <div class="tk"><div class="top">Bus</div><div class="body"><b>Intercity Routes</b><p>Seats held, pick-up points confirmed in writing.</p><span class="go">Ask on WhatsApp</span></div></div>
+        <div class="tk"><div class="top">Events</div><div class="body"><b>Concerts &amp; Matches</b><p>Real seats, delivered to your phone.</p><span class="go">Ask on WhatsApp</span></div></div>
+        <div class="tk"><div class="top">Hajj &amp; Umrah</div><div class="body"><b>Packages &amp; Flights</b><p>End to end planning, paperwork included.</p><span class="go">Ask on WhatsApp</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps" id="steps">
+    <div class="wrap">
+      <div class="step"><b>Send</b><span>Your route or event on WhatsApp.</span></div>
+      <div class="step"><b>Confirm</b><span>Options and final price within the hour.</span></div>
+      <div class="step"><b>Receive</b><span>Ticket and reminder on your phone.</span></div>
+    </div>
+  </section>
+
+  <section class="office" id="office">
+    <div class="wrap">
+      <p class="section-label">Visit or message</p>
+      <h2 class="section-title">Open Six Days a Week</h2>
+      <p>Walk in with your ID, or send it on WhatsApp and skip the queue. Sample office, open on order.</p>
+      <a class="btn btn-solid" href="#top">Message on WhatsApp</a>
+      <div class="hours">
+        <div><b>Mon-Fri</b><span>8:00 - 18:00</span></div>
+        <div><b>Saturday</b><span>8:00 - 14:00</span></div>
+        <div><b>Sunday</b><span>Closed</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> EthioTicket, a fictional concept sample</div>
+    <div>Sample office · Piassa, Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

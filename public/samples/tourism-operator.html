@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ethio Trails: Tour Operator (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional tour operator. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --clay:#9a4f2f; --clay-deep:#7c3c22; --sand:#f6efe3; --leaf:#3f6b4f; --ink:#2e2a25; --ink-soft:#6f675c; --white:#fff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Karla',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,255,255,.96); border-bottom:1px solid rgba(154,79,47,.2); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-family:'Playfair Display',serif; font-weight:600; font-size:1.25rem; color:var(--clay-deep); }
+  .brand small { display:block; font-family:'Karla'; font-size:.6rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-size:.88rem; font-weight:500; color:var(--ink-soft); }
+  nav a:hover { color:var(--clay); }
+  .hero { padding:9rem 0 5rem; background:linear-gradient(160deg,var(--sand),#fff 60%); }
+  .hero-inner { display:grid; grid-template-columns:1.15fr .85fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--clay); margin-bottom:1rem; }
+  h1 { font-family:'Playfair Display',serif; font-size:clamp(2.1rem,5vw,3.3rem); font-weight:600; line-height:1.1; margin-bottom:1rem; }
+  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border:1px solid transparent; }
+  .btn-solid { background:var(--clay); color:var(--white); }
+  .btn-ghost { border-color:var(--clay); color:var(--clay); }
+  .hero-fig { border-radius:150px 150px 12px 12px; overflow:hidden; }
+  .hero-fig img { width:100%; aspect-ratio:3/4; object-fit:cover; }
+  section { padding:5rem 0; }
+  .section-label { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--clay); margin-bottom:.8rem; }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:600; margin-bottom:.8rem; }
+  .section-note { color:var(--ink-soft); max-width:34rem; }
+  .tour-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
+  .tour { border:1px solid #e5dccb; border-bottom:4px solid var(--leaf); border-radius:12px; overflow:hidden; background:var(--white); }
+  .tour img { width:100%; height:11rem; object-fit:cover; }
+  .tour .inner { padding:1.3rem; }
+  .tour h3 { font-family:'Playfair Display'; font-weight:600; font-size:1.08rem; margin-bottom:.4rem; color:var(--clay-deep); }
+  .tour p { color:var(--ink-soft); font-size:.88rem; }
+  .tour .days { display:block; margin-top:.6rem; font-weight:700; color:var(--leaf); font-size:.85rem; }
+  .why { background:var(--leaf); color:var(--white); }
+  .why .wrap { display:grid; grid-template-columns:1fr 1fr; gap:2.4rem; }
+  .why .section-label { color:var(--sand); }
+  .why p { color:rgba(255,255,255,.78); margin-bottom:1rem; font-size:.95rem; }
+  .book { background:var(--sand); text-align:center; }
+  .book .wrap { padding:1.2rem 0; }
+  .book h2 { color:var(--clay-deep); }
+  .book p { color:var(--ink-soft); max-width:34rem; margin:0 auto 1.6rem; }
+  .contact-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem; max-width:36rem; margin-inline:auto; }
+  .contact-row div { border:1px solid #ddd2bf; border-radius:10px; padding:1rem; background:var(--white); }
+  .contact-row b { display:block; font-size:.9rem; margin-bottom:.2rem; color:var(--clay-deep); }
+  .contact-row span { font-size:.8rem; color:var(--ink-soft); }
+  footer { border-top:1px solid rgba(154,79,47,.2); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--clay); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .tour-grid{grid-template-columns:1fr;} .why .wrap{grid-template-columns:1fr;} .contact-row{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">Ethio Trails<small>TOUR OPERATOR · CONCEPT</small></a>
+    <nav>
+      <a href="#tours">Tours</a>
+      <a href="#why">Why Us</a>
+      <a href="#book">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample tour operator · Addis Ababa</p>
+        <h1>See Ethiopia,<br /><em style="font-style:italic;color:var(--clay);">Safely Booked.</em></h1>
+        <p class="hero-sub">Day trips, multi-day routes, and custom itineraries booked online with instant WhatsApp confirmation. A sample for a fictional operator.</p>
+        <div>
+          <a class="btn btn-solid" href="#book">Book a Tour</a>
+          <a class="btn btn-ghost" href="#tours">Browse Tours</a>
+        </div>
+      </div>
+      <div class="hero-fig">
+        <img src="../img/travel-1.jpg" alt="Highland landscape on the sample tour" />
+      </div>
+    </div>
+  </section>
+
+  <section id="tours">
+    <div class="wrap">
+      <p class="section-label">Tours</p>
+      <h2 class="section-title">Signature Routes</h2>
+      <div class="tour-grid">
+        <div class="tour"><img src="../img/travel-1.jpg" alt="Lalibela tour sample" /><div class="inner"><h3>Lalibela &amp; the North</h3><p>Rock churches and monasteries on a classic northern circuit.</p><span class="days">4 days · From 18,500 ETB</span></div></div>
+        <div class="tour"><img src="../img/travel-2.jpg" alt="Southern route sample" /><div class="inner"><h3>Southern Rift Valley</h3><p>Lakes, tribes, and landscapes on the scenic southern route.</p><span class="days">5 days · From 22,000 ETB</span></div></div>
+        <div class="tour"><img src="../img/travel-2.jpg" alt="Custom itinerary sample" /><div class="inner"><h3>Custom Itineraries</h3><p>Build your own route with a guide and driver that fit your dates.</p><span class="days">Tailored · Price on request</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div>
+        <p class="section-label">Why tour operators choose us</p>
+        <h2 class="section-title" style="color:var(--white);">This site does the selling while you run the trips</h2>
+      </div>
+      <div>
+        <p>Every tour lists dates, group size, and price, so visitors filter and book without a single phone call. Bookings land in one inbox with an automatic confirmation message.</p>
+        <p>The same system handles deposits, trip reminders, and reviews, so the operator builds a repeat-client list instead of starting from zero every season.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <p class="section-label">Book online</p>
+      <h2 class="section-title">Reserve in Three Taps</h2>
+      <p>Pick a tour, choose a date, and confirm on WhatsApp. Sample booking flow, connected on order.</p>
+      <a class="btn btn-solid" href="#top">Book on WhatsApp</a>
+      <div class="contact-row">
+        <div><b>WhatsApp</b><span>+251 91 000 0000 (fictional)</span></div>
+        <div><b>Office</b><span>Bole, Addis Ababa (fictional)</span></div>
+        <div><b>Hours</b><span>Mon-Sat · 8:00 - 18:00</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Ethio Trails, a fictional concept sample</div>
+    <div>Sample office · Bole, Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
