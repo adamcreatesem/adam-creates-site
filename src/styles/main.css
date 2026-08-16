@@ -851,6 +851,18 @@ ul { list-style: none; }
   border: 2px solid var(--color-border); text-transform: uppercase; letter-spacing: 0.3px;
 }
 
+.work-note {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
 .work-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: auto; padding-top: 10px; transition: all 0.2s ease; flex-shrink: 0; }
 .work-cta i { transition: transform 0.2s ease; }
 .work-cta:hover { color: var(--color-primary-dark); }
