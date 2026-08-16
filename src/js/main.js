@@ -852,5 +852,135 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initParallax();
 
+  // ── Business-Type Modal (For Your Business) ──
+  const FIT_CONTENT = {
+    restaurants: {
+      tag: 'Restaurants & Cafes',
+      intro: 'Your food is great — but people can\u2019t find it. We fix the part between the kitchen and the customer.',
+      get: ['A website that shows your menu, prices, and photos', 'QR menu customers scan at the table', 'WhatsApp ordering — no third-party apps or fees', 'Your real reviews front and center'],
+      does: ['More people find you on Google', 'Customers see the menu before they walk in', 'Orders come to your phone directly', 'You keep every birr instead of paying app commissions'],
+      sample: 'See a sample restaurant site \u2192'
+    },
+    guesthouses: {
+      tag: 'Guest Houses & Hotels',
+      intro: 'Booking.com takes 15\u201320% of every stay. Your own site brings guests back to you directly.',
+      get: ['A direct-booking website with real photos', 'Book Direct button — WhatsApp or call, no middleman', 'Guest reviews pulled from your real listings', 'Occupancy at a glance'],
+      does: ['Returning guests book you directly', 'You stop paying the OTA commission', 'Your rooms stay full with less effort', 'Diaspora guests find you on Google'],
+      sample: 'See a sample guest house site \u2192'
+    },
+    clinics: {
+      tag: 'Clinics & Hospitals',
+      intro: 'Patients wait 60\u2013180 minutes — it\u2019s the #1 complaint about clinics in Addis. Booking fixes it.',
+      get: ['Appointment booking + automatic reminders', 'Patient records that are easy to search', 'A professional site that builds trust', 'Follow-up reminders patients actually receive'],
+      does: ['No-show rate drops', 'Your staff stops managing paper diaries', 'Patients feel their time is respected', 'You look established and serious'],
+      sample: 'See a sample clinic site \u2192'
+    },
+    travel: {
+      tag: 'Travel Agencies',
+      intro: 'You sell journeys, but your own booking journey starts from zero. We build the bridge.',
+      get: ['Package & itinerary pages that sell', 'Inquiry form + WhatsApp automation', 'Tour photos that make people want to go', 'Customer follow-up that never forgets'],
+      does: ['Inquiries come to one place', 'Leads get answered fast — even at night', 'Packages are easy to share on WhatsApp', 'You look bigger than your size'],
+      sample: 'See a sample travel site \u2192'
+    },
+    construction: {
+      tag: 'Construction & Real Estate',
+      intro: 'People buy with their eyes. Show them what you\u2019ve built and they\u2019ll trust you with what they\u2019re building.',
+      get: ['A portfolio that shows completed projects', 'Quote requests that come to your WhatsApp', 'Property listings with real photos', 'A professional brand for bids and clients'],
+      does: ['Clients see proof before they call', 'Quote requests arrive ready to answer', 'You win more bids with a real presence', 'Referrals have somewhere to land'],
+      sample: 'See a sample construction site \u2192'
+    },
+    schools: {
+      tag: 'Schools & Training',
+      intro: 'Parents choose with trust. An academic, credible site is the difference between maybe and enrolled.',
+      get: ['A site that shows mission, programs, and results', 'Enrollment inquiries + fee tracking', 'Accreditation and achievements front and center', 'A calendar parents can see'],
+      does: ['Parents trust you before visiting', 'Enrollment inquiries come organized', 'Your reputation is visible to everyone', 'Students\u2019 families find you on Google'],
+      sample: 'See a sample school site \u2192'
+    },
+    retail: {
+      tag: 'Shops & Retail',
+      intro: 'Your shop closes at 9pm. Your catalog shouldn\u2019t have to.',
+      get: ['A catalog customers can browse anytime', 'Stock list that\u2019s easy to update', 'WhatsApp ordering with prefilled messages', 'A Google presence that brings walk-ins'],
+      does: ['Customers check stock before traveling', 'Orders arrive on your phone', 'You look professional on every platform', 'Sales keep happening after closing time'],
+      sample: 'See a sample shop site \u2192'
+    },
+    beauty: {
+      tag: 'Salons, Gyms & More',
+      intro: 'Appointments, memberships, and repeat clients — handled without the clipboard.',
+      get: ['Online booking + reminders', 'Client history at your fingertips', 'Membership and package tracking', 'A site that shows your work beautifully'],
+      does: ['No-shows drop with reminders', 'Clients book without calling', 'Packages renew on schedule', 'Your work is your best advertisement'],
+      sample: 'See a sample salon site \u2192'
+    },
+    pharmacies: {
+      tag: 'Pharmacies',
+      intro: '40% of pharmacies lose money to expired stock. Track it before it expires — not after.',
+      get: ['Stock with expiry-date alerts', 'Sales log that\u2019s audit-ready', 'Reorder reminders before you run out', 'A site that lists what you actually carry'],
+      does: ['Less money lost to expiry', 'You\u2019re ready when inspectors ask', 'Never out of your best sellers', 'Customers find you when they need you'],
+      sample: 'See a sample pharmacy site \u2192'
+    },
+    bakeries: {
+      tag: 'Bakeries & Food Makers',
+      intro: 'You\u2019re a maker, not a bookkeeper. Let the system count while you bake.',
+      get: ['Product list with real photos', 'Ingredient stock tracking', 'Production log — what you made and sold', 'Wholesale orders organized'],
+      does: ['You know what sold before it\u2019s gone', 'Ingredients never run out mid-batch', 'Wholesale customers order smoothly', 'Your brand looks as good as your bread'],
+      sample: 'See a sample bakery site \u2192'
+    },
+    events: {
+      tag: 'Event Planners & Photographers',
+      intro: 'Your work is stunning — let your website carry that weight while you\u2019re on the job.',
+      get: ['A portfolio that sells your style', 'Package pages with clear pricing', 'Deposit & payment tracking', 'Inquiry form + fast follow-up'],
+      does: ['Couples find you on Google', 'Packages answer questions before you do', 'Deposits are never forgotten', 'Your best work does the talking'],
+      sample: 'See a sample events site \u2192'
+    },
+    auto: {
+      tag: 'Auto, Garages & Parts',
+      intro: 'Every car has a story. Track it, and your customers never have to explain theirs twice.',
+      get: ['Job tracking for every vehicle', 'Vehicle history — no more \u201cwhat did we do last time?\u201d', 'Booking for service slots', 'A site that looks as solid as your work'],
+      does: ['Jobs never fall through the cracks', 'Customers get updates without asking', 'Repeat visits come automatically', 'You look like the shop people trust'],
+      sample: 'See a sample auto site \u2192'
+    }
+  };
+
+  const fitModal = document.getElementById('fitModal');
+  if (fitModal) {
+    const tagEl = document.getElementById('fitModalTag');
+    const titleEl = document.getElementById('fitModalTitle');
+    const introEl = document.getElementById('fitModalIntro');
+    const getEl = document.getElementById('fitModalGet');
+    const doesEl = document.getElementById('fitModalDoes');
+    const sampleEl = document.getElementById('fitModalSample');
+    let lastFocus = null;
+
+    const closeModal = () => {
+      fitModal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    };
+
+    const openModal = (key) => {
+      const c = FIT_CONTENT[key];
+      if (!c) return;
+      lastFocus = document.activeElement;
+      tagEl.textContent = c.tag;
+      titleEl.textContent = c.tag;
+      introEl.textContent = c.intro;
+      getEl.innerHTML = c.get.map((li) => `<li>${li}</li>`).join('');
+      doesEl.innerHTML = c.does.map((li) => `<li>${li}</li>`).join('');
+      sampleEl.textContent = c.sample;
+      fitModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      fitModal.querySelector('.fit-modal-close').focus();
+    };
+
+    document.querySelectorAll('.fit-item').forEach((btn) => {
+      btn.addEventListener('click', () => openModal(btn.dataset.fit));
+    });
+    fitModal.querySelectorAll('[data-fit-close]').forEach((el) => {
+      el.addEventListener('click', closeModal);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !fitModal.hidden) closeModal();
+    });
+  }
+
   console.log('✨ ADAM CREATES initialized with 3D effects');
 });

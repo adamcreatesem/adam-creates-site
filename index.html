@@ -233,18 +233,18 @@
         </p>
       </div>
       <div class="fit-grid">
-        <div class="fit-item reveal"><h3>Restaurants &amp; Cafes</h3><p>Website + QR menu + reviews + sales log</p></div>
-        <div class="fit-item reveal"><h3>Guest Houses &amp; Hotels</h3><p>Direct booking + occupancy + real reviews</p></div>
-        <div class="fit-item reveal"><h3>Clinics &amp; Hospitals</h3><p>Appointments + reminders + patient records</p></div>
-        <div class="fit-item reveal"><h3>Travel Agencies</h3><p>Packages + itineraries + inquiry automation</p></div>
-        <div class="fit-item reveal"><h3>Construction &amp; Real Estate</h3><p>Portfolio + quotes + WhatsApp automation</p></div>
-        <div class="fit-item reveal"><h3>Schools &amp; Training</h3><p>Enrollment + credibility + fee tracking</p></div>
-        <div class="fit-item reveal"><h3>Shops &amp; Retail</h3><p>Catalog + stock list + WhatsApp ordering</p></div>
-        <div class="fit-item reveal"><h3>Salons, Gyms &amp; More</h3><p>Booking + client history + memberships</p></div>
-        <div class="fit-item reveal"><h3>Pharmacies</h3><p>Stock + expiry alerts + compliance-ready records</p></div>
-        <div class="fit-item reveal"><h3>Bakeries &amp; Food Makers</h3><p>Product list + ingredient stock + production log</p></div>
-        <div class="fit-item reveal"><h3>Event Planners &amp; Photographers</h3><p>Portfolio + packages + deposit tracking</p></div>
-        <div class="fit-item reveal"><h3>Auto, Garages &amp; Parts</h3><p>Job tracking + vehicle history + bookings</p></div>
+        <button class="fit-item reveal" type="button" data-fit="restaurants" aria-haspopup="dialog"><h3>Restaurants &amp; Cafes</h3><p>Website + QR menu + reviews + sales log</p></button>
+        <button class="fit-item reveal" type="button" data-fit="guesthouses" aria-haspopup="dialog"><h3>Guest Houses &amp; Hotels</h3><p>Direct booking + occupancy + real reviews</p></button>
+        <button class="fit-item reveal" type="button" data-fit="clinics" aria-haspopup="dialog"><h3>Clinics &amp; Hospitals</h3><p>Appointments + reminders + patient records</p></button>
+        <button class="fit-item reveal" type="button" data-fit="travel" aria-haspopup="dialog"><h3>Travel Agencies</h3><p>Packages + itineraries + inquiry automation</p></button>
+        <button class="fit-item reveal" type="button" data-fit="construction" aria-haspopup="dialog"><h3>Construction &amp; Real Estate</h3><p>Portfolio + quotes + WhatsApp automation</p></button>
+        <button class="fit-item reveal" type="button" data-fit="schools" aria-haspopup="dialog"><h3>Schools &amp; Training</h3><p>Enrollment + credibility + fee tracking</p></button>
+        <button class="fit-item reveal" type="button" data-fit="retail" aria-haspopup="dialog"><h3>Shops &amp; Retail</h3><p>Catalog + stock list + WhatsApp ordering</p></button>
+        <button class="fit-item reveal" type="button" data-fit="beauty" aria-haspopup="dialog"><h3>Salons, Gyms &amp; More</h3><p>Booking + client history + memberships</p></button>
+        <button class="fit-item reveal" type="button" data-fit="pharmacies" aria-haspopup="dialog"><h3>Pharmacies</h3><p>Stock + expiry alerts + compliance-ready records</p></button>
+        <button class="fit-item reveal" type="button" data-fit="bakeries" aria-haspopup="dialog"><h3>Bakeries &amp; Food Makers</h3><p>Product list + ingredient stock + production log</p></button>
+        <button class="fit-item reveal" type="button" data-fit="events" aria-haspopup="dialog"><h3>Event Planners &amp; Photographers</h3><p>Portfolio + packages + deposit tracking</p></button>
+        <button class="fit-item reveal" type="button" data-fit="auto" aria-haspopup="dialog"><h3>Auto, Garages &amp; Parts</h3><p>Job tracking + vehicle history + bookings</p></button>
       </div>
       <div class="tax-pitch reveal">
         <p class="tax-pitch-quote">
@@ -255,6 +255,34 @@
       </div>
     </div>
   </section>
+
+  <!-- ========== BUSINESS TYPE MODAL ========== -->
+  <div class="fit-modal" id="fitModal" role="dialog" aria-modal="true" aria-labelledby="fitModalTitle" hidden>
+    <div class="fit-modal-backdrop" data-fit-close></div>
+    <div class="fit-modal-panel">
+      <button class="fit-modal-close" type="button" data-fit-close aria-label="Close">&times;</button>
+      <div class="fit-modal-body">
+        <span class="fit-modal-tag" id="fitModalTag"></span>
+        <h3 class="fit-modal-title" id="fitModalTitle"></h3>
+        <p class="fit-modal-intro" id="fitModalIntro"></p>
+        <div class="fit-modal-cols">
+          <div>
+            <h4>What you get</h4>
+            <ul class="fit-modal-list" id="fitModalGet"></ul>
+          </div>
+          <div>
+            <h4>What it does for your business</h4>
+            <ul class="fit-modal-list" id="fitModalDoes"></ul>
+          </div>
+        </div>
+        <p class="fit-modal-sample" id="fitModalSample"></p>
+        <div class="fit-modal-cta">
+          <a class="btn btn-primary" href="#contact" data-fit-close>Start your project</a>
+          <span class="fit-modal-note">Free consultation · No obligation</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ========== TECH MARQUEE ========== -->
   <div class="marquee-section">
