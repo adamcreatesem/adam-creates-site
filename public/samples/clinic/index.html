@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selam Health Center — Clinic with Booking (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional clinic with appointment booking. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+<style>
+  :root { --teal:#0f766e; --teal-deep:#0b5d57; --teal-bg:#e6f2f1; --ink:#12242a; --ink-soft:#4c6368; --white:#fff; --line:rgba(18,36,42,.14); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Manrope',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-weight:800; font-size:1.1rem; color:var(--teal); }
+  .brand small { display:block; font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); }
+  nav { display:flex; gap:1.8rem; align-items:center; }
+  nav a { font-size:.88rem; font-weight:700; color:var(--ink-soft); }
+  nav a:hover { color:var(--teal); }
+  .nav-cta { background:var(--teal); color:var(--white) !important; padding:.6rem 1.3rem; border-radius:30px; font-size:.85rem; }
+  .hero { padding:9rem 0 5rem; background:linear-gradient(135deg,var(--teal-bg),#fff); }
+  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.75rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; }
+  h1 { font-family:'DM Serif Display',serif; font-size:clamp(2.1rem,5vw,3.4rem); font-weight:400; line-height:1.12; margin-bottom:1rem; }
+  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border-radius:30px; border:1px solid transparent; }
+  .btn-solid { background:var(--teal); color:var(--white); }
+  .btn-ghost { border-color:var(--teal); color:var(--teal); }
+  .hero-fig { border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(15,118,110,.18); }
+  .hero-fig img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+  section { padding:5rem 0; }
+  .section-label { font-size:.75rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); margin-bottom:.8rem; }
+  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:400; margin-bottom:.8rem; }
+  .section-note { color:var(--ink-soft); max-width:34rem; }
+  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
+  .svc { border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:10px; padding:1.5rem; background:#fbfdfd; }
+  .svc h3 { font-size:1.05rem; font-weight:800; margin-bottom:.4rem; }
+  .svc p { color:var(--ink-soft); font-size:.9rem; }
+  .book { background:var(--teal-deep); color:var(--white); }
+  .book .wrap { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .book .section-label { color:#7dd3cf; }
+  .book .section-title { color:var(--white); }
+  .book p { color:rgba(255,255,255,.8); margin-bottom:1.4rem; }
+  .book-form { background:var(--white); color:var(--ink); border-radius:14px; padding:1.8rem; }
+  .book-form h4 { font-size:1rem; font-weight:800; margin-bottom:1rem; }
+  .field { margin-bottom:.9rem; }
+  .field label { display:block; font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:.3rem; }
+  .field input, .field select { width:100%; padding:.7rem .8rem; border:1.5px solid var(--line); border-radius:8px; font:inherit; font-size:.9rem; }
+  .book-form .btn { width:100%; text-align:center; }
+  .book-note { font-size:.72rem; color:var(--ink-soft); text-align:center; margin-top:.8rem; }
+  .why-list { list-style:none; margin-top:1.6rem; display:grid; gap:.9rem; }
+  .why-list li { display:flex; gap:.7rem; color:var(--ink-soft); font-size:.95rem; }
+  .w-dot { width:9px; height:9px; background:var(--teal); border-radius:50%; margin-top:.55rem; flex-shrink:0; }
+  footer { border-top:1px solid var(--line); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--teal); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .svc-grid{grid-template-columns:1fr;} .book .wrap{grid-template-columns:1fr;} nav{display:none;} .nav-cta{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">SELAM HEALTH CENTER<small>CLINIC · CONCEPT SAMPLE</small></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#book">Book</a>
+      <a href="#why">Why Us</a>
+      <a class="nav-cta" href="#book">Book Appointment</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample clinic · Addis Ababa</p>
+        <h1>Care That Respects Your Time</h1>
+        <p class="hero-sub">Waiting 60–180 minutes is the #1 complaint about clinics. This sample shows how booking + reminders fix it — for a fictional clinic.</p>
+        <div>
+          <a class="btn btn-solid" href="#book">Book an Appointment</a>
+          <a class="btn btn-ghost" href="#services">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-fig">
+        <img src="../img/clinic.jpg" alt="Clinic at the sample center" />
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">Care Under One Roof</h2>
+      <div class="svc-grid">
+        <div class="svc"><h3>General Medicine</h3><p>Routine check-ups, diagnosis, and treatment plans.</p></div>
+        <div class="svc"><h3>Pediatrics</h3><p>Well-child visits, vaccinations, and growth tracking.</p></div>
+        <div class="svc"><h3>Laboratory</h3><p>Fast, reliable lab tests with same-day results.</p></div>
+        <div class="svc"><h3>Maternity</h3><p>Prenatal care, delivery, and postnatal support.</p></div>
+        <div class="svc"><h3>Dental</h3><p>Check-ups, cleaning, and treatment in one visit.</p></div>
+        <div class="svc"><h3>Pharmacy</h3><p>Medicines in stock and dispensed with your visit.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap" style="padding:1rem 0;">
+      <div>
+        <p class="section-label">Book online</p>
+        <h2 class="section-title">Skip the Waiting Room</h2>
+        <p>Pick a time, get a reminder, arrive when it's your turn. This sample form shows the flow — on order it connects to WhatsApp or a real calendar.</p>
+        <ul class="why-list">
+          <li><span class="w-dot"></span>Reminders reduce no-shows</li>
+          <li><span class="w-dot"></span>Staff stop managing paper diaries</li>
+          <li><span class="w-dot"></span>Patient records stay searchable</li>
+        </ul>
+      </div>
+      <form class="book-form" onsubmit="return false;">
+        <h4>Book an appointment</h4>
+        <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="Sample name" /></div>
+        <div class="field"><label for="f-svc">Service</label><select id="f-svc"><option>General Medicine</option><option>Pediatrics</option><option>Laboratory</option><option>Maternity</option><option>Dental</option></select></div>
+        <div class="field"><label for="f-date">Preferred date</label><input id="f-date" type="date" /></div>
+        <div class="field"><label for="f-time">Preferred time</label><input id="f-time" type="time" /></div>
+        <button class="btn btn-solid" type="submit">Request Appointment</button>
+        <p class="book-note">Sample form — connects to WhatsApp on order</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <p class="section-label">Why patients choose us</p>
+      <h2 class="section-title">Clean. Fast. Trusted.</h2>
+      <div class="svc-grid">
+        <div class="svc"><h3>On-time visits</h3><p>Appointments respected within 15 minutes.</p></div>
+        <div class="svc"><h3>Clean facilities</h3><p>Sanitized, organized, and welcoming.</p></div>
+        <div class="svc"><h3>24/7 pharmacy</h3><p>Medicines available when you need them.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Selam Health Center — a fictional concept sample</div>
+    <div>Sample address · Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mesob Nights — Traditional Ethiopian Restaurant (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional Ethiopian restaurant. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --charcoal:#14100c; --ember:#d95724; --gold:#d8a95c; --cream:#f3ead8; --cream-dim:#c8bda4; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Karla',sans-serif; background:var(--charcoal); color:var(--cream); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(20,16,12,.92); border-bottom:1px solid rgba(243,234,216,.12); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-family:'Bodoni Moda',serif; font-size:1.2rem; letter-spacing:.08em; color:var(--gold); }
+  .brand small { display:block; font-family:'Karla'; font-size:.6rem; letter-spacing:.3em; color:var(--cream-dim); }
+  nav { display:flex; gap:2rem; }
+  nav a { font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; color:var(--cream-dim); }
+  nav a:hover { color:var(--gold); }
+  .hero { min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.9) contrast(1.05); }
+  .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(to right,rgba(20,16,12,.94),rgba(20,16,12,.55) 55%,rgba(20,16,12,.3)); }
+  .hero-inner { position:relative; z-index:2; padding:8rem 0 10rem; max-width:44rem; margin-inline:auto; width:92%; }
+  .eyebrow { color:var(--gold); font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:1.4rem; }
+  h1 { font-family:'Bodoni Moda',serif; font-size:clamp(2.4rem,6vw,4rem); line-height:1.1; margin-bottom:1.4rem; }
+  .hero p { color:var(--cream-dim); font-size:1.05rem; max-width:32rem; margin-bottom:2.2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.95rem; padding:.9rem 1.9rem; border-radius:2px; border:1px solid transparent; }
+  .btn-solid { background:var(--ember); color:var(--charcoal); }
+  .btn-ghost { border-color:rgba(243,234,216,.25); }
+  section { padding:5.5rem 0; }
+  .section-label { color:var(--ember); font-size:.75rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; margin-bottom:.8rem; }
+  .section-title { font-family:'Bodoni Moda',serif; font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:.8rem; }
+  .menu { background:#1c1711; }
+  .dish-list { list-style:none; margin-top:2.5rem; border-top:1px solid rgba(243,234,216,.12); }
+  .dish-list li { padding:1.6rem 0; border-bottom:1px solid rgba(243,234,216,.12); }
+  .dish-row { display:flex; align-items:baseline; gap:1.2rem; margin-bottom:.4rem; }
+  .dish-num { font-family:'Bodoni Moda'; color:var(--ember); }
+  .dish-row h3 { font-family:'Bodoni Moda'; font-size:1.4rem; }
+  .dish-list p { color:var(--cream-dim); font-size:.95rem; max-width:36rem; }
+  .proof { background:#1c1711; }
+  .proof-list { list-style:none; margin-top:2rem; border-top:1px solid rgba(243,234,216,.12); }
+  .proof-list li { padding:1.4rem 0; border-bottom:1px solid rgba(243,234,216,.12); display:grid; grid-template-columns:220px 1fr; gap:2rem; }
+  .proof-src { font-family:'Bodoni Moda'; color:var(--gold); }
+  .proof-list p { color:var(--cream-dim); }
+  .visit { text-align:center; }
+  .visit .btn { margin:.5rem; }
+  footer { border-top:1px solid rgba(243,234,216,.12); padding:2.2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--cream-dim); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--gold); color:var(--charcoal); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
+  @media (max-width:700px){ .proof-list li{grid-template-columns:1fr;gap:.4rem;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">MESOB NIGHTS<small>ETHIOPIAN RESTAURANT · CONCEPT</small></a>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#proof">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img src="../img/restaurant.jpg" alt="" />
+    <div class="wrap hero-inner">
+      <p class="eyebrow">A Concept Sample · Addis Ababa</p>
+      <h1>Where Tradition<br />Meets the Table</h1>
+      <p>Injera fresh from the clay, stews slow-cooked the old way, and coffee poured at the end. A sample website for a fictional Ethiopian restaurant.</p>
+      <a class="btn btn-solid" href="#menu">See the Menu</a>
+      <a class="btn btn-ghost" href="#visit">Find Us</a>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <p class="section-label">What we serve</p>
+      <h2 class="section-title">From the Kitchen</h2>
+      <ol class="dish-list">
+        <li><div class="dish-row"><span class="dish-num">01</span><h3>Doro Wat</h3></div><p>Chicken slow-simmered in spiced red onions and berbere — Ethiopia's most beloved dish.</p></li>
+        <li><div class="dish-row"><span class="dish-num">02</span><h3>Kitfo</h3></div><p>Finely minced beef seasoned with mitmita and niter kibbeh, served with ayib.</p></li>
+        <li><div class="dish-row"><span class="dish-num">03</span><h3>Vegetarian Platter</h3></div><p>Shiro, misir, gomen and more, served on injera for sharing.</p></li>
+        <li><div class="dish-row"><span class="dish-num">04</span><h3>Jebena Coffee</h3></div><p>Roasted, ground and brewed at your table, the traditional way.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="proof" id="proof">
+    <div class="wrap">
+      <p class="section-label">Found on</p>
+      <h2 class="section-title">What People Say</h2>
+      <ul class="proof-list">
+        <li><span class="proof-src">The Addis Guide</span><p>"Warm, traditional, and generous — a taste of home in the city."</p></li>
+        <li><span class="proof-src">Local food blog</span><p>"The doro wat is worth the trip alone."</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <p class="section-label">Visit us</p>
+      <h2 class="section-title">Find the Table</h2>
+      <p style="color:var(--cream-dim);margin-bottom:1.5rem;">Sample address · Bole area, Addis Ababa (fictional)</p>
+      <div>
+        <a class="btn btn-solid" href="tel:+251900000000">Call 09 000 000 00</a>
+        <a class="btn btn-ghost" href="#top">Get Directions</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Mesob Nights — a fictional concept sample</div>
+    <div>Built as a sample — replace with real business info on order</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

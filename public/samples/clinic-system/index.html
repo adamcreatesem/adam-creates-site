@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selam Health System — Clinic Records &amp; Booking (Concept Demo)</title>
+<meta name="description" content="Interactive concept demo of a clinic management system: booking, patient records, reminders. Not a real system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f2f5f8; --panel:#ffffff; --ink:#15202b; --dim:#5c6b7a; --line:#dfe6ec; --teal:#0f766e; --teal-l:#0d9488; --warn:#b45309; --danger:#b91c1c; --gold:#b8860b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  .topbar { background:var(--ink); color:#fff; }
+  .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.9rem 0; }
+  .brand { font-weight:800; font-size:1.05rem; letter-spacing:-.01em; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.55rem; letter-spacing:.24em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
+  .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#cbd5e1; }
+
+  .layout { width:min(1200px,94%); margin:1.6rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.6rem; }
+  .sidebar { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:1rem; align-self:start; }
+  .side-item { display:flex; align-items:center; gap:.7rem; padding:.7rem .8rem; border-radius:8px; font-size:.85rem; color:var(--dim); cursor:pointer; margin-bottom:.2rem; }
+  .side-item:hover { background:var(--bg); }
+  .side-item.active { background:var(--teal); color:#fff; font-weight:600; }
+  .side-item .n { margin-left:auto; font-family:'JetBrains Mono'; font-size:.68rem; background:rgba(0,0,0,.08); padding:.1rem .45rem; border-radius:99px; }
+  .side-item.active .n { background:rgba(255,255,255,.25); }
+
+  .main { display:grid; gap:1.4rem; }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.2rem; }
+  .kpi b { font-size:1.55rem; font-weight:800; display:block; letter-spacing:-.02em; }
+  .kpi span { font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--dim); }
+  .kpi.warn b { color:var(--warn); }
+  .kpi.danger b { color:var(--danger); }
+
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.3rem; border-bottom:1px solid var(--line); }
+  .card-head h3 { font-size:.95rem; font-weight:700; }
+  .card-head .hint { font-size:.7rem; color:var(--dim); font-family:'JetBrains Mono'; }
+  .btn { display:inline-block; font-weight:600; font-size:.78rem; padding:.6rem 1.1rem; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer; }
+  .btn-teal { background:var(--teal); border-color:var(--teal); color:#fff; }
+  .btn-teal:hover { background:var(--teal-l); }
+  .btn-sm { padding:.4rem .8rem; font-size:.72rem; }
+
+  table { width:100%; border-collapse:collapse; font-size:.85rem; }
+  th { text-align:left; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); padding:.8rem 1.3rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  td { padding:.85rem 1.3rem; border-bottom:1px solid var(--line); }
+  tr:last-child td { border-bottom:none; }
+  .pill { display:inline-block; font-size:.66rem; font-weight:600; padding:.25rem .6rem; border-radius:99px; }
+  .pill.up { background:#e6f4f1; color:var(--teal); }
+  .pill.warn { background:#fdf0e0; color:var(--warn); }
+  .pill.danger { background:#fdeaea; color:var(--danger); }
+  .pill.soon { background:#eef2ff; color:#4338ca; }
+  .mono { font-family:'JetBrains Mono'; font-size:.78rem; }
+
+  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:.8rem; padding:1.3rem; }
+  .form-row label { display:block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; }
+  .form-row input, .form-row select { width:100%; padding:.7rem .8rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; }
+  .form-row input:focus, .form-row select:focus { outline:none; border-color:var(--teal); }
+  .form-actions { padding:0 1.3rem 1.3rem; display:flex; gap:.8rem; }
+
+  .note { font-size:.72rem; color:var(--dim); padding:1rem 1.3rem; background:var(--bg); border-top:1px solid var(--line); font-family:'JetBrains Mono'; }
+  footer { text-align:center; font-size:.7rem; color:var(--dim); padding:1.5rem 0; border-top:1px solid var(--line); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:900px) {
+    .layout { grid-template-columns:1fr; }
+    .kpis { grid-template-columns:repeat(2,1fr); }
+    .sidebar { display:flex; flex-wrap:wrap; gap:.3rem; }
+    .side-item { margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT DEMO — DATA RESETS · NOT A REAL SYSTEM</div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Selam Health Center <small>Management System · Concept Demo</small></div>
+    <div class="today" id="today"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-item active" data-view="today">📋 Today</div>
+    <div class="side-item" data-view="appointments">🗓 Appointments <span class="n" id="nAppts">0</span></div>
+    <div class="side-item" data-view="patients">👤 Patients <span class="n" id="nPatients">0</span></div>
+    <div class="side-item" data-view="reminders">🔔 Reminders <span class="n" id="nReminders">0</span></div>
+    <div class="side-item" data-view="stock">💊 Stock &amp; Expiry <span class="n" id="nExpiry">0</span></div>
+  </aside>
+
+  <div class="main">
+    <!-- KPIs -->
+    <div class="kpis">
+      <div class="kpi"><b id="kAppts">0</b><span>Appointments today</span></div>
+      <div class="kpi"><b id="kWait">0</b><span>Avg. wait (min)</span></div>
+      <div class="kpi warn"><b id="kDue">0</b><span>Follow-ups due</span></div>
+      <div class="kpi danger"><b id="kExp">0</b><span>Stock expiring ≤60d</span></div>
+    </div>
+
+    <!-- TODAY VIEW -->
+    <div class="card" id="view-today">
+      <div class="card-head"><h3>Today's Schedule</h3><span class="hint">Sample day · all demo data</span></div>
+      <table>
+        <thead><tr><th>Time</th><th>Patient</th><th>Reason</th><th>Status</th><th></th></tr></thead>
+        <tbody id="todayRows"></tbody>
+      </table>
+    </div>
+
+    <!-- APPOINTMENTS VIEW -->
+    <div class="card" id="view-appointments" hidden>
+      <div class="card-head"><h3>Appointments</h3><button class="btn btn-teal btn-sm" id="openBook">+ Book Appointment</button></div>
+      <div id="bookFormWrap"></div>
+      <table>
+        <thead><tr><th>Patient</th><th>Date</th><th>Reason</th><th>Status</th><th></th></tr></thead>
+        <tbody id="apptRows"></tbody>
+      </table>
+    </div>
+
+    <!-- PATIENTS VIEW -->
+    <div class="card" id="view-patients" hidden>
+      <div class="card-head"><h3>Patient Records</h3><span class="hint">Searchable · visit history per patient</span></div>
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Last Visit</th><th>Condition</th><th>Next Due</th></tr></thead>
+        <tbody id="patientRows"></tbody>
+      </table>
+    </div>
+
+    <!-- REMINDERS VIEW -->
+    <div class="card" id="view-reminders" hidden>
+      <div class="card-head"><h3>Reminders &amp; Follow-ups</h3><span class="hint">Auto-sent on WhatsApp in the real system</span></div>
+      <table>
+        <thead><tr><th>Patient</th><th>Reason</th><th>Due</th><th>Channel</th></tr></thead>
+        <tbody id="reminderRows"></tbody>
+      </table>
+    </div>
+
+    <!-- STOCK VIEW -->
+    <div class="card" id="view-stock" hidden>
+      <div class="card-head"><h3>Stock &amp; Expiry</h3><span class="hint">Expiry flags · reorder alerts</span></div>
+      <table>
+        <thead><tr><th>Item</th><th>Batch</th><th>Qty</th><th>Expires</th><th>Status</th></tr></thead>
+        <tbody id="stockRows"></tbody>
+      </table>
+    </div>
+
+    <div class="note">// Try it: click “Book Appointment”, fill the form, and watch it appear in Today & Appointments. All data is fictional and resets on reload.</div>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="year"></span> Selam Health Center — interactive concept demo</div>
+  <div>Fictional data · Not a real clinic or system</div>
+</footer>
+
+<script>
+  const yearEl = document.getElementById('year');
+  yearEl.textContent = new Date().getFullYear();
+  document.getElementById('today').textContent = new Date().toDateString();
+
+  // ---------- DEMO DATA ----------
+  const PATIENTS = [
+    { id:'P-1001', name:'Almaz Kebede', last:'02 Aug 2026', cond:'Hypertension', next:'16 Sep 2026' },
+    { id:'P-1002', name:'Dawit Haile', last:'28 Jul 2026', cond:'Diabetes (T2)', next:'12 Sep 2026' },
+    { id:'P-1003', name:'Hana Girma', last:'11 Aug 2026', cond:'Prenatal — 3rd tri', next:'25 Aug 2026' },
+    { id:'P-1004', name:'Yonas Tadesse', last:'05 Aug 2026', cond:'Post-op check', next:'19 Aug 2026' },
+    { id:'P-1005', name:'Sara Mohammed', last:'30 Jul 2026', cond:'Asthma', next:'10 Sep 2026' },
+  ];
+  const APPOINTMENTS = [
+    { patient:'Almaz Kebede', date:'2026-08-16', time:'09:00', reason:'BP check', status:'confirmed' },
+    { patient:'Hana Girma', date:'2026-08-16', time:'10:30', reason:'Prenatal visit', status:'confirmed' },
+    { patient:'Yonas Tadesse', date:'2026-08-16', time:'11:15', reason:'Stitch review', status:'confirmed' },
+    { patient:'Dawit Haile', date:'2026-08-16', time:'14:00', reason:'Blood sugar follow-up', status:'pending' },
+    { patient:'Sara Mohammed', date:'2026-08-16', time:'15:30', reason:'Inhaler review', status:'pending' },
+    { patient:'Aster Bekele', date:'2026-08-16', time:'16:45', reason:'New patient intake', status:'pending' },
+  ];
+  const REMINDERS = [
+    { patient:'Almaz Kebede', reason:'Medication refill due', due:'Tomorrow', channel:'WhatsApp ✓' },
+    { patient:'Hana Girma', reason:'Prenatal appointment', due:'In 9 days', channel:'WhatsApp ✓' },
+    { patient:'Yonas Tadesse', reason:'Post-op check-up', due:'In 3 days', channel:'SMS ✓' },
+    { patient:'Dawit Haile', reason:'Blood sugar follow-up', due:'Today', channel:'WhatsApp ✓' },
+  ];
+  const STOCK = [
+    { item:'Amlodipine 5mg', batch:'B-2208', qty:120, exp:'14 Oct 2026', status:'ok' },
+    { item:'Metformin 500mg', batch:'B-2211', qty:80, exp:'02 Sep 2026', status:'soon' },
+    { item:'Salbutamol inhaler', batch:'B-2203', qty:15, exp:'28 Aug 2026', status:'danger' },
+    { item:'Paracetamol 500mg', batch:'B-2215', qty:400, exp:'20 Jan 2027', status:'ok' },
+    { item:'Insulin (vials)', batch:'B-2209', qty:22, exp:'18 Oct 2026', status:'ok' },
+    { item:'ORS sachets', batch:'B-2218', qty:50, exp:'05 Sep 2026', status:'soon' },
+  ];
+
+  // ---------- RENDER ----------
+  const pill = s => s === 'ok' ? '<span class="pill up">OK</span>'
+    : s === 'soon' ? '<span class="pill soon">Expires ≤60d</span>'
+    : s === 'danger' ? '<span class="pill danger">Expiring soon</span>'
+    : s === 'confirmed' ? '<span class="pill up">Confirmed</span>'
+    : '<span class="pill warn">Pending</span>';
+
+  function renderToday() {
+    const rows = APPOINTMENTS.filter(a => a.status === 'confirmed' || a.status === 'pending')
+      .map(a => `<tr><td class="mono">${a.time}</td><td><b>${a.patient}</b></td><td>${a.reason}</td><td>${pill(a.status)}</td><td><button class="btn btn-sm" onclick="toggleStatus('${a.patient}')">${a.status === 'confirmed' ? 'Check in' : 'Confirm'}</button></td></tr>`)
+      .join('');
+    document.getElementById('todayRows').innerHTML = rows;
+    document.getElementById('kAppts').textContent = APPOINTMENTS.length;
+    document.getElementById('kWait').textContent = '42';
+  }
+  function toggleStatus(name) {
+    const a = APPOINTMENTS.find(x => x.patient === name);
+    if (a) a.status = a.status === 'confirmed' ? 'done' : 'confirmed';
+    renderAll();
+  }
+
+  function renderAppointments() {
+    document.getElementById('apptRows').innerHTML = APPOINTMENTS.map(a =>
+      `<tr><td><b>${a.patient}</b></td><td class="mono">${a.date} · ${a.time}</td><td>${a.reason}</td><td>${pill(a.status)}</td><td><button class="btn btn-sm" onclick="toggleStatus('${a.patient}')">${a.status === 'confirmed' ? 'Done' : 'Confirm'}</button></td></tr>`).join('');
+    document.getElementById('nAppts').textContent = APPOINTMENTS.length;
+  }
+
+  function renderPatients() {
+    document.getElementById('patientRows').innerHTML = PATIENTS.map(p =>
+      `<tr><td class="mono">${p.id}</td><td><b>${p.name}</b></td><td>${p.last}</td><td>${p.cond}</td><td>${p.next}</td></tr>`).join('');
+    document.getElementById('nPatients').textContent = PATIENTS.length;
+  }
+
+  function renderReminders() {
+    document.getElementById('reminderRows').innerHTML = REMINDERS.map(r =>
+      `<tr><td><b>${r.patient}</b></td><td>${r.reason}</td><td>${r.due}</td><td>${r.channel}</td></tr>`).join('');
+    document.getElementById('nReminders').textContent = REMINDERS.length;
+    document.getElementById('kDue').textContent = REMINDERS.length;
+  }
+
+  function renderStock() {
+    document.getElementById('stockRows').innerHTML = STOCK.map(s =>
+      `<tr><td><b>${s.item}</b></td><td class="mono">${s.batch}</td><td class="mono">${s.qty}</td><td>${s.exp}</td><td>${pill(s.status)}</td></tr>`).join('');
+    const exp = STOCK.filter(s => s.status !== 'ok').length;
+    document.getElementById('nExpiry').textContent = exp;
+    document.getElementById('kExp').textContent = exp;
+  }
+
+  function renderAll() { renderToday(); renderAppointments(); renderPatients(); renderReminders(); renderStock(); }
+
+  // ---------- BOOKING FORM ----------
+  document.getElementById('openBook').addEventListener('click', () => {
+    const wrap = document.getElementById('bookFormWrap');
+    wrap.innerHTML = `
+      <div class="form-row">
+        <div><label>Patient name</label><input id="fName" placeholder="e.g. Aster Bekele" /></div>
+        <div><label>Date</label><input id="fDate" type="date" value="2026-08-16" /></div>
+        <div><label>Time</label><select id="fTime"><option>09:00</option><option>10:00</option><option>11:00</option><option>14:00</option><option>15:00</option><option>16:00</option></select></div>
+        <div><label>Reason</label><input id="fReason" placeholder="e.g. New patient intake" /></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-teal" id="saveBook">Save Appointment</button>
+        <button class="btn" id="cancelBook">Cancel</button>
+      </div>`;
+    document.getElementById('cancelBook').addEventListener('click', () => wrap.innerHTML = '');
+    document.getElementById('saveBook').addEventListener('click', () => {
+      const name = document.getElementById('fName').value.trim() || 'New Patient';
+      const date = document.getElementById('fDate').value;
+      const time = document.getElementById('fTime').value;
+      const reason = document.getElementById('fReason').value.trim() || 'General consult';
+      APPOINTMENTS.unshift({ patient: name, date, time, reason, status: 'confirmed' });
+      wrap.innerHTML = `<div class="note" style="border:none; background:transparent; color:var(--teal);">✓ Booked — ${name} · ${date} ${time}. It's now in Today and Appointments above.</div>`;
+      renderAll();
+    });
+  });
+
+  // ---------- VIEW SWITCHING ----------
+  const views = ['today', 'appointments', 'patients', 'reminders', 'stock'];
+  document.querySelectorAll('.side-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.side-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      views.forEach(v => document.getElementById('view-' + v).hidden = v !== item.dataset.view);
+    });
+  });
+
+  renderAll();
+</script>
+</body>
+</html>

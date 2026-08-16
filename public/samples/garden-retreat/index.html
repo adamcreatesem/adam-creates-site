@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tana Gardens — Courtyard Retreat (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional garden retreat. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --botanical:#1f3d2c; --botanical-deep:#162c1f; --parchment:#f6f0e4; --terracotta:#c1703f; --ink:#2b332c; --ink-soft:#5c665e; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Karla',sans-serif; background:var(--parchment); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(246,240,228,.95); border-bottom:1px solid rgba(31,61,44,.15); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-size:1.05rem; font-weight:500; }
+  .brand em { font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem; font-style:italic; }
+  nav { display:flex; gap:2rem; }
+  nav a { font-size:.9rem; font-weight:500; color:var(--ink-soft); }
+  nav a:hover { color:var(--botanical); }
+  .hero { padding:9rem 0 5rem; position:relative; overflow:hidden; background:radial-gradient(ellipse 50% 40% at 85% 10%,rgba(193,112,63,.14),transparent 60%),var(--parchment); }
+  .hero-inner { display:grid; grid-template-columns:1.1fr .9fr; gap:4rem; align-items:center; }
+  .eyebrow { font-size:.8rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); margin-bottom:1.2rem; }
+  h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:500; line-height:1.15; margin-bottom:1.2rem; }
+  h1 em { font-style:italic; color:var(--botanical); }
+  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:600; font-size:.9rem; padding:.9rem 1.7rem; border-radius:30px; border:1px solid transparent; }
+  .btn-solid { background:var(--botanical); color:var(--parchment); }
+  .btn-ghost { border-color:var(--botanical); color:var(--botanical); }
+  .arch-frame { border-radius:50% 50% 6px 6px; overflow:hidden; border:1px solid rgba(31,61,44,.2); }
+  .arch-frame img { width:100%; aspect-ratio:3/4; object-fit:cover; }
+  .arch-caption { text-align:center; font-size:.8rem; color:var(--ink-soft); margin-top:.8rem; font-style:italic; }
+  section { padding:5rem 0; }
+  .section-label { font-size:.8rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); margin-bottom:.8rem; }
+  .section-title { font-family:'Fraunces',serif; font-size:clamp(1.7rem,3.5vw,2.4rem); font-weight:500; margin-bottom:.8rem; }
+  .section-note { color:var(--ink-soft); max-width:34rem; }
+  .room-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:2rem; }
+  .room { border:1px solid rgba(31,61,44,.18); border-radius:12px; overflow:hidden; background:var(--parchment); }
+  .room img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+  .room-body { padding:1.2rem 1.2rem 1.4rem; }
+  .room-body h3 { font-family:'Fraunces',serif; font-weight:600; font-size:1.2rem; margin-bottom:.3rem; }
+  .room-body p { color:var(--ink-soft); font-size:.9rem; margin-bottom:.7rem; }
+  .room-tag { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--terracotta); }
+  .garden-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .garden-list { list-style:none; margin-top:1.4rem; display:grid; gap:.7rem; }
+  .garden-list li { display:flex; gap:.6rem; color:var(--ink-soft); font-size:.95rem; }
+  .g-dot { width:8px; height:8px; background:var(--terracotta); border-radius:50%; margin-top:.55rem; flex-shrink:0; }
+  footer { border-top:1px solid rgba(31,61,44,.15); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--terracotta); color:var(--parchment); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .room-grid{grid-template-columns:1fr;} .garden-inner{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top"><span style="font-size:1.2rem;">🌿</span> <em>Tana</em> Gardens</a>
+    <nav>
+      <a href="#rooms">Rooms</a>
+      <a href="#garden">The Garden</a>
+      <a href="#location">Location</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A quiet haven · concept sample · 5 min from the airport</p>
+        <h1>Find Your <em>Quiet Haven</em> in the Garden</h1>
+        <p class="hero-sub">A white house with palm trees, an inner courtyard, and rooms that open onto green. A sample of what a garden retreat site could be.</p>
+        <div>
+          <a class="btn btn-solid" href="#rooms">See the Rooms</a>
+          <a class="btn btn-ghost" href="#garden">The Garden</a>
+        </div>
+      </div>
+      <div class="arch-frame">
+        <img src="../img/garden.jpg" alt="Garden at the sample retreat" />
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="wrap">
+      <p class="section-label">Where you stay</p>
+      <h2 class="section-title">Simple Rooms, Restful Nights</h2>
+      <p class="section-note">Fifteen guestrooms with private bathrooms — quiet, clean, and calm.</p>
+      <div class="room-grid">
+        <article class="room">
+          <img src="../img/hotel-room.jpg" alt="A sample room" />
+          <div class="room-body">
+            <h3>Garden-View Room</h3>
+            <p>Wake up to the courtyard garden from a bright, simple room.</p>
+            <span class="room-tag">Sample · most requested</span>
+          </div>
+        </article>
+        <article class="room">
+          <img src="../img/garden.jpg" alt="The garden" />
+          <div class="room-body">
+            <h3>Courtyard Room</h3>
+            <p>Open straight onto the garden with a private seating corner.</p>
+            <span class="room-tag">Sample · quiet</span>
+          </div>
+        </article>
+        <article class="room">
+          <img src="../img/hotel-room.jpg" alt="A sample room" />
+          <div class="room-body">
+            <h3>Authentic Breakfast</h3>
+            <p>Jebena coffee and a proper breakfast served in the garden.</p>
+            <span class="room-tag">Sample · included</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="garden" id="garden" style="background:var(--botanical-deep);color:var(--parchment);">
+    <div class="wrap garden-inner">
+      <div>
+        <p class="section-label" style="color:var(--terracotta);">The garden</p>
+        <h2 class="section-title" style="color:var(--parchment);">A Courtyard Made for Slowing Down</h2>
+        <p style="color:rgba(246,240,228,.8);">The heart of the sample is its inner courtyard — a shaded garden with a picnic area and the quiet hum of leaves. Coffee in the morning, breeze in the evening.</p>
+        <ul class="garden-list">
+          <li><span class="g-dot"></span>Free on-site private parking</li>
+          <li><span class="g-dot"></span>Free WiFi throughout</li>
+          <li><span class="g-dot"></span>Shared kitchen and picnic area</li>
+          <li><span class="g-dot"></span>Airport shuttle on request</li>
+        </ul>
+      </div>
+      <div class="arch-frame">
+        <img src="../img/garden.jpg" alt="The courtyard garden" />
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="wrap">
+      <p class="section-label">Find us</p>
+      <h2 class="section-title">In Yeka, Near the Airport</h2>
+      <p class="section-note">Sample address · Kenenisa Avenue, Yeka, Addis Ababa (fictional) — five minutes from the airport.</p>
+      <div style="margin-top:1.6rem;">
+        <a class="btn btn-solid" href="#top">Get Directions</a>
+        <a class="btn btn-ghost" href="#top">Check Availability</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Tana Gardens — a fictional concept sample</div>
+    <div>Built as a sample — replace with real business info on order</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

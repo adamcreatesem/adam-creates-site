@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Saba Lodge — Direct-Booking Guest House (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional guest house. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --concrete:#e9e7e2; --paper:#f4f2ee; --ink:#16181b; --ink-soft:#4a4e54; --orange:#ff4d00; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Archivo',sans-serif; background:var(--paper); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(244,242,238,.95); border-bottom:1px solid rgba(22,24,27,.16); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-weight:900; font-size:1.3rem; letter-spacing:.06em; }
+  .brand em { color:var(--orange); font-style:normal; }
+  .brand small { display:block; font-family:'Space Mono'; font-size:.58rem; letter-spacing:.16em; color:var(--ink-soft); font-weight:400; }
+  nav { display:flex; gap:2rem; }
+  nav a { font-family:'Space Mono'; font-size:.78rem; letter-spacing:.06em; color:var(--ink-soft); }
+  nav a:hover { color:var(--orange); }
+  .hero { display:grid; grid-template-columns:1.15fr 1fr; min-height:100vh; }
+  .hero-side-left { display:flex; align-items:center; background:linear-gradient(90deg,rgba(22,24,27,.035) 1px,transparent 1px) 0 0/48px 48px,var(--paper); }
+  .hero-inner { padding:8rem 0 6rem; }
+  .eyebrow { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.18em; color:var(--orange); margin-bottom:1.2rem; }
+  h1 { font-size:clamp(2.2rem,5vw,3.6rem); font-weight:900; line-height:1.05; margin-bottom:1.2rem; }
+  h1 em { color:var(--orange); font-style:normal; }
+  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2.2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.9rem 1.7rem; border-radius:2px; border:2px solid transparent; }
+  .btn-solid { background:var(--orange); color:var(--paper); }
+  .btn-ghost { border-color:rgba(22,24,27,.3); }
+  .hero-side-right { position:relative; }
+  .hero-side-right img { width:100%; height:100%; object-fit:cover; }
+  section { padding:5rem 0; }
+  .section-label { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.18em; color:var(--orange); margin-bottom:.8rem; }
+  .section-title { font-size:clamp(1.7rem,3.5vw,2.5rem); font-weight:900; margin-bottom:.8rem; }
+  .room-list { display:grid; gap:2rem; margin-top:2.4rem; }
+  .room { display:grid; grid-template-columns:64px 1fr; gap:1.6rem; border-top:1px solid rgba(22,24,27,.16); padding-top:1.6rem; }
+  .room-index { font-family:'Space Mono'; font-size:1.3rem; color:var(--orange); }
+  .room h3 { font-size:1.2rem; font-weight:900; }
+  .room p { color:var(--ink-soft); font-size:.95rem; margin:.3rem 0 .6rem; }
+  .room-tag { font-family:'Space Mono'; font-size:.66rem; letter-spacing:.12em; color:var(--orange); border:1px solid rgba(255,77,0,.4); padding:.25rem .6rem; border-radius:2px; }
+  .amenity-list { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem 2rem; margin-top:1.6rem; }
+  .amenity-list li { display:flex; gap:.6rem; font-size:.95rem; color:var(--ink-soft); }
+  .am-dot { width:8px; height:8px; background:var(--orange); border-radius:50%; margin-top:.55rem; flex-shrink:0; }
+  .cta-band { background:var(--ink); color:var(--paper); }
+  .cta-band .wrap { display:flex; justify-content:space-between; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+  .cta-band .btn-solid { background:var(--orange); color:var(--paper); }
+  .cta-band .btn-ghost { border-color:rgba(244,242,238,.4); color:var(--paper); }
+  footer { border-top:1px solid rgba(22,24,27,.16); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--orange); color:var(--paper); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
+  @media (max-width:800px){ .hero{grid-template-columns:1fr;} .hero-side-right{display:none;} .room{grid-template-columns:1fr;} .amenity-list{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">SABA<em>.</em><small>GUEST HOUSE · BOLE · CONCEPT</small></a>
+    <nav>
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#book">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-side-left">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">EST. 2026 · BOLE · CONCEPT SAMPLE</p>
+        <h1>Comfort,<br /><em>Done Properly.</em></h1>
+        <p class="hero-sub">A fictional guest house in the heart of Bole. City-view rooms, direct booking on WhatsApp, and no booking-site commission.</p>
+        <div>
+          <a class="btn btn-solid" href="#book">Book Direct on WhatsApp</a>
+          <a class="btn btn-ghost" href="#rooms">See the Rooms</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-side-right" aria-hidden="true">
+      <img src="../img/hotel-ext.jpg" alt="" />
+    </div>
+  </section>
+
+  <section id="rooms">
+    <div class="wrap">
+      <p class="section-label">/ ROOMS</p>
+      <h2 class="section-title">Where You Sleep</h2>
+      <div class="room-list">
+        <article class="room">
+          <div class="room-index">01</div>
+          <div>
+            <h3>Standard Double</h3>
+            <p>Private bathroom, city view, work desk — everything for a clean, quiet stay.</p>
+            <span class="room-tag">SAMPLE · 1,800 ETB</span>
+          </div>
+        </article>
+        <article class="room">
+          <div class="room-index">02</div>
+          <div>
+            <h3>Deluxe + Balcony</h3>
+            <p>A walk-out balcony with city views and sliding glass doors that open wide.</p>
+            <span class="room-tag">SAMPLE · 2,400 ETB</span>
+          </div>
+        </article>
+        <article class="room">
+          <div class="room-index">03</div>
+          <div>
+            <h3>Full Board</h3>
+            <p>Breakfast included and meals whenever you need them — eat on site.</p>
+            <span class="room-tag">SAMPLE · ADD-ON</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="amenities" id="amenities" style="background:var(--concrete);">
+    <div class="wrap">
+      <p class="section-label">/ AMENITIES</p>
+      <h2 class="section-title">The Small Things, Handled</h2>
+      <ul class="amenity-list">
+        <li><span class="am-dot"></span>Free high-speed WiFi in every room</li>
+        <li><span class="am-dot"></span>Free on-site parking</li>
+        <li><span class="am-dot"></span>Airport shuttle on request</li>
+        <li><span class="am-dot"></span>24/7 front desk</li>
+        <li><span class="am-dot"></span>Laundry service</li>
+        <li><span class="am-dot"></span>Multilingual staff</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-band" id="book">
+    <div class="wrap" style="padding:4.5rem 0;">
+      <div>
+        <p class="section-label" style="color:var(--orange);">/ BOOK DIRECT</p>
+        <h2 class="section-title" style="color:var(--paper);">No middleman, no commission</h2>
+        <p style="color:rgba(244,242,238,.75);max-width:34rem;">Book straight on WhatsApp — the sample proves the flow. Replace the number with a real one on order.</p>
+      </div>
+      <div>
+        <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20book%20a%20room." target="_blank" rel="noopener">Book on WhatsApp</a>
+        <a class="btn btn-ghost" href="#top">Get Directions</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Saba Guest House — a fictional concept sample</div>
+    <div>Sample address · Bole, Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bright Future Academy — School Website (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional school. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#14213d; --navy-2:#0d1628; --gold:#d8a95c; --ivory:#faf6ee; --ink:#1c2330; --ink-soft:#5a6472; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Karla',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(250,246,238,.96); border-bottom:1px solid rgba(20,33,61,.15); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { display:flex; align-items:center; gap:.7rem; font-family:'Source Serif 4',serif; font-weight:600; font-size:1.1rem; color:var(--navy); }
+  .brand-mark { width:34px; height:34px; border:2px solid var(--gold); display:grid; place-items:center; border-radius:50%; font-size:.8rem; color:var(--navy); }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-size:.88rem; font-weight:600; color:var(--ink-soft); }
+  nav a:hover { color:var(--navy); }
+  .hero { padding:9rem 0 5rem; background:var(--navy); color:var(--ivory); position:relative; overflow:hidden; }
+  .hero::before { content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(250,246,238,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(250,246,238,.05) 1px,transparent 1px); background-size:40px 40px; }
+  .hero-inner { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; }
+  h1 { font-family:'Source Serif 4',serif; font-size:clamp(2rem,4.5vw,3.2rem); font-weight:600; line-height:1.15; margin-bottom:1.2rem; }
+  .hero-sub { color:rgba(250,246,238,.8); max-width:30rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.9rem 1.7rem; border-radius:2px; border:1px solid transparent; }
+  .btn-solid { background:var(--gold); color:var(--navy); }
+  .btn-ghost { border-color:rgba(250,246,238,.4); color:var(--ivory); }
+  .hero-fig { border:1px solid rgba(218,169,92,.4); padding:6px; }
+  .hero-fig img { aspect-ratio:4/3; object-fit:cover; width:100%; }
+  section { padding:5rem 0; }
+  .section-label { font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; }
+  .section-title { font-family:'Source Serif 4',serif; font-size:clamp(1.7rem,3.5vw,2.4rem); font-weight:600; color:var(--navy); margin-bottom:.8rem; }
+  .section-note { color:var(--ink-soft); max-width:34rem; }
+  .prog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
+  .prog { border:2px solid var(--navy); box-shadow:4px 4px 0 var(--navy); background:var(--ivory); padding:1.4rem; }
+  .prog-num { font-family:'Source Serif 4'; color:var(--gold); font-size:1.1rem; }
+  .prog h3 { font-family:'Source Serif 4'; font-weight:600; margin:.3rem 0 .4rem; color:var(--navy); }
+  .prog p { color:var(--ink-soft); font-size:.9rem; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
+  .stat { text-align:center; border:2px solid var(--navy); background:var(--ivory); padding:1.6rem 1rem; box-shadow:4px 4px 0 var(--navy); }
+  .stat b { display:block; font-family:'Source Serif 4'; font-size:2rem; color:var(--navy); }
+  .stat span { font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
+  .enroll { background:var(--navy); color:var(--ivory); }
+  .enroll .wrap { text-align:center; padding:1rem 0; }
+  .enroll h2 { color:var(--ivory); }
+  .enroll p { color:rgba(250,246,238,.8); max-width:34rem; margin:0 auto 1.6rem; }
+  footer { border-top:1px solid rgba(20,33,61,.15); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--gold); color:var(--navy); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .prog-grid{grid-template-columns:1fr;} .stats{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top"><span class="brand-mark">★</span> Bright Future Academy</a>
+    <nav>
+      <a href="#programs">Programs</a>
+      <a href="#about">About</a>
+      <a href="#enroll">Enroll</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample school · Addis Ababa</p>
+        <h1>Where Bright Futures Begin</h1>
+        <p class="hero-sub">A sample website for a fictional school — showing how enrollment, credibility, and programs come together to earn parents' trust.</p>
+        <div>
+          <a class="btn btn-solid" href="#enroll">Enroll Now</a>
+          <a class="btn btn-ghost" href="#programs">Our Programs</a>
+        </div>
+      </div>
+      <div class="hero-fig">
+        <img src="../img/school.jpg" alt="Students at the sample school" />
+      </div>
+    </div>
+  </section>
+
+  <section id="programs">
+    <div class="wrap">
+      <p class="section-label">Academics</p>
+      <h2 class="section-title">Programs That Grow With Them</h2>
+      <p class="section-note">Kindergarten through grade 12 — a balanced, modern curriculum in a structured environment.</p>
+      <div class="prog-grid">
+        <div class="prog"><span class="prog-num">01</span><h3>Kindergarten</h3><p>Play-based learning that builds curiosity, confidence, and routine.</p></div>
+        <div class="prog"><span class="prog-num">02</span><h3>Primary</h3><p>Strong foundations in reading, math, and science — with daily practice.</p></div>
+        <div class="prog"><span class="prog-num">03</span><h3>Secondary</h3><p>College-prep focus with national exam support and guidance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="background:#efe9db;">
+    <div class="wrap">
+      <p class="section-label">Why parents choose us</p>
+      <h2 class="section-title">The Numbers Speak</h2>
+      <div class="stats">
+        <div class="stat"><b>15:1</b><span>Student–teacher ratio</span></div>
+        <div class="stat"><b>97%</b><span>Exam pass rate</span></div>
+        <div class="stat"><b>2,000+</b><span>Alumni</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="enroll" id="enroll">
+    <div class="wrap">
+      <p class="section-label" style="color:var(--gold);">Admissions</p>
+      <h2 class="section-title">Enrollment Open</h2>
+      <p>Inquiries arrive organized on this sample — real enrollment forms connect to WhatsApp or email on order.</p>
+      <a class="btn btn-solid" href="#top">Request Enrollment Info</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Bright Future Academy — a fictional concept sample</div>
+    <div>Sample address · Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Volt Gym — Train Hard (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional gym. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --black:#0a0a0a; --black-2:#161616; --volt:#ccff00; --white:#f2f2f0; --dim:#8a8a85; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Space Mono',monospace; background:var(--black); color:var(--white); line-height:1.5; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1100px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(10,10,10,.97); border-bottom:3px solid var(--volt); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.8rem; }
+  .brand { font-family:'Archivo Black'; font-size:1.2rem; letter-spacing:.04em; color:var(--volt); }
+  .brand small { display:block; font-family:'Space Mono'; font-size:.56rem; letter-spacing:.28em; color:var(--dim); }
+  nav { display:flex; gap:1.6rem; }
+  nav a { font-size:.72rem; font-weight:700; letter-spacing:.14em; color:var(--dim); text-transform:uppercase; }
+  nav a:hover { color:var(--volt); }
+  .hero { padding:8.5rem 0 4rem; position:relative; overflow:hidden; border-bottom:3px solid var(--volt); }
+  .hero::before { content:""; position:absolute; top:-60px; right:-80px; width:380px; height:380px; background:var(--volt); transform:rotate(24deg); opacity:.08; }
+  .hero-inner { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .kicker { font-size:.68rem; font-weight:700; letter-spacing:.28em; color:var(--volt); margin-bottom:1rem; text-transform:uppercase; }
+  h1 { font-family:'Archivo Black'; font-size:clamp(2.4rem,6vw,4.2rem); font-weight:400; line-height:.95; letter-spacing:-.01em; text-transform:uppercase; margin-bottom:1.2rem; }
+  h1 span { color:var(--volt); }
+  .hero-sub { color:var(--dim); max-width:30rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-family:'Space Mono'; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; padding:.95rem 1.8rem; border:3px solid var(--volt); color:var(--volt); clip-path:polygon(0 0,100% 0,96% 100%,4% 100%); }
+  .btn-solid { background:var(--volt); color:var(--black); }
+  .btn-ghost { background:transparent; color:var(--volt); }
+  .btn-solid:hover { background:var(--white); border-color:var(--white); }
+  .btn-ghost:hover { background:var(--volt); color:var(--black); }
+  .hero-img { position:relative; }
+  .hero-img img { width:100%; aspect-ratio:4/5; object-fit:cover; clip-path:polygon(0 0,100% 6%,94% 100%,6% 94%); }
+  .hero-tag { position:absolute; top:12px; left:-6px; background:var(--volt); color:var(--black); font-family:'Archivo Black'; font-size:.7rem; padding:.4rem .8rem; transform:rotate(-3deg); }
+  section { padding:4.5rem 0; }
+  .section-label { font-size:.66rem; font-weight:700; letter-spacing:.28em; color:var(--volt); margin-bottom:.8rem; text-transform:uppercase; }
+  .section-title { font-family:'Archivo Black'; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:400; text-transform:uppercase; line-height:1; margin-bottom:.7rem; }
+  .section-note { color:var(--dim); max-width:36rem; }
+  .class-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.2rem; }
+  .cls { border:2px solid #2a2a2a; padding:1.4rem; position:relative; background:var(--black-2); }
+  .cls::after { content:""; position:absolute; inset:auto 0 0 0; height:6px; background:var(--volt); clip-path:polygon(0 0,100% 0,94% 100%,6% 100%); }
+  .cls-num { font-family:'Archivo Black'; font-size:1.4rem; color:var(--dim); }
+  .cls h3 { font-family:'Archivo Black'; font-weight:400; font-size:1.1rem; text-transform:uppercase; margin:.3rem 0 .4rem; }
+  .cls p { color:var(--dim); font-size:.82rem; }
+  .cls-time { display:block; margin-top:.7rem; font-size:.7rem; color:var(--volt); letter-spacing:.1em; }
+  .plan-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.2rem; }
+  .plan { border:2px solid #2a2a2a; padding:1.6rem 1.4rem; background:var(--black-2); }
+  .plan.popular { border-color:var(--volt); position:relative; }
+  .plan.popular::before { content:"MOST POPULAR"; position:absolute; top:-10px; left:12px; background:var(--volt); color:var(--black); font-size:.6rem; font-weight:700; letter-spacing:.12em; padding:.25rem .5rem; }
+  .plan h3 { font-family:'Archivo Black'; font-weight:400; text-transform:uppercase; font-size:1rem; }
+  .plan .price { font-family:'Archivo Black'; font-size:1.8rem; margin:.6rem 0 .8rem; color:var(--white); }
+  .plan .price small { font-size:.7rem; color:var(--dim); font-family:'Space Mono'; }
+  .plan ul { list-style:none; display:grid; gap:.5rem; }
+  .plan li { font-size:.78rem; color:var(--dim); display:flex; gap:.5rem; }
+  .plan li::before { content:"+"; color:var(--volt); }
+  .plan .btn { width:100%; margin-top:1.2rem; text-align:center; font-size:.7rem; padding:.8rem; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2rem; border-top:3px solid var(--volt); padding-top:2rem; }
+  .stat b { display:block; font-family:'Archivo Black'; font-size:2rem; color:var(--volt); }
+  .stat span { font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
+  .cta { border-top:3px solid var(--volt); background:var(--volt); color:var(--black); }
+  .cta .wrap { text-align:center; padding:1rem 0; }
+  .cta h2 { color:var(--black); }
+  .cta p { color:rgba(10,10,10,.7); max-width:34rem; margin:0 auto 1.6rem; }
+  .cta .btn-solid { background:var(--black); border-color:var(--black); color:var(--volt); }
+  .cta .btn-ghost { border-color:var(--black); color:var(--black); }
+  footer { border-top:3px solid var(--volt); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--dim); font-size:.78rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--volt); color:var(--black); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; clip-path:polygon(0 0,100% 0,96% 100%,4% 100%); }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .class-grid{grid-template-columns:1fr;} .plan-grid{grid-template-columns:1fr;} .stats{grid-template-columns:repeat(2,1fr);} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">VOLT<small>GYM &amp; FITNESS · CONCEPT SAMPLE</small></a>
+    <nav>
+      <a href="#classes">Classes</a>
+      <a href="#plans">Plans</a>
+      <a href="#join">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="kicker">A concept sample gym</p>
+        <h1>Train<br /><span>Harder.</span></h1>
+        <p class="hero-sub">Classes booked online, memberships tracked, no-shows reminded. A sample for a fictional gym in Addis Ababa.</p>
+        <div>
+          <a class="btn btn-solid" href="#plans">Join Now</a>
+          <a class="btn btn-ghost" href="#classes">See Classes</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="../img/gym.jpg" alt="Gym sample" />
+        <span class="hero-tag">NO EXCUSES</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="classes">
+    <div class="wrap">
+      <p class="section-label">Classes</p>
+      <h2 class="section-title">Book Your Slot</h2>
+      <p class="section-note">Sample schedule — real classes and times go in on order.</p>
+      <div class="class-grid">
+        <div class="cls"><span class="cls-num">01</span><h3>Strength</h3><p>Barbell work, progressive overload.</p><span class="cls-time">MON · WED · 6:00</span></div>
+        <div class="cls"><span class="cls-num">02</span><h3>HIIT</h3><p>High intensity, short bursts.</p><span class="cls-time">TUE · THU · 18:00</span></div>
+        <div class="cls"><span class="cls-num">03</span><h3>Spin</h3><p>Cardio on the bike, music loud.</p><span class="cls-time">FRI · 17:00</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans" style="background:var(--black-2);">
+    <div class="wrap">
+      <p class="section-label">Membership</p>
+      <h2 class="section-title">Pick Your Plan</h2>
+      <div class="plan-grid">
+        <div class="plan">
+          <h3>Day Pass</h3>
+          <div class="price">250 <small>ETB</small></div>
+          <ul><li>Full gym access</li><li>One class</li></ul>
+          <a class="btn btn-ghost" href="#join">Start</a>
+        </div>
+        <div class="plan popular">
+          <h3>Monthly</h3>
+          <div class="price">2,500 <small>ETB</small></div>
+          <ul><li>Unlimited classes</li><li>Free guest day</li><li>Progress tracking</li></ul>
+          <a class="btn btn-solid" href="#join">Join</a>
+        </div>
+        <div class="plan">
+          <h3>Annual</h3>
+          <div class="price">24,000 <small>ETB</small></div>
+          <ul><li>Everything in monthly</li><li>2 months free</li><li>Personal session</li></ul>
+          <a class="btn btn-ghost" href="#join">Commit</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>1,200+</b><span>Members</span></div>
+        <div class="stat"><b>14</b><span>Coaches</span></div>
+        <div class="stat"><b>5:30</b><span>Opens</span></div>
+        <div class="stat"><b>22:00</b><span>Closes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="join">
+    <div class="wrap">
+      <p class="section-label" style="color:var(--black);">Start today</p>
+      <h2 class="section-title">First Session Free</h2>
+      <p>Membership inquiries land on WhatsApp — sample flow, real on order.</p>
+      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20join%20the%20gym." target="_blank" rel="noopener">Join on WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Volt Gym — a fictional concept sample</div>
+    <div>Sample address · Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

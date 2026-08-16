@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Creator Media Kit — Concept Sample</title>
+<meta name="description" content="Concept sample media kit for a fictional content creator. Not a real person." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#0b0d10; --panel:#12161c; --line:#1f2630; --text:#e8edf2; --dim:#8a94a0; --neon:#7cf29c; --pulse:#ff5d8f; --amber:#ffc46b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Space Grotesk',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1040px,92%); margin-inline:auto; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--pulse); color:#111; font-size:.66rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:1.1rem 0; border-bottom:1px solid var(--line); }
+  .logo { font-family:'JetBrains Mono'; font-weight:700; font-size:.9rem; letter-spacing:.06em; }
+  .logo span { color:var(--neon); }
+  .logo small { display:block; color:var(--dim); font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; }
+  .topbar .status { font-family:'JetBrains Mono'; font-size:.62rem; color:var(--neon); border:1px solid var(--line); padding:.35rem .7rem; }
+  .topbar .status::before { content:"● "; color:var(--neon); }
+
+  .hero { padding:4rem 0 2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .hero h1 { font-weight:700; font-size:clamp(2rem,5vw,3.2rem); line-height:1.05; letter-spacing:-.02em; }
+  .hero h1 em { color:var(--neon); font-style:normal; }
+  .hero .tag { font-family:'JetBrains Mono'; font-size:.66rem; letter-spacing:.24em; text-transform:uppercase; color:var(--dim); margin-top:1.1rem; }
+  .hero .cta-row { margin-top:1.8rem; display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn { display:inline-block; font-family:'JetBrains Mono'; font-weight:700; font-size:.72rem; letter-spacing:.08em; padding:.95rem 1.6rem; border:1px solid var(--line); transition:all .2s; }
+  .btn-neon { background:var(--neon); color:#0b0d10; border-color:var(--neon); }
+  .btn-neon:hover { background:transparent; color:var(--neon); }
+  .btn-ghost:hover { border-color:var(--neon); color:var(--neon); }
+  .hero-photo { border:1px solid var(--line); padding:.6rem; background:var(--panel); }
+  .hero-photo img { aspect-ratio:4/5; object-fit:cover; }
+
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:2rem 0; }
+  .stat { background:var(--panel); border:1px solid var(--line); padding:1.3rem; }
+  .stat b { font-family:'JetBrains Mono'; font-weight:700; font-size:1.6rem; display:block; }
+  .stat span { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--dim); }
+  .stat.up b { color:var(--neon); }
+
+  section { padding:3.5rem 0; border-top:1px solid var(--line); }
+  .sec-label { font-family:'JetBrains Mono'; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--pulse); margin-bottom:.5rem; }
+  .sec-title { font-weight:700; font-size:clamp(1.4rem,3vw,2rem); letter-spacing:-.01em; margin-bottom:1.6rem; }
+
+  .niche { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .niche-card { background:var(--panel); border:1px solid var(--line); padding:1.4rem; }
+  .niche-card h3 { font-size:1rem; margin-bottom:.4rem; }
+  .niche-card h3 span { color:var(--neon); }
+  .niche-card p { font-size:.82rem; color:var(--dim); }
+
+  .rates { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .rate { background:var(--panel); border:1px solid var(--line); padding:1.5rem; position:relative; }
+  .rate.feat { border-color:var(--neon); }
+  .rate .name { font-family:'JetBrains Mono'; font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--dim); }
+  .rate .price { font-family:'JetBrains Mono'; font-weight:700; font-size:1.5rem; margin:.5rem 0 .9rem; }
+  .rate .price small { font-size:.62rem; color:var(--dim); font-weight:400; }
+  .rate ul { list-style:none; font-size:.8rem; color:var(--dim); }
+  .rate li { padding:.25rem 0; }
+  .rate li::before { content:"→ "; color:var(--neon); }
+
+  .work { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .work-card { background:var(--panel); border:1px solid var(--line); overflow:hidden; }
+  .work-card img { aspect-ratio:16/10; object-fit:cover; }
+  .work-card .meta { padding:1rem; }
+  .work-card .meta b { font-size:.85rem; display:block; }
+  .work-card .meta span { font-family:'JetBrains Mono'; font-size:.6rem; color:var(--neon); letter-spacing:.1em; }
+
+  .contact { display:flex; justify-content:space-between; align-items:center; gap:2rem; flex-wrap:wrap; background:var(--panel); border:1px solid var(--line); padding:2rem; }
+  .contact h2 { font-size:1.5rem; }
+  .contact p { color:var(--dim); font-size:.85rem; margin-top:.4rem; }
+  .contact .email { font-family:'JetBrains Mono'; color:var(--neon); font-size:.9rem; }
+
+  footer { padding:1.8rem 0; text-align:center; font-family:'JetBrains Mono'; font-size:.62rem; color:var(--dim); border-top:1px solid var(--line); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:860px) {
+    .hero, .contact { grid-template-columns:1fr; }
+    .stats, .niche, .rates, .work { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL PERSON</div>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo">LIYA<span>_</span>CREATES<small>Creator Media Kit · Concept Sample</small></div>
+    <div class="status">Open for collabs</div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <h1>Authentic content,<br /><em>measurable reach.</em></h1>
+      <p style="color:var(--dim); margin-top:1rem; max-width:26rem;">A one-page media kit for brands — stats, audience, rates, and past work in one glance.</p>
+      <div class="tag">Niche · Food · Lifestyle · Addis Ababa</div>
+      <div class="cta-row">
+        <a class="btn btn-neon" href="https://wa.me/251900000000?text=Hello!%20I%27m%20a%20brand%20interested%20in%20a%20collaboration." target="_blank" rel="noopener">Start a Collaboration</a>
+        <a class="btn btn-ghost" href="#rates">View Rates</a>
+      </div>
+    </div>
+    <div class="hero-photo"><img src="../img/creator.jpg" alt="Creator portrait sample" /></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat up"><b>58.7K</b><span>TikTok followers</span></div>
+    <div class="stat up"><b>752K</b><span>Total likes</span></div>
+    <div class="stat up"><b>4.9%</b><span>Engagement rate</span></div>
+    <div class="stat up"><b>1.2M</b><span>Monthly views</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-label">Who I reach</div>
+    <h2 class="sec-title">Audience that actually buys</h2>
+    <div class="niche">
+      <div class="niche-card"><h3><span>01</span> Food lovers</h3><p>Home cooks and foodies across Addis — restaurant discovery drives my content.</p></div>
+      <div class="niche-card"><h3><span>02</span> Young professionals</h3><p>18–34, city-based, active spenders on dining and lifestyle.</p></div>
+      <div class="niche-card"><h3><span>03</span> Diaspora Ethiopians</h3><p>Follow for home — high intent, high trust, shareable content.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="rates">
+  <div class="wrap">
+    <div class="sec-label">Rates</div>
+    <h2 class="sec-title">Clear packages, honest numbers</h2>
+    <div class="rates">
+      <div class="rate">
+        <div class="name">TikTok Video</div>
+        <div class="price">8,000 ETB<small> / video</small></div>
+        <ul>
+          <li>30–45s original content</li>
+          <li>1 revision round</li>
+          <li>Usage for 30 days</li>
+        </ul>
+      </div>
+      <div class="rate feat">
+        <div class="name">Brand Partnership</div>
+        <div class="price">15,000 ETB<small> / month</small></div>
+        <ul>
+          <li>2 videos + 2 stories</li>
+          <li>Product mention in bio</li>
+          <li>Monthly report included</li>
+          <li>BONUS: 1 free post</li>
+        </ul>
+      </div>
+      <div class="rate">
+        <div class="name">Event Coverage</div>
+        <div class="price">from 10,000 ETB<small> / event</small></div>
+        <ul>
+          <li>Live coverage + reels</li>
+          <li>Up to 4 hours</li>
+          <li>Photo + video highlights</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-label">Selected work</div>
+    <h2 class="sec-title">Proof, not promises</h2>
+    <div class="work">
+      <div class="work-card"><img src="../img/food-grill.jpg" alt="Food content sample" /><div class="meta"><b>Restaurant feature</b><span>2.1M views</span></div></div>
+      <div class="work-card"><img src="../img/coffee.jpg" alt="Lifestyle content sample" /><div class="meta"><b>Lifestyle series</b><span>940K views</span></div></div>
+      <div class="work-card"><img src="../img/retail.jpg" alt="Brand collab sample" /><div class="meta"><b>Brand collab</b><span>610K views</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h2>Let&rsquo;s make something people watch</h2>
+        <p>Brands, agencies, and restaurants — tell me your goal, I&rsquo;ll match it to content.</p>
+      </div>
+      <div>
+        <div class="email">collab@liyacreates.example</div>
+        <a class="btn btn-ghost" href="https://wa.me/251900000000?text=Hello!%20I%27m%20a%20brand%20interested%20in%20a%20collaboration." target="_blank" rel="noopener" style="margin-top:1rem;">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Liya Creates — a fictional concept media kit</div>
+  <div>Sample stats &amp; rates · Not a real person</div>
+</footer>
+</div>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

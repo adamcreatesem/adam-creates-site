@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hijra Pharmacy — 24h Care (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional pharmacy. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --green:#0e7c5b; --green-deep:#0a5f45; --green-bg:#e8f5f0; --ink:#14211d; --ink-soft:#5c6b65; --white:#fff; --line:#dce8e3; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Work Sans',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,255,255,.97); border-bottom:1px solid var(--line); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.8rem; }
+  .brand { display:flex; align-items:center; gap:.6rem; font-weight:800; font-size:1.05rem; color:var(--green-deep); }
+  .cross { width:26px; height:26px; background:var(--green); position:relative; border-radius:4px; }
+  .cross::before { content:""; position:absolute; inset:6px 4px; background:var(--white); }
+  .cross::after { content:""; position:absolute; inset:4px 6px; background:var(--white); }
+  .brand small { font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); display:block; }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-size:.86rem; font-weight:600; color:var(--ink-soft); }
+  nav a:hover { color:var(--green); }
+  .hero { padding:8rem 0 4rem; background:linear-gradient(150deg,var(--green-bg),#fff 55%); }
+  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.72rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:1rem; }
+  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3.3rem); line-height:1.08; letter-spacing:-.01em; margin-bottom:1rem; color:var(--ink); }
+  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border-radius:30px; border:1px solid transparent; }
+  .btn-solid { background:var(--green); color:var(--white); }
+  .btn-ghost { border-color:var(--green); color:var(--green); }
+  .btn-solid:hover { background:var(--green-deep); }
+  .btn-ghost:hover { background:var(--green-bg); }
+  .hero-fig { border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(14,124,91,.16); }
+  .hero-fig img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+  section { padding:4.5rem 0; }
+  .section-label { font-size:.72rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:.8rem; }
+  .section-title { font-family:'Space Grotesk'; font-weight:700; font-size:clamp(1.7rem,3.5vw,2.4rem); letter-spacing:-.01em; margin-bottom:.7rem; }
+  .section-note { color:var(--ink-soft); max-width:36rem; }
+  .badge-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.2rem; }
+  .badge { border:1px solid var(--line); border-top:4px solid var(--green); border-radius:12px; padding:1.4rem; background:var(--white); }
+  .badge h3 { font-size:1rem; font-weight:800; margin-bottom:.4rem; }
+  .badge p { color:var(--ink-soft); font-size:.88rem; }
+  .stock-band { background:var(--green-deep); color:var(--white); }
+  .stock-band .wrap { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; padding:1rem 0; }
+  .stock-band .section-label { color:#7fd6b8; }
+  .stock-band .section-title { color:var(--white); }
+  .stock-band p { color:rgba(255,255,255,.8); margin-bottom:1.2rem; }
+  .stock-alert { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:1.2rem; font-size:.88rem; }
+  .stock-alert b { color:#ffd166; }
+  footer { border-top:1px solid var(--line); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--green); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .badge-grid{grid-template-columns:1fr;} .stock-band .wrap{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top"><span class="cross"></span><span>HIJRA PHARMACY<small>24-HOUR CARE · CONCEPT SAMPLE</small></span></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#stock">Stock</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample pharmacy</p>
+        <h1>Medicines When<br />You Need Them</h1>
+        <p class="hero-sub">A 24-hour pharmacy with stock that's never a surprise — expiry alerts, audit-ready records, and a site that lists what's actually on the shelf.</p>
+        <div>
+          <a class="btn btn-solid" href="#stock">Check Stock</a>
+          <a class="btn btn-ghost" href="#services">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-fig">
+        <img src="../img/pharmacy.jpg" alt="Pharmacy shelf sample" />
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">More Than a Counter</h2>
+      <div class="badge-grid">
+        <div class="badge"><h3>Prescriptions</h3><p>Filled accurately, checked, and explained.</p></div>
+        <div class="badge"><h3>24-Hour Window</h3><p>Emergency medicines at any hour.</p></div>
+        <div class="badge"><h3>Health Advice</h3><p>Answers from trained pharmacists, in Amharic and English.</p></div>
+        <div class="badge"><h3>Delivery</h3><p>Medicines delivered in the neighborhood.</p></div>
+        <div class="badge"><h3>Vaccinations</h3><p>Common vaccines available and recorded.</p></div>
+        <div class="badge"><h3>Blood Pressure</h3><p>Free BP checks while you wait.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stock-band" id="stock">
+    <div class="wrap">
+      <div>
+        <p class="section-label">Smart stock</p>
+        <h2 class="section-title">Expiry Can't Hide</h2>
+        <p>Almost half of pharmacies lose money to expired stock. This sample shows the fix: every item has an expiry alert and the records are audit-ready.</p>
+        <a class="btn btn-solid" href="#contact">Message Us</a>
+      </div>
+      <div class="stock-alert">
+        <b>⚠ Amoxicillin 500mg</b><br />Expires in 45 days · reorder suggested<br />
+        <b style="color:#7fd6b8;">✓ Records ready</b> · sales log + e-invoice compliant
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap" style="text-align:center;">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Need Something Tonight?</h2>
+      <p class="section-note" style="margin:0 auto 1.6rem;">Sample address · Bole, Addis Ababa (fictional) · open 24 hours</p>
+      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%20need%20a%20medicine." target="_blank" rel="noopener">Message on WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Hijra Pharmacy — a fictional concept sample</div>
+    <div>Built as a sample — replace with real business info on order</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

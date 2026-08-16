@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mekdes Auto Works — Concept Sample</title>
+<meta name="description" content="Concept sample website for a fictional auto garage. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --steel:#17181a; --steel-2:#232529; --plate:#2e3136; --safety:#ff6b1a; --amber:#ffb020; --white:#f2f0ea; --dim:#9aa0a6; --line:#3a3e44; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Space Mono',monospace; background:var(--steel); color:var(--white); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1100px,92%); margin-inline:auto; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--safety); color:#111; font-size:.66rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  header { border-bottom:3px solid var(--safety); background:var(--steel); position:sticky; top:0; z-index:50; }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding:.85rem 0; }
+  .brand { font-family:'Oswald',sans-serif; font-weight:600; font-size:1.25rem; letter-spacing:.08em; text-transform:uppercase; }
+  .brand span { color:var(--safety); }
+  .brand small { display:block; font-family:'Space Mono'; font-size:.55rem; letter-spacing:.3em; color:var(--dim); }
+  nav { display:flex; gap:1.6rem; }
+  nav a { font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); border-bottom:2px solid transparent; padding-bottom:.25rem; }
+  nav a:hover { color:var(--safety); border-bottom-color:var(--safety); }
+
+  .hazard { height:14px; background:repeating-linear-gradient(45deg, var(--safety) 0 18px, #111 18px 36px); }
+
+  .hero { padding:5rem 0 4.5rem; position:relative; overflow:hidden; }
+  .hero::after { content:""; position:absolute; inset:0; background:
+    repeating-linear-gradient(0deg, transparent 0 38px, rgba(255,255,255,.025) 38px 40px),
+    repeating-linear-gradient(90deg, transparent 0 38px, rgba(255,255,255,.025) 38px 40px);
+    pointer-events:none; }
+  .hero-inner { position:relative; display:grid; grid-template-columns:1fr .9fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.66rem; letter-spacing:.34em; text-transform:uppercase; color:var(--safety); margin-bottom:1rem; }
+  h1 { font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase; font-size:clamp(2.3rem,5vw,3.8rem); line-height:1.02; margin-bottom:1.1rem; }
+  h1 em { color:var(--safety); font-style:normal; }
+  .hero p { color:var(--dim); max-width:32rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; padding:.95rem 1.7rem; border:2px solid var(--safety); transition:all .2s; }
+  .btn-solid { background:var(--safety); color:#111; }
+  .btn-ghost { color:var(--safety); }
+  .btn-solid:hover { background:var(--amber); border-color:var(--amber); }
+  .btn-ghost:hover { background:var(--safety); color:#111; }
+  .hero-img { border:2px solid var(--plate); box-shadow:10px 10px 0 rgba(255,107,26,.18); }
+  .hero-img img { aspect-ratio:4/3; object-fit:cover; }
+
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); background:var(--steel-2); }
+  .stat { padding:1.6rem; text-align:center; border-right:1px solid var(--line); }
+  .stat:last-child { border-right:none; }
+  .stat b { font-family:'Oswald'; font-size:2rem; color:var(--safety); display:block; }
+  .stat span { font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); }
+
+  section { padding:4.5rem 0; }
+  .sec-label { font-size:.66rem; letter-spacing:.34em; text-transform:uppercase; color:var(--safety); margin-bottom:.6rem; }
+  .sec-title { font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase; font-size:clamp(1.7rem,3.5vw,2.5rem); margin-bottom:2rem; }
+
+  .services { display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; }
+  .service { border:1px solid var(--line); background:var(--steel-2); padding:1.6rem; position:relative; }
+  .service::before { content:""; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--safety); }
+  .service h3 { font-family:'Oswald'; font-weight:500; text-transform:uppercase; font-size:1.02rem; margin-bottom:.5rem; }
+  .service p { font-size:.74rem; color:var(--dim); margin-bottom:1rem; }
+  .service .price { font-weight:700; color:var(--amber); font-size:.9rem; }
+  .service .time { display:block; font-size:.62rem; color:var(--dim); letter-spacing:.1em; margin-top:.3rem; }
+
+  .vehicle { background:var(--steel-2); border:1px solid var(--line); }
+  .vehicle-head { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.4rem; border-bottom:1px solid var(--line); }
+  .vehicle-head b { font-family:'Oswald'; text-transform:uppercase; letter-spacing:.06em; }
+  .vehicle-head .status { font-size:.6rem; letter-spacing:.14em; color:#111; background:var(--amber); padding:.25rem .6rem; font-weight:700; }
+  .vehicle-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+  .vcell { padding:1.2rem 1.4rem; border-right:1px solid var(--line); }
+  .vcell:last-child { border-right:none; }
+  .vcell span { display:block; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); margin-bottom:.35rem; }
+  .vcell b { font-size:.82rem; font-weight:400; }
+  .timeline { padding:1.4rem; }
+  .tl-row { display:grid; grid-template-columns:90px 1fr; gap:1rem; padding:.7rem 0; border-bottom:1px dashed var(--line); font-size:.74rem; }
+  .tl-row .t { color:var(--safety); }
+  .tl-row .done { color:var(--dim); text-decoration:line-through; opacity:.7; }
+
+  .booking { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; background:var(--steel-2); border:1px solid var(--line); padding:2.5rem; }
+  .booking h3 { font-family:'Oswald'; font-weight:600; text-transform:uppercase; font-size:1.4rem; margin-bottom:.8rem; }
+  .booking p { font-size:.78rem; color:var(--dim); margin-bottom:1.6rem; }
+  .booking form { display:grid; gap:.9rem; }
+  .booking input, .booking select { background:var(--steel); border:1px solid var(--plate); color:var(--white); padding:.9rem 1rem; font-family:'Space Mono'; font-size:.8rem; }
+  .booking input:focus, .booking select:focus { outline:none; border-color:var(--safety); }
+  .booking .btn { border:none; cursor:pointer; }
+
+  footer { border-top:1px solid var(--line); padding:1.8rem 0; text-align:center; font-size:.7rem; color:var(--dim); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:860px) {
+    .hero-inner, .booking { grid-template-columns:1fr; }
+    .services, .vehicle-grid, .stats { grid-template-columns:1fr; }
+    .stat { border-right:none; border-bottom:1px solid var(--line); }
+    nav { flex-wrap:wrap; gap:1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">Mekdes<span>Auto</span>Works<small>Diagnostics · Repairs · Parts</small></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#vehicle">Vehicle Log</a>
+      <a href="#book">Book a Slot</a>
+    </nav>
+  </div>
+</header>
+<div class="hazard"></div>
+
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <p class="eyebrow">// Open 6 days · Bole area, Addis Ababa (fictional)</p>
+      <h1>Your car has a story.<br /><em>We keep the record.</em></h1>
+      <p>Every job logged, every part tracked, every visit remembered. You never have to explain your car's history twice — we already have it.</p>
+      <a class="btn btn-solid" href="#book">Book a Service Slot</a>
+      <a class="btn btn-ghost" href="#services">See Services</a>
+    </div>
+    <div class="hero-img"><img src="../img/auto.jpg" alt="Mechanic at work sample" /></div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><b>10+</b><span>Years in business</span></div>
+  <div class="stat"><b>4,800</b><span>Vehicles served</span></div>
+  <div class="stat"><b>1 day</b><span>Avg. turnaround</span></div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="sec-label">Services &amp; Rates</p>
+    <h2 class="sec-title">Fixed prices. No surprises.</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Full Diagnostics</h3>
+        <p>Computer + mechanical scan with a written report you keep.</p>
+        <span class="price">1,200 ETB</span><span class="time">~45 min</span>
+      </div>
+      <div class="service">
+        <h3>Oil &amp; Filter Service</h3>
+        <p>Quality oil, new filter, and a 21-point check.</p>
+        <span class="price">from 2,400 ETB</span><span class="time">~1 hour</span>
+      </div>
+      <div class="service">
+        <h3>Brake Service</h3>
+        <p>Pads, discs, fluid — inspected and replaced as needed.</p>
+        <span class="price">from 3,800 ETB</span><span class="time">~2 hours</span>
+      </div>
+      <div class="service">
+        <h3>Suspension &amp; Steering</h3>
+        <p>Shocks, bushings, alignment — the quiet-ride fix.</p>
+        <span class="price">from 4,500 ETB</span><span class="time">~half day</span>
+      </div>
+      <div class="service">
+        <h3>Engine Repair</h3>
+        <p>From rough idle to full rebuild — diagnosed first, quoted honestly.</p>
+        <span class="price">quoted after scan</span><span class="time">varies</span>
+      </div>
+      <div class="service">
+        <h3>Electrical &amp; AC</h3>
+        <p>Wiring, alternators, air conditioning — traced and fixed.</p>
+        <span class="price">from 1,800 ETB</span><span class="time">~1–3 hours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vehicle" style="padding-top:0;">
+  <div class="wrap">
+    <p class="sec-label">Sample Vehicle Log</p>
+    <h2 class="sec-title">Full history, one plate number</h2>
+    <div class="vehicle">
+      <div class="vehicle-head">
+        <b>TOYOTA COROLLA · 3-ABC-456</b>
+        <span class="status">IN SERVICE</span>
+      </div>
+      <div class="vehicle-grid">
+        <div class="vcell"><span>Owner</span><b>Sample Customer</b></div>
+        <div class="vcell"><span>Last Service</span><b>14 Aug 2026</b></div>
+        <div class="vcell"><span>Next Due</span><b>14 Nov 2026</b></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-row"><span class="t done">02 May 26</span><span>Oil &amp; filter service — 2,400 ETB</span></div>
+        <div class="tl-row"><span class="t done">14 Aug 26</span><span>Brake pads front + fluid — 3,850 ETB</span></div>
+        <div class="tl-row"><span class="t">Today</span><span>Wheel alignment &amp; balancing — 1,100 ETB</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="booking">
+      <div>
+        <h3>Book your slot</h3>
+        <p>Pick a service and a time. We confirm on WhatsApp and remind you the day before — no missed appointments.</p>
+        <div class="service" style="border:none; background:transparent; padding:0; margin-bottom:1.4rem;">
+          <span class="price" style="font-size:.82rem;">The booking form below is a sample — it connects to WhatsApp in the real version.</span>
+        </div>
+      </div>
+      <form onsubmit="event.preventDefault(); location.href='https://wa.me/251900000000?text=' + encodeURIComponent('Hello! I would like to book: ' + document.getElementById('svc').value + ' on ' + document.getElementById('day').value);">
+        <select id="svc" required>
+          <option value="">Choose a service…</option>
+          <option>Full Diagnostics — 1,200 ETB</option>
+          <option>Oil &amp; Filter Service — from 2,400 ETB</option>
+          <option>Brake Service — from 3,800 ETB</option>
+          <option>Wheel Alignment — 1,100 ETB</option>
+        </select>
+        <input id="day" type="date" required />
+        <button class="btn btn-solid" type="submit">Confirm on WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Mekdes Auto Works — a fictional concept sample</div>
+  <div>Sample plate · Sample prices · Not a real business</div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

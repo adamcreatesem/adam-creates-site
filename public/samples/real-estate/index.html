@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Summit Estates — Real Estate &amp; Construction (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional real estate and construction firm. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --blue:#0e2a47; --blue-2:#0a1f36; --line:rgba(120,180,240,.25); --white:#f2f5f8; --orange:#ff5a1f; --ink:#12202e; --ink-soft:#5a6b7a; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Archivo',sans-serif; background:var(--blue); color:var(--white); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1100px,92%); margin-inline:auto; }
+  .grid-bg { background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:44px 44px; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(14,42,71,.96); border-bottom:1px solid var(--line); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-family:'Archivo Black',sans-serif; font-size:1.1rem; letter-spacing:.04em; color:var(--white); }
+  .brand em { color:var(--orange); font-style:normal; }
+  .brand small { display:block; font-family:'IBM Plex Mono'; font-size:.56rem; letter-spacing:.26em; color:rgba(242,245,248,.55); }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-family:'IBM Plex Mono'; font-size:.74rem; letter-spacing:.1em; color:rgba(242,245,248,.75); }
+  nav a:hover { color:var(--orange); }
+  .hero { padding:8.5rem 0 4.5rem; border-bottom:1px solid var(--line); }
+  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .eyebrow { font-family:'IBM Plex Mono'; font-size:.7rem; letter-spacing:.24em; color:var(--orange); margin-bottom:1rem; }
+  h1 { font-family:'Archivo Black'; font-size:clamp(2rem,5vw,3.3rem); font-weight:400; line-height:1.08; letter-spacing:.01em; margin-bottom:1.1rem; }
+  h1 em { color:var(--orange); font-style:normal; }
+  .hero-sub { color:rgba(242,245,248,.7); max-width:30rem; margin-bottom:2rem; font-size:1rem; }
+  .btn { display:inline-block; font-family:'IBM Plex Mono'; font-weight:600; font-size:.8rem; letter-spacing:.06em; padding:.95rem 1.7rem; border-radius:2px; border:1px solid transparent; }
+  .btn-solid { background:var(--orange); color:var(--blue-2); }
+  .btn-ghost { border-color:rgba(242,245,248,.4); color:var(--white); }
+  .btn-solid:hover { background:#ff7340; }
+  .btn-ghost:hover { border-color:var(--orange); color:var(--orange); }
+  .hero-plan { border:1px solid var(--line); position:relative; padding:1rem; background:rgba(10,31,54,.6); }
+  .hero-plan img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+  .plan-tag { position:absolute; font-family:'IBM Plex Mono'; font-size:.6rem; letter-spacing:.1em; background:var(--blue-2); border:1px solid var(--line); padding:.3rem .5rem; }
+  section { padding:4.5rem 0; }
+  .section-label { font-family:'IBM Plex Mono'; font-size:.7rem; letter-spacing:.24em; color:var(--orange); margin-bottom:.8rem; }
+  .section-title { font-family:'Archivo Black'; font-size:clamp(1.7rem,3.5vw,2.5rem); font-weight:400; margin-bottom:.7rem; }
+  .section-note { color:rgba(242,245,248,.65); max-width:36rem; }
+  .prop-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.2rem; }
+  .prop { border:1px solid var(--line); background:rgba(10,31,54,.6); }
+  .prop img { width:100%; aspect-ratio:16/10; object-fit:cover; }
+  .prop-body { padding:1.1rem 1.1rem 1.3rem; }
+  .prop-status { font-family:'IBM Plex Mono'; font-size:.62rem; letter-spacing:.16em; color:var(--orange); text-transform:uppercase; }
+  .prop h3 { font-size:1.05rem; font-weight:700; margin:.3rem 0 .3rem; }
+  .prop p { color:rgba(242,245,248,.65); font-size:.88rem; margin-bottom:.6rem; }
+  .prop-price { font-family:'IBM Plex Mono'; font-size:.85rem; font-weight:600; }
+  .srv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
+  .srv { border-top:3px solid var(--orange); border:1px solid var(--line); padding:1.4rem; background:rgba(10,31,54,.6); }
+  .srv-num { font-family:'IBM Plex Mono'; font-size:.8rem; color:var(--orange); }
+  .srv h3 { font-size:1rem; font-weight:700; margin:.3rem 0 .4rem; }
+  .srv p { color:rgba(242,245,248,.65); font-size:.88rem; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2rem; }
+  .stat { border:1px solid var(--line); padding:1.4rem 1rem; text-align:center; background:rgba(10,31,54,.6); }
+  .stat b { display:block; font-family:'Archivo Black'; font-size:1.8rem; color:var(--orange); }
+  .stat span { font-family:'IBM Plex Mono'; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,245,248,.6); }
+  .cta { border-top:1px solid var(--line); background:var(--blue-2); }
+  .cta .wrap { text-align:center; padding:1rem 0; }
+  .cta p { color:rgba(242,245,248,.7); max-width:34rem; margin:0 auto 1.6rem; }
+  footer { border-top:1px solid var(--line); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-family:'IBM Plex Mono'; font-size:.78rem; color:rgba(242,245,248,.55); }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--orange); color:var(--blue-2); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .prop-grid{grid-template-columns:1fr;} .srv-grid{grid-template-columns:1fr;} .stats{grid-template-columns:repeat(2,1fr);} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">SUMMIT<em>ESTATES</em><small>REAL ESTATE · CONSTRUCTION · CONCEPT</small></a>
+    <nav>
+      <a href="#properties">Properties</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero grid-bg">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample · construction &amp; real estate</p>
+        <h1>Built on<br /><em>Trust, Measured</em> in Square Meters</h1>
+        <p class="hero-sub">Portfolio, listings, and quote requests in one place — the blueprint for a fictional construction and real estate firm.</p>
+        <div>
+          <a class="btn btn-solid" href="#properties">View Properties</a>
+          <a class="btn btn-ghost" href="#services">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-plan">
+        <img src="../img/estate-1.jpg" alt="Building sample" />
+        <span class="plan-tag" style="top:14px;left:14px;">PLOT 07 · BOLÉ</span>
+        <span class="plan-tag" style="bottom:14px;right:14px;">UNIT 4B · SOLD ✦</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="properties">
+    <div class="wrap">
+      <p class="section-label">Current listings</p>
+      <h2 class="section-title">Properties on the Board</h2>
+      <p class="section-note">Sample listings with sample prices — real photos and details go in on order.</p>
+      <div class="prop-grid">
+        <article class="prop">
+          <img src="../img/estate-2.jpg" alt="Villa sample" />
+          <div class="prop-body">
+            <span class="prop-status">For sale</span>
+            <h3>Villa · CMC Area</h3>
+            <p>4-bed villa, finished, with garden and parking.</p>
+            <span class="prop-price">$185,000 · sample</span>
+          </div>
+        </article>
+        <article class="prop">
+          <img src="../img/estate-1.jpg" alt="Apartment sample" />
+          <div class="prop-body">
+            <span class="prop-status">For rent</span>
+            <h3>Apartment · Bole</h3>
+            <p>2-bed, furnished, near the airport road.</p>
+            <span class="prop-price">$800/mo · sample</span>
+          </div>
+        </article>
+        <article class="prop">
+          <img src="../img/estate-2.jpg" alt="Land sample" />
+          <div class="prop-body">
+            <span class="prop-status">For sale</span>
+            <h3>Land · Sululta</h3>
+            <p>500 sqm plot with road access and water.</p>
+            <span class="prop-price">$45,000 · sample</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="background:var(--blue-2);">
+    <div class="wrap">
+      <p class="section-label">What we do</p>
+      <h2 class="section-title">From Plot to Key</h2>
+      <div class="srv-grid">
+        <div class="srv"><span class="srv-num">01</span><h3>Construction</h3><p>Residential and commercial build — from foundation to finish.</p></div>
+        <div class="srv"><span class="srv-num">02</span><h3>Real Estate</h3><p>Buy, sell, and rent — listings that are actually current.</p></div>
+        <div class="srv"><span class="srv-num">03</span><h3>Renovation</h3><p>Upgrade existing spaces with clear quotes and timelines.</p></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>120+</b><span>Projects</span></div>
+        <div class="stat"><b>15</b><span>Years</span></div>
+        <div class="stat"><b>98%</b><span>On time</span></div>
+        <div class="stat"><b>40+</b><span>Staff</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <p class="section-label" style="color:var(--orange);">Get a quote</p>
+      <h2 class="section-title">Send Your Plan</h2>
+      <p>Quote requests land on WhatsApp — sample flow, real on order.</p>
+      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20a%20quote." target="_blank" rel="noopener">Request a Quote</a>
+      <a class="btn btn-ghost" href="#properties">See Properties</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Summit Estates — a fictional concept sample</div>
+    <div>Sample address · Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

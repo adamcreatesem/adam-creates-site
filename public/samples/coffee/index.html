@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jebena House — Coffee &amp; Ceremony (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional coffee house. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bean:#3a2318; --bean-2:#2a180f; --crema:#f2e4d3; --crema-2:#e8d5bc; --steam:#c98f5f; --leaf:#5f6b3c; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Karla',sans-serif; background:var(--crema); color:var(--bean); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1080px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(242,228,211,.97); border-bottom:2px solid var(--bean); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-family:'Fraunces',serif; font-weight:600; font-size:1.2rem; }
+  .brand em { font-style:italic; color:var(--steam); }
+  .brand small { display:block; font-family:'Karla'; font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; color:#8a6f55; }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-size:.88rem; font-weight:500; color:#7a5f47; }
+  nav a:hover { color:var(--bean); }
+  .hero { padding:8.5rem 0 4.5rem; position:relative; overflow:hidden; background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(201,143,95,.18),transparent 60%),var(--crema); }
+  .hero::before { content:"☕"; position:absolute; font-size:10rem; opacity:.05; right:6%; top:20%; transform:rotate(-12deg); }
+  .hero-inner { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .eyebrow { font-size:.72rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--steam); margin-bottom:1rem; }
+  h1 { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(2.1rem,5vw,3.4rem); line-height:1.1; margin-bottom:1.1rem; }
+  h1 em { font-style:italic; color:var(--leaf); }
+  .hero-sub { color:#7a5f47; max-width:30rem; margin-bottom:2rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border-radius:40px; border:1px solid transparent; }
+  .btn-solid { background:var(--bean); color:var(--crema); }
+  .btn-ghost { border-color:var(--bean); color:var(--bean); }
+  .btn-solid:hover { background:var(--bean-2); }
+  .btn-ghost:hover { background:var(--crema-2); }
+  .hero-cup { position:relative; }
+  .hero-cup img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:50% 50% 8px 8px; border:2px solid var(--bean); box-shadow:8px 10px 0 rgba(58,35,24,.2); }
+  .steam-lines { position:absolute; top:-20px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
+  .steam-lines span { display:block; width:3px; height:34px; background:var(--steam); border-radius:2px; opacity:.5; animation:rise 3s ease-in-out infinite; }
+  .steam-lines span:nth-child(2){ height:26px; animation-delay:.4s; }
+  .steam-lines span:nth-child(3){ height:30px; animation-delay:.8s; }
+  @keyframes rise { 0%,100%{transform:scaleY(.8);opacity:.3;} 50%{transform:scaleY(1.2);opacity:.6;} }
+  section { padding:4.5rem 0; }
+  .section-label { font-size:.72rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--steam); margin-bottom:.8rem; }
+  .section-title { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(1.8rem,3.5vw,2.5rem); margin-bottom:.7rem; }
+  .section-note { color:#7a5f47; max-width:36rem; }
+  .menu-list { list-style:none; margin-top:2rem; border-top:2px solid var(--bean); }
+  .menu-list li { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; padding:1.1rem 0; border-bottom:1px dashed #c9ab8a; }
+  .menu-list h3 { font-family:'Fraunces'; font-weight:500; font-size:1.15rem; }
+  .menu-list p { color:#7a5f47; font-size:.88rem; }
+  .menu-list .price { font-weight:700; white-space:nowrap; }
+  .ritual { background:var(--bean); color:var(--crema); }
+  .ritual .wrap { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; padding:1rem 0; }
+  .ritual .section-label { color:var(--steam); }
+  .ritual .section-title { color:var(--crema); }
+  .ritual p { color:rgba(242,228,211,.8); margin-bottom:1.2rem; }
+  .ritual-steps { list-style:none; display:grid; gap:.8rem; counter-reset:rs; }
+  .ritual-steps li { counter-increment:rs; display:flex; gap:.8rem; color:rgba(242,228,211,.85); font-size:.92rem; }
+  .ritual-steps li::before { content:counter(rs,decimal-leading-zero); font-family:'Fraunces'; color:var(--steam); }
+  .ritual img { border-radius:50% 50% 8px 8px; }
+  .qr { text-align:center; }
+  .qr-box { display:inline-block; border:2px solid var(--bean); background:var(--crema-2); padding:1.4rem 2rem; margin-top:1.4rem; box-shadow:6px 6px 0 var(--bean); }
+  .qr-box b { display:block; font-family:'Fraunces'; font-weight:600; font-size:1.1rem; margin-bottom:.4rem; }
+  .qr-box span { font-size:.85rem; color:#7a5f47; }
+  footer { border-top:2px solid var(--bean); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:#7a5f47; font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--bean); color:var(--crema); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .ritual .wrap{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">Jebena <em>House</em><small>COFFEE &amp; CEREMONY · CONCEPT</small></a>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#ritual">The Ritual</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample coffee house</p>
+        <h1>Three Cups,<br /><em>One Ceremony</em></h1>
+        <p class="hero-sub">Coffee roasted, ground, and brewed at your table — with a QR menu so the ritual starts before you even sit down.</p>
+        <div>
+          <a class="btn btn-solid" href="#menu">See the Menu</a>
+          <a class="btn btn-ghost" href="#visit">Find Us</a>
+        </div>
+      </div>
+      <div class="hero-cup">
+        <div class="steam-lines"><span></span><span></span><span></span></div>
+        <img src="../img/coffee.jpg" alt="Coffee ceremony sample" />
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <p class="section-label">The counter</p>
+      <h2 class="section-title">Brewed to Order</h2>
+      <ul class="menu-list">
+        <li><div><h3>Jebena Buna</h3><p>The full ceremony — three rounds, served with popcorn.</p></div><span class="price">120 ETB</span></li>
+        <li><div><h3>Macchiato</h3><p>Ethiopian espresso with steamed milk.</p></div><span class="price">85 ETB</span></li>
+        <li><div><h3>Pour-Over</h3><p>Single-origin, brewed by hand at the table.</p></div><span class="price">100 ETB</span></li>
+        <li><div><h3>Spiced Tea</h3><p>Black tea with cardamom and cloves.</p></div><span class="price">60 ETB</span></li>
+        <li><div><h3>Pastries</h3><p>Dabo, cakes, and small bites with your cup.</p></div><span class="price">from 50 ETB</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ritual" id="ritual">
+    <div class="wrap">
+      <div>
+        <p class="section-label">The ritual</p>
+        <h2 class="section-title">More Than a Drink</h2>
+        <p>Washed beans, roasted over the coals, ground by hand — then poured in three rounds: abol, tona, baraka.</p>
+        <ol class="ritual-steps">
+          <li>Wash the beans in the open flame's light</li>
+          <li>Roast until they sing</li>
+          <li>Grind with the stone</li>
+          <li>Brew in the jebena, pour three rounds</li>
+        </ol>
+      </div>
+      <img src="../img/coffee.jpg" alt="Ceremony sample" />
+    </div>
+  </section>
+
+  <section class="qr" id="visit">
+    <div class="wrap">
+      <p class="section-label">Scan &amp; sip</p>
+      <h2 class="section-title">The Menu Is on the Table</h2>
+      <p class="section-note" style="margin:0 auto;">A QR code at every table opens this menu — no paper, no waiting.</p>
+      <div class="qr-box">
+        <b>📱 QR MENU</b>
+        <span>Sample — real QR goes in on order</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Jebena House — a fictional concept sample</div>
+    <div>Sample address · Piazza, Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

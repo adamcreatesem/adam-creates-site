@@ -988,10 +988,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const iframe = document.getElementById('previewIframe');
     const titleEl = document.getElementById('previewModalTitle');
     const openFull = document.getElementById('previewOpenFull');
-    // Samples live on the local samples server in dev; swap base on deploy
-    const SAMPLES_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://localhost:4990'
-      : 'https://samples.adamcreates.netlify.app';
+    // Samples ship inside this site at /samples/ — works everywhere
+    const SAMPLES_BASE = '/samples';
 
     const closePreview = () => {
       previewModal.hidden = true;

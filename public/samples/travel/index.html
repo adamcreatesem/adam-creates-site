@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abay Journeys — Ethiopian Tours (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional travel agency. Not a real business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono:wght@400;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --parch:#f3ead8; --parch-2:#e8dcc4; --ink:#2b2416; --route:#8a6d3b; --stamp:#a33a2e; --teal:#1f5f5b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Karla',sans-serif; background:var(--parch); color:var(--ink); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(1100px,92%); margin-inline:auto; }
+  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(243,234,216,.96); border-bottom:2px solid var(--ink); }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.8rem; }
+  .brand { font-family:'DM Serif Display',serif; font-size:1.25rem; letter-spacing:.02em; }
+  .brand small { display:block; font-family:'Space Mono'; font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; color:var(--route); }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-family:'Space Mono'; font-size:.75rem; letter-spacing:.08em; color:var(--ink); border-bottom:1px dashed transparent; }
+  nav a:hover { border-bottom-color:var(--stamp); color:var(--stamp); }
+  .hero { padding:8.5rem 0 4.5rem; position:relative; overflow:hidden; border-bottom:2px solid var(--ink); background:linear-gradient(var(--parch),var(--parch-2)); }
+  .hero::after { content:""; position:absolute; inset:0; opacity:.5; pointer-events:none;
+    background-image:radial-gradient(circle at 20% 30%,rgba(143,111,59,.18) 0,transparent 3px),radial-gradient(circle at 80% 60%,rgba(143,111,59,.14) 0,transparent 3px); background-size:48px 48px; }
+  .hero-inner { position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:3rem; align-items:center; }
+  .eyebrow { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--stamp); margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
+  .eyebrow::before { content:"✦"; }
+  h1 { font-family:'DM Serif Display',serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:400; line-height:1.08; margin-bottom:1.1rem; }
+  .hero-sub { color:var(--route); max-width:30rem; margin-bottom:2rem; font-size:1.02rem; }
+  .btn { display:inline-block; font-family:'Space Mono'; font-weight:700; font-size:.82rem; letter-spacing:.06em; padding:.95rem 1.8rem; border-radius:2px; border:2px solid var(--ink); }
+  .btn-solid { background:var(--ink); color:var(--parch); }
+  .btn-ghost { background:transparent; color:var(--ink); }
+  .btn-solid:hover { background:var(--stamp); border-color:var(--stamp); }
+  .btn-ghost:hover { border-color:var(--stamp); color:var(--stamp); }
+  .hero-map { border:2px solid var(--ink); background:var(--parch-2); padding:1rem; position:relative; box-shadow:8px 8px 0 var(--ink); }
+  .hero-map img { width:100%; aspect-ratio:4/3; object-fit:cover; filter:sepia(.25); }
+  .map-route { position:absolute; inset:0; pointer-events:none; }
+  .route-tag { position:absolute; background:var(--parch); border:2px solid var(--ink); font-family:'Space Mono'; font-size:.6rem; letter-spacing:.08em; padding:.3rem .5rem; box-shadow:3px 3px 0 var(--ink); }
+  section { padding:4.5rem 0; }
+  .section-label { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--stamp); margin-bottom:.8rem; }
+  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:400; margin-bottom:.7rem; }
+  .section-note { color:var(--route); max-width:36rem; }
+  .tour-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:2.2rem; }
+  .tour { border:2px solid var(--ink); background:var(--parch); position:relative; box-shadow:5px 5px 0 var(--ink); }
+  .tour img { width:100%; aspect-ratio:16/10; object-fit:cover; }
+  .tour-body { padding:1.2rem 1.2rem 1.4rem; }
+  .tour-days { font-family:'Space Mono'; font-size:.66rem; letter-spacing:.14em; color:var(--stamp); }
+  .tour h3 { font-family:'DM Serif Display'; font-weight:400; font-size:1.25rem; margin:.3rem 0 .4rem; }
+  .tour p { color:var(--route); font-size:.9rem; margin-bottom:.8rem; }
+  .tour-price { font-family:'Space Mono'; font-weight:700; font-size:.9rem; }
+  .tour-stamp { position:absolute; top:10px; right:10px; border:2px solid var(--stamp); color:var(--stamp); font-family:'Space Mono'; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; padding:.3rem .55rem; transform:rotate(4deg); background:rgba(243,234,216,.92); }
+  .steps { list-style:none; margin-top:2rem; border-top:2px solid var(--ink); }
+  .steps li { display:flex; gap:1.4rem; padding:1.3rem 0; border-bottom:2px dashed var(--route); }
+  .step-num { font-family:'Space Mono'; font-size:1.2rem; color:var(--stamp); }
+  .steps h3 { font-family:'DM Serif Display'; font-weight:400; font-size:1.2rem; }
+  .steps p { color:var(--route); font-size:.92rem; }
+  .cta { border-top:2px solid var(--ink); background:var(--ink); color:var(--parch); }
+  .cta .wrap { text-align:center; padding:1rem 0; }
+  .cta .section-label { color:#d8b98a; }
+  .cta h2 { color:var(--parch); }
+  .cta p { color:rgba(243,234,216,.75); max-width:34rem; margin:0 auto 1.6rem; }
+  .cta .btn-solid { background:var(--parch); color:var(--ink); }
+  .cta .btn-ghost { border-color:rgba(243,234,216,.5); color:var(--parch); }
+  footer { border-top:2px solid var(--ink); padding:2rem 0; }
+  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--route); font-size:.85rem; font-family:'Space Mono'; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--stamp); color:var(--parch); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
+  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .tour-grid{grid-template-columns:1fr;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="sample-flag">CONCEPT SAMPLE — NOT A REAL BUSINESS</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">ABAY JOURNEYS<small>ETHIOPIAN TOURS · CONCEPT SAMPLE</small></a>
+    <nav>
+      <a href="#tours">Tours</a>
+      <a href="#how">How It Works</a>
+      <a href="#plan">Plan a Trip</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">A concept sample travel agency</p>
+        <h1>Ethiopia,<br />Route by Route</h1>
+        <p class="hero-sub">The historic north, the Danakil, the Omo Valley — package pages that sell the journey before the inquiry. A sample for a fictional agency.</p>
+        <div>
+          <a class="btn btn-solid" href="#tours">Explore Tours</a>
+          <a class="btn btn-ghost" href="#plan">Plan a Trip</a>
+        </div>
+      </div>
+      <div class="hero-map">
+        <img src="../img/travel-1.jpg" alt="Map-inspired travel photo" />
+        <span class="route-tag" style="top:14px;left:14px;">✦ LALIBELA</span>
+        <span class="route-tag" style="bottom:14px;right:14px;">DANAKIL ✦</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="tours">
+    <div class="wrap">
+      <p class="section-label">Signature routes</p>
+      <h2 class="section-title">Tours We Map Out</h2>
+      <p class="section-note">Sample packages with sample prices — each can be customized for a real agency on order.</p>
+      <div class="tour-grid">
+        <article class="tour">
+          <img src="../img/travel-2.jpg" alt="Historic tour sample" />
+          <span class="tour-stamp">Most booked</span>
+          <div class="tour-body">
+            <span class="tour-days">7 DAYS · 6 NIGHTS</span>
+            <h3>Historic North</h3>
+            <p>Bahir Dar, Gondar, Lalibela — churches, castles, and the Blue Nile.</p>
+            <span class="tour-price">From $1,250 · sample</span>
+          </div>
+        </article>
+        <article class="tour">
+          <img src="../img/travel-1.jpg" alt="Danakil tour sample" />
+          <div class="tour-body">
+            <span class="tour-days">4 DAYS · 3 NIGHTS</span>
+            <h3>The Danakil Depression</h3>
+            <p>Erta Ale lava lake, salt flats, and the hottest place on Earth.</p>
+            <span class="tour-price">From $980 · sample</span>
+          </div>
+        </article>
+        <article class="tour">
+          <img src="../img/travel-2.jpg" alt="Omo valley tour sample" />
+          <div class="tour-body">
+            <span class="tour-days">10 DAYS · 9 NIGHTS</span>
+            <h3>Omo Valley</h3>
+            <p>Tribes, markets, and the lower Omo — the deep south.</p>
+            <span class="tour-price">From $1,600 · sample</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="background:var(--parch-2);">
+    <div class="wrap">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">From Inquiry to Departure</h2>
+      <ol class="steps">
+        <li><span class="step-num">01</span><div><h3>Tell us where</h3><p>Inquiry lands on WhatsApp — answered fast, even at night.</p></div></li>
+        <li><span class="step-num">02</span><div><h3>We route it</h3><p>You get a sample itinerary with dates, hotels, and transfers.</p></div></li>
+        <li><span class="step-num">03</span><div><h3>You confirm</h3><p>Deposit tracked, documents ready, trip on the calendar.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta" id="plan">
+    <div class="wrap">
+      <p class="section-label">Plan a trip</p>
+      <h2 class="section-title">Let's Map Your Route</h2>
+      <p>This sample form connects to WhatsApp or email on order — the flow is already here.</p>
+      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20plan%20a%20trip." target="_blank" rel="noopener">Start on WhatsApp</a>
+      <a class="btn btn-ghost" href="#tours">Browse Tours</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Abay Journeys — a fictional concept sample</div>
+    <div>Sample address · Bole, Addis Ababa (fictional)</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
