@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kiros Trading: Inventory &amp; Stock Control (Concept Demo)</title>
+<meta name="description" content="Interactive concept demo of an inventory and stock control system: stock levels, movements, reorder alerts, suppliers, reports. Not a real system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#101827; --side-ink:#cbd5e1; --accent:#059669; --accent-l:#10b981; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  .topbar { background:var(--side); color:#fff; }
+  .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
+  .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
+  .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#cbd5e1; }
+
+  .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
+  .sidebar { background:var(--side); border-radius:12px; padding:1rem; align-self:start; position:sticky; top:1rem; }
+  .side-item { display:flex; align-items:center; gap:.7rem; padding:.68rem .8rem; border-radius:8px; font-size:.84rem; color:var(--side-ink); cursor:pointer; margin-bottom:.2rem; }
+  .side-item:hover { background:rgba(255,255,255,.07); color:#fff; }
+  .side-item.active { background:var(--accent); color:#fff; font-weight:600; }
+  .side-item .n { margin-left:auto; font-family:'JetBrains Mono'; font-size:.66rem; background:rgba(255,255,255,.1); padding:.12rem .45rem; border-radius:99px; }
+  .side-item.active .n { background:rgba(255,255,255,.22); }
+
+  .main { display:grid; gap:1.3rem; align-content:start; }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.05rem 1.15rem; }
+  .kpi b { font-size:1.5rem; font-weight:800; display:block; letter-spacing:-.02em; }
+  .kpi span { font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); font-weight:600; }
+  .kpi.warn b { color:var(--warn); }
+  .kpi.danger b { color:var(--danger); }
+  .kpi.ok b { color:var(--ok); }
+
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:center; padding:.95rem 1.25rem; border-bottom:1px solid var(--line); gap:1rem; flex-wrap:wrap; }
+  .card-head h3 { font-size:.95rem; font-weight:700; }
+  .card-head .hint { font-size:.68rem; color:var(--dim); font-family:'JetBrains Mono'; }
+  .btn { display:inline-block; font-weight:600; font-size:.78rem; padding:.6rem 1.05rem; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer; }
+  .btn-accent { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-accent:hover { background:var(--accent-l); }
+  .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
+
+  table { width:100%; border-collapse:collapse; font-size:.84rem; }
+  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
+  .pill.ok { background:var(--ok-bg); color:var(--ok); }
+  .pill.warn { background:var(--warn-bg); color:var(--warn); }
+  .pill.danger { background:var(--danger-bg); color:var(--danger); }
+  .pill.new { background:#eef2ff; color:#4f46e5; }
+  .mono { font-family:'JetBrains Mono'; font-size:.76rem; }
+  .dim { color:var(--dim); }
+  .bar-cell { min-width:140px; }
+  .bar-track { background:var(--bg); border-radius:99px; height:8px; overflow:hidden; }
+  .bar-fill { height:8px; border-radius:99px; background:var(--accent); }
+
+  .chart { display:flex; align-items:flex-end; gap:.8rem; padding:1.4rem 1.4rem 1.2rem; height:170px; }
+  .chart .bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem; height:100%; justify-content:flex-end; }
+  .chart .bar i { width:100%; max-width:44px; background:var(--accent); border-radius:6px 6px 0 0; min-height:4px; opacity:.85; }
+  .chart .bar.hl i { background:var(--gold); }
+  .chart .bar span { font-size:.62rem; color:var(--dim); font-weight:600; }
+
+  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.8rem; padding:1.2rem; }
+  .form-row label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .form-row input, .form-row select { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; }
+  .form-row input:focus, .form-row select:focus { outline:none; border-color:var(--accent); }
+  .form-actions { padding:0 1.2rem 1.2rem; display:flex; gap:.8rem; }
+
+  .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; padding:1.4rem; }
+  .settings-grid .field label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .settings-grid .field input { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; margin-bottom:1rem; }
+  .switch-row { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; border-bottom:1px solid var(--line); }
+  .switch-row:last-child { border-bottom:none; }
+  .switch-row b { font-size:.85rem; }
+  .switch-row p { font-size:.72rem; color:var(--dim); }
+  .switch { position:relative; width:42px; height:24px; background:#d5dbe4; border-radius:99px; cursor:pointer; transition:background .15s; flex-shrink:0; }
+  .switch.on { background:var(--ok); }
+  .switch::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+  .switch.on::after { left:21px; }
+
+  .note { font-size:.72rem; color:var(--dim); padding:.95rem 1.25rem; background:var(--bg); border-top:1px solid var(--line); font-family:'JetBrains Mono'; }
+  footer { text-align:center; font-size:.7rem; color:var(--dim); padding:1.4rem 0; border-top:1px solid var(--line); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:900px) {
+    .layout { grid-template-columns:1fr; }
+    .kpis { grid-template-columns:repeat(2,1fr); }
+    .settings-grid { grid-template-columns:1fr; }
+    .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+    .side-item { margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT DEMO · DATA RESETS · NOT A REAL SYSTEM</div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Kiros Trading <small>Inventory &amp; Stock Control · Concept Demo</small></div>
+    <div class="today" id="today"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-item active" data-view="dashboard">📊 Dashboard</div>
+    <div class="side-item" data-view="stock">📦 Stock <span class="n" id="nLow">0</span></div>
+    <div class="side-item" data-view="moves">🔁 Movements</div>
+    <div class="side-item" data-view="suppliers">🚚 Suppliers</div>
+    <div class="side-item" data-view="reorders">⚠️ Reorders <span class="n" id="nReorder">0</span></div>
+    <div class="side-item" data-view="reports">📈 Reports</div>
+    <div class="side-item" data-view="settings">⚙️ Settings</div>
+  </aside>
+
+  <div class="main">
+    <!-- DASHBOARD -->
+    <div id="view-dashboard">
+      <div class="kpis">
+        <div class="kpi ok"><b id="kValue">ETB 0</b><span>Stock value</span></div>
+        <div class="kpi"><b id="kItems">0</b><span>SKUs tracked</span></div>
+        <div class="kpi warn"><b id="kLow">0</b><span>Low-stock items</span></div>
+        <div class="kpi danger"><b id="kExp">0</b><span>Expiring soon</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Low &amp; Out of Stock</h3><span class="hint">Auto reorder suggestions</span></div>
+        <table>
+          <thead><tr><th>Item</th><th>SKU</th><th>Qty</th><th>Reorder at</th><th>Suggested</th><th>Status</th></tr></thead>
+          <tbody id="lowRows"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Stock by Category</h3><span class="hint">Units</span></div>
+        <div class="chart" id="catChart"></div>
+      </div>
+    </div>
+
+    <!-- STOCK -->
+    <div id="view-stock" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Full Inventory</h3><button class="btn btn-accent btn-sm" id="openAdd">+ Receive Stock</button></div>
+        <div id="addFormWrap"></div>
+        <table>
+          <thead><tr><th>Item</th><th>SKU</th><th>Category</th><th>Qty</th><th>Reorder at</th><th>Expires</th><th>Status</th></tr></thead>
+          <tbody id="stockRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MOVEMENTS -->
+    <div id="view-moves" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Stock Movements</h3><span class="hint">In / out · this week</span></div>
+        <table>
+          <thead><tr><th>Date</th><th>Item</th><th>Type</th><th>Qty</th><th>Reference</th><th>By</th></tr></thead>
+          <tbody id="moveRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SUPPLIERS -->
+    <div id="view-suppliers" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Supplier List</h3><span class="hint">Lead times · contacts</span></div>
+        <table>
+          <thead><tr><th>Supplier</th><th>Phone</th><th>Categories</th><th>Lead time</th><th>Last order</th><th>Status</th></tr></thead>
+          <tbody id="supplierRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- REORDERS -->
+    <div id="view-reorders" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Suggested Reorders</h3><span class="hint">Calculated from sales speed</span></div>
+        <table>
+          <thead><tr><th>Item</th><th>Qty now</th><th>Suggested qty</th><th>Supplier</th><th>Status</th></tr></thead>
+          <tbody id="reorderRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- REPORTS -->
+    <div id="view-reports" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Issues vs Receipts (units)</h3><span class="hint">7 days</span></div>
+        <div class="chart" id="weekChart"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Stock Value by Category (ETB)</h3><span class="hint">This month</span></div>
+        <table>
+          <thead><tr><th>Category</th><th>Units</th><th>Value</th></tr></thead>
+          <tbody id="catRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="view-settings" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Stock Settings</h3><span class="hint">Automations</span></div>
+        <div class="settings-grid">
+          <div>
+            <div class="field"><label>Business name</label><input value="Kiros Trading" /></div>
+            <div class="field"><label>Default supplier</label><input value="Awash Wholesale" /></div>
+            <div class="field"><label>Phone</label><input value="+251 91 000 00 00" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+          </div>
+          <div>
+            <div class="switch-row"><div><b>Low-stock alerts</b><p>WhatsApp message when an item hits reorder level</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Expiry alerts</b><p>Flags items 30 days before expiry</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Auto reorder list</b><p>Weekly suggested order sent to suppliers</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Daily stock report</b><p>Delivered to WhatsApp every evening</p></div><div class="switch"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">// Try it: click a section on the left, receive stock, toggle alerts. All data is fictional and resets on reload.</div>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="year"></span> Kiros Trading, interactive concept demo of an inventory &amp; stock control system</div>
+  <div>Fictional data · Not a real business or system</div>
+</footer>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  $('year').textContent = new Date().getFullYear();
+  $('today').textContent = new Date().toDateString();
+
+  const STOCK = [
+    { item:'Cooking Oil 5L', sku:'OIL-5L', cat:'Groceries', qty:240, reorder:60, exp:'2026-11', price:620 },
+    { item:'Rice 10kg', sku:'RICE-10', cat:'Groceries', qty:18, reorder:40, exp:'2027-03', price:980 },
+    { item:'Sugar 2kg', sku:'SUG-2K', cat:'Groceries', qty:320, reorder:80, exp:'2027-01', price:240 },
+    { item:'Cement 50kg', sku:'CEM-50', cat:'Construction', qty:140, reorder:100, exp:'2027-12', price:850 },
+    { item:'Rebar 12mm', sku:'REB-12', cat:'Construction', qty:5, reorder:30, exp:'—', price:1450 },
+    { item:'Paint white 4L', sku:'PNT-4L', cat:'Construction', qty:46, reorder:20, exp:'2026-09', price:1100 },
+    { item:'Detergent 1kg', sku:'DET-1K', cat:'Home', qty:210, reorder:60, exp:'2026-12', price:180 },
+    { item:'Soap bar', sku:'SOAP-B', cat:'Home', qty:900, reorder:200, exp:'2026-10', price:45 },
+    { item:'Tea 500g', sku:'TEA-5G', cat:'Groceries', qty:0, reorder:50, exp:'2026-08', price:320 },
+    { item:'Water pump', sku:'PMP-1', cat:'Hardware', qty:12, reorder:5, exp:'—', price:6800 },
+  ];
+  const SUPPLIERS = [
+    { name:'Awash Wholesale', phone:'+251 91 111 22 33', cats:'Groceries', lead:'2 days', last:'3 days ago', status:'active' },
+    { name:'Mesfin Building Supply', phone:'+251 92 222 33 44', cats:'Construction', lead:'1 day', last:'yesterday', status:'active' },
+    { name:'Home Goods Imports', phone:'+251 93 333 44 55', cats:'Home, Hardware', lead:'5 days', last:'1 week ago', status:'active' },
+  ];
+  const MOVES = [
+    { date:'Mon', item:'Rice 10kg', type:'out', qty:6, ref:'SO-118', by:'Girma' },
+    { date:'Mon', item:'Cement 50kg', type:'out', qty:20, ref:'SO-119', by:'Girma' },
+    { date:'Tue', item:'Cooking Oil 5L', type:'in', qty:100, ref:'PO-77', by:'Awash Wholesale' },
+    { date:'Tue', item:'Detergent 1kg', type:'out', qty:12, ref:'SO-120', by:'Mulu' },
+    { date:'Wed', item:'Rebar 12mm', type:'out', qty:4, ref:'SO-121', by:'Girma' },
+    { date:'Wed', item:'Sugar 2kg', type:'in', qty:120, ref:'PO-78', by:'Awash Wholesale' },
+    { date:'Thu', item:'Paint white 4L', type:'out', qty:8, ref:'SO-122', by:'Mulu' },
+    { date:'Thu', item:'Tea 500g', type:'out', qty:9, ref:'SO-123', by:'Girma' },
+  ];
+
+  const pill = (s) => s === 'out' ? '<span class="pill danger">Out</span>' : '<span class="pill ok">In</span>';
+  const stPill = (q, reorder) => q === 0 ? '<span class="pill danger">Out</span>' : q <= reorder ? '<span class="pill warn">Low</span>' : '<span class="pill ok">OK</span>';
+  const supPill = (s) => s === 'active' ? '<span class="pill ok">Active</span>' : '<span class="pill warn">Paused</span>';
+
+  function renderDashboard() {
+    const low = STOCK.filter(s => s.qty <= s.reorder);
+    $('kValue').textContent = 'ETB ' + STOCK.reduce((a, s) => a + s.qty * s.price, 0).toLocaleString();
+    $('kItems').textContent = STOCK.length;
+    $('kLow').textContent = low.length;
+    $('kExp').textContent = STOCK.filter(s => s.exp !== '—' && s.exp.startsWith('2026')).length;
+    $('lowRows').innerHTML = low.map(s =>
+      `<tr><td><b>${s.item}</b></td><td class="mono dim">${s.sku}</td><td><b>${s.qty}</b></td><td class="dim">${s.reorder}</td><td class="dim">${Math.max(s.reorder * 2, 20)}</td><td>${stPill(s.qty, s.reorder)}</td></tr>`).join('');
+    const cats = {};
+    STOCK.forEach(s => cats[s.cat] = (cats[s.cat] || 0) + s.qty);
+    const names = Object.keys(cats), vals = Object.values(cats), max = Math.max(...vals);
+    $('catChart').innerHTML = names.map((n, i) =>
+      `<div class="bar${i === names.length - 1 ? ' hl' : ''}"><i style="height:${Math.round(vals[i] / max * 100)}%"></i><span>${n}</span></div>`).join('');
+  }
+
+  function renderStock() {
+    $('stockRows').innerHTML = STOCK.map(s =>
+      `<tr><td><b>${s.item}</b></td><td class="mono dim">${s.sku}</td><td>${s.cat}</td><td><b>${s.qty}</b></td><td class="dim">${s.reorder}</td><td class="mono dim">${s.exp}</td><td>${stPill(s.qty, s.reorder)}</td></tr>`).join('');
+  }
+  function renderMoves() {
+    $('moveRows').innerHTML = MOVES.map(m =>
+      `<tr><td class="dim">${m.date}</td><td><b>${m.item}</b></td><td>${pill(m.type)}</td><td><b>${m.qty}</b></td><td class="mono dim">${m.ref}</td><td>${m.by}</td></tr>`).join('');
+  }
+  function renderSuppliers() {
+    $('supplierRows').innerHTML = SUPPLIERS.map(s =>
+      `<tr><td><b>${s.name}</b></td><td class="mono dim">${s.phone}</td><td>${s.cats}</td><td class="dim">${s.lead}</td><td class="dim">${s.last}</td><td>${supPill(s.status)}</td></tr>`).join('');
+  }
+  function renderReorders() {
+    const low = STOCK.filter(s => s.qty <= s.reorder);
+    $('nReorder').textContent = low.length;
+    $('reorderRows').innerHTML = low.map(s =>
+      `<tr><td><b>${s.item}</b></td><td><b>${s.qty}</b></td><td class="dim">${Math.max(s.reorder * 2, 20)}</td><td>Awash Wholesale</td><td><span class="pill new">Suggested</span></td></tr>`).join('');
+  }
+  function renderReports() {
+    const out = [20, 32, 26, 44, 38, 52, 41], inn = [0, 100, 0, 120, 0, 0, 80];
+    const max = Math.max(...out, ...inn);
+    $('weekChart').innerHTML = out.map((v, i) =>
+      `<div class="bar${i === out.length - 1 ? ' hl' : ''}"><i style="height:${Math.round(v / max * 100)}%"></i><span>${inn[i] ? 'In' : 'Out'}</span></div>`).join('');
+    const cats = {};
+    STOCK.forEach(s => cats[s.cat] = (cats[s.cat] || 0) + s.qty * s.price);
+    $('catRows').innerHTML = Object.entries(cats).map(([c, v]) =>
+      `<tr><td><b>${c}</b></td><td>${STOCK.filter(s => s.cat === c).length}</td><td class="mono">ETB ${v.toLocaleString()}</td></tr>`).join('');
+  }
+
+  function addForm() {
+    $('addFormWrap').innerHTML =
+      `<div class="form-row">
+        <div><label>Item</label><select id="fItem">${STOCK.map(s => `<option>${s.item}</option>`).join('')}</select></div>
+        <div><label>Qty received</label><input id="fQty" type="number" value="10" /></div>
+        <div><label>Supplier</label><input id="fSup" value="Awash Wholesale" /></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-accent btn-sm" id="saveAdd">Save receipt</button></div>`;
+    $('saveAdd').onclick = () => {
+      const item = $('fItem').value, qty = parseInt($('fQty').value) || 0;
+      const s = STOCK.find(x => x.item === item);
+      s.qty += qty;
+      MOVES.unshift({ date:'Today', item, type:'in', qty, ref:'PO-' + (90 + MOVES.length), by:$('fSup').value });
+      renderAll();
+      $('addFormWrap').innerHTML = '';
+    };
+  }
+
+  function renderAll() {
+    renderDashboard(); renderStock(); renderMoves(); renderSuppliers(); renderReorders(); renderReports();
+    $('nLow').textContent = STOCK.filter(s => s.qty <= s.reorder).length;
+  }
+
+  document.querySelectorAll('.side-item').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.side-item').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.main > div').forEach(v => v.hidden = v.id !== 'view-' + el.dataset.view);
+    });
+  });
+  $('openAdd').addEventListener('click', addForm);
+  document.querySelectorAll('.switch').forEach(sw => sw.addEventListener('click', () => sw.classList.toggle('on')));
+  renderAll();
+</script>
+</body>
+</html>

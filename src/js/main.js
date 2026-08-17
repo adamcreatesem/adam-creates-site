@@ -998,6 +998,54 @@ document.addEventListener('DOMContentLoaded', () => {
       does: ['Pieces book without showroom visits', 'Double bookings disappear', 'Returns and deposits stay tracked', 'New arrivals reach repeat renters'],
       sample: 'See a sample fashion rental site →',
       preview: '/fashion-rental.html'
+    },
+    inventory: {
+      tag: 'Inventory & Stock Control',
+      intro: 'If you sell physical goods, stock is your biggest silent cost. Know what you have, what is low, and what to order before it becomes an emergency.',
+      get: ['Item-level stock tracking with categories', 'Low-stock and expiry alerts on WhatsApp', 'Reorder suggestions from real sales speed', 'Supplier and movement history'],
+      does: ['You never run out of what sells', 'No more guessing what to order', 'Expiring stock stops costing you money', 'Staff spend less time counting'],
+      sample: 'See a sample inventory & stock control system →',
+      preview: '/inventory-system/'
+    },
+    hospitalsystems: {
+      tag: 'Hospital Management Systems',
+      intro: 'Hospitals run on coordination: beds, doctors, records and bills. One system keeps every ward and desk on the same page.',
+      get: ['Admissions, wards and bed occupancy', 'Appointments with SMS/WhatsApp reminders', 'Pharmacy stock with expiry flags', 'Patient billing that is always current'],
+      does: ['No-shows drop with reminders', 'Ward occupancy is visible in real time', 'Medicine never quietly expires', 'Billing disputes disappear'],
+      sample: 'See a sample hospital management system →',
+      preview: '/hospital-system/'
+    },
+    schoolmgmt: {
+      tag: 'School Management Systems',
+      intro: 'Enrollment, attendance, grades and fees live in four different notebooks today. One system puts them all on one screen.',
+      get: ['Student register with guardian contacts', 'Daily attendance with absence alerts', 'Term grades and class rankings', 'Fee ledger with automatic reminders'],
+      does: ['Guardians hear about absences instantly', 'Fee collection stops being a chase', 'Results go out by message', 'Enrollment numbers are always true'],
+      sample: 'See a sample school management system →',
+      preview: '/school-system/'
+    },
+    warehouses: {
+      tag: 'Warehouses & Distribution',
+      intro: 'A warehouse only earns when goods move. Know exactly what is where, what is coming in, and what must go out today.',
+      get: ['Bin-level stock with capacity tracking', 'Inbound and outbound queues', 'Picking lists grouped by zone', 'Fast-moving item reports'],
+      does: ['Nothing gets lost between bins', 'Dispatch never misses the truck', 'Stock counts match reality', 'You see what sells fastest'],
+      sample: 'See a sample warehouse management system →',
+      preview: '/warehouse-system/'
+    },
+    logistics: {
+      tag: 'Logistics & Freight',
+      intro: 'Your customers ask where their goods are. Give them a live answer instead of a phone call and your fleet runs itself.',
+      get: ['Shipment tracking with progress and ETA', 'Vehicle fleet with service-due alerts', 'Driver rosters and ratings', 'Delivery confirmations and invoices'],
+      does: ['Customers stop calling for updates', 'Trucks are never idle by surprise', 'Proof of delivery is saved per drop', 'Invoices follow automatically'],
+      sample: 'See a sample freight & delivery tracking →',
+      preview: '/logistics-system/'
+    },
+    constructionsystems: {
+      tag: 'Construction Project Tracking',
+      intro: "Sites run on materials, machines and deadlines. One board shows every project's progress before problems show up on site.",
+      get: ['Projects with progress and deadlines', 'Material stock with low alerts per site', 'Equipment allocation and service flags', 'Expense log per project'],
+      does: ['Delays are visible before they happen', 'Materials are ordered before sites stall', 'Clients get milestone updates automatically', 'Costs are tracked per project'],
+      sample: 'See a sample construction project tracking →',
+      preview: '/construction-system/'
     }
   };
 

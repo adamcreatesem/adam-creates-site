@@ -16,7 +16,7 @@ says yes.
 - The Adam Creates website shows these fictional samples as concept cards,
   each openable in a mini-window preview.
 
-## Types (16)
+## Types (22)
 1. Restaurant (Arabic vibes): Mesob Nights
 2. Guest House: Saba Lodge
 3. Garden Retreat: Tana Gardens
@@ -51,3 +51,10 @@ Every sample has its own visual identity, no shared templates:
 - Auto: steel + safety orange, hazard stripes (Oswald + Space Mono)
 - Creator: dark dashboard, neon stats (Space Grotesk + JetBrains Mono)
 - Retail: fashion editorial, Italiana serif
+
+17. Inventory & Stock Control System: Kiros Trading
+18. Hospital Management System: Selam General Hospital
+19. School Management System: Kokebe Academy
+20. Warehouse Management System: Addis Warehouse Co.
+21. Freight & Delivery Tracking: Abay Logistics
+22. Construction Project Tracking: Meskel Construction

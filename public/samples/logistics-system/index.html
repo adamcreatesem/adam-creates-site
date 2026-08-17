@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abay Logistics: Freight &amp; Delivery Tracking (Concept Demo)</title>
+<meta name="description" content="Interactive concept demo of a logistics system: shipments, vehicles, drivers, deliveries, invoices. Not a real system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#0b1d33; --side-ink:#c7d6e8; --accent:#0284c7; --accent-l:#0ea5e9; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  .topbar { background:var(--side); color:#fff; }
+  .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
+  .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#8aa3bd; font-weight:400; }
+  .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#c7d6e8; }
+
+  .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
+  .sidebar { background:var(--side); border-radius:12px; padding:1rem; align-self:start; position:sticky; top:1rem; }
+  .side-item { display:flex; align-items:center; gap:.7rem; padding:.68rem .8rem; border-radius:8px; font-size:.84rem; color:var(--side-ink); cursor:pointer; margin-bottom:.2rem; }
+  .side-item:hover { background:rgba(255,255,255,.07); color:#fff; }
+  .side-item.active { background:var(--accent); color:#fff; font-weight:600; }
+  .side-item .n { margin-left:auto; font-family:'JetBrains Mono'; font-size:.66rem; background:rgba(255,255,255,.1); padding:.12rem .45rem; border-radius:99px; }
+  .side-item.active .n { background:rgba(255,255,255,.22); }
+
+  .main { display:grid; gap:1.3rem; align-content:start; }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.05rem 1.15rem; }
+  .kpi b { font-size:1.5rem; font-weight:800; display:block; letter-spacing:-.02em; }
+  .kpi span { font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); font-weight:600; }
+  .kpi.warn b { color:var(--warn); }
+  .kpi.danger b { color:var(--danger); }
+  .kpi.ok b { color:var(--ok); }
+
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:center; padding:.95rem 1.25rem; border-bottom:1px solid var(--line); gap:1rem; flex-wrap:wrap; }
+  .card-head h3 { font-size:.95rem; font-weight:700; }
+  .card-head .hint { font-size:.68rem; color:var(--dim); font-family:'JetBrains Mono'; }
+  .btn { display:inline-block; font-weight:600; font-size:.78rem; padding:.6rem 1.05rem; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer; }
+  .btn-accent { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-accent:hover { background:var(--accent-l); }
+  .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
+
+  table { width:100%; border-collapse:collapse; font-size:.84rem; }
+  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
+  .pill.ok { background:var(--ok-bg); color:var(--ok); }
+  .pill.warn { background:var(--warn-bg); color:var(--warn); }
+  .pill.danger { background:var(--danger-bg); color:var(--danger); }
+  .pill.new { background:#e0f2fe; color:#0369a1; }
+  .mono { font-family:'JetBrains Mono'; font-size:.76rem; }
+  .dim { color:var(--dim); }
+  .bar-cell { min-width:140px; }
+  .bar-track { background:var(--bg); border-radius:99px; height:8px; overflow:hidden; }
+  .bar-fill { height:8px; border-radius:99px; background:var(--accent); }
+
+  .chart { display:flex; align-items:flex-end; gap:.8rem; padding:1.4rem 1.4rem 1.2rem; height:170px; }
+  .chart .bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem; height:100%; justify-content:flex-end; }
+  .chart .bar i { width:100%; max-width:44px; background:var(--accent); border-radius:6px 6px 0 0; min-height:4px; opacity:.85; }
+  .chart .bar.hl i { background:var(--gold); }
+  .chart .bar span { font-size:.62rem; color:var(--dim); font-weight:600; }
+
+  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.8rem; padding:1.2rem; }
+  .form-row label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .form-row input, .form-row select { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; }
+  .form-row input:focus, .form-row select:focus { outline:none; border-color:var(--accent); }
+  .form-actions { padding:0 1.2rem 1.2rem; display:flex; gap:.8rem; }
+
+  .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; padding:1.4rem; }
+  .settings-grid .field label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .settings-grid .field input { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; margin-bottom:1rem; }
+  .switch-row { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; border-bottom:1px solid var(--line); }
+  .switch-row:last-child { border-bottom:none; }
+  .switch-row b { font-size:.85rem; }
+  .switch-row p { font-size:.72rem; color:var(--dim); }
+  .switch { position:relative; width:42px; height:24px; background:#d5dbe4; border-radius:99px; cursor:pointer; transition:background .15s; flex-shrink:0; }
+  .switch.on { background:var(--ok); }
+  .switch::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+  .switch.on::after { left:21px; }
+
+  .note { font-size:.72rem; color:var(--dim); padding:.95rem 1.25rem; background:var(--bg); border-top:1px solid var(--line); font-family:'JetBrains Mono'; }
+  footer { text-align:center; font-size:.7rem; color:var(--dim); padding:1.4rem 0; border-top:1px solid var(--line); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:900px) {
+    .layout { grid-template-columns:1fr; }
+    .kpis { grid-template-columns:repeat(2,1fr); }
+    .settings-grid { grid-template-columns:1fr; }
+    .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+    .side-item { margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT DEMO · DATA RESETS · NOT A REAL SYSTEM</div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Abay Logistics <small>Freight &amp; Delivery Tracking · Concept Demo</small></div>
+    <div class="today" id="today"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-item active" data-view="dashboard">📊 Dashboard</div>
+    <div class="side-item" data-view="shipments">🚚 Shipments <span class="n" id="nShip">0</span></div>
+    <div class="side-item" data-view="vehicles">🚛 Vehicles</div>
+    <div class="side-item" data-view="drivers">👨‍✈️ Drivers</div>
+    <div class="side-item" data-view="deliveries">📦 Deliveries</div>
+    <div class="side-item" data-view="invoices">🧾 Invoices</div>
+    <div class="side-item" data-view="settings">⚙️ Settings</div>
+  </aside>
+
+  <div class="main">
+    <!-- DASHBOARD -->
+    <div id="view-dashboard">
+      <div class="kpis">
+        <div class="kpi ok"><b id="kActive">0</b><span>Active shipments</span></div>
+        <div class="kpi"><b id="kOnTime">0%</b><span>On-time rate</span></div>
+        <div class="kpi warn"><b id="kTransit">0</b><span>In transit</span></div>
+        <div class="kpi"><b id="kVeh">0</b><span>Vehicles on road</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Live Shipments</h3><span class="hint">ETA · status</span></div>
+        <table>
+          <thead><tr><th>Ref</th><th>Route</th><th>Vehicle</th><th>ETA</th><th>Progress</th><th>Status</th></tr></thead>
+          <tbody id="shipRows"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Deliveries This Week</h3><span class="hint">Per day</span></div>
+        <div class="chart" id="delChart"></div>
+      </div>
+    </div>
+
+    <!-- SHIPMENTS -->
+    <div id="view-shipments" hidden>
+      <div class="card">
+        <div class="card-head"><h3>All Shipments</h3><button class="btn btn-accent btn-sm" id="openAdd">+ New Shipment</button></div>
+        <div id="addFormWrap"></div>
+        <table>
+          <thead><tr><th>Ref</th><th>Origin</th><th>Destination</th><th>Vehicle</th><th>ETA</th><th>Status</th></tr></thead>
+          <tbody id="shipmentRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VEHICLES -->
+    <div id="view-vehicles" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Fleet</h3><span class="hint">Status · last service</span></div>
+        <table>
+          <thead><tr><th>Plate</th><th>Type</th><th>Driver</th><th>Last service</th><th>Status</th></tr></thead>
+          <tbody id="vehRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DRIVERS -->
+    <div id="view-drivers" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Driver Roster</h3><span class="hint">Trips · rating</span></div>
+        <table>
+          <thead><tr><th>Driver</th><th>Phone</th><th>Trips</th><th>Rating</th><th>Status</th></tr></thead>
+          <tbody id="drvRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DELIVERIES -->
+    <div id="view-deliveries" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Deliveries</h3><span class="hint">Confirmations</span></div>
+        <table>
+          <thead><tr><th>Ref</th><th>Customer</th><th>Address</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody id="delRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INVOICES -->
+    <div id="view-invoices" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Open Invoices</h3><span class="hint">Unpaid highlighted</span></div>
+        <table>
+          <thead><tr><th>Invoice</th><th>Customer</th><th>Shipment</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody id="invRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="view-settings" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Logistics Settings</h3><span class="hint">Automations</span></div>
+        <div class="settings-grid">
+          <div>
+            <div class="field"><label>Company name</label><input value="Abay Logistics" /></div>
+            <div class="field"><label>Phone</label><input value="+251 11 000 00 00" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+          </div>
+          <div>
+            <div class="switch-row"><div><b>Tracking links</b><p>Customer gets a live link when goods ship</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Delivery confirmations</b><p>Proof-of-delivery photo saved per drop</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Service due alerts</b><p>Flags vehicles due for maintenance</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Daily dispatch report</b><p>Delivered to WhatsApp every evening</p></div><div class="switch"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">// Try it: click a section, create a shipment, toggle alerts. All data is fictional and resets on reload.</div>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="year"></span> Abay Logistics, interactive concept demo of a freight &amp; delivery tracking system</div>
+  <div>Fictional data · Not a real logistics company or system</div>
+</footer>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  $('year').textContent = new Date().getFullYear();
+  $('today').textContent = new Date().toDateString();
+
+  const SHIP = [
+    { ref:'SH-2101', from:'Addis Ababa', to:'Dire Dawa', veh:'3-A-45821', eta:'Today 18:00', prog:72, status:'transit' },
+    { ref:'SH-2102', from:'Addis Ababa', to:'Bahir Dar', veh:'3-A-11204', eta:'Tomorrow 09:00', prog:45, status:'transit' },
+    { ref:'SH-2103', from:'Addis Ababa', to:'Hawassa', veh:'3-A-90877', eta:'Today 15:30', prog:88, status:'transit' },
+    { ref:'SH-2099', from:'Addis Ababa', to:'Mekelle', veh:'3-A-33215', eta:'2 days', prog:20, status:'loading' },
+    { ref:'SH-2098', from:'Addis Ababa', to:'Jimma', veh:'3-A-77654', eta:'Today 12:00', prog:100, status:'delivered' },
+  ];
+  const VEH = [
+    { plate:'3-A-45821', type:'Truck 12t', drv:'Getachew A.', svc:'2 weeks ago', status:'on-road' },
+    { plate:'3-A-11204', type:'Truck 8t', drv:'Mulugeta B.', svc:'1 week ago', status:'on-road' },
+    { plate:'3-A-90877', type:'Van', drv:'Selam T.', svc:'3 days ago', status:'on-road' },
+    { plate:'3-A-33215', type:'Truck 12t', drv:'Fikadu D.', svc:'3 weeks ago', status:'on-road' },
+    { plate:'3-A-77654', type:'Van', drv:'—', svc:'1 month ago', status:'idle' },
+  ];
+  const DRV = [
+    { d:'Getachew A.', phone:'+251 91 000 01 11', trips:84, rate:4.9, status:'on-duty' },
+    { d:'Mulugeta B.', phone:'+251 91 000 01 12', trips:61, rate:4.7, status:'on-duty' },
+    { d:'Selam T.', phone:'+251 91 000 01 13', trips:39, rate:5.0, status:'on-duty' },
+    { d:'Fikadu D.', phone:'+251 91 000 01 14', trips:52, rate:4.6, status:'on-duty' },
+    { d:'Yonas K.', phone:'+251 91 000 01 15', trips:27, rate:4.5, status:'off' },
+  ];
+  const DEL = [
+    { ref:'SH-2098', c:'Kiros Trading', addr:'Mekanisa', day:'Today', status:'confirmed' },
+    { ref:'SH-2097', c:'Bole Mart', addr:'Bole Road', day:'Yesterday', status:'confirmed' },
+    { ref:'SH-2096', c:'Meskel Construction', addr:'Kality', day:'Yesterday', status:'confirmed' },
+    { ref:'SH-2095', c:'Selam Pharmacy', addr:'Piassa', day:'2 days ago', status:'confirmed' },
+  ];
+  const INV = [
+    { i:'INV-881', c:'Kiros Trading', s:'SH-2098', amt:18500, status:'unpaid' },
+    { i:'INV-880', c:'Bole Mart', s:'SH-2097', amt:12400, status:'paid' },
+    { i:'INV-879', c:'Meskel Construction', s:'SH-2096', amt:41200, status:'unpaid' },
+    { i:'INV-878', c:'Selam Pharmacy', s:'SH-2095', amt:7300, status:'paid' },
+  ];
+
+  const pill = (s) => s === 'delivered' || s === 'confirmed' || s === 'paid' || s === 'on-duty'
+    ? '<span class="pill ok">' + s[0].toUpperCase() + s.slice(1) + '</span>'
+    : s === 'loading' ? '<span class="pill new">Loading</span>'
+    : '<span class="pill warn">' + s[0].toUpperCase() + s.slice(1) + '</span>';
+
+  function renderDashboard() {
+    $('kActive').textContent = SHIP.filter(s => s.status !== 'delivered').length;
+    $('kOnTime').textContent = '94%';
+    $('kTransit').textContent = SHIP.filter(s => s.status === 'transit').length;
+    $('kVeh').textContent = VEH.filter(v => v.status === 'on-road').length;
+    $('shipRows').innerHTML = SHIP.map(s =>
+      `<tr><td class="mono"><b>${s.ref}</b></td><td>${s.from} → ${s.to}</td><td class="mono dim">${s.veh}</td><td class="dim">${s.eta}</td>
+        <td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:${s.prog}%"></div></div><span class="mono dim">${s.prog}%</span></td><td>${pill(s.status)}</td></tr>`).join('');
+    const week = [9, 14, 11, 17, 13, 20, 18];
+    const max = Math.max(...week);
+    $('delChart').innerHTML = week.map((v, i) =>
+      `<div class="bar${i === week.length - 1 ? ' hl' : ''}"><i style="height:${Math.round(v / max * 100)}%"></i><span>${i + 1}</span></div>`).join('');
+  }
+  function renderShipments() {
+    $('nShip').textContent = SHIP.length;
+    $('shipmentRows').innerHTML = SHIP.map(s =>
+      `<tr><td class="mono"><b>${s.ref}</b></td><td>${s.from}</td><td>${s.to}</td><td class="mono dim">${s.veh}</td><td class="dim">${s.eta}</td><td>${pill(s.status)}</td></tr>`).join('');
+  }
+  function renderVehicles() {
+    $('vehRows').innerHTML = VEH.map(v =>
+      `<tr><td class="mono"><b>${v.plate}</b></td><td>${v.type}</td><td>${v.drv}</td><td class="dim">${v.svc}</td><td>${v.status === 'on-road' ? '<span class="pill ok">On road</span>' : '<span class="pill warn">Idle</span>'}</td></tr>`).join('');
+  }
+  function renderDrivers() {
+    $('drvRows').innerHTML = DRV.map(d =>
+      `<tr><td><b>${d.d}</b></td><td class="mono dim">${d.phone}</td><td>${d.trips}</td><td class="mono">${d.rate.toFixed(1)} ★</td><td>${pill(d.status)}</td></tr>`).join('');
+  }
+  function renderDeliveries() {
+    $('delRows').innerHTML = DEL.map(d =>
+      `<tr><td class="mono"><b>${d.ref}</b></td><td><b>${d.c}</b></td><td>${d.addr}</td><td class="dim">${d.day}</td><td>${pill(d.status)}</td></tr>`).join('');
+  }
+  function renderInvoices() {
+    $('invRows').innerHTML = INV.map(i =>
+      `<tr><td class="mono"><b>${i.i}</b></td><td><b>${i.c}</b></td><td class="mono dim">${i.s}</td><td class="mono">ETB ${i.amt.toLocaleString()}</td><td>${pill(i.status)}</td></tr>`).join('');
+  }
+
+  function addForm() {
+    $('addFormWrap').innerHTML =
+      `<div class="form-row">
+        <div><label>Origin</label><input id="fFrom" value="Addis Ababa" /></div>
+        <div><label>Destination</label><input id="fTo" placeholder="City" /></div>
+        <div><label>Vehicle</label><select id="fVeh">${VEH.map(v => `<option>${v.plate}</option>`).join('')}</select></div>
+        <div><label>ETA</label><input id="fEta" value="Tomorrow" /></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-accent btn-sm" id="saveAdd">Create shipment</button></div>`;
+    $('saveAdd').onclick = () => {
+      const to = $('fTo').value.trim() || 'New City';
+      SHIP.unshift({ ref:'SH-' + (2110 + SHIP.length), from:$('fFrom').value, to, veh:$('fVeh').value, eta:$('fEta').value, prog:0, status:'loading' });
+      renderAll();
+      $('addFormWrap').innerHTML = '';
+    };
+  }
+
+  function renderAll() {
+    renderDashboard(); renderShipments(); renderVehicles(); renderDrivers(); renderDeliveries(); renderInvoices();
+  }
+
+  document.querySelectorAll('.side-item').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.side-item').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.main > div').forEach(v => v.hidden = v.id !== 'view-' + el.dataset.view);
+    });
+  });
+  $('openAdd').addEventListener('click', addForm);
+  document.querySelectorAll('.switch').forEach(sw => sw.addEventListener('click', () => sw.classList.toggle('on')));
+  renderAll();
+</script>
+</body>
+</html>

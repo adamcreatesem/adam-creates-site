@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selam General Hospital: Management System (Concept Demo)</title>
+<meta name="description" content="Interactive concept demo of a hospital management system: admissions, wards, appointments, doctors, pharmacy, billing. Not a real system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#0f1b2d; --side-ink:#cbd5e1; --accent:#0d9488; --accent-l:#14b8a6; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  .topbar { background:var(--side); color:#fff; }
+  .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
+  .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
+  .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#cbd5e1; }
+
+  .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
+  .sidebar { background:var(--side); border-radius:12px; padding:1rem; align-self:start; position:sticky; top:1rem; }
+  .side-item { display:flex; align-items:center; gap:.7rem; padding:.68rem .8rem; border-radius:8px; font-size:.84rem; color:var(--side-ink); cursor:pointer; margin-bottom:.2rem; }
+  .side-item:hover { background:rgba(255,255,255,.07); color:#fff; }
+  .side-item.active { background:var(--accent); color:#fff; font-weight:600; }
+  .side-item .n { margin-left:auto; font-family:'JetBrains Mono'; font-size:.66rem; background:rgba(255,255,255,.1); padding:.12rem .45rem; border-radius:99px; }
+  .side-item.active .n { background:rgba(255,255,255,.22); }
+
+  .main { display:grid; gap:1.3rem; align-content:start; }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.05rem 1.15rem; }
+  .kpi b { font-size:1.5rem; font-weight:800; display:block; letter-spacing:-.02em; }
+  .kpi span { font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); font-weight:600; }
+  .kpi.warn b { color:var(--warn); }
+  .kpi.danger b { color:var(--danger); }
+  .kpi.ok b { color:var(--ok); }
+
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:center; padding:.95rem 1.25rem; border-bottom:1px solid var(--line); gap:1rem; flex-wrap:wrap; }
+  .card-head h3 { font-size:.95rem; font-weight:700; }
+  .card-head .hint { font-size:.68rem; color:var(--dim); font-family:'JetBrains Mono'; }
+  .btn { display:inline-block; font-weight:600; font-size:.78rem; padding:.6rem 1.05rem; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer; }
+  .btn-accent { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-accent:hover { background:var(--accent-l); }
+  .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
+
+  table { width:100%; border-collapse:collapse; font-size:.84rem; }
+  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
+  .pill.ok { background:var(--ok-bg); color:var(--ok); }
+  .pill.warn { background:var(--warn-bg); color:var(--warn); }
+  .pill.danger { background:var(--danger-bg); color:var(--danger); }
+  .pill.new { background:#e0f2fe; color:#0369a1; }
+  .mono { font-family:'JetBrains Mono'; font-size:.76rem; }
+  .dim { color:var(--dim); }
+  .bar-cell { min-width:140px; }
+  .bar-track { background:var(--bg); border-radius:99px; height:8px; overflow:hidden; }
+  .bar-fill { height:8px; border-radius:99px; background:var(--accent); }
+
+  .chart { display:flex; align-items:flex-end; gap:.8rem; padding:1.4rem 1.4rem 1.2rem; height:170px; }
+  .chart .bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem; height:100%; justify-content:flex-end; }
+  .chart .bar i { width:100%; max-width:44px; background:var(--accent); border-radius:6px 6px 0 0; min-height:4px; opacity:.85; }
+  .chart .bar.hl i { background:var(--gold); }
+  .chart .bar span { font-size:.62rem; color:var(--dim); font-weight:600; }
+
+  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.8rem; padding:1.2rem; }
+  .form-row label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .form-row input, .form-row select { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; }
+  .form-row input:focus, .form-row select:focus { outline:none; border-color:var(--accent); }
+  .form-actions { padding:0 1.2rem 1.2rem; display:flex; gap:.8rem; }
+
+  .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; padding:1.4rem; }
+  .settings-grid .field label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .settings-grid .field input { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; margin-bottom:1rem; }
+  .switch-row { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; border-bottom:1px solid var(--line); }
+  .switch-row:last-child { border-bottom:none; }
+  .switch-row b { font-size:.85rem; }
+  .switch-row p { font-size:.72rem; color:var(--dim); }
+  .switch { position:relative; width:42px; height:24px; background:#d5dbe4; border-radius:99px; cursor:pointer; transition:background .15s; flex-shrink:0; }
+  .switch.on { background:var(--ok); }
+  .switch::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+  .switch.on::after { left:21px; }
+
+  .note { font-size:.72rem; color:var(--dim); padding:.95rem 1.25rem; background:var(--bg); border-top:1px solid var(--line); font-family:'JetBrains Mono'; }
+  footer { text-align:center; font-size:.7rem; color:var(--dim); padding:1.4rem 0; border-top:1px solid var(--line); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:900px) {
+    .layout { grid-template-columns:1fr; }
+    .kpis { grid-template-columns:repeat(2,1fr); }
+    .settings-grid { grid-template-columns:1fr; }
+    .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+    .side-item { margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT DEMO · DATA RESETS · NOT A REAL SYSTEM</div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Selam General Hospital <small>Hospital Management · Concept Demo</small></div>
+    <div class="today" id="today"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-item active" data-view="dashboard">📊 Dashboard</div>
+    <div class="side-item" data-view="admissions">🛏️ Admissions <span class="n" id="nAdm">0</span></div>
+    <div class="side-item" data-view="wards">🏥 Wards &amp; Beds</div>
+    <div class="side-item" data-view="appts">📅 Appointments</div>
+    <div class="side-item" data-view="doctors">🩺 Doctors</div>
+    <div class="side-item" data-view="pharmacy">💊 Pharmacy</div>
+    <div class="side-item" data-view="billing">🧾 Billing</div>
+    <div class="side-item" data-view="settings">⚙️ Settings</div>
+  </aside>
+
+  <div class="main">
+    <!-- DASHBOARD -->
+    <div id="view-dashboard">
+      <div class="kpis">
+        <div class="kpi ok"><b id="kIn">0</b><span>In-patients</span></div>
+        <div class="kpi"><b id="kAdm">0</b><span>Admissions today</span></div>
+        <div class="kpi warn"><b id="kAppt">0</b><span>Appointments today</span></div>
+        <div class="kpi danger"><b id="kBeds">0</b><span>Beds available</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Current In-patients</h3><span class="hint">Ward · doctor · status</span></div>
+        <table>
+          <thead><tr><th>Patient</th><th>Ward</th><th>Doctor</th><th>Admitted</th><th>Status</th></tr></thead>
+          <tbody id="admRows"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Today's Appointments</h3><span class="hint">Per hour</span></div>
+        <div class="chart" id="apptChart"></div>
+      </div>
+    </div>
+
+    <!-- ADMISSIONS -->
+    <div id="view-admissions" hidden>
+      <div class="card">
+        <div class="card-head"><h3>All Admissions</h3><button class="btn btn-accent btn-sm" id="openAdd">+ Admit Patient</button></div>
+        <div id="addFormWrap"></div>
+        <table>
+          <thead><tr><th>Patient</th><th>Ward</th><th>Doctor</th><th>Admitted</th><th>Condition</th><th>Status</th></tr></thead>
+          <tbody id="admissionRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- WARDS -->
+    <div id="view-wards" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Wards &amp; Bed Occupancy</h3><span class="hint">Live</span></div>
+        <table>
+          <thead><tr><th>Ward</th><th>Beds</th><th>Occupied</th><th>Available</th><th>Occupancy</th></tr></thead>
+          <tbody id="wardRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- APPOINTMENTS -->
+    <div id="view-appts" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Appointment List</h3><span class="hint">Confirm by SMS/WhatsApp</span></div>
+        <table>
+          <thead><tr><th>Patient</th><th>Doctor</th><th>Time</th><th>Department</th><th>Status</th></tr></thead>
+          <tbody id="apptRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DOCTORS -->
+    <div id="view-doctors" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Doctor Roster</h3><span class="hint">Departments · shifts</span></div>
+        <table>
+          <thead><tr><th>Doctor</th><th>Department</th><th>Shift</th><th>Patients today</th><th>Status</th></tr></thead>
+          <tbody id="docRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PHARMACY -->
+    <div id="view-pharmacy" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Pharmacy Stock</h3><span class="hint">Low &amp; expiring flagged</span></div>
+        <table>
+          <thead><tr><th>Medication</th><th>Stock</th><th>Reorder at</th><th>Expires</th><th>Status</th></tr></thead>
+          <tbody id="pharmRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- BILLING -->
+    <div id="view-billing" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Open Bills</h3><span class="hint">Unpaid highlighted</span></div>
+        <table>
+          <thead><tr><th>Patient</th><th>Service</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody id="billRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="view-settings" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Hospital Settings</h3><span class="hint">Automations</span></div>
+        <div class="settings-grid">
+          <div>
+            <div class="field"><label>Hospital name</label><input value="Selam General Hospital" /></div>
+            <div class="field"><label>Phone</label><input value="+251 11 000 00 00" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+          </div>
+          <div>
+            <div class="switch-row"><div><b>Appointment reminders</b><p>SMS/WhatsApp one day before each visit</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Lab result alerts</b><p>Notifies doctor when results are ready</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Medicine expiry alerts</b><p>Flags pharmacy stock 30 days before expiry</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Daily ward report</b><p>Delivered to WhatsApp every evening</p></div><div class="switch"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">// Try it: click a section, admit a patient, toggle alerts. All data is fictional and resets on reload.</div>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="year"></span> Selam General Hospital, interactive concept demo of a hospital management system</div>
+  <div>Fictional data · Not a real hospital or system</div>
+</footer>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  $('year').textContent = new Date().getFullYear();
+  $('today').textContent = new Date().toDateString();
+
+  const ADM = [
+    { p:'Hanna Girma', ward:'Ward A (Medical)', doc:'Dr. Alemu', day:'Today', cond:'Recovering', status:'admitted' },
+    { p:'Dawit Tesfaye', ward:'Ward B (Surgical)', doc:'Dr. Bekele', day:'2 days ago', cond:'Stable', status:'admitted' },
+    { p:'Sara Mohammed', ward:'ICU', doc:'Dr. Alemu', day:'Yesterday', cond:'Critical', status:'admitted' },
+    { p:'Abebe Kebede', ward:'Ward A (Medical)', doc:'Dr. Tadesse', day:'4 days ago', cond:'Improving', status:'admitted' },
+    { p:'Meron Assefa', ward:'Maternity', doc:'Dr. Bekele', day:'Today', cond:'Observation', status:'admitted' },
+  ];
+  const WARDS = [
+    { w:'Ward A (Medical)', beds:30, occ:24 }, { w:'Ward B (Surgical)', beds:20, occ:17 },
+    { w:'Maternity', beds:14, occ:9 }, { w:'ICU', beds:6, occ:6 }, { w:'Pediatrics', beds:18, occ:13 },
+  ];
+  const APPT = [
+    { p:'Ruth Desta', doc:'Dr. Tadesse', time:'09:00', dept:'Cardiology', status:'confirmed' },
+    { p:'Yonas Haile', doc:'Dr. Alemu', time:'09:30', dept:'Internal', status:'confirmed' },
+    { p:'Liya Belay', doc:'Dr. Bekele', time:'10:00', dept:'Surgery', status:'pending' },
+    { p:'Kidus Mamo', doc:'Dr. Alemu', time:'11:00', dept:'Internal', status:'confirmed' },
+    { p:'Selamawit Girma', doc:'Dr. Tadesse', time:'13:00', dept:'Cardiology', status:'pending' },
+    { p:'Natnael Wondimu', doc:'Dr. Bekele', time:'14:00', dept:'Orthopedics', status:'confirmed' },
+  ];
+  const DOCS = [
+    { d:'Dr. Alemu', dept:'Internal Medicine', shift:'Morning', n:4, status:'on-duty' },
+    { d:'Dr. Bekele', dept:'Surgery', shift:'Morning', n:3, status:'on-duty' },
+    { d:'Dr. Tadesse', dept:'Cardiology', shift:'Evening', n:2, status:'on-duty' },
+    { d:'Dr. Girma', dept:'Pediatrics', shift:'Evening', n:3, status:'on-duty' },
+    { d:'Dr. Haile', dept:'Radiology', shift:'Night', n:1, status:'off' },
+  ];
+  const PHARM = [
+    { m:'Amoxicillin 500mg', stock:340, reorder:100, exp:'2026-10', status:'ok' },
+    { m:'Paracetamol 500mg', stock:18, reorder:200, exp:'2027-02', status:'low' },
+    { m:'Insulin (vials)', stock:42, reorder:50, exp:'2026-09', status:'low' },
+    { m:'ORS Sachets', stock:900, reorder:150, exp:'2026-12', status:'ok' },
+    { m:'Morphine 10mg', stock:76, reorder:40, exp:'2027-05', status:'ok' },
+  ];
+  const BILLS = [
+    { p:'Hanna Girma', s:'Ward + treatment', amt:18500, status:'partial' },
+    { p:'Dawit Tesfaye', s:'Surgery + stay', amt:74000, status:'unpaid' },
+    { p:'Sara Mohammed', s:'ICU (day 1)', amt:46000, status:'unpaid' },
+    { p:'Abebe Kebede', s:'Consult + lab', amt:3450, status:'paid' },
+  ];
+
+  const pill = (s) => s === 'admitted' || s === 'confirmed' || s === 'on-duty' || s === 'paid' || s === 'ok'
+    ? '<span class="pill ok">' + s[0].toUpperCase() + s.slice(1) + '</span>'
+    : '<span class="pill warn">' + s[0].toUpperCase() + s.slice(1) + '</span>';
+
+  function renderDashboard() {
+    $('kIn').textContent = ADM.length;
+    $('kAdm').textContent = ADM.filter(a => a.day === 'Today').length;
+    $('kAppt').textContent = APPT.length;
+    $('kBeds').textContent = WARDS.reduce((a, w) => a + (w.beds - w.occ), 0);
+    $('admRows').innerHTML = ADM.map(a =>
+      `<tr><td><b>${a.p}</b></td><td>${a.ward}</td><td>${a.doc}</td><td class="dim">${a.day}</td><td>${pill(a.cond === 'Critical' ? 'warn' : 'admitted')}</td></tr>`).join('');
+    const byHour = [5, 8, 6, 9, 7, 11, 4];
+    const max = Math.max(...byHour);
+    $('apptChart').innerHTML = byHour.map((v, i) =>
+      `<div class="bar${i === byHour.length - 1 ? ' hl' : ''}"><i style="height:${Math.round(v / max * 100)}%"></i><span>${8 + i}h</span></div>`).join('');
+  }
+  function renderAdmissions() {
+    $('nAdm').textContent = ADM.length;
+    $('admissionRows').innerHTML = ADM.map(a =>
+      `<tr><td><b>${a.p}</b></td><td>${a.ward}</td><td>${a.doc}</td><td class="dim">${a.day}</td><td class="dim">${a.cond}</td><td>${pill(a.cond === 'Critical' ? 'warn' : 'admitted')}</td></tr>`).join('');
+  }
+  function renderWards() {
+    $('wardRows').innerHTML = WARDS.map(w => {
+      const pct = Math.round(w.occ / w.beds * 100);
+      return `<tr><td><b>${w.w}</b></td><td>${w.beds}</td><td>${w.occ}</td><td class="dim">${w.beds - w.occ}</td>
+        <td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><span class="mono dim">${pct}%</span></td></tr>`;
+    }).join('');
+  }
+  function renderAppts() {
+    $('apptRows').innerHTML = APPT.map(a =>
+      `<tr><td><b>${a.p}</b></td><td>${a.doc}</td><td class="mono dim">${a.time}</td><td>${a.dept}</td><td>${pill(a.status)}</td></tr>`).join('');
+  }
+  function renderDoctors() {
+    $('docRows').innerHTML = DOCS.map(d =>
+      `<tr><td><b>${d.d}</b></td><td>${d.dept}</td><td class="dim">${d.shift}</td><td>${d.n}</td><td>${pill(d.status)}</td></tr>`).join('');
+  }
+  function renderPharm() {
+    $('pharmRows').innerHTML = PHARM.map(p =>
+      `<tr><td><b>${p.m}</b></td><td><b>${p.stock}</b></td><td class="dim">${p.reorder}</td><td class="mono dim">${p.exp}</td><td>${pill(p.status)}</td></tr>`).join('');
+  }
+  function renderBilling() {
+    $('billRows').innerHTML = BILLS.map(b =>
+      `<tr><td><b>${b.p}</b></td><td>${b.s}</td><td class="mono">ETB ${b.amt.toLocaleString()}</td><td>${pill(b.status)}</td></tr>`).join('');
+  }
+
+  function addForm() {
+    $('addFormWrap').innerHTML =
+      `<div class="form-row">
+        <div><label>Patient name</label><input id="fName" placeholder="Full name" /></div>
+        <div><label>Ward</label><select id="fWard">${WARDS.map(w => `<option>${w.w}</option>`).join('')}</select></div>
+        <div><label>Doctor</label><select id="fDoc">${DOCS.map(d => `<option>${d.d}</option>`).join('')}</select></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-accent btn-sm" id="saveAdd">Admit patient</button></div>`;
+    $('saveAdd').onclick = () => {
+      const name = $('fName').value.trim() || 'New Patient';
+      ADM.unshift({ p:name, ward:$('fWard').value, doc:$('fDoc').value, day:'Today', cond:'Admitted', status:'admitted' });
+      renderAll();
+      $('addFormWrap').innerHTML = '';
+    };
+  }
+
+  function renderAll() {
+    renderDashboard(); renderAdmissions(); renderWards(); renderAppts(); renderDoctors(); renderPharm(); renderBilling();
+  }
+
+  document.querySelectorAll('.side-item').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.side-item').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.main > div').forEach(v => v.hidden = v.id !== 'view-' + el.dataset.view);
+    });
+  });
+  $('openAdd').addEventListener('click', addForm);
+  document.querySelectorAll('.switch').forEach(sw => sw.addEventListener('click', () => sw.classList.toggle('on')));
+  renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Addis Warehouse Co.: Warehouse Management (Concept Demo)</title>
+<meta name="description" content="Interactive concept demo of a warehouse management system: bins, stock levels, inbound, outbound, picking, reports. Not a real system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#1a1710; --side-ink:#d6cfc2; --accent:#d97706; --accent-l:#f59e0b; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+
+  .topbar { background:var(--side); color:#fff; }
+  .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
+  .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#a8a29e; font-weight:400; }
+  .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#d6cfc2; }
+
+  .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
+  .sidebar { background:var(--side); border-radius:12px; padding:1rem; align-self:start; position:sticky; top:1rem; }
+  .side-item { display:flex; align-items:center; gap:.7rem; padding:.68rem .8rem; border-radius:8px; font-size:.84rem; color:var(--side-ink); cursor:pointer; margin-bottom:.2rem; }
+  .side-item:hover { background:rgba(255,255,255,.07); color:#fff; }
+  .side-item.active { background:var(--accent); color:#fff; font-weight:600; }
+  .side-item .n { margin-left:auto; font-family:'JetBrains Mono'; font-size:.66rem; background:rgba(255,255,255,.1); padding:.12rem .45rem; border-radius:99px; }
+  .side-item.active .n { background:rgba(255,255,255,.22); }
+
+  .main { display:grid; gap:1.3rem; align-content:start; }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.05rem 1.15rem; }
+  .kpi b { font-size:1.5rem; font-weight:800; display:block; letter-spacing:-.02em; }
+  .kpi span { font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); font-weight:600; }
+  .kpi.warn b { color:var(--warn); }
+  .kpi.danger b { color:var(--danger); }
+  .kpi.ok b { color:var(--ok); }
+
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:center; padding:.95rem 1.25rem; border-bottom:1px solid var(--line); gap:1rem; flex-wrap:wrap; }
+  .card-head h3 { font-size:.95rem; font-weight:700; }
+  .card-head .hint { font-size:.68rem; color:var(--dim); font-family:'JetBrains Mono'; }
+  .btn { display:inline-block; font-weight:600; font-size:.78rem; padding:.6rem 1.05rem; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer; }
+  .btn-accent { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-accent:hover { background:var(--accent-l); }
+  .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
+
+  table { width:100%; border-collapse:collapse; font-size:.84rem; }
+  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
+  .pill.ok { background:var(--ok-bg); color:var(--ok); }
+  .pill.warn { background:var(--warn-bg); color:var(--warn); }
+  .pill.danger { background:var(--danger-bg); color:var(--danger); }
+  .pill.new { background:#fef3c7; color:#92400e; }
+  .mono { font-family:'JetBrains Mono'; font-size:.76rem; }
+  .dim { color:var(--dim); }
+  .bar-cell { min-width:140px; }
+  .bar-track { background:var(--bg); border-radius:99px; height:8px; overflow:hidden; }
+  .bar-fill { height:8px; border-radius:99px; background:var(--accent); }
+
+  .chart { display:flex; align-items:flex-end; gap:.8rem; padding:1.4rem 1.4rem 1.2rem; height:170px; }
+  .chart .bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem; height:100%; justify-content:flex-end; }
+  .chart .bar i { width:100%; max-width:44px; background:var(--accent); border-radius:6px 6px 0 0; min-height:4px; opacity:.85; }
+  .chart .bar.hl i { background:var(--gold); }
+  .chart .bar span { font-size:.62rem; color:var(--dim); font-weight:600; }
+
+  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.8rem; padding:1.2rem; }
+  .form-row label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .form-row input, .form-row select { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; }
+  .form-row input:focus, .form-row select:focus { outline:none; border-color:var(--accent); }
+  .form-actions { padding:0 1.2rem 1.2rem; display:flex; gap:.8rem; }
+
+  .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; padding:1.4rem; }
+  .settings-grid .field label { display:block; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--dim); margin-bottom:.3rem; font-weight:600; }
+  .settings-grid .field input { width:100%; padding:.65rem .75rem; border:1px solid var(--line); border-radius:8px; font-family:'Inter'; font-size:.85rem; margin-bottom:1rem; }
+  .switch-row { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; border-bottom:1px solid var(--line); }
+  .switch-row:last-child { border-bottom:none; }
+  .switch-row b { font-size:.85rem; }
+  .switch-row p { font-size:.72rem; color:var(--dim); }
+  .switch { position:relative; width:42px; height:24px; background:#d5dbe4; border-radius:99px; cursor:pointer; transition:background .15s; flex-shrink:0; }
+  .switch.on { background:var(--ok); }
+  .switch::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+  .switch.on::after { left:21px; }
+
+  .note { font-size:.72rem; color:var(--dim); padding:.95rem 1.25rem; background:var(--bg); border-top:1px solid var(--line); font-family:'JetBrains Mono'; }
+  footer { text-align:center; font-size:.7rem; color:var(--dim); padding:1.4rem 0; border-top:1px solid var(--line); }
+  footer div { margin:.15rem 0; }
+
+  @media (max-width:900px) {
+    .layout { grid-template-columns:1fr; }
+    .kpis { grid-template-columns:repeat(2,1fr); }
+    .settings-grid { grid-template-columns:1fr; }
+    .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+    .side-item { margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="sample-flag">CONCEPT DEMO · DATA RESETS · NOT A REAL SYSTEM</div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Addis Warehouse Co. <small>Warehouse Management · Concept Demo</small></div>
+    <div class="today" id="today"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-item active" data-view="dashboard">📊 Dashboard</div>
+    <div class="side-item" data-view="stock">📦 Stock by Bin <span class="n" id="nLow">0</span></div>
+    <div class="side-item" data-view="inbound">⬇️ Inbound</div>
+    <div class="side-item" data-view="outbound">⬆️ Outbound</div>
+    <div class="side-item" data-view="picking">🛒 Picking Lists</div>
+    <div class="side-item" data-view="reports">📈 Reports</div>
+    <div class="side-item" data-view="settings">⚙️ Settings</div>
+  </aside>
+
+  <div class="main">
+    <!-- DASHBOARD -->
+    <div id="view-dashboard">
+      <div class="kpis">
+        <div class="kpi ok"><b id="kUnits">0</b><span>Units in stock</span></div>
+        <div class="kpi"><b id="kSkus">0</b><span>SKUs</span></div>
+        <div class="kpi warn"><b id="kIn">0</b><span>Inbound today</span></div>
+        <div class="kpi danger"><b id="kOut">0</b><span>Outbound today</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Bin Occupancy</h3><span class="hint">Capacity used</span></div>
+        <table>
+          <thead><tr><th>Bin</th><th>Zone</th><th>Item</th><th>Units</th><th>Capacity</th><th>Fill</th></tr></thead>
+          <tbody id="binRows"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Inbound vs Outbound (units)</h3><span class="hint">7 days</span></div>
+        <div class="chart" id="flowChart"></div>
+      </div>
+    </div>
+
+    <!-- STOCK -->
+    <div id="view-stock" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Stock by Bin</h3><button class="btn btn-accent btn-sm" id="openAdd">+ Record Inbound</button></div>
+        <div id="addFormWrap"></div>
+        <table>
+          <thead><tr><th>Bin</th><th>Item</th><th>Units</th><th>Capacity</th><th>Status</th></tr></thead>
+          <tbody id="stockRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INBOUND -->
+    <div id="view-inbound" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Inbound Shipments</h3><span class="hint">Receiving queue</span></div>
+        <table>
+          <thead><tr><th>Ref</th><th>Item</th><th>Qty</th><th>From</th><th>Arrived</th><th>Status</th></tr></thead>
+          <tbody id="inRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- OUTBOUND -->
+    <div id="view-outbound" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Outbound Shipments</h3><span class="hint">Dispatch queue</span></div>
+        <table>
+          <thead><tr><th>Ref</th><th>Item</th><th>Qty</th><th>To</th><th>Ship by</th><th>Status</th></tr></thead>
+          <tbody id="outRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PICKING -->
+    <div id="view-picking" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Open Picking Lists</h3><span class="hint">Grouped by zone</span></div>
+        <table>
+          <thead><tr><th>Order</th><th>Zone</th><th>Bin → Bin</th><th>Items</th><th>Status</th></tr></thead>
+          <tbody id="pickRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- REPORTS -->
+    <div id="view-reports" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Stock Value by Zone (ETB)</h3><span class="hint">This month</span></div>
+        <table>
+          <thead><tr><th>Zone</th><th>SKUs</th><th>Units</th><th>Value</th></tr></thead>
+          <tbody id="zoneRows"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Fast-moving Items</h3><span class="hint">Units out · 30 days</span></div>
+        <table>
+          <thead><tr><th>Item</th><th>Zone</th><th>Units out</th><th>Turnover</th></tr></thead>
+          <tbody id="fastRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="view-settings" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Warehouse Settings</h3><span class="hint">Automations</span></div>
+        <div class="settings-grid">
+          <div>
+            <div class="field"><label>Warehouse name</label><input value="Addis Warehouse Co." /></div>
+            <div class="field"><label>Phone</label><input value="+251 11 000 00 00" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+          </div>
+          <div>
+            <div class="switch-row"><div><b>Low-stock alerts</b><p>WhatsApp when a bin drops below minimum</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Dispatch confirmations</b><p>Customer gets a message when goods ship</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Picking list queue</b><p>Auto-generates pick lists by zone</p></div><div class="switch on"></div></div>
+            <div class="switch-row"><div><b>Daily stock report</b><p>Delivered to WhatsApp every evening</p></div><div class="switch"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">// Try it: click a section, record an inbound, toggle alerts. All data is fictional and resets on reload.</div>
+  </div>
+</div>
+
+<footer>
+  <div>© <span id="year"></span> Addis Warehouse Co., interactive concept demo of a warehouse management system</div>
+  <div>Fictional data · Not a real warehouse or system</div>
+</footer>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  $('year').textContent = new Date().getFullYear();
+  $('today').textContent = new Date().toDateString();
+
+  const BINS = [
+    { bin:'A-01', zone:'A · Groceries', item:'Rice 10kg', units:240, cap:300, price:980 },
+    { bin:'A-02', zone:'A · Groceries', item:'Cooking Oil 5L', units:160, cap:200, price:620 },
+    { bin:'A-03', zone:'A · Groceries', item:'Sugar 2kg', units:45, cap:250, price:240 },
+    { bin:'B-01', zone:'B · Building', item:'Cement 50kg', units:220, cap:300, price:850 },
+    { bin:'B-02', zone:'B · Building', item:'Rebar 12mm', units:30, cap:80, price:1450 },
+    { bin:'C-01', zone:'C · Home', item:'Detergent 1kg', units:180, cap:240, price:180 },
+    { bin:'C-02', zone:'C · Home', item:'Soap bar', units:900, cap:1000, price:45 },
+  ];
+  const INB = [
+    { ref:'IN-771', item:'Cement 50kg', qty:100, from:'Mesfin Supply', day:'Today', status:'receiving' },
+    { ref:'IN-770', item:'Cooking Oil 5L', qty:120, from:'Awash Wholesale', day:'Today', status:'received' },
+    { ref:'IN-769', item:'Detergent 1kg', qty:80, from:'Home Goods Imports', day:'Yesterday', status:'received' },
+    { ref:'IN-768', item:'Rebar 12mm', qty:20, from:'Mesfin Supply', day:'Yesterday', status:'received' },
+  ];
+  const OUT = [
+    { ref:'OUT-401', item:'Rice 10kg', qty:40, to:'Kiros Trading', day:'Today', status:'picking' },
+    { ref:'OUT-400', item:'Cement 50kg', qty:60, to:'Meskel Construction', day:'Today', status:'dispatched' },
+    { ref:'OUT-399', item:'Soap bar', qty:150, to:'Bole Mart', day:'Yesterday', status:'dispatched' },
+    { ref:'OUT-398', item:'Cooking Oil 5L', qty:30, to:'Kiros Trading', day:'Yesterday', status:'dispatched' },
+  ];
+  const PICKS = [
+    { o:'OUT-401', zone:'A · Groceries', route:'A-01 → A-03 → A-02', items:3, status:'open' },
+    { o:'OUT-402', zone:'B · Building', route:'B-01 → B-02', items:2, status:'open' },
+    { o:'OUT-400', zone:'B · Building', route:'B-01', items:1, status:'done' },
+  ];
+
+  const pill = (s) => s === 'received' || s === 'dispatched' || s === 'done'
+    ? '<span class="pill ok">' + s[0].toUpperCase() + s.slice(1) + '</span>'
+    : '<span class="pill warn">' + s[0].toUpperCase() + s.slice(1) + '</span>';
+
+  function renderDashboard() {
+    $('kUnits').textContent = BINS.reduce((a, b) => a + b.units, 0).toLocaleString();
+    $('kSkus').textContent = BINS.length;
+    $('kIn').textContent = INB.filter(i => i.day === 'Today').reduce((a, i) => a + i.qty, 0);
+    $('kOut').textContent = OUT.filter(o => o.day === 'Today').reduce((a, o) => a + o.qty, 0);
+    $('binRows').innerHTML = BINS.map(b => {
+      const pct = Math.round(b.units / b.cap * 100);
+      return `<tr><td class="mono"><b>${b.bin}</b></td><td>${b.zone}</td><td><b>${b.item}</b></td><td>${b.units}</td><td class="dim">${b.cap}</td>
+        <td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><span class="mono dim">${pct}%</span></td></tr>`;
+    }).join('');
+    const flow = [18, 26, 22, 40, 34, 48, 60];
+    const max = Math.max(...flow);
+    $('flowChart').innerHTML = flow.map((v, i) =>
+      `<div class="bar${i === flow.length - 1 ? ' hl' : ''}"><i style="height:${Math.round(v / max * 100)}%"></i><span>${i + 1}</span></div>`).join('');
+  }
+  function renderStock() {
+    $('nLow').textContent = BINS.filter(b => b.units < b.cap * 0.3).length;
+    $('stockRows').innerHTML = BINS.map(b =>
+      `<tr><td class="mono"><b>${b.bin}</b></td><td><b>${b.item}</b></td><td>${b.units}</td><td class="dim">${b.cap}</td><td>${b.units < b.cap * 0.3 ? '<span class="pill warn">Low</span>' : '<span class="pill ok">OK</span>'}</td></tr>`).join('');
+  }
+  function renderIn() {
+    $('inRows').innerHTML = INB.map(i =>
+      `<tr><td class="mono">${i.ref}</td><td><b>${i.item}</b></td><td>${i.qty}</td><td>${i.from}</td><td class="dim">${i.day}</td><td>${pill(i.status)}</td></tr>`).join('');
+  }
+  function renderOut() {
+    $('outRows').innerHTML = OUT.map(o =>
+      `<tr><td class="mono">${o.ref}</td><td><b>${o.item}</b></td><td>${o.qty}</td><td>${o.to}</td><td class="dim">${o.day}</td><td>${pill(o.status)}</td></tr>`).join('');
+  }
+  function renderPicks() {
+    $('pickRows').innerHTML = PICKS.map(p =>
+      `<tr><td class="mono"><b>${p.o}</b></td><td>${p.zone}</td><td class="mono dim">${p.route}</td><td>${p.items}</td><td>${pill(p.status)}</td></tr>`).join('');
+  }
+  function renderReports() {
+    const zones = {};
+    BINS.forEach(b => zones[b.zone] = (zones[b.zone] || 0) + b.units * b.price);
+    $('zoneRows').innerHTML = Object.entries(zones).map(([z, v]) =>
+      `<tr><td><b>${z}</b></td><td>${BINS.filter(b => b.zone === z).length}</td><td>${BINS.filter(b => b.zone === z).reduce((a, b) => a + b.units, 0)}</td><td class="mono">ETB ${v.toLocaleString()}</td></tr>`).join('');
+    const fast = [
+      { item:'Cement 50kg', zone:'B · Building', out:340, turn:'4.1×' },
+      { item:'Cooking Oil 5L', zone:'A · Groceries', out:280, turn:'3.6×' },
+      { item:'Rice 10kg', zone:'A · Groceries', out:190, turn:'2.9×' },
+      { item:'Soap bar', zone:'C · Home', out:160, turn:'2.4×' },
+    ];
+    $('fastRows').innerHTML = fast.map(f =>
+      `<tr><td><b>${f.item}</b></td><td>${f.zone}</td><td>${f.out}</td><td class="mono dim">${f.turn}</td></tr>`).join('');
+  }
+
+  function addForm() {
+    $('addFormWrap').innerHTML =
+      `<div class="form-row">
+        <div><label>Item</label><select id="fItem">${BINS.map(b => `<option>${b.item}</option>`).join('')}</select></div>
+        <div><label>Qty inbound</label><input id="fQty" type="number" value="50" /></div>
+        <div><label>From</label><input id="fFrom" value="Awash Wholesale" /></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-accent btn-sm" id="saveAdd">Record inbound</button></div>`;
+    $('saveAdd').onclick = () => {
+      const item = $('fItem').value, qty = parseInt($('fQty').value) || 0;
+      const b = BINS.find(x => x.item === item);
+      b.units += qty;
+      INB.unshift({ ref:'IN-' + (780 + INB.length), item, qty, from:$('fFrom').value, day:'Today', status:'received' });
+      renderAll();
+      $('addFormWrap').innerHTML = '';
+    };
+  }
+
+  function renderAll() {
+    renderDashboard(); renderStock(); renderIn(); renderOut(); renderPicks(); renderReports();
+  }
+
+  document.querySelectorAll('.side-item').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.side-item').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.main > div').forEach(v => v.hidden = v.id !== 'view-' + el.dataset.view);
+    });
+  });
+  $('openAdd').addEventListener('click', addForm);
+  document.querySelectorAll('.switch').forEach(sw => sw.addEventListener('click', () => sw.classList.toggle('on')));
+  renderAll();
+</script>
+</body>
+</html>
