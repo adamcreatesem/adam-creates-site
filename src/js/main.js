@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const morphContainer = document.getElementById('heroMorphText');
     if (!morphContainer) return;
 
-    const words = ['AI Automation', 'Web Development', 'Web Apps', 'Automation', 'Digital Tools', 'Your Vision'];
+    const words = ['Websites', 'Automation', 'Voice AI', 'Branding', 'Systems', 'Your Vision'];
     let currentIndex = 0;
     let interval = null;
 
