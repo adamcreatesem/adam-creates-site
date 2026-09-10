@@ -4,129 +4,234 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Addis Drive Rentals: Car Rental (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional car rental. Not a real business." />
+<meta name="description" content="Addis Drive Rentals -- cars for town and out of town: small Vitz for fuel economy, RAV4 SUV for the highlands, Camry for meetings, and HiAce van for a crew. Airport pickup on WhatsApp. Bole, near the airport turnoff." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --yellow:#f5b301; --ink:#141414; --ink-soft:#4c4c4c; --white:#fff; --smoke:#f4f4f2; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Inter',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:var(--ink); color:var(--white); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.45rem; text-transform:uppercase; letter-spacing:.04em; color:var(--yellow); }
-  .brand small { display:block; font-family:'Inter'; font-size:.58rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.55); }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-size:.88rem; font-weight:600; color:rgba(255,255,255,.85); }
-  nav a:hover { color:var(--yellow); }
-  .hero { padding:9rem 0 5rem; background:var(--ink); color:var(--white); }
-  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.7rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--yellow); margin-bottom:1rem; }
-  h1 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(2.6rem,6vw,4.2rem); line-height:.98; text-transform:uppercase; margin-bottom:1rem; }
-  .hero-sub { color:rgba(255,255,255,.7); max-width:29rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.9rem; }
-  .btn-solid { background:var(--yellow); color:var(--ink); }
-  .btn-ghost { border:2px solid rgba(255,255,255,.4); color:var(--white); }
-  .hero-fig img { border:4px solid var(--yellow); aspect-ratio:4/3; object-fit:cover; width:100%; }
-  section { padding:5rem 0; }
-  .section-label { font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--yellow); margin-bottom:.8rem; }
-  .section-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(2rem,4vw,2.8rem); text-transform:uppercase; margin-bottom:.8rem; }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .fleet { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2rem; }
-  .car { border:3px solid var(--ink); background:var(--smoke); padding:1.4rem; }
-  .car .price { font-family:'Barlow Condensed'; font-weight:800; font-size:1.5rem; color:var(--ink); }
-  .car .price small { font-size:.85rem; color:var(--ink-soft); }
-  .car h3 { font-family:'Barlow Condensed'; font-weight:700; font-size:1.3rem; text-transform:uppercase; margin:.3rem 0 .2rem; }
-  .car p { font-size:.82rem; color:var(--ink-soft); }
-  .perks { background:var(--yellow); }
-  .perks .wrap { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
-  .perk b { display:block; font-family:'Barlow Condensed'; font-size:1.6rem; text-transform:uppercase; }
-  .perk span { font-size:.85rem; color:#3d3a10; }
-  .book { background:var(--ink); color:var(--white); text-align:center; }
-  .book .wrap { padding:1.2rem 0; }
-  .book h2 { color:var(--white); }
-  .book .section-label { color:var(--yellow); }
-  .book p { color:rgba(255,255,255,.7); max-width:34rem; margin:0 auto 1.6rem; }
-  footer { border-top:3px solid var(--ink); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--yellow); color:var(--ink); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .fleet{grid-template-columns:1fr 1fr;} .perks .wrap{grid-template-columns:1fr;} nav{display:none;} }
+  :root{
+    --white:#f6f5f2; --ink:#101114; --ash:#3a3d45; --road:#23252b;
+    --red:#d2232a; --dim:#6f747c; --line:#dcd9d2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--white);color:var(--ink);font-family:Archivo,system-ui,sans-serif;line-height:1.55}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:"Archivo Black",sans-serif;line-height:1.08;text-transform:uppercase}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;padding:.85rem 1.5rem;border:0;cursor:pointer;font-family:Archivo,sans-serif;font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;transition:.15s}
+  .btn:hover{background:var(--red)}
+  .btn.red{background:var(--red)}
+  .btn.red:hover{background:#a81b21}
+  .btn.small{padding:.5rem 1.1rem;font-size:.74rem}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--red)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(246,245,242,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 22px;max-width:1180px;margin:0 auto;gap:1rem}
+  .brand{font-family:"Archivo Black",sans-serif;text-decoration:none;font-size:1.2rem;text-transform:uppercase;display:flex;align-items:center;gap:.5rem}
+  .brand .strip{width:26px;height:4px;background:var(--red);display:inline-block;position:relative}
+  .brand small{display:block;font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.24em;color:var(--dim);font-weight:400}
+  .nav-links{display:flex;gap:1.5rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.84rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+  .nav-links a:hover{color:var(--red)}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  .hero{background:var(--ink);color:#fff;overflow:hidden;position:relative}
+  .road{position:absolute;bottom:0;left:0;right:0;height:90px;background:
+    repeating-linear-gradient(90deg,transparent 0 46px,#f6f5f2 46px 62px,transparent 62px 92px) 0 0/100% 26px no-repeat,
+    linear-gradient(var(--road),var(--road))}
+  .hero .wrap{position:relative;z-index:2;padding:3.2rem 22px 7rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2.4rem;align-items:center}
+  @media(max-width:920px){.hero .wrap{grid-template-columns:1fr}}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem)}
+  .hero h1 .o{color:transparent;-webkit-text-stroke:1.5px #fff}
+  .hero h1 .r{color:var(--red)}
+  .hero-sub{color:#b6bac2;max-width:32rem;margin:1rem 0 1.6rem;font-size:1.03rem}
+  .hero-perks{display:flex;gap:1.8rem;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:.72rem;color:#cfd3da;letter-spacing:.06em}
+  .hero-perks b{display:block;color:#fff;font-size:1.05rem;font-family:Archivo,sans-serif;letter-spacing:0}
+  .hero img{width:100%;height:300px;object-fit:cover;border:1px solid #333;filter:saturate(.85)}
+
+  .fleet{padding:2.4rem 0 6rem}
+  .fleet-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+  .fleet-head h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+  .fleet-head .n{font-size:.85rem;color:var(--dim);font-family:"Space Mono",monospace}
+  .cars{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  @media(max-width:1020px){.cars{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.cars{grid-template-columns:1fr}}
+  .car{border:1.5px solid var(--line);background:#fff;display:flex;flex-direction:column;overflow:hidden;cursor:pointer;transition:.16s}
+  .car:hover{border-color:var(--ink)}
+  .car.sel{border-color:var(--red);box-shadow:0 12px 30px rgba(210,35,42,.12)}
+  .car .ph{height:120px;background:var(--road);display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.2em}
+  .car .ph img{width:100%;height:100%;object-fit:cover}
+  .car .bd{padding:1rem 1rem 1.1rem;display:flex;flex-direction:column;flex:1;gap:.3rem}
+  .car .tag{font-size:.66rem;letter-spacing:.18em;font-weight:700;color:var(--dim);text-transform:uppercase}
+  .car h3{font-size:1.05rem}
+  .car .fits{font-size:.78rem;color:var(--dim)}
+  .car .row{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem}
+  .car .price{font-weight:700;font-size:1.05rem}
+  .car .price small{font-size:.72rem;color:var(--dim);font-weight:500}
+  .car .pick{font-size:.66rem;font-weight:700;letter-spacing:.1em;color:var(--red)}
+
+  .quote-bar{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--ink);color:#fff;transform:translateY(110%);transition:.25s}
+  .quote-bar.show{transform:translateY(0)}
+  .quote-bar .in{max-width:1180px;margin:0 auto;padding:.9rem 22px;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap}
+  .quote-bar .car-n{font-weight:700;text-transform:uppercase;font-size:.95rem}
+  .quote-bar .car-n small{display:block;color:#9aa0aa;font-weight:500;text-transform:none;font-size:.78rem}
+  .controls{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+  .ctl{display:flex;align-items:center;gap:.4rem;font-size:.8rem}
+  .ctl select,.ctl input{border:1px solid #444;background:#2a2c31;color:#fff;padding:.45rem .6rem;font:inherit;font-size:.82rem;outline:0}
+  .sum{text-align:right}
+  .sum b{display:block;font-size:1.4rem;color:#ffd24d;line-height:1}
+  .sum span{font-size:.7rem;color:#9aa0aa}
+  .sum .dep{display:block;font-size:.72rem;color:#9aa0aa}
+
+  .why{padding:0 0 2.6rem}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  @media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+  .why-card{border:1px solid var(--line);background:#fff;padding:1.3rem}
+  .why-card .n{font-family:"Space Mono",monospace;color:var(--red);font-weight:700}
+  .why-card h3{font-size:1rem;margin:.2rem 0}
+  .why-card p{color:var(--dim);font-size:.86rem}
+
+  .pickup{background:var(--road);color:#fff;padding:1.5rem 0}
+  .pickup .in{display:flex;justify-content:space-between;gap:1.4rem;align-items:center;flex-wrap:wrap}
+  .pickup h2{font-size:clamp(1.3rem,2.4vw,1.8rem);max-width:22ch}
+  .pickup p{color:#aab0b8;font-size:.88rem}
+  footer{border-top:1px solid var(--line);padding:1.4rem 22px 5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:var(--dim);max-width:1180px;margin:0 auto}
 </style>
 </head>
-<body>
-
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<body id="top">
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">Addis Drive<small>CAR RENTAL · CONCEPT</small></a>
-    <nav>
-      <a href="#fleet">Fleet</a>
-      <a href="#perks">Why Us</a>
-      <a href="#book">Book</a>
-    </nav>
+  <div class="nav">
+    <a class="brand" href="#top"><span class="strip"></span>ADDIS DRIVE<small>CAR RENTAL · ADDIS ABABA</small></a>
+    <div class="nav-links">
+      <a href="#fleet">The Fleet</a>
+      <a href="#why">Why Us</a>
+      <a class="btn small" href="#fleet">Book now</a>
+    </div>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A concept sample car rental · Addis Ababa</p>
-        <h1>Rent a Car,<br />Skip the Wait.</h1>
-        <p class="hero-sub">Airport pickup, clear prices, WhatsApp booking. A sample for a fictional rental company.</p>
-        <div>
-          <a class="btn btn-solid" href="#book">Book on WhatsApp</a>
-          <a class="btn btn-ghost" href="#fleet">See the Fleet</a>
-        </div>
-      </div>
-      <div class="hero-fig">
-        <img src="../img/auto.jpg" alt="Rental car at the sample company" />
+<section class="hero">
+  <div class="road"></div>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Bole, Africa Avenue, near the airport turnoff, Addis Ababa</p>
+      <h1>Rent a car.<br/><span class="r">Skip the wait.</span></h1>
+      <p class="hero-sub">Airport pickup, clear prices, booking by message. Pick a car below and the price builds itself from your dates and extras, no phone call required.</p>
+      <div class="hero-perks">
+        <div><b>Daily</b>Airport pickup</div>
+        <div><b>0</b>Hidden fees</div>
+        <div><b>2 min</b>To book</div>
       </div>
     </div>
-  </section>
+    <img src="img/car-fleet.jpg" alt="A row of rental cars at the Addis Drive office, sample fleet photo" />
+  </div>
+</section>
 
-  <section id="fleet">
-    <div class="wrap">
-      <p class="section-label">Fleet</p>
-      <h2 class="section-title">Pick Your Ride</h2>
-      <div class="fleet">
-        <div class="car"><span class="price">1,800 ETB<small>/day</small></span><h3>Economy</h3><p>Compact, easy parking, great on fuel.</p></div>
-        <div class="car"><span class="price">2,800 ETB<small>/day</small></span><h3>SUV</h3><p>Comfort for roads inside and outside town.</p></div>
-        <div class="car"><span class="price">4,500 ETB<small>/day</small></span><h3>Luxury Sedan</h3><p>For meetings and special occasions.</p></div>
-        <div class="car"><span class="price">3,200 ETB<small>/day</small></span><h3>Minivan</h3><p>Fits 7, luggage included.</p></div>
-      </div>
-      <p class="section-note" style="margin-top:1.2rem;">All rates include insurance and basic mileage. Long-term and monthly deals on request.</p>
+<main class="wrap fleet" id="fleet">
+  <div class="fleet-head">
+    <div>
+      <p class="eyebrow">The fleet</p>
+      <h2>Pick your ride</h2>
     </div>
-  </section>
-
-  <section class="perks" id="perks">
-    <div class="wrap">
-      <div class="perk"><b>24/7 Pickup</b><span>Airport or your hotel, any hour.</span></div>
-      <div class="perk"><b>No Surprises</b><span>Final price quoted before you confirm.</span></div>
-      <div class="perk"><b>WhatsApp Booking</b><span>Send CAR, drive away in an hour.</span></div>
-    </div>
-  </section>
-
-  <section class="book" id="book">
-    <div class="wrap">
-      <p class="section-label">Book online</p>
-      <h2 class="section-title">Driving Today</h2>
-      <p>Send your dates and pick-up point on WhatsApp. We confirm the car and the price in minutes. Sample booking, connected on order.</p>
-      <a class="btn btn-solid" href="#top">Book on WhatsApp</a>
-    </div>
-  </section>
+    <span class="n">Sample prices in ETB per day</span>
+  </div>
+  <div class="cars" id="cars"></div>
+  <p style="font-size:.78rem;color:var(--dim);margin-top:1.2rem">Sample fleet: cars, conditions and prices go in on order. Fuel policy and insurance terms are confirmed per booking.</p>
 </main>
 
-<footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Addis Drive Rentals, a fictional concept sample</div>
-    <div>Sample pick-up · Bole Airport, Addis Ababa (fictional)</div>
+<section class="why wrap" id="why">
+  <p class="eyebrow">Why us</p>
+  <div class="why-grid">
+    <div class="why-card"><div class="n">01</div><h3>Airport, hotel or office</h3><p>We deliver where you are and collect where you finish. Addis and the ring road.</p></div>
+    <div class="why-card"><div class="n">02</div><h3>Papers handled</h3><p>Third-party insurance on every car. Your ID and license are all we need to check.</p></div>
+    <div class="why-card"><div class="n">03</div><h3>Longer term, better rate</h3><p>Weekly and monthly pricing is built into the quote. Bring your own driver if you prefer.</p></div>
   </div>
+</section>
+
+<section class="pickup">
+  <div class="wrap in">
+    <div>
+      <h2>Flying in? The car meets you at the arrivals door.</h2>
+      <p>Send your flight number with the booking and we track the landing time. Sample flow: everything opens on WhatsApp.</p>
+    </div>
+    <a class="btn red" id="hero-cta" href="https://wa.me/251911000003" target="_blank" rel="noopener">Book on WhatsApp</a>
+  </div>
+</section>
+
+<footer>    <div>© <span id="year"></span> Addis Drive -- sample concept, not a real business</div>
+  <div>Bole, Africa Avenue, near the airport turnoff, Addis Ababa · Daily 07:00 - 21:00 · Sample shown for demonstration, real business info goes in on order</div>
+
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<div class="quote-bar" id="qbar">
+  <div class="in">
+    <div class="car-n" id="q-name">Pick a car above<small>Daily rate appears here once chosen</small></div>
+    <div class="controls">
+      <div class="ctl"><label>Days</label><input id="q-days" type="number" min="1" max="30" value="3" /></div>
+      <div class="ctl"><label>Driver</label><select id="q-driver"><option value="0">Self drive</option><option value="500">With driver +500/day</option></select></div>
+      <div class="ctl"><label>Insurance</label><select id="q-ins"><option value="0">Third party (included)</option><option value="400">Full cover +400/day</option></select></div>
+    </div>
+    <div class="sum"><b id="q-total">0 ETB</b><span id="q-sub"></span><span class="dep" id="q-dep"></span></div>
+    <a class="btn red" id="q-go" href="https://wa.me/251911000003" target="_blank" rel="noopener">Book this →</a>
+  </div>
+</div>
+
+<script>
+  var CARS = [
+    { id:"eco", n:"Toyota Vitz 2016", fits:"4 seats · good on fuel, ideal for town", price:2200, img:"img/car-eco.jpg" },
+    { id:"suv", n:"Hyundai Tucson 2019", fits:"5 seats · town and out of town", price:3800, img:"img/car-suv.jpg" },
+    { id:"lux", n:"Toyota Camry 2019", fits:"Meetings and special occasions", price:5200, img:"img/car-lux.jpg" },
+    { id:"van", n:"Toyota HiAce 2017", fits:"7 seats · families and crews", price:4500, img:"img/car-van.jpg" }
+  ];
+  var selCar=null;
+
+  function renderCars(){
+    var g=document.getElementById("cars"); g.innerHTML="";
+    CARS.forEach(function(c){
+      var b=document.createElement("article"); b.className="car"+(selCar&&selCar.id===c.id?" sel":"");
+      b.innerHTML="<div class=\"ph\"><img src=\""+c.img+"\" alt=\""+c.n+", sample rental car\" loading=\"lazy\"/></div>"+
+        "<div class=\"bd\"><div class=\"tag\">"+c.fits+"</div><h3>"+c.n.toUpperCase()+"</h3>"+
+        "<div class=\"row\"><span class=\"price\">"+c.price.toLocaleString()+" <small>ETB / day</small></span>"+
+        (selCar&&selCar.id===c.id?"<span class=\"pick\">SELECTED ✓</span>":"<span class=\"pick\">SELECT →</span>")+"</div></div>";
+      b.onclick=function(){ selCar=c; renderCars(); calc(); };
+      g.appendChild(b);
+    });
+  }
+
+  function calc(){
+    var bar=document.getElementById("qbar");
+    if(!selCar){ bar.classList.remove("show"); return; }
+    bar.classList.add("show");
+    var days=Math.max(1,+document.getElementById("q-days").value||1);
+    var drv=+document.getElementById("q-driver").value;
+    var ins=+document.getElementById("q-ins").value;
+    var rate=selCar.price;
+    var total=(rate+drv+ins)*days;
+    if(days>=7) total=Math.round(total*0.9);
+    if(days>=30) total=Math.round(total*0.8);
+    document.getElementById("q-name").innerHTML=selCar.n.toUpperCase()+"<small>"+selCar.fits+"</small>";
+    var extras=[];
+    if(drv) extras.push("driver");
+    if(ins) extras.push("full cover");
+    var sub=rate.toLocaleString()+" ETB/day"+(extras.length?" + "+extras.join(" + "):"")+(days>=7?" (long term "+(days>=30?"-20%":"-10%")+")":"");
+    document.getElementById("q-sub").textContent=sub;
+    document.getElementById("q-total").textContent=total.toLocaleString()+" ETB";
+    document.getElementById("q-dep").textContent="for "+days+" day"+(days>1?"s":"")+" · 500 ETB deposit at pickup";
+    var msg="Hello Addis Drive, I would like to book the "+selCar.n+" for "+days+" day"+(days>1?"s":"")+(drv?", with driver":"")+(ins?", full cover":"")+". Estimated total "+total.toLocaleString()+" ETB. Sample booking.";
+    document.getElementById("q-go").href="https://wa.me/251911000003?text="+encodeURIComponent(msg);
+    document.getElementById("hero-cta").href=document.getElementById("q-go").href;
+  }
+  ["q-days","q-driver","q-ins"].forEach(function(id){
+    document.getElementById(id).addEventListener("input", calc);
+    document.getElementById(id).addEventListener("change", calc);
+  });
+
+  renderCars();
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

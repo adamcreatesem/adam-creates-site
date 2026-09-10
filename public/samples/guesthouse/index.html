@@ -3,162 +3,306 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Saba Lodge: Direct-Booking Guest House (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional guest house. Not a real business." />
+<title>Saba Lodge: Bole, Addis Ababa -- Book Direct</title>
+<meta name="description" content="Clean rooms, yard with seating, and a booking flow that skips the booking-site commission. Bole, 2 minutes from the airport." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --concrete:#e9e7e2; --paper:#f4f2ee; --ink:#16181b; --ink-soft:#4a4e54; --orange:#ff4d00; }
+  :root {
+    --paper:#f6f3ee; --white:#fff; --ink:#1e1a16; --muted:#6f675d; --line:#e0d9ce;
+    --green:#2e5e4e; --green-deep:#1f4236; --amber:#c98d3d; --soft:#eae2d4;
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Archivo',sans-serif; background:var(--paper); color:var(--ink); line-height:1.6; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); line-height:1.6; }
   img { display:block; max-width:100%; }
   a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(244,242,238,.95); border-bottom:1px solid rgba(22,24,27,.16); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { font-weight:900; font-size:1.3rem; letter-spacing:.06em; }
-  .brand em { color:var(--orange); font-style:normal; }
-  .brand small { display:block; font-family:'Space Mono'; font-size:.58rem; letter-spacing:.16em; color:var(--ink-soft); font-weight:400; }
-  nav { display:flex; gap:2rem; }
-  nav a { font-family:'Space Mono'; font-size:.78rem; letter-spacing:.06em; color:var(--ink-soft); }
-  nav a:hover { color:var(--orange); }
-  .hero { display:grid; grid-template-columns:1.15fr 1fr; min-height:100vh; }
-  .hero-side-left { display:flex; align-items:center; background:linear-gradient(90deg,rgba(22,24,27,.035) 1px,transparent 1px) 0 0/48px 48px,var(--paper); }
-  .hero-inner { padding:8rem 0 6rem; }
-  .eyebrow { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.18em; color:var(--orange); margin-bottom:1.2rem; }
-  h1 { font-size:clamp(2.2rem,5vw,3.6rem); font-weight:900; line-height:1.05; margin-bottom:1.2rem; }
-  h1 em { color:var(--orange); font-style:normal; }
-  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2.2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.9rem 1.7rem; border-radius:2px; border:2px solid transparent; }
-  .btn-solid { background:var(--orange); color:var(--paper); }
-  .btn-ghost { border-color:rgba(22,24,27,.3); }
-  .hero-side-right { position:relative; }
-  .hero-side-right img { width:100%; height:100%; object-fit:cover; }
-  section { padding:5rem 0; }
-  .section-label { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.18em; color:var(--orange); margin-bottom:.8rem; }
-  .section-title { font-size:clamp(1.7rem,3.5vw,2.5rem); font-weight:900; margin-bottom:.8rem; }
-  .room-list { display:grid; gap:2rem; margin-top:2.4rem; }
-  .room { display:grid; grid-template-columns:64px 1fr; gap:1.6rem; border-top:1px solid rgba(22,24,27,.16); padding-top:1.6rem; }
-  .room-index { font-family:'Space Mono'; font-size:1.3rem; color:var(--orange); }
-  .room h3 { font-size:1.2rem; font-weight:900; }
-  .room p { color:var(--ink-soft); font-size:.95rem; margin:.3rem 0 .6rem; }
-  .room-tag { font-family:'Space Mono'; font-size:.66rem; letter-spacing:.12em; color:var(--orange); border:1px solid rgba(255,77,0,.4); padding:.25rem .6rem; border-radius:2px; }
-  .amenity-list { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem 2rem; margin-top:1.6rem; }
-  .amenity-list li { display:flex; gap:.6rem; font-size:.95rem; color:var(--ink-soft); }
-  .am-dot { width:8px; height:8px; background:var(--orange); border-radius:50%; margin-top:.55rem; flex-shrink:0; }
-  .cta-band { background:var(--ink); color:var(--paper); }
-  .cta-band .wrap { display:flex; justify-content:space-between; align-items:center; gap:1.5rem; flex-wrap:wrap; }
-  .cta-band .btn-solid { background:var(--orange); color:var(--paper); }
-  .cta-band .btn-ghost { border-color:rgba(244,242,238,.4); color:var(--paper); }
-  footer { border-top:1px solid rgba(22,24,27,.16); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--orange); color:var(--paper); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
-  @media (max-width:800px){ .hero{grid-template-columns:1fr;} .hero-side-right{display:none;} .room{grid-template-columns:1fr;} .amenity-list{grid-template-columns:1fr;} nav{display:none;} }
+  .wrap { width:min(1140px,92%); margin-inline:auto; }
+
+  header { position:absolute; inset:0 0 auto 0; z-index:70; background:transparent; }
+  .hdr { display:flex; align-items:center; justify-content:space-between; padding-block:1.2rem; }
+  .logo { font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem; color:#fff; }
+  .logo em { color:var(--amber); font-style:italic; }
+  .logo small { display:block; font-family:'Inter'; font-size:.64rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,.7); }
+  nav { display:flex; gap:1.8rem; }
+  nav a { font-size:.9rem; font-weight:600; color:rgba(255,255,255,.85); }
+  nav a:hover { color:#fff; }
+  .tel { font-weight:700; font-size:.9rem; color:#fff; }
+  @media (max-width:920px){ nav{display:none} }
+
+  /* Split booking stage */
+  .stage { min-height:100vh; display:grid; grid-template-columns:1.1fr .9fr; position:relative; }
+  .stage-left { position:relative; overflow:hidden; }
+  .stage-collage { position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:0; }
+  .stage-collage img { width:100%; height:100%; object-fit:cover; }
+  .stage-left::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(30,26,22,.1),rgba(30,26,22,.38)); }
+  .stage-caption { position:absolute; left:2.4rem; bottom:2.4rem; z-index:2; color:#fff; max-width:26rem; }
+  .stage-caption h1 { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(2.3rem,4.4vw,3.8rem); line-height:1.04; }
+  .stage-caption h1 em { color:var(--amber); font-style:italic; }
+  .stage-caption p { color:rgba(255,255,255,.86); margin-top:.6rem; font-size:1.02rem; }
+
+  .stage-right { background:var(--paper); display:flex; flex-direction:column; justify-content:center; padding:3.4rem 2.8rem; }
+  .eyebrow { display:flex; gap:.5rem; align-items:center; font-size:.74rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--amber); }
+  .stage-right .lead { color:var(--muted); font-size:1.05rem; margin:1rem 0 1.6rem; }
+  .hero-stats { display:flex; gap:2.2rem; border-top:1px solid var(--line); padding-top:1.4rem; margin-top:.4rem; }
+  .hero-stats b { display:block; font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem; }
+  .hero-stats span { font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+
+  /* Booking panel */
+  .book-panel { background:var(--green); color:var(--white); padding:1.6rem 1.5rem 1.4rem; box-shadow:0 24px 48px rgba(0,0,0,.18); }
+  .bp-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1rem; }
+  .bp-head b { font-family:'Fraunces',serif; font-weight:600; font-size:1.25rem; }
+  .bp-head span { font-size:.84rem; color:#bcd3ca; }
+  .bp-grid { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
+  .bb label { display:block; font-size:.64rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#bcd3ca; margin-bottom:.3rem; }
+  .bb input, .bb select { width:100%; background:var(--green-deep); border:1px solid rgba(255,255,255,.25); color:var(--white); padding:.6rem .8rem; font:inherit; font-size:.92rem; }
+  .bb-full { grid-column:1 / -1; }
+  .bb-nights { font-size:.8rem; color:#bcd3ca; margin-top:.35rem; }
+  .book-panel button { width:100%; background:var(--amber); border:0; color:var(--ink); font-weight:800; font-size:.96rem; padding:.9rem 1.5rem; cursor:pointer; margin-top:1.1rem; }
+  .book-panel button:hover { background:#e0a254; }
+  .bp-note { font-size:.72rem; color:#bcd3ca; margin-top:.7rem; text-align:center; }
+  .tag-live { display:inline-block; margin-bottom:1rem; background:var(--white); border:2px solid var(--green); color:var(--green); font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:.45rem .85rem; box-shadow:4px 4px 0 var(--amber); }
+
+  /* Rooms */
+  .rooms { padding:4.6rem 0 3rem; }
+  .sec-head { display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; margin-bottom:2rem; flex-wrap:wrap; }
+  .sec-head .k { font-size:.74rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--amber); }
+  .sec-head h2 { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(1.9rem,3.6vw,2.7rem); }
+  .room-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; }
+  .room { background:var(--white); border:1px solid var(--line); position:relative; display:flex; flex-direction:column; }
+  .room img { width:100%; aspect-ratio:3/2; object-fit:cover; }
+  .room-body { padding:1.3rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
+  .room h3 { font-family:'Fraunces',serif; font-weight:600; font-size:1.25rem; }
+  .room p { color:var(--muted); font-size:.9rem; margin:.4rem 0 1rem; flex:1; }
+  .room-price { display:flex; align-items:baseline; gap:.4rem; border-top:1px solid var(--line); padding-top:.9rem; }
+  .room-price b { font-family:'Fraunces',serif; font-size:1.5rem; color:var(--green); }
+  .room-price span { font-size:.8rem; color:var(--muted); }
+  .room-total { font-size:.86rem; color:var(--amber); font-weight:700; margin-top:.3rem; }
+
+  /* Why direct */
+  .why { background:var(--green); color:var(--white); }
+  .why .wrap { display:grid; grid-template-columns:repeat(3,1fr); gap:2.6rem; padding-block:3.8rem; }
+  .why h3 { font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem; margin-bottom:.4rem; }
+  .why h3 b { color:var(--amber); }
+  .why p { color:#cfe0d8; font-size:.95rem; }
+  .why .big { font-family:'Fraunces',serif; font-size:2.6rem; color:var(--amber); line-height:1; }
+
+  /* Courtyard */
+  .courtyard { padding:4.5rem 0; background:var(--paper); }
+  .courtyard-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.6rem; align-items:center; }
+  .courtyard-grid p.body { color:var(--muted); margin-bottom:1.4rem; font-size:1.05rem; }
+  .courtyard-grid p.body b { color:var(--ink); }
+
+  /* Amenities */
+  .amen { padding:3.4rem 0; }
+  .amen-list { list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem 2.4rem; }
+  .amen-list li { display:flex; gap:.8rem; align-items:center; color:var(--muted); font-size:.95rem; }
+  .amen-list li::before { content:""; width:9px; height:9px; background:var(--amber); border-radius:50%; flex-shrink:0; }
+
+  footer { border-top:1px solid var(--line); padding:2.2rem 0; }
+  .foot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--muted); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--amber); color:var(--ink); font-size:.72rem; font-weight:700; letter-spacing:.1em; padding:.38rem .8rem; }
+
+  @media (max-width:920px){
+    .stage { grid-template-columns:1fr; }
+    .stage-left { min-height:48vh; }
+    .stage-right { padding:2.4rem 1.6rem; }
+    .stage-left::after { background:linear-gradient(180deg,rgba(30,26,22,.1),rgba(30,26,22,.42)); }
+    .room-grid { grid-template-columns:1fr; }
+    .why .wrap { grid-template-columns:1fr; }
+    .courtyard-grid { grid-template-columns:1fr; }
+    .amen-list { grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
 
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<div class="sample-flag">CONCEPT SAMPLE -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">SABA<em>.</em><small>GUEST HOUSE · BOLE · CONCEPT</small></a>
+  <div class="wrap hdr">
+    <a class="logo" href="#top">Saba<em> Lodge</em><small>Bole &middot; Addis Ababa</small></a>
     <nav>
       <a href="#rooms">Rooms</a>
+      <a href="#courtyard">Yard</a>
       <a href="#amenities">Amenities</a>
-      <a href="#book">Book</a>
     </nav>
+    <a class="tel" href="tel:+251911000010">+251 91 100 00 10</a>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="hero-side-left">
-      <div class="wrap hero-inner">
-        <p class="eyebrow">EST. 2026 · BOLE · CONCEPT SAMPLE</p>
-        <h1>Comfort,<br /><em>Done Properly.</em></h1>
-        <p class="hero-sub">A fictional guest house in the heart of Bole. City-view rooms, direct booking on WhatsApp, and no booking-site commission.</p>
-        <div>
-          <a class="btn btn-solid" href="#book">Book Direct on WhatsApp</a>
-          <a class="btn btn-ghost" href="#rooms">See the Rooms</a>
+<section class="stage">
+  <div class="stage-left">
+    <div class="stage-collage">
+      <img src="../img/retreat-courtyard.jpg" alt="Saba Lodge courtyard with trees, seating, and water feature" />
+      <img src="../img/hotel-room.jpg" alt="Standard double room -- bed, bedside tables, tiled floor, wardrobe" />
+      <img src="../img/retreat-room.jpg" alt="Deluxe room with view through large archway to garden" />
+      <img src="../img/retreat-courtyard.jpg" alt="Saba Lodge courtyard water feature and seating" />
+    </div>
+    <div class="stage-caption">
+      <h1>A quiet room, <em>booked direct.</em></h1>
+      <p>City-view doubles, breakfast on the terrace, and a booking flow that skips the 15-20% commission. You talk to the house, not an app.</p>
+    </div>
+  </div>
+
+  <div class="stage-right">
+    <span class="tag-live">Rooms available tonight</span>
+    <p class="eyebrow">Bole &middot; 2 min from airport</p>
+    <p class="lead">Check your dates, see the live total, and send the booking straight to the front desk. No account, no app, no commission.</p>
+
+    <div class="book-panel">
+      <div class="bp-head"><b>Book direct</b><span>Best rate, always</span></div>
+      <div class="bp-grid">
+        <div class="bb"><label for="cin">Check-in</label><input id="cin" type="date" /></div>
+        <div class="bb"><label for="cout">Check-out</label><input id="cout" type="date" /></div>
+        <div class="bb bb-full"><label for="guests">Guests</label>
+          <select id="guests"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>Family (4+)</option></select>
+          <div class="bb-nights" id="nightsLabel">2 nights</div>
         </div>
       </div>
+      <button id="bookCta">Check Rooms</button>
+      <p class="bp-note">Sample flow: opens WhatsApp with your dates and guest count.</p>
     </div>
-    <div class="hero-side-right" aria-hidden="true">
-      <img src="../img/hotel-ext.jpg" alt="" />
-    </div>
-  </section>
 
-  <section id="rooms">
+    <div class="hero-stats" style="margin-top:1.4rem">
+      <div><b>2 min</b><span>from airport</span></div>
+      <div><b>0%</b><span>commission</span></div>
+      <div><b>24/7</b><span>front desk</span></div>
+    </div>
+  </div>
+</section>
+
+<main id="top">
+
+  <!-- ROOMS -->
+  <section class="rooms" id="rooms">
     <div class="wrap">
-      <p class="section-label">/ ROOMS</p>
-      <h2 class="section-title">Where You Sleep</h2>
-      <div class="room-list">
-        <article class="room">
-          <div class="room-index">01</div>
-          <div>
+      <div class="sec-head">
+        <div>
+          <p class="k">Rooms</p>
+          <h2>Pick a room. The total updates live.</h2>
+        </div>
+      </div>
+      <div class="room-grid">
+        <article class="room" data-rate="1800">
+          <img src="../img/hotel-room.jpg" alt="Standard double room -- bed, bedside tables, tiled floor, wardrobe" />
+          <div class="room-body">
             <h3>Standard Double</h3>
-            <p>Private bathroom, city view, work desk: everything for a clean, quiet stay.</p>
-            <span class="room-tag">SAMPLE · 1,800 ETB</span>
+            <p>Private bathroom, city view, work desk, and the quiet the flight did not give you.</p>
+            <div class="room-price"><b>1,800</b><span>ETB / night</span></div>
+            <div class="room-total" id="tot0"></div>
           </div>
         </article>
-        <article class="room">
-          <div class="room-index">02</div>
-          <div>
-            <h3>Deluxe + Balcony</h3>
-            <p>A walk-out balcony with city views and sliding glass doors that open wide.</p>
-            <span class="room-tag">SAMPLE · 2,400 ETB</span>
+        <article class="room" data-rate="2400">
+          <img src="../img/retreat-room.jpg" alt="Deluxe room with view through large archway to garden" />
+          <div class="room-body">
+            <h3>Deluxe + Terrace View</h3>
+            <p>A wide opening to the garden, ceiling fan, fresh bedding, and breakfast served on the terrace.</p>
+            <div class="room-price"><b>2,400</b><span>ETB / night</span></div>
+            <div class="room-total" id="tot1"></div>
           </div>
         </article>
-        <article class="room">
-          <div class="room-index">03</div>
-          <div>
-            <h3>Full Board</h3>
-            <p>Breakfast included and meals whenever you need them, all on site.</p>
-            <span class="room-tag">SAMPLE · ADD-ON</span>
+        <article class="room" data-rate="2900">
+          <img src="../img/retreat-courtyard.jpg" alt="Family room with shared lounge access and courtyard view" />
+          <div class="room-body">
+            <h3>Family Room</h3>
+            <p>Two connected beds, extra bed on request, and shared lounge downstairs with courtyard access.</p>
+            <div class="room-price"><b>2,900</b><span>ETB / night</span></div>
+            <div class="room-total" id="tot2"></div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="amenities" id="amenities" style="background:var(--concrete);">
+  <!-- WHY DIRECT -->
+  <section class="why" id="why">
     <div class="wrap">
-      <p class="section-label">/ AMENITIES</p>
-      <h2 class="section-title">The Small Things, Handled</h2>
-      <ul class="amenity-list">
-        <li><span class="am-dot"></span>Free high-speed WiFi in every room</li>
-        <li><span class="am-dot"></span>Free on-site parking</li>
-        <li><span class="am-dot"></span>Airport shuttle on request</li>
-        <li><span class="am-dot"></span>24/7 front desk</li>
-        <li><span class="am-dot"></span>Laundry service</li>
-        <li><span class="am-dot"></span>Multilingual staff</li>
+      <div><div class="big">15-20%</div><h3>stays <b>yours</b></h3><p>Every direct booking keeps the commission that would go to a booking site.</p></div>
+      <div><div class="big">1 min</div><h3>to <b>confirm</b></h3><p>Dates and price are agreed in chat before you arrive. No surprises at the desk.</p></div>
+      <div><div class="big">Always</div><h3>a <b>real person</b></h3><p>Questions go to the front desk on WhatsApp, answered in the language you write in.</p></div>
+    </div>
+  </section>
+
+  <!-- COURTYARD -->
+  <section class="courtyard" id="courtyard">
+    <div class="wrap courtyard-grid">
+      <div>
+        <p class="sec-head" style="margin-bottom:1.5rem;"><span class="k">The Yard</span></p>
+        <h2 style="font-family:'Fraunces',serif; font-weight:500; font-size:clamp(1.9rem,3.6vw,2.7rem); margin-bottom:1rem;">A courtyard that stays open.</h2>
+        <p class="body"><b>Morning coffee, evening conversation.</b> The courtyard is the part of the house guests use most -- a shaded seat, a place to wait for a ride, a table for a late snack. It is kept clean and lit until late.</p>
+        <p class="body"><b>Breakfast on the terrace.</b> Tea or coffee, bread, and eggs when you want them. Nothing fancy -- just food made fresh and served where you can sit outside.</p>
+      </div>
+      <div style="aspect-ratio:4/3; overflow:hidden;">
+        <img src="../img/retreat-courtyard.jpg" alt="Saba Lodge courtyard with trees, seating, and water feature" style="width:100%; height:100%; object-fit:cover;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="amen" id="amenities">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="k">Amenities</p>
+          <h2>The small things, handled.</h2>
+        </div>
+      </div>
+      <ul class="amen-list">
+        <li>Free high-speed WiFi in every room</li>
+        <li>Free on-site parking</li>
+        <li>Airport shuttle on request</li>
+        <li>Breakfast served from 6:30</li>
+        <li>Laundry and ironing service</li>
+        <li>Multilingual front desk</li>
       </ul>
     </div>
   </section>
 
-  <section class="cta-band" id="book">
-    <div class="wrap" style="padding:4.5rem 0;">
-      <div>
-        <p class="section-label" style="color:var(--orange);">/ BOOK DIRECT</p>
-        <h2 class="section-title" style="color:var(--paper);">No middleman, no commission</h2>
-        <p style="color:rgba(244,242,238,.75);max-width:34rem;">Book straight on WhatsApp: the sample proves the flow. Replace the number with a real one on order.</p>
-      </div>
-      <div>
-        <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20book%20a%20room." target="_blank" rel="noopener">Book on WhatsApp</a>
-        <a class="btn btn-ghost" href="#top">Get Directions</a>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Saba Guest House, a fictional concept sample</div>
-    <div>Sample address · Bole, Addis Ababa (fictional)</div>
+  <div class="wrap foot">
+    <div>&copy; <span id="year"></span> Saba Lodge -- a concept sample, not a real business</div>
+    <div>Bole Medhanialem, Atlas Street, 5 minutes from Bole International Airport, Addis Ababa &nbsp;&middot;&nbsp; 24h front desk</div>
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const rooms = [...document.querySelectorAll('.room')];
+const cinEl = document.getElementById('cin');
+const coutEl = document.getElementById('cout');
+const guestsEl = document.getElementById('guests');
+const nightsLabel = document.getElementById('nightsLabel');
+const totEls = [document.getElementById('tot0'), document.getElementById('tot1'), document.getElementById('tot2')];
+
+function nights() {
+  if (!cinEl.value || !coutEl.value) return 0;
+  const a = new Date(cinEl.value), b = new Date(coutEl.value);
+  const n = Math.round((b - a) / 86400000);
+  return n > 0 ? n : 0;
+}
+function render() {
+  const n = nights();
+  nightsLabel.textContent = n ? n + (n === 1 ? ' night' : ' nights') : 'pick dates';
+  rooms.forEach((r, i) => {
+    const rate = parseInt(r.dataset.rate, 10);
+    totEls[i].textContent = n ? n + ' night' + (n === 1 ? '' : 's') + ' = ' + (rate * n).toLocaleString() + ' ETB' : '';
+  });
+}
+[cinEl, coutEl, guestsEl].forEach(el => el.addEventListener('change', render));
+render();
+
+document.getElementById('bookCta').addEventListener('click', () => {
+  const n = nights();
+  if (!n) { document.getElementById('cin').focus(); return; }
+  const g = guestsEl.value;
+  document.getElementById('rooms').scrollIntoView({ behavior: 'smooth' });
+  const msg = 'Hello Saba Lodge, I would like to book ' + n + ' night(s) for ' + g + ' from ' + cinEl.value + '. Please confirm availability (sample).';
+  window.open('https://wa.me/251911000010?text=' + encodeURIComponent(msg), '_blank');
+});
+</script>
 </body>
 </html>

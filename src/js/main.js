@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const morphContainer = document.getElementById('heroMorphText');
     if (!morphContainer) return;
 
-    const words = ['Websites', 'Automation', 'Voice AI', 'Branding', 'Systems', 'Your Vision'];
+    const words = ['Websites', 'Office Ops & HR', 'Automation', 'Voice AI', 'Branding', 'Systems', 'Your Vision'];
     let currentIndex = 0;
     let interval = null;
 
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: new URLSearchParams(formData).toString()
       })
       .then(() => {
-        submitBtn.innerHTML = '<span>Sent! I\'ll be in touch soon</span> <i class=\"fas fa-check\"></i>';
+        submitBtn.innerHTML = '<span>Sent! We\'ll be in touch soon</span> <i class=\"fas fa-check\"></i>';
         submitBtn.classList.add('state-success');
         setTimeout(() => {
           contactForm.reset();
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
       })
       .catch(() => {
-        submitBtn.innerHTML = '<span>Something went wrong. Please email me directly</span> <i class=\"fas fa-exclamation-triangle\"></i>';
+        submitBtn.innerHTML = '<span>Something went wrong. Please email us directly</span> <i class=\"fas fa-exclamation-triangle\"></i>';
         submitBtn.classList.add('state-error');
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
@@ -278,6 +278,33 @@ document.addEventListener('DOMContentLoaded', () => {
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // ---------- Floating Contact Launcher ----------
+  const floatingSocials = document.getElementById('floatingSocials');
+  const floatingToggle = document.getElementById('floatingSocialsToggle');
+  if (floatingSocials && floatingToggle) {
+    const closeSocials = () => {
+      floatingSocials.classList.remove('open');
+      floatingToggle.setAttribute('aria-expanded', 'false');
+    };
+    floatingToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !floatingSocials.classList.contains('open');
+      floatingSocials.classList.toggle('open', willOpen);
+      floatingToggle.setAttribute('aria-expanded', String(willOpen));
+    });
+    floatingSocials.querySelectorAll('.floating-social-link').forEach((link) => {
+      link.addEventListener('click', closeSocials);
+    });
+    document.addEventListener('click', (e) => {
+      if (floatingSocials.classList.contains('open') && !floatingSocials.contains(e.target)) {
+        closeSocials();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSocials();
+    });
+  }
 
   // ---------- Smooth Scroll for Anchor Links ----------
   document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
@@ -861,7 +888,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['A website that shows your menu, prices, and photos', 'QR menu customers scan at the table', 'WhatsApp ordering, no third-party apps or fees', 'Your real reviews front and center'],
       does: ['More people find you on Google', 'Customers see the menu before they walk in', 'Orders come to your phone directly', 'You keep every birr instead of paying app commissions'],
       sample: 'See a sample restaurant site \u2192',
-      preview: '/restaurant/'
+      preview: '/restaurant/index.html'
     },
     guesthouses: {
       tag: 'Guest Houses & Hotels',
@@ -869,7 +896,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['A direct-booking website with real photos', 'Book Direct button, WhatsApp or call, no middleman', 'Guest reviews pulled from your real listings', 'Occupancy at a glance'],
       does: ['Returning guests book you directly', 'You stop paying the OTA commission', 'Your rooms stay full with less effort', 'Diaspora guests find you on Google'],
       sample: 'See a sample guest house site \u2192',
-      preview: '/guesthouse/'
+      preview: '/guesthouse/index.html'
     },
     clinics: {
       tag: 'Clinics & Hospitals',
@@ -877,7 +904,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Appointment booking + automatic reminders', 'Patient records that are easy to search', 'A professional site that builds trust', 'Follow-up reminders patients actually receive'],
       does: ['No-show rate drops', 'Your staff stops managing paper diaries', 'Patients feel their time is respected', 'You look established and serious'],
       sample: 'See a sample clinic site \u2192',
-      preview: '/clinic/'
+      preview: '/clinic/index.html'
     },
     travel: {
       tag: 'Travel Agencies',
@@ -885,7 +912,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Package & itinerary pages that sell', 'Inquiry form + WhatsApp automation', 'Tour photos that make people want to go', 'Customer follow-up that never forgets'],
       does: ['Inquiries come to one place', 'Leads get answered fast, even at night', 'Packages are easy to share on WhatsApp', 'You look bigger than your size'],
       sample: 'See a sample travel site \u2192',
-      preview: '/travel/'
+      preview: '/travel/index.html'
     },
     construction: {
       tag: 'Construction & Real Estate',
@@ -893,7 +920,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['A portfolio that shows completed projects', 'Quote requests that come to your WhatsApp', 'Property listings with real photos', 'A professional brand for bids and clients'],
       does: ['Clients see proof before they call', 'Quote requests arrive ready to answer', 'You win more bids with a real presence', 'Referrals have somewhere to land'],
       sample: 'See a sample construction site \u2192',
-      preview: '/real-estate/'
+      preview: '/real-estate/index.html'
     },
     schools: {
       tag: 'Schools & Training',
@@ -901,7 +928,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['A site that shows mission, programs, and results', 'Enrollment inquiries + fee tracking', 'Accreditation and achievements front and center', 'A calendar parents can see'],
       does: ['Parents trust you before visiting', 'Enrollment inquiries come organized', 'Your reputation is visible to everyone', 'Students\u2019 families find you on Google'],
       sample: 'See a sample school site \u2192',
-      preview: '/school/'
+      preview: '/school/index.html'
     },
     retail: {
       tag: 'Shops & Retail',
@@ -909,7 +936,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['A catalog customers can browse anytime', 'Stock list that\u2019s easy to update', 'WhatsApp ordering with prefilled messages', 'A Google presence that brings walk-ins'],
       does: ['Customers check stock before traveling', 'Orders arrive on your phone', 'You look professional on every platform', 'Sales keep happening after closing time'],
       sample: 'See a sample shop site \u2192',
-      preview: '/retail/'
+      preview: '/retail/index.html'
     },
     beauty: {
       tag: 'Salons, Gyms & More',
@@ -917,7 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Online booking + reminders', 'Client history at your fingertips', 'Membership and package tracking', 'A site that shows your work beautifully'],
       does: ['No-shows drop with reminders', 'Clients book without calling', 'Packages renew on schedule', 'Your work is your best advertisement'],
       sample: 'See a sample salon site \u2192',
-      preview: '/salon/'
+      preview: '/salon/index.html'
     },
     pharmacies: {
       tag: 'Pharmacies',
@@ -925,7 +952,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Stock with expiry-date alerts', 'Sales log that\u2019s audit-ready', 'Reorder reminders before you run out', 'A site that lists what you actually carry'],
       does: ['Less money lost to expiry', 'You\u2019re ready when inspectors ask', 'Never out of your best sellers', 'Customers find you when they need you'],
       sample: 'See a sample pharmacy site \u2192',
-      preview: '/pharmacy/'
+      preview: '/pharmacy/index.html'
     },
     bakeries: {
       tag: 'Bakeries & Food Makers',
@@ -933,7 +960,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Product list with real photos', 'Ingredient stock tracking', 'Production log, what you made and sold', 'Wholesale orders organized'],
       does: ['You know what sold before it\u2019s gone', 'Ingredients never run out mid-batch', 'Wholesale customers order smoothly', 'Your brand looks as good as your bread'],
       sample: 'See a sample bakery site \u2192',
-      preview: '/bakery/'
+      preview: '/bakery/index.html'
     },
     events: {
       tag: 'Event Planners & Photographers',
@@ -941,7 +968,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['A portfolio that sells your style', 'Package pages with clear pricing', 'Deposit & payment tracking', 'Inquiry form + fast follow-up'],
       does: ['Couples find you on Google', 'Packages answer questions before you do', 'Deposits are never forgotten', 'Your best work does the talking'],
       sample: 'See a sample events site \u2192',
-      preview: '/wedding/'
+      preview: '/wedding/index.html'
     },
     auto: {
       tag: 'Auto, Garages & Parts',
@@ -949,7 +976,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Job tracking for every vehicle', 'Vehicle history, no more \u201cwhat did we do last time?\u201d', 'Booking for service slots', 'A site that looks as solid as your work'],
       does: ['Jobs never fall through the cracks', 'Customers get updates without asking', 'Repeat visits come automatically', 'You look like the shop people trust'],
       sample: 'See a sample auto site \u2192',
-      preview: '/auto-garage/'
+      preview: '/auto-garage/index.html'
     },
     lawfirms: {
       tag: 'Law Firms & Legal Offices',
@@ -1005,7 +1032,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Item-level stock tracking with categories', 'Low-stock and expiry alerts on WhatsApp', 'Reorder suggestions from real sales speed', 'Supplier and movement history'],
       does: ['You never run out of what sells', 'No more guessing what to order', 'Expiring stock stops costing you money', 'Staff spend less time counting'],
       sample: 'See a sample inventory & stock control system →',
-      preview: '/inventory-system/'
+      preview: '/inventory-system/index.html'
     },
     hospitalsystems: {
       tag: 'Hospital Management Systems',
@@ -1013,7 +1040,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Admissions, wards and bed occupancy', 'Appointments with SMS/WhatsApp reminders', 'Pharmacy stock with expiry flags', 'Patient billing that is always current'],
       does: ['No-shows drop with reminders', 'Ward occupancy is visible in real time', 'Medicine never quietly expires', 'Billing disputes disappear'],
       sample: 'See a sample hospital management system →',
-      preview: '/hospital-system/'
+      preview: '/hospital-system/index.html'
     },
     schoolmgmt: {
       tag: 'School Management Systems',
@@ -1021,7 +1048,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Student register with guardian contacts', 'Daily attendance with absence alerts', 'Term grades and class rankings', 'Fee ledger with automatic reminders'],
       does: ['Guardians hear about absences instantly', 'Fee collection stops being a chase', 'Results go out by message', 'Enrollment numbers are always true'],
       sample: 'See a sample school management system →',
-      preview: '/school-system/'
+      preview: '/school-system/index.html'
     },
     warehouses: {
       tag: 'Warehouses & Distribution',
@@ -1029,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Bin-level stock with capacity tracking', 'Inbound and outbound queues', 'Picking lists grouped by zone', 'Fast-moving item reports'],
       does: ['Nothing gets lost between bins', 'Dispatch never misses the truck', 'Stock counts match reality', 'You see what sells fastest'],
       sample: 'See a sample warehouse management system →',
-      preview: '/warehouse-system/'
+      preview: '/warehouse-system/index.html'
     },
     logistics: {
       tag: 'Logistics & Freight',
@@ -1037,7 +1064,7 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Shipment tracking with progress and ETA', 'Vehicle fleet with service-due alerts', 'Driver rosters and ratings', 'Delivery confirmations and invoices'],
       does: ['Customers stop calling for updates', 'Trucks are never idle by surprise', 'Proof of delivery is saved per drop', 'Invoices follow automatically'],
       sample: 'See a sample freight & delivery tracking →',
-      preview: '/logistics-system/'
+      preview: '/logistics-system/index.html'
     },
     constructionsystems: {
       tag: 'Construction Project Tracking',
@@ -1045,53 +1072,9 @@ document.addEventListener('DOMContentLoaded', () => {
       get: ['Projects with progress and deadlines', 'Material stock with low alerts per site', 'Equipment allocation and service flags', 'Expense log per project'],
       does: ['Delays are visible before they happen', 'Materials are ordered before sites stall', 'Clients get milestone updates automatically', 'Costs are tracked per project'],
       sample: 'See a sample construction project tracking →',
-      preview: '/construction-system/'
+      preview: '/construction-system/index.html'
     }
   };
-
-  const fitModal = document.getElementById('fitModal');
-  if (fitModal) {
-    const tagEl = document.getElementById('fitModalTag');
-    const titleEl = document.getElementById('fitModalTitle');
-    const introEl = document.getElementById('fitModalIntro');
-    const getEl = document.getElementById('fitModalGet');
-    const doesEl = document.getElementById('fitModalDoes');
-    const sampleEl = document.getElementById('fitModalSample');
-    let lastFocus = null;
-
-    const closeModal = () => {
-      fitModal.hidden = true;
-      document.body.style.overflow = '';
-      if (lastFocus) lastFocus.focus();
-    };
-
-    const openModal = (key) => {
-      const c = FIT_CONTENT[key];
-      if (!c) return;
-      lastFocus = document.activeElement;
-      tagEl.textContent = c.tag;
-      titleEl.textContent = c.tag;
-      introEl.textContent = c.intro;
-      getEl.innerHTML = c.get.map((li) => `<li>${li}</li>`).join('');
-      doesEl.innerHTML = c.does.map((li) => `<li>${li}</li>`).join('');
-      sampleEl.textContent = c.sample;
-      sampleEl.dataset.preview = c.preview || '';
-      sampleEl.dataset.title = c.tag + ' Sample';
-      fitModal.hidden = false;
-      document.body.style.overflow = 'hidden';
-      fitModal.querySelector('.fit-modal-close').focus();
-    };
-
-    document.querySelectorAll('.fit-item').forEach((btn) => {
-      btn.addEventListener('click', () => openModal(btn.dataset.fit));
-    });
-    fitModal.querySelectorAll('[data-fit-close]').forEach((el) => {
-      el.addEventListener('click', closeModal);
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !fitModal.hidden) closeModal();
-    });
-  }
 
   // Sample Preview Modal (mini window)
   const previewModal = document.getElementById('previewModal');
@@ -1133,6 +1116,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !previewModal.hidden) closePreview();
+    });
+  }
+
+  // ---------- Sample gallery filter (work section) ----------
+  const workFilter = document.getElementById('workFilter');
+  if (workFilter) {
+    const chips = Array.from(workFilter.querySelectorAll('.wf-chip'));
+    const cards = Array.from(document.querySelectorAll('.work-card--secondary'));
+
+    // live counts per category
+    const count = (cat) => (cat === 'all' ? cards.length : cards.filter((c) => c.dataset.cat === cat).length);
+    chips.forEach((chip) => {
+      const n = chip.querySelector('.wf-n');
+      if (n) n.textContent = count(chip.dataset.cat);
+    });
+
+    // Sample curation: collapsed by default (featured only); View All expands.
+    const moreBtn = document.getElementById('workMore');
+    let expanded = false;
+    const currentCat = () => {
+      const active = chips.find((c) => c.classList.contains('is-active'));
+      return active ? active.dataset.cat : 'all';
+    };
+
+    const applyFilter = (cat) => {
+      cards.forEach((card) => {
+        const inCat = cat === 'all' || card.dataset.cat === cat;
+        const show = inCat && (expanded || cat !== 'all' || card.hasAttribute('data-featured'));
+        card.style.display = show ? '' : 'none';
+        if (show) card.classList.add('visible'); // never leave a revealed card invisible
+      });
+    };
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', () => {
+        expanded = !expanded;
+        moreBtn.setAttribute('aria-expanded', String(expanded));
+        const label = moreBtn.querySelector('.work-more-label');
+        if (label) label.textContent = expanded ? 'Show curated selection' : 'View all 30+ samples';
+        applyFilter(currentCat());
+      });
+    }
+
+    // initial collapsed state
+    applyFilter('all');
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+        applyFilter(chip.dataset.cat);
+      });
+    });
+
+    // whole sample card opens its live preview (buttons still work for keyboard/AT)
+    cards.forEach((card) => {
+      const btn = card.querySelector('.work-preview-btn');
+      if (!btn) return;
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a, button')) return;
+        btn.click();
+      });
+      card.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target === card) {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'Preview ' + (btn.dataset.title || 'sample'));
     });
   }
 });

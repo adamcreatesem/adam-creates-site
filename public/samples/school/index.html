@@ -4,132 +4,239 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bright Future Academy: School Website (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional school. Not a real business." />
+<meta name="description" content="Bright Future Academy -- kindergarten to Grade 12 in Addis Ababa, small classes, accredited by the Ministry of Education, 96% national exam pass rate. Explore programs and calculate your yearly fee before you visit. Old Airport area, adjacent to the AAU campus." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-  :root { --navy:#14213d; --navy-2:#0d1628; --gold:#d8a95c; --ivory:#faf6ee; --ink:#1c2330; --ink-soft:#5a6472; }
+  :root {
+    --navy:#12233b; --navy-2:#0a1526; --gold:#c9a227; --gold-soft:#e0c878;
+    --paper:#f7f3ea; --white:#fff; --ink:#1c2430; --muted:#5c6573; --line:#e2dccd;
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Karla',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.6; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); line-height:1.6; }
   img { display:block; max-width:100%; }
   a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(250,246,238,.96); border-bottom:1px solid rgba(20,33,61,.15); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { display:flex; align-items:center; gap:.7rem; font-family:'Source Serif 4',serif; font-weight:600; font-size:1.1rem; color:var(--navy); }
-  .brand-mark { width:34px; height:34px; border:2px solid var(--gold); display:grid; place-items:center; border-radius:50%; font-size:.8rem; color:var(--navy); }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-size:.88rem; font-weight:600; color:var(--ink-soft); }
-  nav a:hover { color:var(--navy); }
-  .hero { padding:9rem 0 5rem; background:var(--navy); color:var(--ivory); position:relative; overflow:hidden; }
-  .hero::before { content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(250,246,238,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(250,246,238,.05) 1px,transparent 1px); background-size:40px 40px; }
-  .hero-inner { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; }
-  h1 { font-family:'Source Serif 4',serif; font-size:clamp(2rem,4.5vw,3.2rem); font-weight:600; line-height:1.15; margin-bottom:1.2rem; }
-  .hero-sub { color:rgba(250,246,238,.8); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.9rem 1.7rem; border-radius:2px; border:1px solid transparent; }
-  .btn-solid { background:var(--gold); color:var(--navy); }
-  .btn-ghost { border-color:rgba(250,246,238,.4); color:var(--ivory); }
-  .hero-fig { border:1px solid rgba(218,169,92,.4); padding:6px; }
-  .hero-fig img { aspect-ratio:4/3; object-fit:cover; width:100%; }
-  section { padding:5rem 0; }
-  .section-label { font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; }
-  .section-title { font-family:'Source Serif 4',serif; font-size:clamp(1.7rem,3.5vw,2.4rem); font-weight:600; color:var(--navy); margin-bottom:.8rem; }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .prog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
-  .prog { border:2px solid var(--navy); box-shadow:4px 4px 0 var(--navy); background:var(--ivory); padding:1.4rem; }
-  .prog-num { font-family:'Source Serif 4'; color:var(--gold); font-size:1.1rem; }
-  .prog h3 { font-family:'Source Serif 4'; font-weight:600; margin:.3rem 0 .4rem; color:var(--navy); }
-  .prog p { color:var(--ink-soft); font-size:.9rem; }
-  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
-  .stat { text-align:center; border:2px solid var(--navy); background:var(--ivory); padding:1.6rem 1rem; box-shadow:4px 4px 0 var(--navy); }
-  .stat b { display:block; font-family:'Source Serif 4'; font-size:2rem; color:var(--navy); }
-  .stat span { font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
-  .enroll { background:var(--navy); color:var(--ivory); }
-  .enroll .wrap { text-align:center; padding:1rem 0; }
-  .enroll h2 { color:var(--ivory); }
-  .enroll p { color:rgba(250,246,238,.8); max-width:34rem; margin:0 auto 1.6rem; }
-  footer { border-top:1px solid rgba(20,33,61,.15); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--gold); color:var(--navy); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .prog-grid{grid-template-columns:1fr;} .stats{grid-template-columns:1fr;} nav{display:none;} }
+  .wrap { width:min(1000px,92%); margin-inline:auto; }
+
+  /* Prospectus masthead */
+  header { background:var(--navy); color:var(--white); border-bottom:4px solid var(--gold); }
+  .mast { display:flex; align-items:center; justify-content:space-between; gap:1.4rem; padding:1.1rem 0; flex-wrap:wrap; }
+  .logo { display:flex; align-items:center; gap:.8rem; }
+  .crest { width:40px; height:46px; border:2px solid var(--gold); display:grid; place-items:center; font-family:'DM Serif Display',serif; color:var(--gold-soft); font-size:.9rem; transform:rotate(-2deg); }
+  .logo b { font-family:'DM Serif Display',serif; font-weight:400; font-size:1.3rem; display:block; line-height:1.05; color:var(--white); }
+  .logo small { font-size:.66rem; font-weight:800; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-soft); }
+  nav { display:flex; gap:1.7rem; align-items:center; }
+  nav a { font-size:.9rem; font-weight:600; color:#cdd7e4; }
+  nav a:hover { color:var(--white); }
+  .nav-cta { background:var(--gold); color:var(--navy) !important; padding:.6rem 1.3rem; font-weight:700; }
+  @media(max-width:820px){ nav { display:none; } }
+
+  /* Document rules */
+  .doc { background:var(--white); border-inline:1px solid var(--line); box-shadow:0 0 0 1px var(--line); }
+  .sheet { padding:3.2rem clamp(1.2rem,4vw,3.4rem); border-bottom:1px solid var(--line); }
+  .sheet:last-child { border-bottom:0; }
+  .rule-top { display:flex; justify-content:space-between; align-items:baseline; border-bottom:3px double var(--navy); padding-bottom:.7rem; margin-bottom:1.6rem; font-family:'DM Serif Display',serif; }
+  .rule-top .no { font-size:.8rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); font-family:'Inter'; font-weight:800; }
+
+  .sec-label { font-size:.74rem; font-weight:800; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); }
+  h1 { font-family:'DM Serif Display',serif; font-weight:400; font-size:clamp(2.4rem,5.6vw,4.3rem); line-height:1.02; margin:.9rem 0 1.1rem; color:var(--navy); }
+  h1 em { color:var(--gold); }
+  h2 { font-family:'DM Serif Display',serif; font-weight:400; font-size:clamp(1.8rem,3.4vw,2.6rem); color:var(--navy); line-height:1.1; }
+  .lead { color:var(--muted); max-width:34rem; margin-bottom:1.6rem; }
+  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.7rem; border:1px solid transparent; }
+  .btn-solid { background:var(--navy); color:var(--white); }
+  .btn-solid:hover { background:var(--navy-2); }
+  .btn-gold { background:var(--gold); color:var(--navy); }
+  .btn-gold:hover { background:var(--gold-soft); }
+  .btn-line { border:1.5px solid var(--navy); color:var(--navy); }
+  .hero-actions { display:flex; gap:.9rem; flex-wrap:wrap; }
+
+  /* Cover section */
+  .cover-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:3rem; align-items:center; }
+  @media(max-width:920px){ .cover-grid { grid-template-columns:1fr; } }
+  .hero-fig { position:relative; }
+  .hero-fig img { width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--line); }
+  .fig-stamp { position:absolute; bottom:-16px; left:-16px; background:var(--gold); color:var(--navy); font-weight:800; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; padding:.6rem .9rem; box-shadow:5px 5px 0 var(--navy); }
+  .facts-line { display:flex; gap:1.6rem; flex-wrap:wrap; margin-top:1.6rem; padding-top:1.2rem; border-top:1px solid var(--line); font-size:.8rem; color:var(--muted); }
+  .facts-line b { color:var(--navy); }
+
+  /* Program ledger */
+  .prog-list { border-top:2px solid var(--navy); }
+  .prog { display:grid; grid-template-columns:110px 1fr 200px; gap:1.6rem; align-items:center; padding:1.35rem 0; border-bottom:1px solid var(--line); }
+  .prog:last-child { border-bottom:2px solid var(--navy); }
+  .prog .stage { font-family:'DM Serif Display',serif; font-size:1.7rem; color:var(--gold); }
+  .prog h3 { font-size:1.15rem; font-weight:800; color:var(--navy); margin-bottom:.2rem; }
+  .prog p { font-size:.9rem; color:var(--muted); max-width:30rem; }
+  .prog .meta { text-align:right; font-size:.8rem; color:var(--muted); }
+  .prog .meta b { display:block; font-size:.95rem; color:var(--ink); }
+  @media(max-width:920px){ .prog { grid-template-columns:1fr; gap:.4rem; } .prog .meta { text-align:left; } }
+
+  /* Results worksheet */
+  .results-row { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--navy); }
+  @media(max-width:920px){ .results-row { grid-template-columns:1fr 1fr; } }
+  .cell { padding:1.6rem 1.4rem; border-right:1px solid var(--line); }
+  .cell:last-child { border-right:0; }
+  @media(max-width:920px){ .cell:nth-child(2n) { border-right:0; } .cell:nth-child(-n+2) { border-bottom:1px solid var(--line); } }
+  .cell b { display:block; font-family:'DM Serif Display',serif; font-weight:400; font-size:2.4rem; color:var(--navy); }
+  .cell span { font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+
+  /* Fee worksheet */
+  .fees-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+  @media(max-width:920px){ .fees-grid { grid-template-columns:1fr; } }
+  .fee-card { background:var(--paper); border:2px solid var(--navy); padding:1.8rem; }
+  .fee-card h3 { font-family:'DM Serif Display',serif; font-weight:400; font-size:1.4rem; color:var(--navy); margin-bottom:1.1rem; }
+  .fee-row { display:flex; justify-content:space-between; align-items:center; padding:.8rem 0; border-bottom:1px dashed var(--line); }
+  .fee-row b { font-size:.98rem; }
+  .fee-row span { font-size:.82rem; color:var(--muted); }
+  .fee-row .pick { border:1.5px solid var(--line); background:var(--white); padding:.5rem .7rem; font:inherit; font-size:.9rem; font-weight:600; color:var(--navy); }
+  .fee-result { margin-top:1.2rem; text-align:center; background:var(--white); border:1px solid var(--line); padding:1.1rem; }
+  .fee-result .per { font-size:.76rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+  .fee-result .amt { font-family:'DM Serif Display',serif; font-size:2.3rem; color:var(--navy); }
+  .fee-result p { font-size:.78rem; color:var(--muted); }
+  .fee-card .btn { width:100%; margin-top:1rem; text-align:center; }
+
+  footer { background:var(--navy); color:#cdd7e4; padding:2rem 0 4.4rem; }
+  .foot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:.84rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--gold); color:var(--navy); font-size:.72rem; font-weight:700; letter-spacing:.1em; padding:.38rem .8rem; }
 </style>
 </head>
 <body>
 
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top"><span class="brand-mark">★</span> Bright Future Academy</a>
+  <div class="wrap mast">
+    <a class="logo" href="#top"><span class="crest">BF</span><span><b>Bright Future</b><small>ACADEMY · ADDIS ABABA</small></span></a>
     <nav>
       <a href="#programs">Programs</a>
-      <a href="#about">About</a>
-      <a href="#enroll">Enroll</a>
+      <a href="#results">Results</a>
+      <a href="#fees">Fees</a>
+      <a class="nav-cta" href="#fees">Enroll</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
+<main id="top" class="doc">
+  <!-- COVER -->
+  <section class="sheet">
+    <div class="rule-top"><span>Prospectus</span><span class="no">Est. 1998</span></div>
+    <div class="cover-grid">
       <div>
-        <p class="eyebrow">A concept sample school · Addis Ababa</p>
-        <h1>Where Bright Futures Begin</h1>
-        <p class="hero-sub">A sample website for a fictional school, showing how enrollment, credibility, and programs come together to earn parents' trust.</p>
-        <div>
-          <a class="btn btn-solid" href="#enroll">Enroll Now</a>
-          <a class="btn btn-ghost" href="#programs">Our Programs</a>
+        <p class="sec-label">Old Airport area, adjacent to the AAU campus, Addis Ababa</p>
+        <h1>Small classes. <em>Big results.</em></h1>
+        <p class="lead">A school website should answer the question parents ask first: will my child be known here? This academy shows programs, results, and a clear enrollment path.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#fees">Enroll Now</a>
+          <a class="btn btn-line" href="#programs">Explore Programs</a>
+        </div>
+        <div class="facts-line">
+          <span>Founded <b>1998</b></span>
+          <span>Kindergarten to <b>Grade 12</b></span>
+          <span>Accredited · <b>Ministry of Education</b></span>
+          <span>Admissions <b>open</b></span>
         </div>
       </div>
       <div class="hero-fig">
-        <img src="../img/school.jpg" alt="Students at the sample school" />
+        <img src="../img/school.jpg" alt="Students in a classroom using laptops, Bright Future Academy sample" />
+        <span class="fig-stamp">Est. 1998 · Addis Ababa</span>
       </div>
     </div>
   </section>
 
-  <section id="programs">
-    <div class="wrap">
-      <p class="section-label">Academics</p>
-      <h2 class="section-title">Programs That Grow With Them</h2>
-      <p class="section-note">Kindergarten through grade 12, a balanced, modern curriculum in a structured environment.</p>
-      <div class="prog-grid">
-        <div class="prog"><span class="prog-num">01</span><h3>Kindergarten</h3><p>Play-based learning that builds curiosity, confidence, and routine.</p></div>
-        <div class="prog"><span class="prog-num">02</span><h3>Primary</h3><p>Strong foundations in reading, math, and science, with daily practice.</p></div>
-        <div class="prog"><span class="prog-num">03</span><h3>Secondary</h3><p>College-prep focus with national exam support and guidance.</p></div>
-      </div>
+  <!-- PROGRAM LEDGER -->
+  <section class="sheet" id="programs">
+    <div class="rule-top"><span>Section 01</span><span class="no">Academics</span></div>
+    <h2>One school, three stages</h2>
+    <p class="lead" style="margin-top:.6rem;">Every stage runs on the same promise: small classes, teachers who know each child, and progress parents can see.</p>
+    <div class="prog-list">
+      <div class="prog"><span class="stage">KG</span><div><h3>Kindergarten</h3><p>Play-based learning that builds curiosity, confidence, and routine, with a low ratio so every child is seen.</p></div><div class="meta"><b>Age 4-6</b>Full day · 5 days</div></div>
+      <div class="prog"><span class="stage">01-08</span><div><h3>Primary School</h3><p>Reading, math, and science taught with daily practice and termly progress reports to parents.</p></div><div class="meta"><b>Age 6-14</b>Homeroom teachers</div></div>
+      <div class="prog"><span class="stage">09-12</span><div><h3>Secondary School</h3><p>National exam preparation with weekly mock tests, plus university guidance counselors.</p></div><div class="meta"><b>Age 14-18</b>Exam focus</div></div>
+      <div class="prog"><span class="stage">EXTRA</span><div><h3>After School</h3><p>English club, coding, chess, and sports that run until 18:00 for working parents.</p></div><div class="meta"><b>Optional</b>Fees apply</div></div>
     </div>
   </section>
 
-  <section id="about" style="background:#efe9db;">
-    <div class="wrap">
-      <p class="section-label">Why parents choose us</p>
-      <h2 class="section-title">The Numbers Speak</h2>
-      <div class="stats">
-        <div class="stat"><b>15:1</b><span>Student-teacher ratio</span></div>
-        <div class="stat"><b>97%</b><span>Exam pass rate</span></div>
-        <div class="stat"><b>2,000+</b><span>Alumni</span></div>
-      </div>
+  <!-- RESULTS WORKSHEET -->
+  <section class="sheet" id="results">
+    <div class="rule-top"><span>Section 02</span><span class="no">Results</span></div>
+    <h2 style="margin-bottom:1.4rem;">The numbers parents ask about</h2>
+    <div class="results-row">
+      <div class="cell"><b>1:12</b><span>Student-teacher ratio</span></div>
+      <div class="cell"><b>96%</b><span>National exam pass rate</span></div>
+      <div class="cell"><b>18</b><span>Average class size</span></div>
+      <div class="cell"><b>2,400+</b><span>Alumni since 1998</span></div>
     </div>
   </section>
 
-  <section class="enroll" id="enroll">
-    <div class="wrap">
-      <p class="section-label" style="color:var(--gold);">Admissions</p>
-      <h2 class="section-title">Enrollment Open</h2>
-      <p>Inquiries arrive organized on this sample; real enrollment forms connect to WhatsApp or email on order.</p>
-      <a class="btn btn-solid" href="#top">Request Enrollment Info</a>
+  <!-- FEES WORKSHEET -->
+  <section class="sheet" id="fees">
+    <div class="rule-top"><span>Section 03</span><span class="no">Enrollment</span></div>
+    <div class="fees-grid">
+      <div>
+        <h2>Know the fee before you visit</h2>
+        <p class="lead" style="margin-top:.8rem;">Pick a grade and see the yearly cost at a glance, including registration, books, and the after-school option. Sample figures for the demo.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#" id="feeSend">Ask a Question on WhatsApp</a>
+        </div>
+      </div>
+      <div class="fee-card">
+        <h3>Yearly fee estimate</h3>
+        <div class="fee-row"><span>Grade level</span>
+          <select class="pick" id="gradeSel">
+            <option value="1">Kindergarten</option>
+            <option value="2">Primary (1-4)</option>
+            <option value="3">Primary (5-8)</option>
+            <option value="4" selected>Secondary (9-10)</option>
+            <option value="5">Secondary (11-12)</option>
+          </select>
+        </div>
+        <div class="fee-row"><span>After-school program</span>
+          <select class="pick" id="extraSel">
+            <option value="0">Not needed</option>
+            <option value="1">Add (English, coding, sports)</option>
+          </select>
+        </div>
+        <div class="fee-result">
+          <span class="per">Estimated per year</span>
+          <div class="amt" id="feeAmt">38,500 ETB</div>
+          <p>Registration 1,500 ETB is separate and one-time.</p>
+        </div>
+        <a class="btn btn-gold" href="#top">Request the Enrollment Pack</a>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Bright Future Academy, a fictional concept sample</div>
-    <div>Sample address · Addis Ababa (fictional)</div>
+  <div class="wrap foot">
+    <div>© <span id="year"></span> Bright Future Academy -- sample concept, not a real business</div>
+    <div>Old Airport area, adjacent to the AAU campus, Addis Ababa · Sample shown for demonstration, real business info goes in on order</div>
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const FEES = [28000, 32500, 35500, 38500, 43000];
+const EXTRA = 9500;
+const gradeSel = document.getElementById('gradeSel');
+const extraSel = document.getElementById('extraSel');
+const feeAmt = document.getElementById('feeAmt');
+function calc() {
+  const base = FEES[parseInt(gradeSel.value, 10) - 1];
+  const extra = parseInt(extraSel.value, 10) ? EXTRA : 0;
+  feeAmt.textContent = (base + extra).toLocaleString() + ' ETB';
+}
+gradeSel.addEventListener('change', calc);
+extraSel.addEventListener('change', calc);
+calc();
+document.getElementById('feeSend').addEventListener('click', (e) => {
+  e.preventDefault();
+  const g = gradeSel.options[gradeSel.selectedIndex].text;
+  const msg = 'Hello Bright Future Academy, I have a question about enrolling in ' + g + ' (sample).';
+  window.open('https://wa.me/251911000018?text=' + encodeURIComponent(msg), '_blank');
+});
+</script>
 </body>
 </html>

@@ -6,140 +6,247 @@
 <title>Yegna Closet: Fashion Rental (Concept Sample)</title>
 <meta name="description" content="Concept sample website for a fictional fashion rental service. Not a real business." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --plum:#6d2b4b; --plum-deep:#551f3a; --lav:#f6edf2; --gold:#c9a227; --ink:#33252d; --ink-soft:#7a626c; --white:#fff; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Karla',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,255,255,.95); border-bottom:1px solid rgba(109,43,75,.2); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { font-family:'Playfair Display',serif; font-weight:600; font-size:1.25rem; color:var(--plum-deep); }
-  .brand small { display:block; font-family:'Karla'; font-size:.6rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-size:.88rem; font-weight:500; color:var(--ink-soft); }
-  nav a:hover { color:var(--plum); }
-  .hero { padding:9rem 0 5rem; background:linear-gradient(160deg,var(--lav),#fff 60%); }
-  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--plum); margin-bottom:1rem; }
-  h1 { font-family:'Playfair Display',serif; font-size:clamp(2.1rem,5vw,3.3rem); font-weight:600; line-height:1.1; margin-bottom:1rem; }
-  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border:1px solid transparent; }
-  .btn-solid { background:var(--plum); color:var(--white); }
-  .btn-ghost { border-color:var(--plum); color:var(--plum); }
-  .hero-fig { border-radius:150px 150px 12px 12px; overflow:hidden; }
-  .hero-fig img { width:100%; aspect-ratio:3/4; object-fit:cover; }
-  section { padding:5rem 0; }
-  .section-label { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--plum); margin-bottom:.8rem; }
-  .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:600; margin-bottom:.8rem; }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .piece-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
-  .piece { border:1px solid #e7d8e0; border-bottom:4px solid var(--gold); border-radius:12px; overflow:hidden; background:var(--white); }
-  .piece img { width:100%; height:12rem; object-fit:cover; }
-  .piece .inner { padding:1.3rem; }
-  .piece h3 { font-family:'Playfair Display'; font-weight:600; font-size:1.08rem; margin-bottom:.4rem; color:var(--plum-deep); }
-  .piece p { color:var(--ink-soft); font-size:.88rem; }
-  .piece .rent { display:block; margin-top:.6rem; font-weight:700; color:var(--plum); font-size:.9rem; }
-  .how { background:var(--plum); color:var(--white); }
-  .how .wrap { display:grid; grid-template-columns:1fr 1fr; gap:2.4rem; }
-  .how .section-label { color:var(--gold); }
-  .how p { color:rgba(255,255,255,.78); margin-bottom:1rem; font-size:.95rem; }
-  .book { background:var(--lav); text-align:center; }
-  .book .wrap { padding:1.2rem 0; }
-  .book h2 { color:var(--plum-deep); }
-  .book p { color:var(--ink-soft); max-width:34rem; margin:0 auto 1.6rem; }
-  .contact-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem; max-width:36rem; margin-inline:auto; }
-  .contact-row div { border:1px solid #e0cdd8; border-radius:10px; padding:1rem; background:var(--white); }
-  .contact-row b { display:block; font-size:.9rem; margin-bottom:.2rem; color:var(--plum-deep); }
-  .contact-row span { font-size:.8rem; color:var(--ink-soft); }
-  footer { border-top:1px solid rgba(109,43,75,.2); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--plum); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .piece-grid{grid-template-columns:1fr;} .how .wrap{grid-template-columns:1fr;} .contact-row{grid-template-columns:1fr;} nav{display:none;} }
+  :root{
+    --coal:#191513; --coal2:#221d1a; --ivory:#efe6d8; --champ:#c9a86a; --champ-l:#e3c98f;
+    --blush:#c98d80; --dim:#a2968a; --line:#3a312c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--coal);color:var(--ivory);font-family:Karla,system-ui,sans-serif;line-height:1.6}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--champ);color:#241c10;font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.12}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--champ);color:#241c10;text-decoration:none;font-weight:700;padding:.85rem 1.6rem;border:0;cursor:pointer;font-family:Karla,sans-serif;font-size:.88rem;letter-spacing:.03em;transition:.18s;border-radius:999px}
+  .btn:hover{background:var(--champ-l)}
+  .btn.line{background:transparent;color:var(--ivory);box-shadow:inset 0 0 0 1.5px var(--line)}
+  .btn.line:hover{box-shadow:inset 0 0 0 1.5px var(--champ);color:var(--champ)}
+  .btn.small{padding:.5rem 1.15rem;font-size:.76rem}
+  .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--champ)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(25,21,19,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 22px;max-width:1180px;margin:0 auto;gap:1rem}
+  .brand{font-family:"Instrument Serif",serif;font-size:1.5rem;text-decoration:none}
+  .brand em{font-style:italic;color:var(--champ)}
+  .brand small{display:block;font-family:Karla,sans-serif;font-size:.66rem;letter-spacing:.3em;color:var(--dim);font-weight:700}
+  .nav-links{display:flex;gap:1.5rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.84rem;font-weight:600}
+  .nav-links a:hover{color:var(--champ)}
+  @media(max-width:780px){.nav-links a:not(.btn){display:none}}
+
+  .hero{position:relative;overflow:hidden}
+  .hero .wrap{padding:3.4rem 22px 2.8rem;display:grid;grid-template-columns:1fr .9fr;gap:2.8rem;align-items:center}
+  @media(max-width:940px){.hero .wrap{grid-template-columns:1fr}}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem)}
+  .hero h1 em{font-style:italic;color:var(--champ)}
+  .hero-sub{color:var(--dim);max-width:30rem;margin:.9rem 0 1.6rem;font-size:1.04rem}
+  .hero-img{position:relative}
+  .hero-img img{width:100%;height:430px;object-fit:cover}
+  .hero-img .stamp{position:absolute;right:12px;top:12px;border:1.5px solid var(--champ);color:var(--champ-l);font-size:.66rem;letter-spacing:.22em;padding:.4rem .7rem;text-transform:uppercase;font-weight:700;background:rgba(25,21,19,.6)}
+  .howline{display:flex;gap:2rem;flex-wrap:wrap;font-size:.8rem;color:var(--dim)}
+  .howline b{display:block;color:var(--ivory);font-weight:700}
+
+  .pieces{padding:2.2rem 0 1rem}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+  .sec-head h2 em{font-style:italic;color:var(--champ)}
+  .piece-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  @media(max-width:940px){.piece-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.piece-grid{grid-template-columns:1fr}}
+  .piece{border:1px solid var(--line);background:var(--coal2);overflow:hidden;cursor:pointer;transition:.16s;display:flex;flex-direction:column}
+  .piece:hover{border-color:#5a4c42}
+  .piece.sel{border-color:var(--champ);box-shadow:0 14px 34px rgba(201,168,106,.1)}
+  .piece img{width:100%;height:220px;object-fit:cover;display:block;filter:saturate(.9)}
+  .piece .bd{padding:1rem 1.1rem 1.15rem;display:flex;flex-direction:column;flex:1;gap:.25rem}
+  .piece .cat{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--champ);font-weight:700}
+  .piece h3{font-size:1.25rem}
+  .piece .note{font-size:.78rem;color:var(--dim)}
+  .piece .row{display:flex;justify-content:space-between;align-items:center;margin-top:.6rem}
+  .piece .pr{font-size:1.05rem;font-weight:700}
+  .piece .pr small{font-size:.7rem;color:var(--dim);font-weight:500}
+
+  .book-panel{border:1px solid var(--champ);background:var(--coal2);margin:1.4rem 0 0;padding:1.5rem;display:none}
+  .book-panel.show{display:block}
+  .book-panel .bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  @media(max-width:760px){.book-panel .bp-grid{grid-template-columns:1fr}}
+  .bp-t h3{font-size:1.5rem}
+  .bp-t h3 em{color:var(--champ);font-style:italic}
+  .bp-t p{color:var(--dim);font-size:.88rem;margin:.3rem 0 .9rem}
+  .field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+  .field label{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-weight:700}
+  .field input,.field select{border:1.5px solid var(--line);background:var(--coal);color:var(--ivory);padding:.65rem .8rem;font:inherit;outline:0;border-radius:8px}
+  .field input:focus{border-color:var(--champ)}
+  .field .hint-s{font-size:.72rem;color:var(--dim)}
+  .summary{border-top:1px dashed var(--line);margin-top:1.1rem;padding-top:1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+  .summary .tot{font-size:1.4rem;font-weight:700}
+  .summary .tot small{font-size:.78rem;color:var(--dim);font-weight:500;display:block}
+  .summary .dep{font-size:.78rem;color:var(--champ);font-weight:600}
+  .note-s{font-size:.76rem;color:var(--dim);margin-top:1rem}
+
+  .how{padding:2.2rem 0}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  @media(max-width:860px){.how-grid{grid-template-columns:1fr}}
+  .how-card{border:1px solid var(--line);padding:1.2rem}
+  .how-card .n{font-family:"Instrument Serif",serif;font-size:1.6rem;color:var(--champ)}
+  .how-card h3{font-size:1.15rem;margin:.2rem 0}
+  .how-card p{color:var(--dim);font-size:.86rem}
+
+  footer{border-top:1px solid var(--line);padding:1.4rem 22px 4.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:var(--dim);max-width:1180px;margin:0 auto}
 </style>
 </head>
-<body>
-
+<body id="top">
 <div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">Yegna Closet<small>FASHION RENTAL · CONCEPT</small></a>
-    <nav>
-      <a href="#pieces">Pieces</a>
-      <a href="#how">How It Works</a>
-      <a href="#book">Rent</a>
-    </nav>
+  <div class="nav">
+    <a class="brand" href="#top">Yegna <em>Closet</em><small>FASHION RENTAL · CONCEPT SAMPLE</small></a>
+    <div class="nav-links">
+      <a href="#pieces">The Closet</a>
+      <a href="#how">How it works</a>
+      <a class="btn small" href="#pieces">Rent a piece</a>
+    </div>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A concept sample fashion rental · Addis Ababa</p>
-        <h1>Wear the Moment,<br /><em style="font-style:italic;color:var(--plum);">Rent the Look.</em></h1>
-        <p class="hero-sub">Bridal, party, and traditional wear rented by the day, booked online with sizes and pickup times confirmed by message. A sample for a fictional service.</p>
-        <div>
-          <a class="btn btn-solid" href="#book">Rent a Piece</a>
-          <a class="btn btn-ghost" href="#pieces">Browse Pieces</a>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">A concept sample fashion rental · Addis Ababa</p>
+      <h1>Wear the moment. <em>Rent the look.</em></h1>
+      <p class="hero-sub">Bridal, party and traditional wear rented by the day. Pick a piece, pick your date, and the fitting is confirmed by message. You arrive, you shine, you return it.</p>
+      <div class="howline">
+        <div><b>Cleaned</b>After every rental</div>
+        <div><b>Fitted</b>To your size first</div>
+        <div><b>1 day</b>Minimum rental</div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="img/fashion-piece.jpg" alt="A rented ceremonial dress, concept sample" />
+      <div class="stamp">Sample piece</div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap pieces" id="pieces">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow">The closet</p>
+      <h2>Featured <em>pieces</em></h2>
+    </div>
+    <span style="font-size:.84rem;color:var(--dim)">Sample prices in ETB per day</span>
+  </div>
+  <div class="piece-grid" id="piece-grid"></div>
+
+  <div class="book-panel" id="book">
+    <div class="bp-grid">
+      <div class="bp-t">
+        <p class="eyebrow">Reserve</p>
+        <h3 id="bk-title">Piece</h3>
+        <p id="bk-desc"></p>
+        <div class="field">
+          <label for="bk-date">Pickup date</label>
+          <input id="bk-date" type="date" />
+          <span class="hint-s">Sample calendar: we hold pieces up to 7 days ahead. Busy dates show in red on order.</span>
+        </div>
+        <div class="field">
+          <label for="bk-days">How many days</label>
+          <select id="bk-days">
+            <option value="1">1 day</option>
+            <option value="2">2 days</option>
+            <option value="3">3 days (wedding weekend)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bk-size">Your size or fitting</label>
+          <input id="bk-size" type="text" placeholder="e.g. M, or 'needs fitting'" />
         </div>
       </div>
-      <div class="hero-fig">
-        <img src="../img/salon.jpg" alt="Styled look at the sample closet" />
-      </div>
-    </div>
-  </section>
-
-  <section id="pieces">
-    <div class="wrap">
-      <p class="section-label">The Closet</p>
-      <h2 class="section-title">Featured Pieces</h2>
-      <div class="piece-grid">
-        <div class="piece"><img src="../img/salon.jpg" alt="Traditional wear sample" /><div class="inner"><h3>Traditional Habesha</h3><p>Ceremonial dress for weddings and holidays.</p><span class="rent">From 1,800 ETB / day</span></div></div>
-        <div class="piece"><img src="../img/retail.jpg" alt="Party dress sample" /><div class="inner"><h3>Party &amp; Gown</h3><p>Evening wear for events, galas, and nights out.</p><span class="rent">From 1,200 ETB / day</span></div></div>
-        <div class="piece"><img src="../img/wedding.jpg" alt="Bridal sample" /><div class="inner"><h3>Bridal</h3><p>Bridal wear with fitting and same-day pickup.</p><span class="rent">From 4,500 ETB / day</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="how" id="how">
-    <div class="wrap">
       <div>
-        <p class="section-label">How it works</p>
-        <h2 class="section-title" style="color:var(--white);">Renting takes three taps, not three visits</h2>
-      </div>
-      <div>
-        <p>Customers see available sizes and dates online, so they only come in to collect, not to browse. Each booking reserves the piece, blocks the date, and sends a pickup reminder automatically.</p>
-        <p>The owner sees every reservation, deposit, and return in one calendar, and repeat renters get invited back for new arrivals.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="book" id="book">
-    <div class="wrap">
-      <p class="section-label">Rent online</p>
-      <h2 class="section-title">Reserve Your Look</h2>
-      <p>Pick a piece, choose your date, and confirm the booking on WhatsApp. Sample flow, connected on order.</p>
-      <a class="btn btn-solid" href="#top">Rent on WhatsApp</a>
-      <div class="contact-row">
-        <div><b>WhatsApp</b><span>+251 91 000 0000 (fictional)</span></div>
-        <div><b>Studio</b><span>Piassa, Addis Ababa (fictional)</span></div>
-        <div><b>Hours</b><span>Mon-Sat · 9:00 - 19:00</span></div>
+        <div class="summary">
+          <div class="tot" id="bk-total">0 ETB<small>rental total</small></div>
+          <div class="dep" id="bk-dep"></div>
+        </div>
+        <div style="margin-top:1.2rem;display:flex;gap:.7rem;flex-wrap:wrap">
+          <a class="btn" id="bk-go" href="https://wa.me/251911000008" target="_blank" rel="noopener">Confirm on WhatsApp</a>
+          <a class="btn line" id="bk-fitting" href="https://wa.me/251911000008" target="_blank" rel="noopener">Book a fitting first</a>
+        </div>
+        <p class="note-s">Sample flow: WhatsApp opens with your piece, date and total. Deposit of 500 ETB holds the piece, refunded on return.</p>
       </div>
     </div>
-  </section>
+  </div>
 </main>
 
-<footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Yegna Closet, a fictional concept sample</div>
-    <div>Sample studio · Piassa, Addis Ababa (fictional)</div>
+<section class="how wrap" id="how">
+  <p class="eyebrow">How it works</p>
+  <div class="how-grid">
+    <div class="how-card"><div class="n">1</div><h3>Reserve</h3><p>Pick a piece and a date. A deposit holds it, and we confirm the pickup time on WhatsApp.</p></div>
+    <div class="how-card"><div class="n">2</div><h3>Fit and wear</h3><p>Collect it clean and pressed. If it needs a tweak, the in-house tailor adjusts it the same day.</p></div>
+    <div class="how-card"><div class="n">3</div><h3>Return</h3><p>Bring it back within the rental days. We clean it, inspect it, and your deposit comes back.</p></div>
   </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Yegna Closet, a fictional concept sample</div>
+  <div>Bole, Gurd Shola, next to Edna Mall, Addis Ababa · Open Mon - Sat 10:00 - 19:00</div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  var PIECES=[
+    { n:"Habesha ceremonial dress", cat:"Traditional", price:1800, img:"img/fashion-piece.jpg", note:"For weddings and holidays, netela included" },
+    { n:"Evening gown", cat:"Party", price:2200, img:"img/fr-gown.jpg", note:"Full length, for galas and dinners" },
+    { n:"Bridal white", cat:"Bridal", price:6500, img:"img/fr-bridal.jpg", note:"Reserve at least 3 weeks ahead" },
+    { n:"Embroidered habesha kemis", cat:"Traditional", price:2000, img:"img/fr-kemis.jpg", note:"Hand embroidery, your colour choice" },
+    { n:"Two-piece party set", cat:"Party", price:1600, img:"img/fr-party.jpg", note:"Top and skirt, mix and match" },
+    { n:"Suit, tailored", cat:"Formal", price:1500, img:"img/fr-suit.jpg", note:"Jacket and trousers, all sizes" }
+  ];
+  var sel=null;
+
+  function renderPieces(){
+    var g=document.getElementById("piece-grid"); g.innerHTML="";
+    PIECES.forEach(function(p){
+      var b=document.createElement("article"); b.className="piece"+(sel===p.n?" sel":"");
+      b.innerHTML="<img src=\""+p.img+"\" alt=\""+p.n+", sample rental piece\" loading=\"lazy\"/>"+
+        "<div class=\"bd\"><span class=\"cat\">"+p.cat+"</span><h3>"+p.n+"</h3><span class=\"note\">"+p.note+"</span>"+
+        "<div class=\"row\"><span class=\"pr\">"+p.price.toLocaleString()+" <small>ETB / day</small></span></div></div>";
+      b.onclick=function(){ sel=p.n; renderPieces(); show(p); };
+      g.appendChild(b);
+    });
+  }
+  function show(p){
+    var bp=document.getElementById("book"); bp.classList.add("show");
+    document.getElementById("bk-title").innerHTML=p.n+" <em>· "+p.cat+"</em>";
+    document.getElementById("bk-desc").textContent=p.note+". Sample piece: real fabric photos and condition go in on order.";
+    // default date: tomorrow
+    var d=new Date(); d.setDate(d.getDate()+1);
+    document.getElementById("bk-date").value=d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);
+    document.getElementById("bk-days").value="1";
+    document.getElementById("bk-size").value="";
+    calc();
+    bp.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+  function calc(){
+    if(!sel) return;
+    var p=PIECES.filter(function(x){return x.n===sel;})[0];
+    var days=+document.getElementById("bk-days").value||1;
+    var total=p.price*days;
+    document.getElementById("bk-total").innerHTML=total.toLocaleString()+" ETB<small>rental total</small>";
+    document.getElementById("bk-dep").textContent="Deposit 500 ETB holds the piece";
+    var date=document.getElementById("bk-date").value||"your date";
+    var size=document.getElementById("bk-size").value.trim()||"to be fitted";
+    var msg="Hello Yegna Closet, I would like to rent "+p.n+" from "+date+" for "+days+" day"+(days>1?"s":"")+". Size/fitting: "+size+". Estimated "+total.toLocaleString()+" ETB. Sample booking.";
+    document.getElementById("bk-go").href="https://wa.me/251911000008?text="+encodeURIComponent(msg);
+    document.getElementById("bk-fitting").href="https://wa.me/251911000008?text="+encodeURIComponent("Hello Yegna Closet, I would like to book a fitting for "+p.n+" (sample).");
+  }
+  ["bk-days","bk-date","bk-size"].forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener("input", calc);
+    el.addEventListener("change", calc);
+  });
+  renderPieces();
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

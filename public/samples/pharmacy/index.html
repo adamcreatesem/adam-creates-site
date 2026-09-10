@@ -4,139 +4,290 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hijra Pharmacy: 24h Care (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional pharmacy. Not a real business." />
+<meta name="description" content="Hijra Pharmacy -- 24-hour pharmacy in Bole, Addis Ababa. Check stock before you walk in, reserve by WhatsApp, delivery inside Bole in 30 minutes. Real inventory, real pharmacists on shift." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
 <style>
-  :root { --green:#0e7c5b; --green-deep:#0a5f45; --green-bg:#e8f5f0; --ink:#14211d; --ink-soft:#5c6b65; --white:#fff; --line:#dce8e3; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Work Sans',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,255,255,.97); border-bottom:1px solid var(--line); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.8rem; }
-  .brand { display:flex; align-items:center; gap:.6rem; font-weight:800; font-size:1.05rem; color:var(--green-deep); }
-  .cross { width:26px; height:26px; background:var(--green); position:relative; border-radius:4px; }
-  .cross::before { content:""; position:absolute; inset:6px 4px; background:var(--white); }
-  .cross::after { content:""; position:absolute; inset:4px 6px; background:var(--white); }
-  .brand small { font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); display:block; }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-size:.86rem; font-weight:600; color:var(--ink-soft); }
-  nav a:hover { color:var(--green); }
-  .hero { padding:8rem 0 4rem; background:linear-gradient(150deg,var(--green-bg),#fff 55%); }
-  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.72rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:1rem; }
-  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3.3rem); line-height:1.08; letter-spacing:-.01em; margin-bottom:1rem; color:var(--ink); }
-  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border-radius:30px; border:1px solid transparent; }
-  .btn-solid { background:var(--green); color:var(--white); }
-  .btn-ghost { border-color:var(--green); color:var(--green); }
-  .btn-solid:hover { background:var(--green-deep); }
-  .btn-ghost:hover { background:var(--green-bg); }
-  .hero-fig { border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(14,124,91,.16); }
-  .hero-fig img { width:100%; aspect-ratio:4/3; object-fit:cover; }
-  section { padding:4.5rem 0; }
-  .section-label { font-size:.72rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:.8rem; }
-  .section-title { font-family:'Space Grotesk'; font-weight:700; font-size:clamp(1.7rem,3.5vw,2.4rem); letter-spacing:-.01em; margin-bottom:.7rem; }
-  .section-note { color:var(--ink-soft); max-width:36rem; }
-  .badge-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.2rem; }
-  .badge { border:1px solid var(--line); border-top:4px solid var(--green); border-radius:12px; padding:1.4rem; background:var(--white); }
-  .badge h3 { font-size:1rem; font-weight:800; margin-bottom:.4rem; }
-  .badge p { color:var(--ink-soft); font-size:.88rem; }
-  .stock-band { background:var(--green-deep); color:var(--white); }
-  .stock-band .wrap { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; padding:1rem 0; }
-  .stock-band .section-label { color:#7fd6b8; }
-  .stock-band .section-title { color:var(--white); }
-  .stock-band p { color:rgba(255,255,255,.8); margin-bottom:1.2rem; }
-  .stock-alert { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:1.2rem; font-size:.88rem; }
-  .stock-alert b { color:#ffd166; }
-  footer { border-top:1px solid var(--line); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--green); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .badge-grid{grid-template-columns:1fr;} .stock-band .wrap{grid-template-columns:1fr;} nav{display:none;} }
+  :root{
+    --bg:#0c1a16; --panel:#122420; --ink:#e8f2ef; --teal:#2fd2ad; --teal-d:#0f7a66;
+    --mint:#1a3831; --line:#22453c; --muted:#8fb3a8; --warn:#e0a33c; --low:#e2604a;
+    --ok:#37c97e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;line-height:1.55}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--teal);color:#0b1a15;font-size:.72rem;font-weight:800;letter-spacing:.1em;padding:.38rem .8rem;border-radius:999px}
+  h1,h2,h3{font-family:Lora,Georgia,serif;line-height:1.2}
+  a{color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--teal);color:#0b1a15;text-decoration:none;font-weight:800;padding:.8rem 1.4rem;border:0;cursor:pointer;font-family:Manrope,sans-serif;font-size:.9rem;border-radius:12px;transition:.15s}
+  .btn:hover{background:var(--teal-d);color:#fff}
+  .btn.ghost{background:transparent;color:var(--teal);box-shadow:inset 0 0 0 2px var(--teal)}
+  .btn.ghost:hover{background:var(--mint);color:#fff}
+  .btn.small{padding:.5rem 1.05rem;font-size:.78rem;border-radius:9px}
+  .eyebrow{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--teal)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(12,26,22,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 22px;max-width:1140px;margin:0 auto;gap:1rem}
+  .brand{font-family:Lora,serif;font-weight:600;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;gap:.55rem}
+  .brand .x{width:30px;height:30px;border-radius:50%;background:var(--teal);color:#0b1a15;display:inline-flex;align-items:center;justify-content:center;font-size:.9rem}
+  .brand small{display:block;font-family:Manrope,sans-serif;font-size:.66rem;letter-spacing:.2em;color:var(--teal);font-weight:800}
+  .nav-links{display:flex;gap:1.3rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.86rem;font-weight:700;color:var(--ink)}
+  .nav-links a:hover{color:var(--teal)}
+  .open-badge{display:flex;align-items:center;gap:.45rem;background:var(--mint);color:var(--teal);font-size:.78rem;font-weight:800;padding:.45rem .9rem;border-radius:999px}
+  .open-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  @media(max-width:780px){.nav-links{display:none}}
+
+  /* Search-first console hero */
+  .hero{background:radial-gradient(circle at 80% 0%,rgba(47,210,173,.14),transparent 55%);padding:3.6rem 0;text-align:center}
+  .hero .eyebrow{margin-bottom:.7rem}
+  .hero h1{font-size:clamp(2rem,5vw,3.6rem);max-width:20ch;margin-inline:auto}
+  .hero h1 em{font-style:italic;color:var(--teal)}
+  .hero-sub{color:var(--muted);max-width:38rem;margin:.8rem auto 2rem}
+
+  .finder{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1.6rem;box-shadow:0 24px 60px rgba(0,0,0,.4);text-align:left}
+  .finder label{font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+  .f-row{display:flex;gap:.6rem;margin-top:.6rem}
+  .f-row .box{flex:1;position:relative}
+  .f-row input{width:100%;border:2px solid var(--line);border-radius:12px;padding:1rem;font:inherit;font-size:1.05rem;outline:0;background:var(--bg);color:var(--ink)}
+  .f-row input:focus{border-color:var(--teal)}
+  .suggest{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.5);z-index:20;display:none;max-height:320px;overflow:auto}
+  .suggest.open{display:block}
+  .sugg-item{padding:.75rem 1rem;cursor:pointer;display:flex;justify-content:space-between;gap:.8rem;align-items:center;border-bottom:1px solid var(--line)}
+  .sugg-item:hover{background:var(--mint)}
+  .sugg-item .nm{font-weight:700;font-size:.92rem}
+  .sugg-item .sb{font-size:.74rem;color:var(--muted)}
+  .pill{font-size:.66rem;font-weight:800;letter-spacing:.06em;padding:.25rem .6rem;border-radius:999px;white-space:nowrap}
+  .pill.ok{background:#123c2a;color:var(--ok)}
+  .pill.low{background:#3c1f18;color:var(--low)}
+  .pill.soon{background:#3c3010;color:var(--warn)}
+
+  .result-card{margin-top:.9rem;display:none;background:var(--mint);border:1px solid var(--teal-d);border-radius:14px;padding:1.1rem 1.2rem}
+  .result-card.open{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+  .result-card .rc-t b{font-size:1.05rem}
+  .result-card .rc-t p{font-size:.84rem;color:var(--muted)}
+  .rc-form{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+  .rc-form select,.rc-form input{border:1.5px solid var(--line);border-radius:9px;padding:.55rem .7rem;font:inherit;font-size:.86rem;background:var(--bg);color:var(--ink)}
+  .note-s{font-size:.74rem;color:var(--muted);margin-top:.8rem}
+
+  .store-shot{max-width:1140px;margin:0 auto;padding:0 22px}
+  .store-shot img{width:100%;height:clamp(220px,30vw,360px);object-fit:cover;border-radius:16px;border:1px solid var(--line)}
+  .strip{background:var(--panel);border-block:1px solid var(--line);padding:1.6rem 0}
+  .strip-in{display:flex;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;align-items:center}
+  .strip-in .b{font-size:1.5rem;font-family:Lora,serif;color:var(--teal)}
+  .strip-in .b span{display:block;font-family:Manrope,sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+  .cats{padding:2.6rem 0 0}
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:1.2rem}
+  @media(max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+  .cat{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:1.1rem;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:.15rem}
+  .cat:hover{border-color:var(--teal)}
+  .cat .ic{font-size:1.3rem}
+  .cat b{font-size:.92rem}
+  .cat span{font-size:.76rem;color:var(--muted)}
+  .cat.sel{border-color:var(--teal);background:var(--mint)}
+
+  .tonight{padding:2.6rem 0}
+  .t-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  @media(max-width:860px){.t-grid{grid-template-columns:1fr}}
+  .t-card{border-radius:18px;padding:1.5rem;border:1px solid var(--line)}
+  .t-card.night{background:linear-gradient(135deg,#1a3831,#122420)}
+  .t-card.day{background:var(--panel)}
+  .t-card h3{font-size:1.25rem;margin-bottom:.4rem}
+  .t-card p{font-size:.9rem;color:var(--muted)}
+  .t-card .act{margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap}
+
+  .trust{padding:0 0 2.4rem}
+  .trust-row{display:flex;gap:1.8rem;flex-wrap:wrap;font-size:.82rem;color:var(--muted);font-weight:600}
+  .trust-row span b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:1.4rem 22px 4.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:var(--muted);max-width:1140px;margin:0 auto}
 </style>
 </head>
-<body>
-
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<body id="top">
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top"><span class="cross"></span><span>HIJRA PHARMACY<small>24-HOUR CARE · CONCEPT SAMPLE</small></span></a>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#stock">Stock</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <div class="nav">
+    <a class="brand" href="#top"><span class="x">✚</span> HIJRA PHARMACY<small style="display:block;font-size:.64rem;letter-spacing:.2em">24 HOURS · BOLE, ADDIS ABABA</small></a>
+    <div class="nav-links">
+      <a href="#finder">Check stock</a>
+      <a href="#cats">Categories</a>
+      <a href="#tonight">Tonight</a>
+    </div>
+    <span class="open-badge"><span class="dot"></span>Open now · 24h</span>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A concept sample pharmacy</p>
-        <h1>Medicines When<br />You Need Them</h1>
-        <p class="hero-sub">A 24-hour pharmacy with stock that's never a surprise: expiry alerts, audit-ready records, and a site that lists what's actually on the shelf.</p>
-        <div>
-          <a class="btn btn-solid" href="#stock">Check Stock</a>
-          <a class="btn btn-ghost" href="#services">Our Services</a>
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Bole, Africa Avenue, near Friendship Park, Addis Ababa</p>
+    <h1>Check before you <em>walk in.</em></h1>
+    <p class="hero-sub">Type the medicine you need and see instantly whether we have it on the shelf, how much is left, or when the next delivery lands. If it is not in, we tell you that too -- no guessing.</p>
+
+    <div class="finder" id="finder">
+      <label for="med-q">What do you need?</label>
+      <div class="f-row">
+        <div class="box">
+          <input id="med-q" type="text" placeholder="Try 'Amoxicillin', 'insulin', 'paracetamol'..." autocomplete="off" />
+          <div class="suggest" id="suggest"></div>
         </div>
+        <button class="btn ghost" id="clear-q" type="button">Clear</button>
       </div>
-      <div class="hero-fig">
-        <img src="../img/pharmacy.jpg" alt="Pharmacy shelf sample" />
-      </div>
+      <div class="result-card" id="result-card"></div>
+      <p class="note-s">Sample medicine list with sample stock. Real inventory syncs in on order. Prices are samples in ETB.</p>
     </div>
-  </section>
-
-  <section id="services">
-    <div class="wrap">
-      <p class="section-label">Services</p>
-      <h2 class="section-title">More Than a Counter</h2>
-      <div class="badge-grid">
-        <div class="badge"><h3>Prescriptions</h3><p>Filled accurately, checked, and explained.</p></div>
-        <div class="badge"><h3>24-Hour Window</h3><p>Emergency medicines at any hour.</p></div>
-        <div class="badge"><h3>Health Advice</h3><p>Answers from trained pharmacists, in Amharic and English.</p></div>
-        <div class="badge"><h3>Delivery</h3><p>Medicines delivered in the neighborhood.</p></div>
-        <div class="badge"><h3>Vaccinations</h3><p>Common vaccines available and recorded.</p></div>
-        <div class="badge"><h3>Blood Pressure</h3><p>Free BP checks while you wait.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stock-band" id="stock">
-    <div class="wrap">
-      <div>
-        <p class="section-label">Smart stock</p>
-        <h2 class="section-title">Expiry Can't Hide</h2>
-        <p>Almost half of pharmacies lose money to expired stock. This sample shows the fix: every item has an expiry alert and the records are audit-ready.</p>
-        <a class="btn btn-solid" href="#contact">Message Us</a>
-      </div>
-      <div class="stock-alert">
-        <b>⚠ Amoxicillin 500mg</b><br />Expires in 45 days · reorder suggested<br />
-        <b style="color:#7fd6b8;">✓ Records ready</b> · sales log + e-invoice compliant
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap" style="text-align:center;">
-      <p class="section-label">Contact</p>
-      <h2 class="section-title">Need Something Tonight?</h2>
-      <p class="section-note" style="margin:0 auto 1.6rem;">Sample address · Bole, Addis Ababa (fictional) · open 24 hours</p>
-      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%20need%20a%20medicine." target="_blank" rel="noopener">Message on WhatsApp</a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Hijra Pharmacy, a fictional concept sample</div>
-    <div>Built as a sample. Replace with real business info on order</div>
   </div>
+</section>
+
+<div class="store-shot"><img src="../img/pharmacy.jpg" alt="Hijra Pharmacy interior -- medicine shelves, counter with red cross sign, staff in white coats" /></div>
+
+<section class="strip">
+  <div class="wrap strip-in">
+    <div class="b">24<span>Hours a day</span></div>
+    <div class="b">Pharmacists<span>on shift around the clock</span></div>
+    <div class="b">30 min<span>Delivery inside Bole</span></div>
+    <div class="b">e-invoice<span>on every sale</span></div>
+  </div>
+</section>
+
+<section class="cats wrap" id="cats">
+  <p class="eyebrow">Browse by need</p>
+  <h2 style="font-size:clamp(1.4rem,2.4vw,1.9rem)">Pick a category to see what we usually carry</h2>
+  <div class="cat-grid" id="cat-grid"></div>
+  <p class="note-s" id="cat-note" style="margin-top:.9rem"></p>
+</section>
+
+<section class="tonight wrap" id="tonight">
+  <div class="t-grid">
+    <div class="t-card night">
+      <p class="eyebrow" style="color:var(--teal)">After hours</p>
+      <h3>Need something tonight?</h3>
+      <p>The counter is staffed all night. Message us and a pharmacist will confirm it is ready before you walk over, or have it delivered inside Bole.</p>
+      <div class="act">
+        <a class="btn" href="https://wa.me/251911000013?text=Hello%20Hijra%20Pharmacy%2C%20I%20need%20something%20tonight%20(sample)." target="_blank" rel="noopener">Message on WhatsApp</a>
+      </div>
+    </div>
+    <div class="t-card day">
+      <p class="eyebrow">Repeat prescriptions</p>
+      <h3>Set up a monthly refill</h3>
+      <p>For medicines you take every month, we keep your pack aside and message you when it is due. One less thing to remember. Refill requests open WhatsApp.</p>
+      <div class="act">
+        <a class="btn ghost small" href="https://wa.me/251911000013?text=Hello%20Hijra%20Pharmacy%2C%20I%27d%20like%20to%20set%20up%20a%20monthly%20refill%20(sample)." target="_blank" rel="noopener">Ask about refills</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap trust">
+  <p class="eyebrow">Why patients stay with us</p>
+  <div class="trust-row">
+    <span>🧾 <b>e-invoice</b> on every sale</span>     <span>🧪 <b>Cold chain</b> fridge for insulin and vaccines</span>
+
+    <span>🗂 <b>Audit-ready</b> records for authorities</span>
+    <span>👩‍⚕️ <b>Pharmacist</b> always on duty</span>
+  </div>
+</section>
+
+<footer>    <div>© <span id="year"></span> Hijra Pharmacy -- sample concept, not a real business</div>
+  <div>Bole, Africa Avenue, near Friendship Park, Addis Ababa · Open 24 hours · Sample shown for demonstration, real business info goes in on order</div>
+
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  // Sample catalogue with stock states: ok | low | soon (back on a given day)
+  var MEDS = [
+    { n:"Amoxicillin 500mg", cat:"Antibiotics", st:"ok", price:120 },
+    { n:"Paracetamol 500mg", cat:"Pain relief", st:"ok", price:45 },
+    { n:"Ibuprofen 400mg", cat:"Pain relief", st:"low", price:60 },
+    { n:"Insulin (mixed) vial", cat:"Diabetes", st:"ok", price:850 },
+    { n:"Metformin 850mg", cat:"Diabetes", st:"ok", price:180 },
+    { n:"Glibenclamide 5mg", cat:"Diabetes", st:"low", price:95 },
+    { n:"Amlodipine 5mg", cat:"Blood pressure", st:"ok", price:90 },
+    { n:"Losartan 50mg", cat:"Blood pressure", st:"soon", back:"Sunday", price:110 },
+    { n:"Salbutamol inhaler", cat:"Asthma", st:"ok", price:420 },
+    { n:"Cetirizine 10mg", cat:"Allergy", st:"ok", price:55 },
+    { n:"ORS sachets", cat:"First aid", st:"ok", price:25 },
+    { n:"Vitamin C 1000mg", cat:"Vitamins", st:"ok", price:150 },
+    { n:"Iron + folic acid", cat:"Vitamins", st:"low", price:85 },
+    { n:"Omeprazole 20mg", cat:"Digestion", st:"ok", price:140 }
+  ];
+  var CATS = [
+    { n:"Pain relief", ic:"💊", sample:"Paracetamol, ibuprofen, diclofenac gel" },
+    { n:"Diabetes", ic:"🩸", sample:"Insulin, metformin, glucose monitors" },
+    { n:"Blood pressure", ic:"❤️", sample:"Amlodipine, losartan, aspirin" },
+    { n:"Asthma", ic:"🫁", sample:"Inhalers, spacers, nebuliser kits" },
+    { n:"Allergy", ic:"🤧", sample:"Cetirizine, loratadine, nasal sprays" },
+    { n:"Antibiotics", ic:"🦠", sample:"Amoxicillin, azithromycin (prescription only)" },
+    { n:"Digestion", ic:"🍽️", sample:"Omeprazole, antacids, rehydration salts" },
+    { n:"Vitamins", ic:"🥗", sample:"C, D, iron with folic acid, multivitamins" }
+  ];
+
+  var qEl=document.getElementById("med-q"), sug=document.getElementById("suggest"), rc=document.getElementById("result-card");
+  var picked=null, qtySel=null;
+
+  function statusPill(m){
+    if(m.st==="ok") return '<span class="pill ok">IN STOCK</span>';
+    if(m.st==="low") return '<span class="pill low">LOW · 3 LEFT</span>';
+    return '<span class="pill soon">BACK '+m.back.toUpperCase()+'</span>';
+  }
+  function renderSuggest(){
+    var t=qEl.value.trim().toLowerCase();
+    if(!t){ sug.classList.remove("open"); return; }
+    var hits=MEDS.filter(function(m){ return m.n.toLowerCase().indexOf(t)>-1 || m.cat.toLowerCase().indexOf(t)>-1; }).slice(0,7);
+    sug.innerHTML="";
+    if(!hits.length){
+      var d=document.createElement("div"); d.className="sugg-item"; d.innerHTML="<span class=\"nm\">Not in our list</span><span class=\"sb\">Message us and we will check suppliers</span>";
+      d.onclick=function(){ qEl.value=""; sug.classList.remove("open"); rc.classList.add("open"); rc.innerHTML="<div class=\"rc-t\"><b>Not in our sample list</b><p>Message the pharmacy and we will check what suppliers can get.</p></div><a class=\"btn small\" target=\"_blank\" rel=\"noopener\" href=\"https://wa.me/251911000013?text=Hello%20Hijra%20Pharmacy%2C%20do%20you%20have%20this%3A%20(sample)\">Ask on WhatsApp</a>"; };
+      sug.appendChild(d);
+    } else {
+      hits.forEach(function(m){
+        var d=document.createElement("div"); d.className="sugg-item";
+        d.innerHTML="<span><span class=\"nm\">"+m.n+"</span><br/><span class=\"sb\">"+m.cat+" · "+m.price+" ETB</span></span>"+statusPill(m);
+        d.onclick=function(){ pick(m); };
+        sug.appendChild(d);
+      });
+    }
+    sug.classList.add("open");
+  }
+  function pick(m){
+    picked=m; qEl.value=m.n; sug.classList.remove("open");
+    rc.classList.add("open");
+    var msgText = m.st==="ok" ? "We have it on the shelf now." : (m.st==="low" ? "Low stock: only 3 packs left, reserve yours." : "Out now, back "+m.back+". Reserve and we will hold it.");
+    var allowOrder = m.st!=="soon";
+    rc.innerHTML =
+      "<div class=\"rc-t\"><b>"+m.n+" · "+m.price+" ETB</b><p>"+msgText+" Sample stock status, real sync on order.</p></div>"+
+      (allowOrder ? "<div class=\"rc-form\"><select id=\"qty\"><option value=\"1\">1 pack</option><option value=\"2\">2 packs</option><option value=\"3\">3 packs</option></select><button class=\"btn small\" id=\"order-btn\">Reserve on WhatsApp</button></div>"
+        : "<a class=\"btn small\" target=\"_blank\" rel=\"noopener\" href=\"https://wa.me/251911000013?text=Hello%20Hijra%20Pharmacy%2C%20please%20hold%20"+encodeURIComponent(m.n)+"%20for%20me%20(sample)\">Reserve on WhatsApp</a>");
+    var ob=document.getElementById("order-btn");
+    if(ob){ ob.onclick=function(){ var q=document.getElementById("qty").value; var msg="Hello Hijra Pharmacy, I would like to reserve "+q+"x "+m.n+" (sample order)."; window.open("https://wa.me/251911000013?text="+encodeURIComponent(msg),"_blank"); }; }
+  }
+
+  qEl.addEventListener("input", renderSuggest);
+  document.addEventListener("click", function(e){
+    if(!e.target.closest(".finder")) sug.classList.remove("open");
+  });
+  document.getElementById("clear-q").onclick=function(){
+    qEl.value=""; picked=null; sug.classList.remove("open"); rc.classList.remove("open");
+  };
+
+  // Categories
+  var cg=document.getElementById("cat-grid");
+  CATS.forEach(function(c,i){
+    var b=document.createElement("button"); b.type="button"; b.className="cat";
+    b.innerHTML="<span class=\"ic\">"+c.ic+"</span><b>"+c.n+"</b><span>"+c.sample+"</span>";
+    b.onclick=function(){
+      document.querySelectorAll(".cat").forEach(function(x){ x.classList.remove("sel"); });
+      b.classList.add("sel");
+      document.getElementById("cat-note").textContent="Usually carries: "+c.sample+". Sample list only, full catalogue goes in on order.";
+    };
+    cg.appendChild(b);
+  });
+
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

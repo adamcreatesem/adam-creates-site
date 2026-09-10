@@ -4,148 +4,223 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mekonnen &amp; Partners: Law Office (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional law office. Not a real business." />
+<meta name="description" content="Mekonnen & Partners -- law office in Piassa, Addis Ababa. Corporate contracts, property and land, family law, civil disputes. Documents and hearings in English, Amharic and Arabic. First consultation on WhatsApp. Churchill Avenue, 3rd floor." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --navy:#16233f; --navy-deep:#0f1a30; --gold:#c9a227; --gold-soft:#e5c766; --cream:#faf7f0; --ink:#23283a; --ink-soft:#5a6072; --white:#fff; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Karla',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:var(--navy); color:var(--white); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.9rem; }
-  .brand { font-family:'Playfair Display',serif; font-weight:600; font-size:1.25rem; color:var(--gold-soft); }
-  .brand small { display:block; font-family:'Karla'; font-size:.6rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:rgba(255,255,255,.55); }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-size:.88rem; font-weight:500; color:rgba(255,255,255,.8); }
-  nav a:hover { color:var(--gold-soft); }
-  .hero { padding:10rem 0 5.5rem; background:linear-gradient(160deg,var(--navy),var(--navy-deep)); color:var(--white); }
-  .hero-inner { display:grid; grid-template-columns:1.2fr .8fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:1.1rem; }
-  h1 { font-family:'Playfair Display',serif; font-size:clamp(2.3rem,5vw,3.6rem); font-weight:600; line-height:1.08; margin-bottom:1.1rem; }
-  .hero-sub { color:rgba(255,255,255,.75); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.9rem; border:1px solid transparent; }
-  .btn-solid { background:var(--gold); color:var(--navy-deep); }
-  .btn-ghost { border-color:rgba(255,255,255,.4); color:var(--white); }
-  .stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.12); }
-  .stat { background:var(--navy); padding:1.4rem 1.2rem; }
-  .stat b { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--gold-soft); }
-  .stat span { display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-top:.2rem; }
-  section { padding:5rem 0; }
-  .section-label { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; }
-  .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:600; margin-bottom:.8rem; }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
-  .svc { border:1px solid #e3e0d8; border-top:4px solid var(--gold); padding:1.5rem; background:var(--cream); }
-  .svc h3 { font-family:'Playfair Display'; font-weight:600; font-size:1.1rem; margin-bottom:.4rem; color:var(--navy); }
-  .svc p { color:var(--ink-soft); font-size:.9rem; }
-  .svc .price { display:block; margin-top:.6rem; font-weight:700; color:var(--gold); font-size:.9rem; }
-  .why { background:var(--navy); color:var(--white); }
-  .why .wrap { display:grid; grid-template-columns:1fr 1fr; gap:2.4rem; }
-  .why .section-label { color:var(--gold-soft); }
-  .why p { color:rgba(255,255,255,.72); margin-bottom:1rem; font-size:.95rem; }
-  .consult { background:var(--cream); text-align:center; }
-  .consult .wrap { padding:1.2rem 0; }
-  .consult h2 { color:var(--navy); }
-  .consult p { color:var(--ink-soft); max-width:34rem; margin:0 auto 1.6rem; }
-  .hours { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem; max-width:36rem; margin-inline:auto; }
-  .hours div { border:1px solid #ddd8cc; border-radius:10px; padding:1rem; background:var(--white); }
-  .hours b { display:block; font-size:.9rem; margin-bottom:.2rem; color:var(--navy); }
-  .hours span { font-size:.8rem; color:var(--ink-soft); }
-  footer { background:var(--navy-deep); color:rgba(255,255,255,.6); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--gold); color:var(--navy-deep); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .svc-grid{grid-template-columns:1fr;} .why .wrap{grid-template-columns:1fr;} .hours{grid-template-columns:1fr;} nav{display:none;} }
+  :root{
+    --paper:#f7f3ec; --card:#fffdf8; --navy:#16232e; --navy2:#20313f;
+    --gold:#a3803c; --gold-l:#c9ab6d; --ink:#232a2e; --soft:#66717a;
+    --line:#ddd3c1; --red:#8a2f24;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:Karla,system-ui,sans-serif;line-height:1.65}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--navy);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:Lora,Georgia,serif;line-height:1.2;font-weight:500}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.04em;padding:.85rem 1.6rem;border:0;cursor:pointer;font-family:Karla,sans-serif;font-size:.9rem;transition:.18s}
+  .btn:hover{background:var(--gold)}
+  .btn.gold{background:var(--gold)}
+  .btn.gold:hover{background:#8d6c31}
+  .btn.line{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}
+  .btn.line:hover{background:var(--navy);color:#fff}
+  .btn.small{padding:.5rem 1.15rem;font-size:.76rem}
+  .eyebrow{font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+  .rule{height:2px;width:54px;background:var(--gold);margin:.6rem 0 1rem}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(247,243,236,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 24px;max-width:1120px;margin:0 auto;gap:1rem}
+  .brand{font-family:Lora,serif;font-size:1.25rem;text-decoration:none;font-weight:600}
+  .brand b{font-weight:600;color:var(--gold)}
+  .brand small{display:block;font-family:Karla,sans-serif;font-size:.66rem;letter-spacing:.3em;color:var(--soft);font-weight:700}
+  .nav-links{display:flex;gap:1.6rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.86rem;font-weight:600}
+  .nav-links a:hover{color:var(--gold)}
+  @media(max-width:780px){.nav-links a:not(.btn){display:none}}
+
+  .hero{background:var(--navy);color:#f2ede2;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border:1px solid rgba(201,171,109,.25);border-radius:50%}
+  .hero:after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;border:1px solid rgba(201,171,109,.18);border-radius:50%}
+  .hero .wrap{position:relative;z-index:2;padding:3.6rem 24px 3rem}
+  .hero .eyebrow{color:var(--gold-l)}
+  .hero h1{font-size:clamp(2.3rem,5.2vw,3.8rem);max-width:20ch}
+  .hero h1 em{font-style:italic;color:var(--gold-l)}
+  .hero-sub{color:#bcc7cd;max-width:36rem;margin:1rem 0 1.8rem;font-size:1.05rem}
+  .hero-stats{display:flex;gap:2.4rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.14);padding-top:1.4rem;margin-top:.6rem}
+  .hero-stats b{display:block;font-family:Lora,serif;font-size:1.7rem;color:var(--gold-l)}
+  .hero-stats span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#96a4ad}
+
+  .layout{display:grid;grid-template-columns:200px 1fr;gap:2.2rem;align-items:start;padding:2.6rem 0 3rem}
+  @media(max-width:900px){.layout{grid-template-columns:1fr}}
+  .side{position:sticky;top:90px}
+  @media(max-width:900px){.side{position:static}}
+  .side a{display:block;text-decoration:none;padding:.5rem 0;color:var(--soft);font-size:.86rem;font-weight:600;border-left:2px solid var(--line);padding-left:.9rem}
+  .side a:hover,.side a.on{color:var(--navy);border-left-color:var(--gold)}
+
+  section h2{font-size:clamp(1.6rem,2.8vw,2.2rem);margin-bottom:.4rem}
+  .sec-sub{color:var(--soft);max-width:40rem;margin-bottom:1.6rem}
+  .areas{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+  @media(max-width:760px){.areas{grid-template-columns:1fr}}
+  .area{border:1px solid var(--line);background:var(--card);padding:1.2rem 1.3rem;cursor:pointer;transition:.15s}
+  .area:hover{border-color:var(--gold)}
+  .area.sel{border-color:var(--navy);box-shadow:inset 4px 0 0 var(--gold)}
+  .area .ic{font-size:1.2rem}
+  .area h3{font-size:1.12rem;margin:.2rem 0 .15rem}
+  .area p{font-size:.84rem;color:var(--soft)}
+
+  .consult{background:var(--card);border:1px solid var(--line);padding:1.6rem;margin-top:1.8rem;display:none}
+  .consult.show{display:block}
+  .consult h3{font-size:1.3rem}
+  .consult .rows{margin:1rem 0}
+  .consult .row{padding:.5rem 0;border-bottom:1px dashed var(--line);display:flex;gap:.7rem;font-size:.92rem}
+  .consult .row b{min-width:130px;color:var(--navy)}
+  .consult .row span{color:var(--soft)}
+  .consult .act{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-top:.4rem}
+  .consult .hint{font-size:.76rem;color:var(--soft)}
+
+  .approach{padding:2.6rem 0;border-top:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .step{border-left:3px solid var(--gold-l);padding:.4rem 0 .4rem 1.2rem}
+  .step .n{font-family:Lora,serif;color:var(--gold);font-size:1.3rem}
+  .step h3{font-size:1.1rem;margin:.1rem 0 .2rem}
+  .step p{font-size:.86rem;color:var(--soft)}
+  .lang{border-top:1px solid var(--line);padding:2.4rem 0}
+  .lang-row{display:flex;gap:1.6rem;flex-wrap:wrap}
+  .lang-row div{flex:1;min-width:200px;border:1px solid var(--line);background:var(--card);padding:1.1rem 1.2rem}
+  .lang-row b{font-family:Lora,serif;font-size:1.15rem;color:var(--gold)}
+  .lang-row p{font-size:.84rem;color:var(--soft)}
+
+  footer{border-top:1px solid var(--line);padding:1.4rem 24px 4.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:var(--soft);max-width:1120px;margin:0 auto}
 </style>
 </head>
-<body>
-
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<body id="top">
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">Mekonnen &amp; Partners<small>LAW OFFICE · CONCEPT</small></a>
-    <nav>
-      <a href="#services">Practice Areas</a>
-      <a href="#why">Approach</a>
-      <a href="#consult">Consult</a>
-    </nav>
+  <div class="nav">
+    <a class="brand" href="#top">Mekonnen <b>&amp;</b> Partners<small>LAW OFFICE · ADDIS ABABA</small></a>
+    <div class="nav-links">
+      <a href="#areas">Practice Areas</a>
+      <a href="#approach">Approach</a>
+      <a href="#languages">Languages</a>
+      <a class="btn small" href="#consult">Book a Consultation</a>
+    </div>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A concept sample law office · Addis Ababa</p>
-        <h1>Clear Advice,<br /><em style="font-style:italic;color:var(--gold-soft);">Strong Defense.</em></h1>
-        <p class="hero-sub">A professional law office site with practice areas, consultation booking, and a WhatsApp line that actually answers. A sample for a fictional firm.</p>
-        <div>
-          <a class="btn btn-solid" href="#consult">Book a Consultation</a>
-          <a class="btn btn-ghost" href="#services">Practice Areas</a>
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Churchill Avenue, 3rd floor, Piassa, Addis Ababa</p>
+    <h1>Clear advice. <em>Straight answers.</em></h1>
+    <p class="hero-sub">A professional office for contracts, business, property and family matters. Pick the area below that sounds like your situation and see exactly how we would start. No surprises, no jargon until it matters.</p>
+    <div class="hero-stats">
+      <div><b>12+</b><span>Years practicing</span></div>
+      <div><b>350+</b><span>Cases handled</span></div>
+      <div><b>3</b><span>Languages</span></div>
+      <div><b>98%</b><span>Matters closed</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap layout">
+  <nav class="side" id="side-nav">
+    <a href="#areas" class="on">Practice areas</a>
+    <a href="#approach">How we work</a>
+    <a href="#languages">Languages</a>
+    <a href="#consult">Consultation</a>
+  </nav>
+
+  <main>
+    <section id="areas">
+      <p class="eyebrow">Practice areas</p>
+      <h2>Where we help</h2>
+      <p class="sec-sub">Select the one closest to your situation. A short brief appears with what we would need from you and what a first consultation covers.</p>
+      <div class="areas" id="areas-grid"></div>
+
+      <div class="consult" id="consult">
+        <p class="eyebrow">First consultation</p>
+        <h3 id="c-title">Consultation brief</h3>
+        <div class="rows" id="c-rows"></div>
+        <div class="act">
+          <a class="btn" id="c-btn" href="https://wa.me/251911000012" target="_blank" rel="noopener">Book on WhatsApp →</a>
+          <span class="hint">Opens WhatsApp with the area and your message prewritten.</span>
         </div>
       </div>
-      <div class="stat-grid">
-        <div class="stat"><b>12+</b><span>Years Practicing</span></div>
-        <div class="stat"><b>350+</b><span>Cases Handled</span></div>
-        <div class="stat"><b>3</b><span>Languages</span></div>
-        <div class="stat"><b>98%</b><span>Client Satisfaction</span></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services">
-    <div class="wrap">
-      <p class="section-label">Practice Areas</p>
-      <h2 class="section-title">Where We Help</h2>
-      <div class="svc-grid">
-        <div class="svc"><h3>Corporate &amp; Contracts</h3><p>Business registration, agreements, and disputes.</p><span class="price">From 8,000 ETB</span></div>
-        <div class="svc"><h3>Family &amp; Inheritance</h3><p>Marriage, divorce, custody, and wills.</p><span class="price">From 5,000 ETB</span></div>
-        <div class="svc"><h3>Property &amp; Land</h3><p>Sales, transfers, leases, and boundary cases.</p><span class="price">From 6,000 ETB</span></div>
-        <div class="svc"><h3>Labor &amp; Employment</h3><p>Contracts, termination, and claims.</p><span class="price">From 4,000 ETB</span></div>
-        <div class="svc"><h3>Criminal Defense</h3><p>Representation from first hearing to appeal.</p><span class="price">On request</span></div>
-        <div class="svc"><h3>Consultations</h3><p>A clear first read of your case, in one session.</p><span class="price">From 1,500 ETB</span></div>
+    <section class="approach" id="approach">
+      <p class="eyebrow">How we work</p>
+      <h2>How we work</h2>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3>You get the picture first</h3><p>After the first consultation you receive a written note on your options, the risks, and what each path would cost.</p></div>
+        <div class="step"><div class="n">02</div><h3>Fees agreed in writing</h3><p>No surprise billing. Scope and fees are confirmed before work starts, and every invoice lists what it covers.</p></div>
+        <div class="step"><div class="n">03</div><h3>One lawyer, one file</h3><p>Your file stays with one partner who knows the whole story. You never repeat yourself to a new face.</p></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="why" id="why">
-    <div class="wrap">
-      <div>
-        <p class="section-label">Approach</p>
-        <h2 class="section-title">You Understand First</h2>
+    <section class="lang" id="languages">
+      <p class="eyebrow">Languages</p>
+      <h2>Languages</h2>
+      <div class="lang-row">
+        <div><b>English</b><p>Contracts, commercial work and cross-border matters.</p></div>
+        <div><b>Amharic</b><p>Court hearings, family and property matters, local filings.</p></div>
+        <div><b>Arabic</b><p>Commercial clients and documents across the region.</p></div>
       </div>
-      <div>
-        <p>Every engagement starts with a plain-language meeting: what the law says, what your options are, what each one costs. No jargon until you ask for it.</p>
-        <p>Updates go to your WhatsApp after every hearing and filing. You never chase us for news, we bring it to you.</p>
-        <a class="btn btn-solid" href="#consult">Start with a Consultation</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="consult" id="consult">
-    <div class="wrap">
-      <p class="section-label">Book online</p>
-      <h2 class="section-title">Talk to a Lawyer Today</h2>
-      <p>Pick a time, get a reminder, walk in ready. Sample booking, connected on order.</p>
-      <a class="btn btn-solid" href="#top">Book on WhatsApp</a>
-      <div class="hours">
-        <div><b>Mon-Fri</b><span>8:00 - 17:00</span></div>
-        <div><b>Saturday</b><span>9:00 - 13:00</span></div>
-        <div><b>Sunday</b><span>Closed</span></div>
-      </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
+</div>
 
 <footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Mekonnen &amp; Partners, a fictional concept sample</div>
-    <div>Sample address · Bole, Addis Ababa (fictional)</div>
-  </div>
+  <div>© <span id="year"></span> Mekonnen &amp; Partners -- sample concept, not a real business</div>
+  <div>Churchill Avenue, 3rd floor, Piassa, Addis Ababa · Mon - Fri 08:30 - 17:30 · Sample shown for demonstration, real business info goes in on order</div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  var AREAS = [
+    { k:"corp", ic:"📄", n:"Corporate & contracts", d:"Business registration, shareholder agreements, supplier and employment contracts." },
+    { k:"prop", ic:"🏠", n:"Property & land", d:"Title checks, transfers, leases, and disputes over land and buildings." },
+    { k:"family", ic:"👪", n:"Family law", d:"Marriage, divorce, custody, and inheritance matters handled with discretion." },
+    { k:"civil", ic:"⚖️", n:"Civil disputes", d:"Debt recovery, damages claims, and representation in court and arbitration." }
+  ];
+  var BRIEFS = {
+    corp:{ need:["Business registration documents or the company name to check","Current agreements if a dispute is brewing","Shareholder or partner names and roles"],
+           cover:["We review where the company stands legally","We list the open risks in plain language","You leave with a written options memo"] },
+    prop:{ need:["The title deed or permit number","A sketch or address of the property","Any agreements already signed"],
+           cover:["Title history and encumbrance check","The transfer or lease path laid out","Fee estimate for each step"] },
+    family:{ need:["Dates and basic facts, no documents needed yet","Any existing court papers if a case started","Your questions, written down or not"],
+           cover:["A confidential first hearing of the facts","The realistic options and timeline","Document checklist for the next meeting"] },
+    civil:{ need:["The contract or evidence you hold","The amount in dispute","The other party's name and address if known"],
+           cover:["Strength of your position assessed","Demand letter or court route compared","Likely costs and duration"] }
+  };
+  var sel=null;
+
+  function render(){
+    var g=document.getElementById("areas-grid"); g.innerHTML="";
+    AREAS.forEach(function(a,i){
+      var b=document.createElement("button"); b.type="button"; b.className="area"+(sel===a.k?" sel":"");
+      b.innerHTML="<div class=\"ic\">"+a.ic+"</div><h3>"+a.n+"</h3><p>"+a.d+"</p>";
+      b.onclick=function(){ sel=a.k; render(); show(a); };
+      g.appendChild(b);
+    });
+  }
+  function show(a){
+    var br=BRIEFS[a.k];
+    document.getElementById("consult").classList.add("show");
+    document.getElementById("c-title").textContent=a.n+" · first consultation";
+    var rows="";
+    rows+="<div class=\"row\"><b>What we need</b><span>"+br.need.join(" · ")+"</span></div>";
+    rows+="<div class=\"row\"><b>What you get</b><span>"+br.cover.join(" · ")+"</span></div>";
+    document.getElementById("c-rows").innerHTML=rows;
+    var msg="Hello Mekonnen & Partners, I would like a first consultation about "+a.n+". Sample inquiry.";
+    document.getElementById("c-btn").href="https://wa.me/251911000012?text="+encodeURIComponent(msg);
+    document.getElementById("consult").scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+  render();
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

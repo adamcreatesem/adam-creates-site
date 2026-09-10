@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Abay Logistics: Freight &amp; Delivery Tracking (Concept Demo)</title>
+<title>Awash Logistics: Freight &amp; Delivery Tracking (Concept Demo)</title>
 <meta name="description" content="Interactive concept demo of a logistics system: shipments, vehicles, drivers, deliveries, invoices. Not a real system." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -11,12 +11,12 @@
   :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#0b1d33; --side-ink:#c7d6e8; --accent:#0284c7; --accent-l:#0ea5e9; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
 
   .topbar { background:var(--side); color:#fff; }
   .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
   .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
-  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#8aa3bd; font-weight:400; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:#8aa3bd; font-weight:400; }
   .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#c7d6e8; }
 
   .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
@@ -46,7 +46,7 @@
   .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
 
   table { width:100%; border-collapse:collapse; font-size:.84rem; }
-  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  th { text-align:left; font-size:.66rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
   td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
   tr:last-child td { border-bottom:none; }
   .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
@@ -93,6 +93,14 @@
     .kpis { grid-template-columns:repeat(2,1fr); }
     .settings-grid { grid-template-columns:1fr; }
     .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+  .layout { min-width:0; grid-template-columns:minmax(0,1fr); }
+  .main { min-width:0; }
+  .layout > * { min-width:0; }
+  .main > div { min-width:0; }
+  .card { min-width:0; }
+  .sidebar { min-width:0; }
+  .card { overflow-x:auto; }
+
     .side-item { margin:0; }
   }
 </style>
@@ -102,7 +110,7 @@
 
 <div class="topbar">
   <div class="topbar-inner">
-    <div class="brand">Abay Logistics <small>Freight &amp; Delivery Tracking · Concept Demo</small></div>
+    <div class="brand">Awash Logistics <small>Freight &amp; Delivery Tracking · Concept Demo</small></div>
     <div class="today" id="today"></div>
   </div>
 </div>
@@ -202,9 +210,9 @@
         <div class="card-head"><h3>Logistics Settings</h3><span class="hint">Automations</span></div>
         <div class="settings-grid">
           <div>
-            <div class="field"><label>Company name</label><input value="Abay Logistics" /></div>
-            <div class="field"><label>Phone</label><input value="+251 11 000 00 00" /></div>
-            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+            <div class="field"><label>Company name</label><input value="Awash Logistics" /></div>
+            <div class="field"><label>Phone</label><input value="+251 11 200 00 05" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 200 00 05" /></div>
           </div>
           <div>
             <div class="switch-row"><div><b>Tracking links</b><p>Customer gets a live link when goods ship</p></div><div class="switch on"></div></div>
@@ -221,7 +229,7 @@
 </div>
 
 <footer>
-  <div>© <span id="year"></span> Abay Logistics, interactive concept demo of a freight &amp; delivery tracking system</div>
+  <div>© <span id="year"></span> Awash Logistics, interactive concept demo of a freight &amp; delivery tracking system</div>
   <div>Fictional data · Not a real logistics company or system</div>
 </footer>
 
@@ -242,7 +250,7 @@
     { plate:'3-A-11204', type:'Truck 8t', drv:'Mulugeta B.', svc:'1 week ago', status:'on-road' },
     { plate:'3-A-90877', type:'Van', drv:'Selam T.', svc:'3 days ago', status:'on-road' },
     { plate:'3-A-33215', type:'Truck 12t', drv:'Fikadu D.', svc:'3 weeks ago', status:'on-road' },
-    { plate:'3-A-77654', type:'Van', drv:'—', svc:'1 month ago', status:'idle' },
+    { plate:'3-A-77654', type:'Van', drv:'-', svc:'1 month ago', status:'idle' },
   ];
   const DRV = [
     { d:'Getachew A.', phone:'+251 91 000 01 11', trips:84, rate:4.9, status:'on-duty' },
@@ -254,14 +262,14 @@
   const DEL = [
     { ref:'SH-2098', c:'Kiros Trading', addr:'Mekanisa', day:'Today', status:'confirmed' },
     { ref:'SH-2097', c:'Bole Mart', addr:'Bole Road', day:'Yesterday', status:'confirmed' },
-    { ref:'SH-2096', c:'Meskel Construction', addr:'Kality', day:'Yesterday', status:'confirmed' },
-    { ref:'SH-2095', c:'Selam Pharmacy', addr:'Piassa', day:'2 days ago', status:'confirmed' },
+    { ref:'SH-2096', c:'Meron Cement Works', addr:'Kality', day:'Yesterday', status:'confirmed' },
+    { ref:'SH-2095', c:'Kirkos Pharmacy', addr:'Piassa', day:'2 days ago', status:'confirmed' },
   ];
   const INV = [
     { i:'INV-881', c:'Kiros Trading', s:'SH-2098', amt:18500, status:'unpaid' },
     { i:'INV-880', c:'Bole Mart', s:'SH-2097', amt:12400, status:'paid' },
-    { i:'INV-879', c:'Meskel Construction', s:'SH-2096', amt:41200, status:'unpaid' },
-    { i:'INV-878', c:'Selam Pharmacy', s:'SH-2095', amt:7300, status:'paid' },
+    { i:'INV-879', c:'Meron Cement Works', s:'SH-2096', amt:41200, status:'unpaid' },
+    { i:'INV-878', c:'Kirkos Pharmacy', s:'SH-2095', amt:7300, status:'paid' },
   ];
 
   const pill = (s) => s === 'delivered' || s === 'confirmed' || s === 'paid' || s === 'on-duty'

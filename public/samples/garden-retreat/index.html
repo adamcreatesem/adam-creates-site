@@ -6,52 +6,88 @@
 <title>Tana Gardens: Courtyard Retreat (Concept Sample)</title>
 <meta name="description" content="Concept sample website for a fictional garden retreat. Not a real business." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root { --botanical:#1f3d2c; --botanical-deep:#162c1f; --parchment:#f6f0e4; --terracotta:#c1703f; --ink:#2b332c; --ink-soft:#5c665e; }
+  :root {
+    --sage:#e9efe6; --sage-2:#dde8da; --deep:#1f3a2a; --deep-2:#15291d;
+    --terra:#b46a44; --cream:#f8f5ee; --ink:#24301f; --muted:#5f6d5c; --line:#d4ddcf;
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Karla',sans-serif; background:var(--parchment); color:var(--ink); line-height:1.6; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--ink); line-height:1.65; }
   img { display:block; max-width:100%; }
   a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(246,240,228,.95); border-bottom:1px solid rgba(31,61,44,.15); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { font-size:1.05rem; font-weight:500; }
-  .brand em { font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem; font-style:italic; }
+  .wrap { width:min(1100px,92%); margin-inline:auto; }
+
+  header { position:fixed; inset:0 0 auto 0; z-index:60; background:rgba(248,245,238,.95); border-bottom:1px solid var(--line); }
+  .hdr { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
+  .brand { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; }
+  .brand em { font-style:italic; color:var(--terra); }
   nav { display:flex; gap:2rem; }
-  nav a { font-size:.9rem; font-weight:500; color:var(--ink-soft); }
-  nav a:hover { color:var(--botanical); }
-  .hero { padding:9rem 0 5rem; position:relative; overflow:hidden; background:radial-gradient(ellipse 50% 40% at 85% 10%,rgba(193,112,63,.14),transparent 60%),var(--parchment); }
-  .hero-inner { display:grid; grid-template-columns:1.1fr .9fr; gap:4rem; align-items:center; }
-  .eyebrow { font-size:.8rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); margin-bottom:1.2rem; }
-  h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:500; line-height:1.15; margin-bottom:1.2rem; }
-  h1 em { font-style:italic; color:var(--botanical); }
-  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:600; font-size:.9rem; padding:.9rem 1.7rem; border-radius:30px; border:1px solid transparent; }
-  .btn-solid { background:var(--botanical); color:var(--parchment); }
-  .btn-ghost { border-color:var(--botanical); color:var(--botanical); }
-  .arch-frame { border-radius:50% 50% 6px 6px; overflow:hidden; border:1px solid rgba(31,61,44,.2); }
-  .arch-frame img { width:100%; aspect-ratio:3/4; object-fit:cover; }
-  .arch-caption { text-align:center; font-size:.8rem; color:var(--ink-soft); margin-top:.8rem; font-style:italic; }
-  section { padding:5rem 0; }
-  .section-label { font-size:.8rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); margin-bottom:.8rem; }
-  .section-title { font-family:'Fraunces',serif; font-size:clamp(1.7rem,3.5vw,2.4rem); font-weight:500; margin-bottom:.8rem; }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .room-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:2rem; }
-  .room { border:1px solid rgba(31,61,44,.18); border-radius:12px; overflow:hidden; background:var(--parchment); }
-  .room img { width:100%; aspect-ratio:4/3; object-fit:cover; }
-  .room-body { padding:1.2rem 1.2rem 1.4rem; }
-  .room-body h3 { font-family:'Fraunces',serif; font-weight:600; font-size:1.2rem; margin-bottom:.3rem; }
-  .room-body p { color:var(--ink-soft); font-size:.9rem; margin-bottom:.7rem; }
-  .room-tag { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--terracotta); }
-  .garden-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .garden-list { list-style:none; margin-top:1.4rem; display:grid; gap:.7rem; }
-  .garden-list li { display:flex; gap:.6rem; color:var(--ink-soft); font-size:.95rem; }
-  .g-dot { width:8px; height:8px; background:var(--terracotta); border-radius:50%; margin-top:.55rem; flex-shrink:0; }
-  footer { border-top:1px solid rgba(31,61,44,.15); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--terracotta); color:var(--parchment); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .room-grid{grid-template-columns:1fr;} .garden-inner{grid-template-columns:1fr;} nav{display:none;} }
+  nav a { font-size:.88rem; font-weight:600; color:var(--muted); letter-spacing:.02em; }
+  nav a:hover { color:var(--deep); }
+  .btn { display:inline-block; font-weight:600; font-size:.9rem; padding:.85rem 1.7rem; border:1px solid transparent; border-radius:999px; cursor:pointer; }
+  .btn-solid { background:var(--deep); color:var(--cream); }
+  .btn-solid:hover { background:var(--deep-2); }
+  .btn-line { border-color:var(--deep); color:var(--deep); background:transparent; }
+  .btn-line:hover { background:var(--sage); }
+
+  /* Hero: full-bleed calm intro, arch photo */
+  .hero { padding:7.6rem 0 0; text-align:center; }
+  .hero .kicker { display:inline-block; font-size:.74rem; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:var(--terra); }
+  h1 { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(2.6rem,6vw,4.8rem); line-height:1.05; margin:.9rem auto 1.2rem; max-width:20ch; }
+  h1 em { font-style:italic; color:var(--deep); }
+  .hero .sub { color:var(--muted); max-width:40rem; margin:0 auto 2.2rem; }
+  .hero-arch { position:relative; max-width:620px; margin:0 auto; }
+  .hero-arch img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:250px 250px 18px 18px; }
+  .arch-cap { margin-top:.8rem; font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--muted); font-size:.95rem; }
+
+  /* Section rhythm */
+  section { padding:4.6rem 0; }
+  .sec-label { font-size:.74rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--terra); margin-bottom:.5rem; }
+  h2 { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(2rem,4vw,3rem); line-height:1.1; margin-bottom:.7rem; }
+  .sec-sub { color:var(--muted); max-width:38rem; margin-bottom:2rem; }
+
+  /* Rooms: gallery + cards */
+  .gallery { display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; align-items:start; }
+  .gal-stage { position:relative; border-radius:250px 250px 14px 14px; overflow:hidden; }
+  .gal-stage img { width:100%; aspect-ratio:4/5; object-fit:cover; }
+  .gal-dots { display:flex; justify-content:center; gap:.5rem; margin-top:.9rem; }
+  .gal-dots span { width:8px; height:8px; border-radius:50%; background:var(--line); cursor:pointer; }
+  .gal-dots span.on { background:var(--terra); }
+  .room-cards { display:grid; gap:1.1rem; }
+  .rcard { display:flex; gap:1.1rem; align-items:center; background:#fff; border:1px solid var(--line); padding:1rem 1.1rem; border-radius:12px; }
+  .rcard img { width:86px; height:86px; object-fit:cover; border-radius:50%; flex-shrink:0; }
+  .rcard b { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:600; display:block; line-height:1.1; }
+  .rcard p { font-size:.84rem; color:var(--muted); margin:.2rem 0 .3rem; }
+  .rcard .rate { font-size:.9rem; font-weight:600; color:var(--terra); }
+
+  /* Stay calculator */
+  .calc { background:var(--deep); color:var(--cream); }
+  .calc .wrap { display:grid; grid-template-columns:1fr 1fr; gap:3.4rem; align-items:center; }
+  .calc .sec-label { color:#d9a077; }
+  .calc h2 { color:var(--cream); }
+  .calc p { color:#c4d5c8; max-width:32rem; margin-bottom:1.6rem; }
+  .calc-box { background:var(--cream); color:var(--ink); border-radius:16px; padding:1.7rem; }
+  .calc-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; margin-bottom:1rem; }
+  .calc-row { display:flex; justify-content:space-between; align-items:center; padding:.7rem 0; border-bottom:1px dashed var(--line); }
+  .calc-row label { font-size:.9rem; color:var(--muted); }
+  .calc-row select, .calc-row input { border:1.5px solid var(--line); background:#fff; padding:.55rem .7rem; font:inherit; font-size:.92rem; color:var(--ink); border-radius:8px; }
+  .calc-total { display:flex; justify-content:space-between; align-items:baseline; padding-top:1.1rem; }
+  .calc-total .lbl { font-size:.9rem; color:var(--muted); }
+  .calc-total .amt { font-family:'Cormorant Garamond',serif; font-size:2.3rem; color:var(--terra); font-weight:600; }
+  .calc-box .btn { width:100%; text-align:center; margin-top:1.1rem; }
+  .calc-note { font-size:.75rem; color:var(--muted); text-align:center; margin-top:.8rem; }
+
+  footer { border-top:1px solid var(--line); padding:2.2rem 0; }
+  .foot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--muted); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--terra); color:var(--cream); font-size:.72rem; font-weight:700; letter-spacing:.1em; padding:.38rem .8rem; border-radius:999px; }
+
+  @media (max-width:920px){
+    .gallery, .calc .wrap { grid-template-columns:1fr; }
+    nav { display:none; }
+  }
 </style>
 </head>
 <body>
@@ -59,107 +95,133 @@
 <div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top"><span style="font-size:1.2rem;">🌿</span> <em>Tana</em> Gardens</a>
+  <div class="wrap hdr">
+    <a class="brand" href="#top">Tana <em>Gardens</em></a>
     <nav>
       <a href="#rooms">Rooms</a>
-      <a href="#garden">The Garden</a>
-      <a href="#location">Location</a>
+      <a href="#stay">Plan a Stay</a>
+      <a href="#visit">Location</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A quiet haven · concept sample · 5 min from the airport</p>
-        <h1>Find Your <em>Quiet Haven</em> in the Garden</h1>
-        <p class="hero-sub">A white house with palm trees, an inner courtyard, and rooms that open onto green. A sample of what a garden retreat site could be.</p>
-        <div>
-          <a class="btn btn-solid" href="#rooms">See the Rooms</a>
-          <a class="btn btn-ghost" href="#garden">The Garden</a>
-        </div>
-      </div>
-      <div class="arch-frame">
-        <img src="../img/garden.jpg" alt="Garden at the sample retreat" />
-      </div>
+    <div class="wrap">
+      <span class="kicker">Concept sample · A quiet house in Yeka</span>
+      <h1>A white house in a <em>green courtyard</em></h1>
+      <p class="sub">Fifteen rooms, an inner garden with shade and birds, and coffee poured on the terrace every morning. Five minutes from the airport, a world away from the noise.</p>
+      <div class="hero-arch"><img src="../img/garden.jpg" alt="The courtyard at Tana Gardens, a concept sample" /></div>
+      <p class="arch-cap">The courtyard, early morning</p>
     </div>
   </section>
 
   <section class="rooms" id="rooms">
     <div class="wrap">
-      <p class="section-label">Where you stay</p>
-      <h2 class="section-title">Simple Rooms, Restful Nights</h2>
-      <p class="section-note">Fifteen guestrooms with private bathrooms, quiet, clean, and calm.</p>
-      <div class="room-grid">
-        <article class="room">
-          <img src="../img/hotel-room.jpg" alt="A sample room" />
-          <div class="room-body">
-            <h3>Garden-View Room</h3>
-            <p>Wake up to the courtyard garden from a bright, simple room.</p>
-            <span class="room-tag">Sample · most requested</span>
+      <p class="sec-label">Rooms</p>
+      <h2>Simple rooms, restful nights</h2>
+      <div class="gallery">
+        <div>
+          <div class="gal-stage"><img id="galImg" src="../img/retreat-courtyard.jpg" alt="Courtyard at the retreat" /></div>
+          <div class="gal-dots">
+            <span class="on" data-src="../img/retreat-courtyard.jpg"></span>
+            <span data-src="../img/retreat-room.jpg"></span>
+            <span data-src="../img/retreat-veranda.jpg"></span>
           </div>
-        </article>
-        <article class="room">
-          <img src="../img/garden.jpg" alt="The garden" />
-          <div class="room-body">
-            <h3>Courtyard Room</h3>
-            <p>Open straight onto the garden with a private seating corner.</p>
-            <span class="room-tag">Sample · quiet</span>
-          </div>
-        </article>
-        <article class="room">
-          <img src="../img/hotel-room.jpg" alt="A sample room" />
-          <div class="room-body">
-            <h3>Authentic Breakfast</h3>
-            <p>Jebena coffee and a proper breakfast served in the garden.</p>
-            <span class="room-tag">Sample · included</span>
-          </div>
-        </article>
+        </div>
+        <div class="room-cards">
+          <div class="rcard"><img src="../img/retreat-room.jpg" alt="Garden view room" /><div><b>Garden-View Room</b><p>Opens onto the courtyard, quiet corner of the house.</p><span class="rate">1,900 ETB / night</span></div></div>
+          <div class="rcard"><img src="../img/retreat-courtyard.jpg" alt="Courtyard room" /><div><b>Courtyard Room</b><p>Ground floor with a private seating corner outside.</p><span class="rate">2,200 ETB / night</span></div></div>
+          <div class="rcard"><img src="../img/retreat-veranda.jpg" alt="Veranda suite" /><div><b>Veranda Suite</b><p>The largest room, with a terrace for two.</p><span class="rate">3,100 ETB / night</span></div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="garden" id="garden" style="background:var(--botanical-deep);color:var(--parchment);">
-    <div class="wrap garden-inner">
-      <div>
-        <p class="section-label" style="color:var(--terracotta);">The garden</p>
-        <h2 class="section-title" style="color:var(--parchment);">A Courtyard Made for Slowing Down</h2>
-        <p style="color:rgba(246,240,228,.8);">The heart of the sample is its inner courtyard: a shaded garden with a picnic area and the quiet hum of leaves. Coffee in the morning, breeze in the evening.</p>
-        <ul class="garden-list">
-          <li><span class="g-dot"></span>Free on-site private parking</li>
-          <li><span class="g-dot"></span>Free WiFi throughout</li>
-          <li><span class="g-dot"></span>Shared kitchen and picnic area</li>
-          <li><span class="g-dot"></span>Airport shuttle on request</li>
-        </ul>
-      </div>
-      <div class="arch-frame">
-        <img src="../img/garden.jpg" alt="The courtyard garden" />
-      </div>
-    </div>
-  </section>
-
-  <section id="location">
+  <section class="calc" id="stay">
     <div class="wrap">
-      <p class="section-label">Find us</p>
-      <h2 class="section-title">In Yeka, Near the Airport</h2>
-      <p class="section-note">Sample address · Kenenisa Avenue, Yeka, Addis Ababa (fictional), five minutes from the airport.</p>
-      <div style="margin-top:1.6rem;">
-        <a class="btn btn-solid" href="#top">Get Directions</a>
-        <a class="btn btn-ghost" href="#top">Check Availability</a>
+      <div>
+        <p class="sec-label">Plan a stay</p>
+        <h2>See the total before you ask</h2>
+        <p>Choose a room, pick nights, and add the garden breakfast. The price updates as you go, and the booking lands on WhatsApp for a same-day confirmation.</p>
+        <p style="font-size:.92rem;">Breakfast 250 ETB per person per day · Airport pickup 600 ETB per trip · All sample figures.</p>
       </div>
+      <div class="calc-box">
+        <h3>Your stay</h3>
+        <div class="calc-row"><label for="rRate">Room</label>
+          <select id="rRate">
+            <option value="1900">Garden-View Room</option>
+            <option value="2200" selected>Courtyard Room</option>
+            <option value="3100">Veranda Suite</option>
+          </select>
+        </div>
+        <div class="calc-row"><label for="rNights">Nights</label>
+          <select id="rNights">
+            <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option>
+          </select>
+        </div>
+        <div class="calc-row"><label for="rGuests">Guests</label>
+          <select id="rGuests"><option>1</option><option selected>2</option><option>3</option></select>
+        </div>
+        <div class="calc-row"><label for="rBreakfast">Garden breakfast</label>
+          <select id="rBreakfast"><option value="0">No</option><option value="250" selected>Yes, for everyone</option></select>
+        </div>
+        <div class="calc-total"><span class="lbl">Estimated total</span><span class="amt" id="stayTotal">0 ETB</span></div>
+        <button class="btn btn-solid" id="stayCta">Book on WhatsApp</button>
+        <p class="calc-note">Sample booking flow, connected on order</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap" style="text-align:center;">
+      <p class="sec-label">Location</p>
+      <h2>In Yeka, near the airport</h2>
+      <p class="sec-sub" style="margin-inline:auto;">Kenenisa Avenue, Yeka sub-city, Addis Ababa. Five minutes from Bole International Airport, ten from the city center.</p>
+      <a class="btn btn-solid" href="#">Get Directions</a>
+      <a class="btn btn-line" href="#stay" style="margin-left:.6rem;">Check Availability</a>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
+  <div class="wrap foot">
     <div>© <span id="year"></span> Tana Gardens, a fictional concept sample</div>
     <div>Built as a sample. Replace with real business info on order</div>
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const galImg = document.getElementById('galImg');
+document.querySelectorAll('.gal-dots span').forEach(d => {
+  d.addEventListener('click', () => {
+    document.querySelectorAll('.gal-dots span').forEach(x => x.classList.remove('on'));
+    d.classList.add('on');
+    galImg.src = d.dataset.src;
+  });
+});
+
+const rateEl = document.getElementById('rRate');
+const nightsEl = document.getElementById('rNights');
+const guestsEl = document.getElementById('rGuests');
+const bfastEl = document.getElementById('rBreakfast');
+const totalEl = document.getElementById('stayTotal');
+function calc() {
+  const rate = parseInt(rateEl.value, 10);
+  const nights = parseInt(nightsEl.value, 10);
+  const bfast = parseInt(bfastEl.value, 10);
+  const guests = parseInt(guestsEl.value, 10);
+  const total = rate * nights + bfast * guests * nights;
+  totalEl.textContent = total.toLocaleString() + ' ETB';
+}
+[rateEl, nightsEl, guestsEl, bfastEl].forEach(el => el.addEventListener('change', calc));
+calc();
+document.getElementById('stayCta').addEventListener('click', () => {
+  const msg = 'Hello Tana Gardens, I would like to book the ' + rateEl.options[rateEl.selectedIndex].text + ' for ' + nightsEl.value + ' night(s), ' + guestsEl.value + ' guest(s). Estimated ' + totalEl.textContent + ' (sample).';
+  window.open('https://wa.me/251911000009?text=' + encodeURIComponent(msg), '_blank');
+});
+</script>
 </body>
 </html>

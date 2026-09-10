@@ -1,10 +1,10 @@
-node_modules/
-dist/
-.vite/
-*.log
 
 # Freebuff internal
-.freebuff/
-
 # stale backups
+*.log
+.freebuff/
+.review/
+.vite/
+dist/
+node_modules/
 src-backup/

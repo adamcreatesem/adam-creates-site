@@ -4,142 +4,230 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ethio Trails: Tour Operator (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional tour operator. Not a real business." />
+<meta name="description" content="Ethio Trails -- fixed-departure group tours in Ethiopia: Lalibela and the north, the southern Rift Valley, and the Simien and Gondar circuit. Book a seat on WhatsApp. Bole, Addis Ababa." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --clay:#9a4f2f; --clay-deep:#7c3c22; --sand:#f6efe3; --leaf:#3f6b4f; --ink:#2e2a25; --ink-soft:#6f675c; --white:#fff; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Karla',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,255,255,.96); border-bottom:1px solid rgba(154,79,47,.2); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { font-family:'Playfair Display',serif; font-weight:600; font-size:1.25rem; color:var(--clay-deep); }
-  .brand small { display:block; font-family:'Karla'; font-size:.6rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-size:.88rem; font-weight:500; color:var(--ink-soft); }
-  nav a:hover { color:var(--clay); }
-  .hero { padding:9rem 0 5rem; background:linear-gradient(160deg,var(--sand),#fff 60%); }
-  .hero-inner { display:grid; grid-template-columns:1.15fr .85fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--clay); margin-bottom:1rem; }
-  h1 { font-family:'Playfair Display',serif; font-size:clamp(2.1rem,5vw,3.3rem); font-weight:600; line-height:1.1; margin-bottom:1rem; }
-  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border:1px solid transparent; }
-  .btn-solid { background:var(--clay); color:var(--white); }
-  .btn-ghost { border-color:var(--clay); color:var(--clay); }
-  .hero-fig { border-radius:150px 150px 12px 12px; overflow:hidden; }
-  .hero-fig img { width:100%; aspect-ratio:3/4; object-fit:cover; }
-  section { padding:5rem 0; }
-  .section-label { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--clay); margin-bottom:.8rem; }
-  .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:600; margin-bottom:.8rem; }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .tour-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
-  .tour { border:1px solid #e5dccb; border-bottom:4px solid var(--leaf); border-radius:12px; overflow:hidden; background:var(--white); }
-  .tour img { width:100%; height:11rem; object-fit:cover; }
-  .tour .inner { padding:1.3rem; }
-  .tour h3 { font-family:'Playfair Display'; font-weight:600; font-size:1.08rem; margin-bottom:.4rem; color:var(--clay-deep); }
-  .tour p { color:var(--ink-soft); font-size:.88rem; }
-  .tour .days { display:block; margin-top:.6rem; font-weight:700; color:var(--leaf); font-size:.85rem; }
-  .why { background:var(--leaf); color:var(--white); }
-  .why .wrap { display:grid; grid-template-columns:1fr 1fr; gap:2.4rem; }
-  .why .section-label { color:var(--sand); }
-  .why p { color:rgba(255,255,255,.78); margin-bottom:1rem; font-size:.95rem; }
-  .book { background:var(--sand); text-align:center; }
-  .book .wrap { padding:1.2rem 0; }
-  .book h2 { color:var(--clay-deep); }
-  .book p { color:var(--ink-soft); max-width:34rem; margin:0 auto 1.6rem; }
-  .contact-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem; max-width:36rem; margin-inline:auto; }
-  .contact-row div { border:1px solid #ddd2bf; border-radius:10px; padding:1rem; background:var(--white); }
-  .contact-row b { display:block; font-size:.9rem; margin-bottom:.2rem; color:var(--clay-deep); }
-  .contact-row span { font-size:.8rem; color:var(--ink-soft); }
-  footer { border-top:1px solid rgba(154,79,47,.2); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--clay); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .tour-grid{grid-template-columns:1fr;} .why .wrap{grid-template-columns:1fr;} .contact-row{grid-template-columns:1fr;} nav{display:none;} }
+  :root{
+    --green:#0c241b; --green2:#123228; --pine:#1b4a39; --leaf:#3fa46f; --leaf-l:#7fd6a6;
+    --sand:#f3ecdd; --ink:#1c2620; --dim:#8a9b90; --line:#26503d; --amber:#e2a33c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--green);color:var(--sand);font-family:Karla,system-ui,sans-serif;line-height:1.6}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--leaf);color:#08251a;font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:"Space Mono",monospace;line-height:1.25;text-transform:uppercase}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .mono{font-family:"Space Mono",monospace}
+  .btn{display:inline-block;background:var(--leaf);color:#08251a;text-decoration:none;font-weight:700;padding:.85rem 1.5rem;border:0;cursor:pointer;font-family:"Space Mono",monospace;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;transition:.15s}
+  .btn:hover{background:var(--leaf-l)}
+  .btn.amber{background:var(--amber);color:#231503}
+  .btn.amber:hover{background:#f0b455}
+  .btn.small{padding:.5rem 1.05rem;font-size:.66rem}
+  .eyebrow{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--leaf-l)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(12,36,27,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 22px;max-width:1180px;margin:0 auto;gap:1rem}
+  .brand{font-family:"Space Mono",monospace;font-weight:700;text-decoration:none;font-size:1rem;display:flex;align-items:center;gap:.55rem}
+  .brand .pk{width:11px;height:11px;border:2px solid var(--leaf);transform:rotate(45deg);display:inline-block}
+  .brand small{display:block;font-size:.66rem;letter-spacing:.26em;color:var(--dim);font-weight:400}
+  .nav-links{display:flex;gap:1.5rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.8rem;font-family:"Space Mono",monospace;text-transform:uppercase;color:var(--sand)}
+  .nav-links a:hover{color:var(--leaf-l)}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  .hero{background:linear-gradient(180deg,var(--green2),var(--green));padding:3.2rem 0 2.6rem;position:relative;overflow:hidden}
+  .contour{position:absolute;bottom:0;left:0;right:0;height:120px;opacity:.35;background:
+    radial-gradient(ellipse at 10% 100%,#3fa46f 0 2px,transparent 3px) 0 0/44px 22px,
+    radial-gradient(ellipse at 50% 100%,#3fa46f 0 2px,transparent 3px) 22px 0/52px 26px}
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{font-size:clamp(2rem,4.8vw,3.6rem)}
+  .hero h1 .l{color:var(--leaf-l)}
+  .hero-sub{color:#b9c9bf;max-width:38rem;margin:1rem 0 1.6rem;font-size:1.03rem}
+  .hero-row{display:flex;gap:2rem;flex-wrap:wrap}
+  .hero-row b{display:block;font-family:"Space Mono",monospace;font-size:1.4rem;color:var(--leaf-l)}
+  .hero-row span{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+
+  .pick{padding:1.6rem 0 .6rem}
+  .pick h2{font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1.2rem}
+  .tour-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:1.8rem}
+  @media(max-width:860px){.tour-tabs{grid-template-columns:1fr}}
+  .tour-tab{border:1.5px solid var(--line);background:var(--green2);padding:1.1rem;cursor:pointer;text-align:left;color:var(--sand);font-family:Karla,sans-serif}
+  .tour-tab .nm{font-family:"Space Mono",monospace;font-weight:700;text-transform:uppercase;font-size:.95rem;display:block}
+  .tour-tab .meta{color:var(--dim);font-size:.8rem;display:block;margin-top:.2rem}
+  .tour-tab:hover{border-color:var(--pine)}
+  .tour-tab.on{border-color:var(--leaf);background:#14392a}
+  .tour-tab .days{display:block;margin-top:.5rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--amber)}
+
+  .board-wrap{display:grid;grid-template-columns:1fr 320px;gap:1.3rem;align-items:start}
+  @media(max-width:940px){.board-wrap{grid-template-columns:1fr}}
+  .board{border:1px solid var(--line);background:#081f16;overflow:hidden}
+  .board .b-head{background:#04140e;padding:.8rem 1.1rem;display:flex;justify-content:space-between;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.18em;color:var(--dim);border-bottom:1px solid var(--line);text-transform:uppercase}
+  .board .b-head .live{color:var(--leaf-l);display:flex;align-items:center;gap:.4rem}
+  .board .b-head .live i{width:7px;height:7px;border-radius:50%;background:var(--leaf-l);animation:bl 1.4s infinite}
+  @keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+  .dep-row{display:grid;grid-template-columns:86px 1fr auto auto;gap:.8rem;align-items:center;padding:.85rem 1.1rem;border-bottom:1px solid #14402c;font-size:.9rem}
+  .dep-row:last-child{border:0}
+  .dep-row .dt{font-family:"Space Mono",monospace;font-size:.78rem;color:var(--leaf-l)}
+  .dep-row .rm{text-align:right;font-size:.78rem}
+  .dep-row .rm b{font-family:"Space Mono",monospace;color:var(--amber)}
+  .dep-row .rm small{display:block;color:var(--dim);font-size:.68rem}
+  .dep-row.full .rm b{color:var(--dim)}
+  .dep-row .take{font-family:"Space Mono",monospace;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1.5px solid var(--leaf);color:var(--leaf-l);padding:.45rem .8rem;cursor:pointer}
+  .dep-row .take:hover{background:var(--leaf);color:#08251a}
+  .dep-row.full .take{opacity:.35;border-color:var(--line);cursor:not-allowed;color:var(--dim)}
+
+  .side-card{border:1px solid var(--line);background:var(--green2);padding:1.3rem}
+  .side-card .eyebrow{margin-bottom:.5rem}
+  .side-card h3{font-size:1.1rem;margin-bottom:.4rem}
+  .side-card p{color:#b9c9bf;font-size:.88rem}
+  .side-card .facts{border-top:1px dashed var(--line);margin-top:.9rem;padding-top:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-family:"Space Mono",monospace;font-size:.72rem;color:var(--leaf-l)}
+  .side-card .facts span{display:block;color:var(--dim);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em}
+  .side-card .act{margin-top:1rem}
+  .note-s{font-size:.76rem;color:var(--dim);margin-top:1rem}
+
+  .why{padding:2.4rem 0}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+  @media(max-width:880px){.why-grid{grid-template-columns:1fr}}
+  .why-card{border:1px solid var(--line);padding:1.2rem;background:var(--green2)}
+  .why-card h3{font-size:.95rem;color:var(--leaf-l);margin-bottom:.3rem}
+  .why-card p{color:var(--dim);font-size:.85rem}
+
+  footer{border-top:1px solid var(--line);padding:1.4rem 22px 4.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);max-width:1180px;margin:0 auto;font-family:"Space Mono",monospace}
 </style>
 </head>
-<body>
-
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<body id="top">
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">Ethio Trails<small>TOUR OPERATOR · CONCEPT</small></a>
-    <nav>
+  <div class="nav">
+    <a class="brand" href="#top"><span class="pk"></span>ETHIO TRAILS<small>GROUP TOURS · ADDIS ABABA</small></a>
+    <div class="nav-links">
       <a href="#tours">Tours</a>
-      <a href="#why">Why Us</a>
-      <a href="#book">Book</a>
-    </nav>
+      <a href="#departures">Departures</a>
+      <a class="btn small" href="#tours">Book a tour</a>
+    </div>
   </div>
-</header>
-
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A concept sample tour operator · Addis Ababa</p>
-        <h1>See Ethiopia,<br /><em style="font-style:italic;color:var(--clay);">Safely Booked.</em></h1>
-        <p class="hero-sub">Day trips, multi-day routes, and custom itineraries booked online with instant WhatsApp confirmation. A sample for a fictional operator.</p>
-        <div>
-          <a class="btn btn-solid" href="#book">Book a Tour</a>
-          <a class="btn btn-ghost" href="#tours">Browse Tours</a>
-        </div>
-      </div>
-      <div class="hero-fig">
-        <img src="../img/travel-1.jpg" alt="Highland landscape on the sample tour" />
-      </div>
+</header>  <section class="hero">
+  <div class="contour"></div>
+  <div class="wrap">
+    <p class="eyebrow">Bole, Africa Avenue (Bole Road), near Friendship Park, Addis Ababa</p>
+    <h1>See Ethiopia, <span class="l">with a seat held for you.</span></h1>
+    <p class="hero-sub">Group tours with fixed departure dates, live seat counts, and a confirmation on WhatsApp the minute you book. Pick a route, find a date with seats, and take one.</p>
+    <div class="hero-row">
+      <div><b>Local guides</b><span>Throughout every route</span></div>
+      <div><b>Small groups</b><span>Max 8 or 10 on each departure</span></div>
+      <div><b>Live seats</b><span>Counts on this page are real</span></div>
     </div>
-  </section>
+  </div>
+</section>  <main class="wrap pick" id="tours">
+  <p class="eyebrow">Signature routes</p>
+  <h2>Pick a route, then a departure date</h2>
 
-  <section id="tours">
-    <div class="wrap">
-      <p class="section-label">Tours</p>
-      <h2 class="section-title">Signature Routes</h2>
-      <div class="tour-grid">
-        <div class="tour"><img src="../img/travel-1.jpg" alt="Lalibela tour sample" /><div class="inner"><h3>Lalibela &amp; the North</h3><p>Rock churches and monasteries on a classic northern circuit.</p><span class="days">4 days · From 18,500 ETB</span></div></div>
-        <div class="tour"><img src="../img/travel-2.jpg" alt="Southern route sample" /><div class="inner"><h3>Southern Rift Valley</h3><p>Lakes, tribes, and landscapes on the scenic southern route.</p><span class="days">5 days · From 22,000 ETB</span></div></div>
-        <div class="tour"><img src="../img/travel-2.jpg" alt="Custom itinerary sample" /><div class="inner"><h3>Custom Itineraries</h3><p>Build your own route with a guide and driver that fit your dates.</p><span class="days">Tailored · Price on request</span></div></div>
-      </div>
-    </div>
-  </section>
+  <div class="tour-tabs" id="tour-tabs"></div>
 
-  <section class="why" id="why">
-    <div class="wrap">
-      <div>
-        <p class="section-label">Why tour operators choose us</p>
-        <h2 class="section-title" style="color:var(--white);">This site does the selling while you run the trips</h2>
-      </div>
-      <div>
-        <p>Every tour lists dates, group size, and price, so visitors filter and book without a single phone call. Bookings land in one inbox with an automatic confirmation message.</p>
-        <p>The same system handles deposits, trip reminders, and reviews, so the operator builds a repeat-client list instead of starting from zero every season.</p>
-      </div>
+  <div class="board-wrap" id="departures">
+    <div class="board">
+      <div class="b-head"><span>Departures · <span id="board-tour"></span></span><span class="live"><i></i>LIVE SEATS</span></div>
+      <div id="dep-rows"></div>
     </div>
-  </section>
-
-  <section class="book" id="book">
-    <div class="wrap">
-      <p class="section-label">Book online</p>
-      <h2 class="section-title">Reserve in Three Taps</h2>
-      <p>Pick a tour, choose a date, and confirm on WhatsApp. Sample booking flow, connected on order.</p>
-      <a class="btn btn-solid" href="#top">Book on WhatsApp</a>
-      <div class="contact-row">
-        <div><b>WhatsApp</b><span>+251 91 000 0000 (fictional)</span></div>
-        <div><b>Office</b><span>Bole, Addis Ababa (fictional)</span></div>
-        <div><b>Hours</b><span>Mon-Sat · 8:00 - 18:00</span></div>
+    <aside class="side-card">
+      <img id="s-img" src="img/dest-lalibela.jpg" alt="Lalibela rock-hewn churches -- sample tour photo" style="width:100%;height:170px;object-fit:cover;display:block;margin-bottom:.9rem;border-radius:6px" />
+      <p class="eyebrow" id="s-route">Route</p>
+      <h3 id="s-title"></h3>
+      <p id="s-desc"></p>
+      <div class="facts">
+        <div>Days<br/><span id="s-days"></span></div>
+        <div>Group size<br/><span id="s-group"></span></div>
+        <div>From<br/><span id="s-price"></span></div>
       </div>
-    </div>
-  </section>
+      <div class="act">
+        <a class="btn" id="s-ask" href="https://wa.me/251911000020" target="_blank" rel="noopener">Ask about this route</a>
+      </div>
+      <p class="note-s">Sample departures and prices in ETB. Real calendar, availability and terms go in on order.</p>
+    </aside>
+  </div>
 </main>
 
-<footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Ethio Trails, a fictional concept sample</div>
-    <div>Sample office · Bole, Addis Ababa (fictional)</div>
+<section class="why wrap">
+  <p class="eyebrow">Why travel with us</p>
+  <div class="why-grid">
+    <div class="why-card"><h3>Small groups</h3><p>Max ten travellers on every departure. The van is never full and the guide knows your name.</p></div>
+    <div class="why-card"><h3>One price, no kitty</h3><p>Lodging, transport, guides, park fees and most meals are inside the route price. Anything not included is written down before you book.</p></div>
+    <div class="why-card"><h3>Booked on WhatsApp</h3><p>Seats are held with a deposit and the confirmation arrives as a message, with a short packing note attached.</p></div>
   </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Ethio Trails -- sample concept, not a real business</div>
+  <div>Bole, Africa Avenue (Bole Road), near Friendship Park, Addis Ababa · Sample shown for demonstration, real business info goes in on order</div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  var TOURS=[
+    { n:"Lalibela & the North", days:"4 days", price:"18,500 ETB", group:"max 10", img:"img/dest-lalibela.jpg",
+      desc:"Rock-hewn churches and monasteries on the classic northern circuit, with a Lalibela local guide.",
+      deps:[
+        { d:"OCT 12", seats:6 }, { d:"OCT 26", seats:2 }, { d:"NOV 09", seats:9 }, { d:"NOV 23", seats:0 }, { d:"DEC 07", seats:5 }
+      ] },
+    { n:"Southern Rift Valley", days:"5 days", price:"22,000 ETB", group:"max 10", img:"img/dest-omo.jpg",
+      desc:"Lakes, viewpoints and village visits down the Rift, ending at the Arba Minch lakeshore.",
+      deps:[
+        { d:"OCT 19", seats:4 }, { d:"NOV 02", seats:8 }, { d:"NOV 16", seats:3 }, { d:"NOV 30", seats:0 }, { d:"DEC 14", seats:7 }
+      ] },
+    { n:"Simien & Gondar", days:"6 days", price:"26,500 ETB", group:"max 8", img:"img/dest-simien.jpg",
+      desc:"Escarpment walks in the Simien mountains, then the castles of Gondar below.",
+      deps:[
+        { d:"NOV 05", seats:3 }, { d:"NOV 19", seats:6 }, { d:"DEC 03", seats:2 }, { d:"DEC 17", seats:0 }, { d:"DEC 28", seats:4 }
+      ] }
+  ];
+  var sel=0;
+
+  function renderTabs(){
+    var g=document.getElementById("tour-tabs"); g.innerHTML="";
+    TOURS.forEach(function(t,i){
+      var b=document.createElement("button"); b.type="button"; b.className="tour-tab"+(i===0?" on":"");
+      b.innerHTML="<span class=\"nm\">"+t.n+"</span><span class=\"meta\">"+t.desc.split(",")[0]+"</span><span class=\"days\">"+t.days+" · FROM "+t.price+"</span>";
+      b.onclick=function(){ sel=i; renderTabs(); renderBoard(); };
+      g.appendChild(b);
+    });
+  }
+  function renderBoard(){
+    var t=TOURS[sel];
+    document.getElementById("board-tour").textContent=t.n;
+    document.getElementById("s-title").textContent=t.n;
+    document.getElementById("s-desc").textContent=t.desc;
+    document.getElementById("s-days").textContent=t.days;
+    document.getElementById("s-group").textContent=t.group;
+    document.getElementById("s-price").textContent=t.price;
+    document.getElementById("s-img").src=t.img;
+    document.getElementById("s-img").alt=t.n;
+    document.getElementById("s-ask").href="https://wa.me/251911000020?text="+encodeURIComponent("Hello Ethio Trails, tell me more about "+t.n+" ("+t.days+"). Sample inquiry.");
+    var rows=document.getElementById("dep-rows"); rows.innerHTML="";
+    t.deps.forEach(function(dep){
+      var full=dep.seats===0;
+      var r=document.createElement("div"); r.className="dep-row"+(full?" full":"");
+      var seats=full ? '<b>FULL</b><small>waitlist open</small>' : '<b>'+dep.seats+' left</b><small>of 10 seats</small>';
+      r.innerHTML="<span class=\"dt\">"+dep.d+"</span><span style=\"color:#b9c9bf\">"+t.n+"</span><span class=\"rm\">"+seats+"</span>";
+      var take=document.createElement("button"); take.type="button"; take.className="take";
+      take.textContent=full?"Waitlist":"Take seat";
+      if(full){ take.disabled=true; }
+      else {
+        take.onclick=function(){
+          dep.seats--;
+          var msg="Hello Ethio Trails, I would like to take a seat on "+t.n+" departing "+dep.d+" ("+t.days+", from "+t.price+"). Sample booking.";
+          window.open("https://wa.me/251911000020?text="+encodeURIComponent(msg),"_blank");
+          renderBoard();
+        };
+      }
+      r.appendChild(take);
+      rows.appendChild(r);
+    });
+  }
+  renderTabs(); renderBoard();
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

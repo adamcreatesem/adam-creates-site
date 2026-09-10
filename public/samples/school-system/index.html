@@ -11,12 +11,12 @@
   :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#141b33; --side-ink:#cbd5e1; --accent:#4f46e5; --accent-l:#6366f1; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
 
   .topbar { background:var(--side); color:#fff; }
   .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
   .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
-  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
   .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#cbd5e1; }
 
   .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
@@ -46,7 +46,7 @@
   .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
 
   table { width:100%; border-collapse:collapse; font-size:.84rem; }
-  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  th { text-align:left; font-size:.66rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
   td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
   tr:last-child td { border-bottom:none; }
   .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
@@ -94,6 +94,11 @@
     .settings-grid { grid-template-columns:1fr; }
     .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
     .side-item { margin:0; }
+    .layout > * { min-width:0; }
+    .main > div { min-width:0; }
+    .card { overflow-x:auto; }
+    .card .card-head { min-width:560px; }
+    .card table { min-width:560px; }
   }
 </style>
 </head>
@@ -215,8 +220,8 @@
         <div class="settings-grid">
           <div>
             <div class="field"><label>School name</label><input value="Kokebe Academy" /></div>
-            <div class="field"><label>Phone</label><input value="+251 11 000 00 00" /></div>
-            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+            <div class="field"><label>Phone</label><input value="+251 11 200 00 06" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 200 00 06" /></div>
           </div>
           <div>
             <div class="switch-row"><div><b>Absence alerts</b><p>WhatsApp to guardian when a student is absent</p></div><div class="switch on"></div></div>
@@ -311,7 +316,7 @@
   }
   function renderAttendance() {
     $('attRows').innerHTML = ATTD.map(a =>
-      `<tr><td><b>${a.n}</b></td><td>${a.cls}</td><td>${a.status === 'present' ? '<span class="pill ok">Present</span>' : a.status === 'late' ? '<span class="pill warn">Late</span>' : '<span class="pill danger">Absent</span>'}</td><td class="dim">${a.note || '—'}</td></tr>`).join('');
+      `<tr><td><b>${a.n}</b></td><td>${a.cls}</td><td>${a.status === 'present' ? '<span class="pill ok">Present</span>' : a.status === 'late' ? '<span class="pill warn">Late</span>' : '<span class="pill danger">Absent</span>'}</td><td class="dim">${a.note || '-'}</td></tr>`).join('');
   }
   function renderGrades() {
     const rows = GRADES.map(g => {
@@ -342,7 +347,7 @@
       <div class="form-actions"><button class="btn btn-accent btn-sm" id="saveAdd">Enroll student</button></div>`;
     $('saveAdd').onclick = () => {
       const name = $('fName').value.trim() || 'New Student';
-      STUDENTS.unshift({ id:'S-' + (1100 + STUDENTS.length), n:name, cls:$('fCls').value, guard:$('fGuard').value || '—', phone:$('fPhone').value || '—', fee:'paid' });
+      STUDENTS.unshift({ id:'S-' + (1100 + STUDENTS.length), n:name, cls:$('fCls').value, guard:$('fGuard').value || '-', phone:$('fPhone').value || '-', fee:'paid' });
       renderAll();
       $('addFormWrap').innerHTML = '';
     };

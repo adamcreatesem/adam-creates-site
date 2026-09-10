@@ -4,172 +4,242 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Volt Gym: Train Hard (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional gym. Not a real business." />
+<meta name="description" content="Volt Gym -- classes and plans in Kazanchis, Addis Ababa: barbell club, HIIT, spin, powerlifting, and open gym. Book a slot by WhatsApp. First session free. Mon-Sun 05:30-22:00." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --black:#0a0a0a; --black-2:#161616; --volt:#ccff00; --white:#f2f2f0; --dim:#8a8a85; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Space Mono',monospace; background:var(--black); color:var(--white); line-height:1.5; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1100px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(10,10,10,.97); border-bottom:3px solid var(--volt); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.8rem; }
-  .brand { font-family:'Archivo Black'; font-size:1.2rem; letter-spacing:.04em; color:var(--volt); }
-  .brand small { display:block; font-family:'Space Mono'; font-size:.56rem; letter-spacing:.28em; color:var(--dim); }
-  nav { display:flex; gap:1.6rem; }
-  nav a { font-size:.72rem; font-weight:700; letter-spacing:.14em; color:var(--dim); text-transform:uppercase; }
-  nav a:hover { color:var(--volt); }
-  .hero { padding:8.5rem 0 4rem; position:relative; overflow:hidden; border-bottom:3px solid var(--volt); }
-  .hero::before { content:""; position:absolute; top:-60px; right:-80px; width:380px; height:380px; background:var(--volt); transform:rotate(24deg); opacity:.08; }
-  .hero-inner { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .kicker { font-size:.68rem; font-weight:700; letter-spacing:.28em; color:var(--volt); margin-bottom:1rem; text-transform:uppercase; }
-  h1 { font-family:'Archivo Black'; font-size:clamp(2.4rem,6vw,4.2rem); font-weight:400; line-height:.95; letter-spacing:-.01em; text-transform:uppercase; margin-bottom:1.2rem; }
-  h1 span { color:var(--volt); }
-  .hero-sub { color:var(--dim); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-family:'Space Mono'; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; padding:.95rem 1.8rem; border:3px solid var(--volt); color:var(--volt); clip-path:polygon(0 0,100% 0,96% 100%,4% 100%); }
-  .btn-solid { background:var(--volt); color:var(--black); }
-  .btn-ghost { background:transparent; color:var(--volt); }
-  .btn-solid:hover { background:var(--white); border-color:var(--white); }
-  .btn-ghost:hover { background:var(--volt); color:var(--black); }
-  .hero-img { position:relative; }
-  .hero-img img { width:100%; aspect-ratio:4/5; object-fit:cover; clip-path:polygon(0 0,100% 6%,94% 100%,6% 94%); }
-  .hero-tag { position:absolute; top:12px; left:-6px; background:var(--volt); color:var(--black); font-family:'Archivo Black'; font-size:.7rem; padding:.4rem .8rem; transform:rotate(-3deg); }
-  section { padding:4.5rem 0; }
-  .section-label { font-size:.66rem; font-weight:700; letter-spacing:.28em; color:var(--volt); margin-bottom:.8rem; text-transform:uppercase; }
-  .section-title { font-family:'Archivo Black'; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:400; text-transform:uppercase; line-height:1; margin-bottom:.7rem; }
-  .section-note { color:var(--dim); max-width:36rem; }
-  .class-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.2rem; }
-  .cls { border:2px solid #2a2a2a; padding:1.4rem; position:relative; background:var(--black-2); }
-  .cls::after { content:""; position:absolute; inset:auto 0 0 0; height:6px; background:var(--volt); clip-path:polygon(0 0,100% 0,94% 100%,6% 100%); }
-  .cls-num { font-family:'Archivo Black'; font-size:1.4rem; color:var(--dim); }
-  .cls h3 { font-family:'Archivo Black'; font-weight:400; font-size:1.1rem; text-transform:uppercase; margin:.3rem 0 .4rem; }
-  .cls p { color:var(--dim); font-size:.82rem; }
-  .cls-time { display:block; margin-top:.7rem; font-size:.7rem; color:var(--volt); letter-spacing:.1em; }
-  .plan-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.2rem; }
-  .plan { border:2px solid #2a2a2a; padding:1.6rem 1.4rem; background:var(--black-2); }
-  .plan.popular { border-color:var(--volt); position:relative; }
-  .plan.popular::before { content:"MOST POPULAR"; position:absolute; top:-10px; left:12px; background:var(--volt); color:var(--black); font-size:.6rem; font-weight:700; letter-spacing:.12em; padding:.25rem .5rem; }
-  .plan h3 { font-family:'Archivo Black'; font-weight:400; text-transform:uppercase; font-size:1rem; }
-  .plan .price { font-family:'Archivo Black'; font-size:1.8rem; margin:.6rem 0 .8rem; color:var(--white); }
-  .plan .price small { font-size:.7rem; color:var(--dim); font-family:'Space Mono'; }
-  .plan ul { list-style:none; display:grid; gap:.5rem; }
-  .plan li { font-size:.78rem; color:var(--dim); display:flex; gap:.5rem; }
-  .plan li::before { content:"+"; color:var(--volt); }
-  .plan .btn { width:100%; margin-top:1.2rem; text-align:center; font-size:.7rem; padding:.8rem; }
-  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2rem; border-top:3px solid var(--volt); padding-top:2rem; }
-  .stat b { display:block; font-family:'Archivo Black'; font-size:2rem; color:var(--volt); }
-  .stat span { font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
-  .cta { border-top:3px solid var(--volt); background:var(--volt); color:var(--black); }
-  .cta .wrap { text-align:center; padding:1rem 0; }
-  .cta h2 { color:var(--black); }
-  .cta p { color:rgba(10,10,10,.7); max-width:34rem; margin:0 auto 1.6rem; }
-  .cta .btn-solid { background:var(--black); border-color:var(--black); color:var(--volt); }
-  .cta .btn-ghost { border-color:var(--black); color:var(--black); }
-  footer { border-top:3px solid var(--volt); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--dim); font-size:.78rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--volt); color:var(--black); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; clip-path:polygon(0 0,100% 0,96% 100%,4% 100%); }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .class-grid{grid-template-columns:1fr;} .plan-grid{grid-template-columns:1fr;} .stats{grid-template-columns:repeat(2,1fr);} nav{display:none;} }
+  :root{
+    --black:#0d0d0d; --yellow:#ffd21f; --white:#f4f2ec; --gray:#9aa0a6;
+    --red:#e5482e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--white);color:var(--black);font-family:Archivo,system-ui,sans-serif;line-height:1.5}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--yellow);color:var(--black);font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:"Archivo Black",sans-serif;line-height:1.05;text-transform:uppercase}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--black);color:var(--white);text-decoration:none;font-weight:700;padding:.85rem 1.5rem;border:0;cursor:pointer;font-family:Archivo,sans-serif;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%)}
+  .btn:hover{background:var(--red)}
+  .btn.yellow{background:var(--yellow);color:var(--black)}
+  .btn.yellow:hover{background:#ffdf4d;color:var(--black)}
+  .btn.small{padding:.55rem 1.05rem;font-size:.74rem}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--red)}
+
+  .marquee{background:var(--black);color:var(--yellow);overflow:hidden;white-space:nowrap;padding:.5rem 0;font-family:"Space Mono",monospace;font-size:.8rem;letter-spacing:.1em;font-weight:700}
+  .marquee span{display:inline-block;padding-right:2rem;animation:mq 22s linear infinite}
+  @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  header{background:var(--yellow);position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 22px;max-width:1180px;margin:0 auto;gap:1rem}
+  .brand{font-family:"Archivo Black",sans-serif;text-decoration:none;font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em}
+  .brand b{color:var(--red)}
+  .brand small{display:block;font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.26em;color:#3a3600;font-weight:700}
+  .nav-links{display:flex;gap:1.3rem;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:700;font-size:.84rem;text-transform:uppercase;letter-spacing:.04em}
+  .nav-links a:hover{text-decoration:underline}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  /* Centered monumental hero */
+  .hero{background:var(--black);color:var(--white);padding:4.6rem 0 0;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0,transparent 39px,rgba(255,225,31,.05) 40px),repeating-linear-gradient(90deg,transparent 0,transparent 39px,rgba(255,225,31,.05) 40px)}
+  .hero .tick{display:inline-block;transform:rotate(-4deg);border:4px solid var(--yellow);color:var(--yellow);padding:.55rem 1.2rem;font-family:"Space Mono",monospace;font-weight:700;letter-spacing:.14em;font-size:.8rem;margin-bottom:1.6rem;position:relative}
+  .hero h1{font-size:clamp(3.4rem,13vw,11rem);line-height:.88;max-width:none}
+  .hero h1 .out{color:transparent;-webkit-text-stroke:2px var(--white)}
+  .hero h1 .y{color:var(--yellow)}
+  .hero h1 .r{color:var(--red)}
+  .hero-copy{max-width:44rem;color:#c9c9c9;font-size:1.05rem;margin:1.4rem auto 0;position:relative}
+  .cta-row{display:flex;gap:.8rem;margin-top:1.8rem;flex-wrap:wrap;justify-content:center;position:relative}
+  .hero-stats{display:flex;gap:2.4rem;margin-top:2.4rem;flex-wrap:wrap;justify-content:center;position:relative;padding-bottom:3rem}
+  .hero-stats div{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.14em;color:#8f8f8f;text-transform:uppercase}
+  .hero-stats b{display:block;font-family:"Archivo Black",sans-serif;font-size:1.5rem;color:var(--yellow);letter-spacing:0}
+
+  .gym-shot{width:100%}
+  .gym-shot img{display:block;width:100%;height:clamp(260px,42vw,520px);object-fit:cover;filter:contrast(1.08)}
+  .gym-shot-wrap{max-width:1500px;margin:0 auto;padding:0 22px}
+
+  .classes{padding:3rem 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem)}
+  .class-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  @media(max-width:920px){.class-grid{grid-template-columns:1fr}}
+  .cls{border:3px solid var(--black);clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%);background:#fff;display:flex;flex-direction:column}
+  .cls .top{padding:1.2rem 1.2rem .9rem;border-bottom:3px solid var(--black)}
+  .cls .when{font-family:"Space Mono",monospace;font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--red);text-transform:uppercase}
+  .cls h3{font-size:1.5rem;margin:.3rem 0}
+  .cls .desc{padding:.9rem 1.2rem;color:#444;font-size:.92rem;flex:1}
+  .cls .foot{display:flex;justify-content:space-between;align-items:center;gap:.8rem;padding:.9rem 1.2rem 1.1rem;border-top:2px dashed var(--black);flex-wrap:wrap}
+  .seats{font-family:"Space Mono",monospace;font-size:.74rem;font-weight:700}
+  .seats.full{color:var(--red)}
+  .seats .bar{display:block;width:110px;height:6px;background:#ddd;margin-top:.3rem;position:relative}
+  .seats .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--black)}
+  .seats.low .bar i{background:var(--red)}
+  .empty-note{font-size:.74rem;color:var(--gray);margin-top:1rem}
+
+  .plans{background:var(--black);color:var(--white);padding:3rem 0}
+  .plans .eyebrow{color:var(--yellow)}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.6rem}
+  @media(max-width:920px){.plan-grid{grid-template-columns:1fr}}
+  .plan{border:2px solid #2c2c2c;padding:1.5rem;display:flex;flex-direction:column;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%);background:#141414}
+  .plan.hot{border-color:var(--yellow);background:#1c1a08}
+  .plan .p-name{font-family:"Archivo Black",sans-serif;font-size:1.2rem;text-transform:uppercase}
+  .plan .p-price{font-family:"Archivo Black",sans-serif;font-size:2.2rem;color:var(--yellow);margin:.3rem 0}
+  .plan .p-price small{font-size:.8rem;color:#b9b9b9;font-family:Archivo,sans-serif}
+  .plan ul{list-style:none;margin:.8rem 0 1.2rem;font-size:.88rem;color:#c9c9c9}
+  .plan ul li{padding:.28rem 0;border-bottom:1px dashed #333}
+  .plan ul li:last-child{border:0}
+  .plan .math{font-family:"Space Mono",monospace;font-size:.7rem;color:#8f8f8f;margin-bottom:1rem}
+  .plan .btn{margin-top:auto;align-self:flex-start}
+
+  .first{background:var(--yellow);padding:2.4rem 0;text-align:center}
+  .first .in{max-width:760px;margin:0 auto;padding:0 22px;display:flex;flex-direction:column;align-items:center;gap:1rem}
+  .first h2{font-size:clamp(1.6rem,3.4vw,2.5rem)}
+  .first p{font-weight:500}
+
+  footer{border-top:3px solid var(--black);padding:1.4rem 22px 4.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:#555;max-width:1180px;margin:0 auto}
+  .mono{font-family:"Space Mono",monospace}
 </style>
 </head>
-<body>
-
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<body id="top">
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
+<div class="marquee"><span>NO EXCUSES · BOOK YOUR SLOT · FIRST SESSION FREE · NO EXCUSES · BOOK YOUR SLOT · FIRST SESSION FREE · NO EXCUSES · BOOK YOUR SLOT · FIRST SESSION FREE · NO EXCUSES · BOOK YOUR SLOT · FIRST SESSION FREE ·&nbsp;</span></div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">VOLT<small>GYM &amp; FITNESS · CONCEPT SAMPLE</small></a>
-    <nav>
+  <div class="nav">
+    <a class="brand" href="#top">VOLT<b>GYM</b><small>KAZANCHIS · ADDIS ABABA</small></a>
+    <div class="nav-links">
       <a href="#classes">Classes</a>
       <a href="#plans">Plans</a>
-      <a href="#join">Join</a>
-    </nav>
+      <a class="btn small" href="#plans">Join now</a>
+    </div>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="kicker">A concept sample gym</p>
-        <h1>Train<br /><span>Harder.</span></h1>
-        <p class="hero-sub">Classes booked online, memberships tracked, no-shows reminded. A sample for a fictional gym in Addis Ababa.</p>
-        <div>
-          <a class="btn btn-solid" href="#plans">Join Now</a>
-          <a class="btn btn-ghost" href="#classes">See Classes</a>
-        </div>
-      </div>
-      <div class="hero-img">
-        <img src="../img/gym.jpg" alt="Gym sample" />
-        <span class="hero-tag">NO EXCUSES</span>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+  <div class="tick">FIRST SESSION FREE</div>
+  <h1><span class="out">SHOW</span> <span class="y">UP.</span><br /><span class="r">TRAIN.</span> <span class="out">REPEAT.</span></h1>
+  <p class="hero-copy">Kazanchis, opposite the Sheraton, Addis Ababa. Every class below shows live seats. Pick one, book it, and your spot is held on WhatsApp.</p>
+  <div class="cta-row">
+    <a class="btn yellow" href="#classes">See classes</a>
+    <a class="btn" href="https://wa.me/251911000011?text=Hello%20Volt%20Gym%2C%20I%27d%20like%20my%20first%20free%20session%20(sample)." target="_blank" rel="noopener">Join on WhatsApp</a>
+  </div>
+  <div class="hero-stats">
+    <div>Open<b>05:30 - 22:00</b></div>
+    <div>Classes / week<b>20+</b></div>
+    <div>First visit<b>FREE</b></div>
+  </div>
+</section>
 
-  <section id="classes">
-    <div class="wrap">
-      <p class="section-label">Classes</p>
-      <h2 class="section-title">Book Your Slot</h2>
-      <p class="section-note">Sample schedule: real classes and times go in on order.</p>
-      <div class="class-grid">
-        <div class="cls"><span class="cls-num">01</span><h3>Strength</h3><p>Barbell work, progressive overload.</p><span class="cls-time">MON · WED · 6:00</span></div>
-        <div class="cls"><span class="cls-num">02</span><h3>HIIT</h3><p>High intensity, short bursts.</p><span class="cls-time">TUE · THU · 18:00</span></div>
-        <div class="cls"><span class="cls-num">03</span><h3>Spin</h3><p>Cardio on the bike, music loud.</p><span class="cls-time">FRI · 17:00</span></div>
-      </div>
-    </div>
-  </section>
+<div class="gym-shot-wrap"><div class="gym-shot"><img src="../img/gym.jpg" alt="Volt Gym training floor -- barbell rack, dumbbell rack, cable machine, treadmills on the back wall, mirrors" /></div></div>
 
-  <section id="plans" style="background:var(--black-2);">
-    <div class="wrap">
-      <p class="section-label">Membership</p>
-      <h2 class="section-title">Pick Your Plan</h2>
-      <div class="plan-grid">
-        <div class="plan">
-          <h3>Day Pass</h3>
-          <div class="price">250 <small>ETB</small></div>
-          <ul><li>Full gym access</li><li>One class</li></ul>
-          <a class="btn btn-ghost" href="#join">Start</a>
-        </div>
-        <div class="plan popular">
-          <h3>Monthly</h3>
-          <div class="price">2,500 <small>ETB</small></div>
-          <ul><li>Unlimited classes</li><li>Free guest day</li><li>Progress tracking</li></ul>
-          <a class="btn btn-solid" href="#join">Join</a>
-        </div>
-        <div class="plan">
-          <h3>Annual</h3>
-          <div class="price">24,000 <small>ETB</small></div>
-          <ul><li>Everything in monthly</li><li>2 months free</li><li>Personal session</li></ul>
-          <a class="btn btn-ghost" href="#join">Commit</a>
-        </div>
-      </div>
-      <div class="stats">
-        <div class="stat"><b>1,200+</b><span>Members</span></div>
-        <div class="stat"><b>14</b><span>Coaches</span></div>
-        <div class="stat"><b>5:30</b><span>Opens</span></div>
-        <div class="stat"><b>22:00</b><span>Closes</span></div>
-      </div>
+<main class="wrap classes" id="classes">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow">This week · sample timetable</p>
+      <h2>Book a slot</h2>
     </div>
-  </section>
-
-  <section class="cta" id="join">
-    <div class="wrap">
-      <p class="section-label" style="color:var(--black);">Start today</p>
-      <h2 class="section-title">First Session Free</h2>
-      <p>Membership inquiries land on WhatsApp: sample flow, real on order.</p>
-      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20join%20the%20gym." target="_blank" rel="noopener">Join on WhatsApp</a>
-    </div>
-  </section>
+    <p style="max-width:30rem;color:#555;font-size:.92rem">Seat counts reset each morning in this sample. Tap a class to book and watch the number drop.</p>
+  </div>
+  <div class="class-grid" id="class-grid"></div>
+  <p class="empty-note">Real coach names, class times and capacity go in on order.</p>
 </main>
 
-<footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Volt Gym, a fictional concept sample</div>
-    <div>Sample address · Addis Ababa (fictional)</div>
+<section class="plans" id="plans">
+  <div class="wrap">
+    <p class="eyebrow">Membership</p>
+    <div class="sec-head">
+      <h2 style="color:#fff">Pick your plan</h2>
+    </div>
+    <div class="plan-grid" id="plan-grid"></div>
+    <p style="color:#8f8f8f;font-size:.85rem;margin-top:1.4rem">Pricing in ETB. Tap a plan and the join message opens on WhatsApp with your choice already written.</p>
   </div>
+</section>
+
+<section class="first">
+  <div class="in">
+    <h2>First session free</h2>
+    <p>Come train once, no card, no pressure. If you like it, pick a plan above and join.</p>
+    <a class="btn" href="https://wa.me/251911000011?text=Hello%20Volt%20Gym%2C%20I%27d%20like%20to%20book%20my%20first%20free%20session%20(sample)." target="_blank" rel="noopener">Claim it →</a>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Volt Gym -- sample concept, not a real business</div>
+  <div>Kazanchis, opposite the Sheraton, Addis Ababa · Mon - Sun 05:30 - 22:00 · Sample shown for demonstration, real business info goes in on order</div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  var CLASSES = [
+    { id:"barbell", name:"BARBELL CLUB", when:"MON · WED · 06:00", desc:"Barbell work, progressive overload. Coached in small groups so every rep is watched.", seats:12 },
+    { id:"hiit", name:"HIIT BURN", when:"TUE · THU · 18:00", desc:"High intensity, short bursts. Ropes, sleds and bodyweight, done in 45 minutes.", seats:18 },
+    { id:"spin", name:"SPIN NIGHT", when:"FRI · 17:00", desc:"Cardio on the bike, music loud, lights low. Bring a towel and a water bottle.", seats:10 },
+    { id:"power", name:"POWER LIFT", when:"SAT · 09:00", desc:"Squat, bench and deadlift technique with the bar, built up across the session.", seats:8 },
+    { id:"mobility", name:"OPEN GYM", when:"SUN · 08:00 - 14:00", desc:"Free floor time. Coaches on rotation for form checks, no class structure.", seats:20 }
+  ];
+  var PLANS = [
+    { name:"DROP IN", price:"250", unit:"per session", perks:["Any class, one visit","No membership card","Pay on arrival"], math:"250 ETB per visit" },
+    { name:"MONTHLY", price:"2,800", unit:"per month", perks:["Unlimited classes","2 guest passes / month","Free body assessment"], math:"about 230 ETB per class if you train 12x", hot:true },
+    { name:"YEARLY", price:"28,000", unit:"per year", perks:["Unlimited classes","6 guest passes","One free month","Frozen 30 days anytime"], math:"2 months free vs monthly", hot:false }
+  ];
+
+  function seatState(cl){
+    if(cl.seats<=0) return {label:"FULL", cls:"full"};
+    if(cl.seats<=4) return {label:cl.seats+" seats left", cls:"low"};
+    return {label:cl.seats+" seats left", cls:""};
+  }
+
+  function renderClasses(){
+    var g=document.getElementById("class-grid"); g.innerHTML="";
+    CLASSES.forEach(function(cl){
+      var st=seatState(cl);
+      var pct=Math.max(4, Math.round(cl.seats/20*100));
+      var d=document.createElement("article"); d.className="cls";
+      d.innerHTML=
+        "<div class=\"top\"><div class=\"when\">"+cl.when+"</div><h3>"+cl.name+"</h3></div>"+
+        "<div class=\"desc\">"+cl.desc+"</div>"+
+        "<div class=\"foot\"><span class=\"seats "+st.cls+"\">"+st.label+"<span class=\"bar\"><i style=\"width:"+pct+"%\"></i></span></span>"+
+        (cl.seats>0 ? "<button class=\"btn small\" data-id=\""+cl.id+"\">Book slot</button>" : "<span class=\"mono\" style=\"font-size:.7rem\">JOIN WAITLIST</span>")+
+        "</div>";
+      g.appendChild(d);
+      var b=d.querySelector(".btn");
+      if(b) b.onclick=function(){ book(cl); };
+      var wl=d.querySelector(".mono");
+      if(wl){ wl.onclick=function(){ waitlist(cl); }; wl.style.cursor="pointer"; }
+    });
+  }
+
+  function book(cl){
+    cl.seats--;
+    var msg="Hello Volt Gym, I want to book the "+cl.name+" slot ("+cl.when+"). Sample booking.";
+    window.open("https://wa.me/251911000011?text="+encodeURIComponent(msg),"_blank");
+    renderClasses();
+  }
+  function waitlist(cl){
+    var msg="Hello Volt Gym, add me to the waitlist for "+cl.name+" ("+cl.when+"). Sample.";
+    window.open("https://wa.me/251911000011?text="+encodeURIComponent(msg),"_blank");
+  }
+
+  function renderPlans(){
+    var g=document.getElementById("plan-grid"); g.innerHTML="";
+    PLANS.forEach(function(p){
+      var d=document.createElement("article"); d.className="plan"+(p.hot?" hot":"");
+      var perks=p.perks.map(function(x){return "<li>"+x+"</li>";}).join("");
+      var tag=p.hot?"<div class=\"mono\" style=\"color:var(--yellow);font-size:.66rem;letter-spacing:.2em;margin-bottom:.4rem\">MOST POPULAR</div>":"";
+      d.innerHTML=tag+"<div class=\"p-name\">"+p.name+"</div><div class=\"p-price\">"+p.price+"<small> "+p.unit+"</small></div><ul>"+perks+"</ul><div class=\"math\">"+p.math+"</div>";
+      var btn=document.createElement("button"); btn.type="button"; btn.className="btn"+(p.hot?" yellow":"");
+      btn.textContent="Join "+p.name;
+      btn.onclick=function(){
+        var msg="Hello Volt Gym, I want to join on the "+p.name+" plan ("+p.price+" "+p.unit+"). Sample inquiry.";
+        window.open("https://wa.me/251911000011?text="+encodeURIComponent(msg),"_blank");
+      };
+      d.appendChild(btn);
+      g.appendChild(d);
+    });
+  }
+
+  renderClasses(); renderPlans();
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

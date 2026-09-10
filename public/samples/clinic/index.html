@@ -6,59 +6,115 @@
 <title>Selam Health Center: Clinic with Booking (Concept Sample)</title>
 <meta name="description" content="Concept sample website for a fictional clinic with appointment booking. Not a real business." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 <style>
-  :root { --teal:#0f766e; --teal-deep:#0b5d57; --teal-bg:#e6f2f1; --ink:#12242a; --ink-soft:#4c6368; --white:#fff; --line:rgba(18,36,42,.14); }
+  :root {
+    --bg:#f7faf9; --white:#fff; --ink:#0f2b2a; --muted:#4c6866; --line:#dde9e6;
+    --teal:#0e7c6b; --teal-deep:#0a5f52; --mint:#dff3ec; --amber:#d98e2b; --rose:#c25b4a;
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Manrope',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Libre Franklin',sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; }
   img { display:block; max-width:100%; }
   a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { font-weight:800; font-size:1.1rem; color:var(--teal); }
-  .brand small { display:block; font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); }
-  nav { display:flex; gap:1.8rem; align-items:center; }
-  nav a { font-size:.88rem; font-weight:700; color:var(--ink-soft); }
+  .wrap { width:min(960px,92%); margin-inline:auto; }
+
+  header { position:sticky; top:0; z-index:60; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); }
+  .hdr { display:flex; align-items:center; justify-content:space-between; padding-block:.8rem; }
+  .logo { display:flex; align-items:center; gap:.65rem; font-weight:700; font-size:1.05rem; }
+  .logo .mark { width:30px; height:30px; border-radius:50%; background:var(--teal); color:var(--white); display:grid; place-items:center; font-size:.7rem; font-weight:800; }
+  nav { display:flex; gap:1.6rem; align-items:center; }
+  nav a { font-size:.9rem; font-weight:600; color:var(--muted); }
   nav a:hover { color:var(--teal); }
-  .nav-cta { background:var(--teal); color:var(--white) !important; padding:.6rem 1.3rem; border-radius:30px; font-size:.85rem; }
-  .hero { padding:9rem 0 5rem; background:linear-gradient(135deg,var(--teal-bg),#fff); }
-  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.75rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; }
-  h1 { font-family:'DM Serif Display',serif; font-size:clamp(2.1rem,5vw,3.4rem); font-weight:400; line-height:1.12; margin-bottom:1rem; }
-  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border-radius:30px; border:1px solid transparent; }
-  .btn-solid { background:var(--teal); color:var(--white); }
-  .btn-ghost { border-color:var(--teal); color:var(--teal); }
-  .hero-fig { border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(15,118,110,.18); }
-  .hero-fig img { width:100%; aspect-ratio:4/3; object-fit:cover; }
-  section { padding:5rem 0; }
-  .section-label { font-size:.75rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); margin-bottom:.8rem; }
-  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:400; margin-bottom:.8rem; }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
-  .svc { border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:10px; padding:1.5rem; background:#fbfdfd; }
-  .svc h3 { font-size:1.05rem; font-weight:800; margin-bottom:.4rem; }
-  .svc p { color:var(--ink-soft); font-size:.9rem; }
-  .book { background:var(--teal-deep); color:var(--white); }
-  .book .wrap { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .book .section-label { color:#7dd3cf; }
-  .book .section-title { color:var(--white); }
-  .book p { color:rgba(255,255,255,.8); margin-bottom:1.4rem; }
-  .book-form { background:var(--white); color:var(--ink); border-radius:14px; padding:1.8rem; }
-  .book-form h4 { font-size:1rem; font-weight:800; margin-bottom:1rem; }
-  .field { margin-bottom:.9rem; }
-  .field label { display:block; font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:.3rem; }
-  .field input, .field select { width:100%; padding:.7rem .8rem; border:1.5px solid var(--line); border-radius:8px; font:inherit; font-size:.9rem; }
-  .book-form .btn { width:100%; text-align:center; }
-  .book-note { font-size:.72rem; color:var(--ink-soft); text-align:center; margin-top:.8rem; }
-  .why-list { list-style:none; margin-top:1.6rem; display:grid; gap:.9rem; }
-  .why-list li { display:flex; gap:.7rem; color:var(--ink-soft); font-size:.95rem; }
-  .w-dot { width:9px; height:9px; background:var(--teal); border-radius:50%; margin-top:.55rem; flex-shrink:0; }
-  footer { border-top:1px solid var(--line); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--teal); color:var(--white); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:30px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .svc-grid{grid-template-columns:1fr;} .book .wrap{grid-template-columns:1fr;} nav{display:none;} .nav-cta{display:none;} }
+  .nav-cta { background:var(--teal); color:var(--white) !important; padding:.65rem 1.3rem; border-radius:999px; font-weight:700; font-size:.88rem; }
+  .nav-cta:hover { background:var(--teal-deep); }
+
+  /* Calm centered care hero */
+  .hero { padding:4.4rem 0 2.6rem; text-align:center; }
+  .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:.72rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--teal); }
+  .kicker .dot { width:8px; height:8px; border-radius:50%; background:var(--amber); animation:pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+  h1 { font-family:'Newsreader',serif; font-weight:500; font-size:clamp(2.3rem,5.2vw,3.9rem); line-height:1.05; margin:1rem 0 1.1rem; }
+  h1 em { font-style:italic; color:var(--teal); }
+  .lead { color:var(--muted); max-width:36rem; margin:0 auto 1.6rem; }
+  .trust-row { display:flex; justify-content:center; gap:2.4rem; }
+  .trust-row div b { display:block; font-family:'Newsreader',serif; font-size:1.5rem; }
+  .trust-row div span { font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+
+  /* Booking hero card */
+  .book-card { background:var(--white); border:1px solid var(--line); border-radius:22px; padding:2rem; box-shadow:0 24px 60px rgba(10,95,82,.12); text-align:left; max-width:760px; margin:2.4rem auto 0; }
+  .book-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; flex-wrap:wrap; gap:.6rem; }
+  .book-head b { font-family:'Newsreader',serif; font-size:1.3rem; }
+  .wait { background:var(--mint); color:var(--teal-deep); font-weight:700; font-size:.78rem; padding:.4rem .8rem; border-radius:999px; }
+  .today-list { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:.6rem 2rem; font-size:.9rem; margin-bottom:1.3rem; }
+  .today-list li { display:flex; justify-content:space-between; border-bottom:1px dashed var(--line); padding-bottom:.5rem; color:var(--muted); }
+  .today-list li b { color:var(--ink); font-weight:600; }
+  @media(max-width:640px){ .today-list { grid-template-columns:1fr; } }
+
+  .btn { display:inline-block; text-align:center; font-weight:700; font-size:.92rem; padding:.95rem 1.7rem; border-radius:999px; border:1px solid transparent; cursor:pointer; }
+  .btn-primary { background:var(--teal); color:var(--white); }
+  .btn-primary:hover { background:var(--teal-deep); }
+  .btn-line { border-color:var(--teal); color:var(--teal); background:transparent; }
+  .btn-line:hover { background:var(--mint); }
+  .btn-block { width:100%; }
+
+  section { padding:3.4rem 0; }
+  .sec-label { font-size:.72rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--amber); margin-bottom:.5rem; }
+  h2 { font-family:'Newsreader',serif; font-weight:500; font-size:clamp(1.9rem,3.4vw,2.7rem); line-height:1.1; margin-bottom:.7rem; }
+  .sub { color:var(--muted); max-width:38rem; margin-bottom:1.8rem; }
+  .center-label { text-align:center; }
+
+  .clinic-shot { margin:0 0 1.6rem; }
+  .clinic-shot img { width:100%; height:clamp(220px,34vw,380px); object-fit:cover; border-radius:18px; border:1px solid var(--line); }
+
+  .dept-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  .dept { background:var(--white); border:1px solid var(--line); border-radius:14px; padding:1.3rem 1.4rem; cursor:pointer; transition:border-color .15s, transform .15s; }
+  .dept:hover { border-color:var(--teal); transform:translateY(-2px); }
+  .dept .ic { width:38px; height:38px; border-radius:10px; background:var(--mint); color:var(--teal-deep); display:grid; place-items:center; font-size:1rem; margin-bottom:.8rem; }
+  .dept h3 { font-size:1.02rem; margin-bottom:.3rem; }
+  .dept p { font-size:.85rem; color:var(--muted); }
+  .dept .when { display:inline-block; margin-top:.6rem; font-size:.74rem; font-weight:700; color:var(--teal); }
+
+  /* Wizard */
+  .wizard { background:var(--ink); color:var(--white); }
+  .wizard .wrap { padding-block:3.6rem; text-align:center; }
+  .wizard .sec-label { color:var(--amber); }
+  .wizard h2 { color:var(--white); }
+  .wizard .sub { color:rgba(255,255,255,.72); margin-inline:auto; }
+  .steps-dots { display:flex; justify-content:center; gap:1rem; margin:1.6rem 0; flex-wrap:wrap; }
+  .step-dot { font-size:.78rem; color:rgba(255,255,255,.55); }
+  .step-dot b { display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; border:1px solid rgba(255,255,255,.35); margin-right:.5rem; font-size:.75rem; }
+  .step-dot.active { color:var(--white); }
+  .step-dot.active b { background:var(--amber); border-color:var(--amber); color:var(--ink); }
+  .step-dot.done b { background:var(--teal); border-color:var(--teal); color:var(--white); }
+  .wiz-card { background:var(--white); color:var(--ink); border-radius:18px; padding:2rem; max-width:640px; margin:0 auto; text-align:left; }
+  .wiz-card h3 { font-family:'Newsreader',serif; font-weight:600; font-size:1.4rem; margin-bottom:1.1rem; }
+  .choice-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem; }
+  .choice { text-align:left; background:var(--bg); border:1.5px solid var(--line); border-radius:12px; padding:.95rem 1rem; cursor:pointer; font:inherit; }
+  .choice b { display:block; font-size:.95rem; }
+  .choice span { font-size:.8rem; color:var(--muted); }
+  .choice.sel { border-color:var(--teal); background:var(--mint); }
+  .choice.sel b { color:var(--teal-deep); }
+  .chip-row { display:flex; flex-wrap:wrap; gap:.6rem; }
+  .chip-row button { border:1.5px solid var(--line); background:var(--bg); border-radius:999px; padding:.55rem 1rem; font:inherit; font-size:.88rem; font-weight:600; cursor:pointer; }
+  .chip-row button.sel { background:var(--teal); border-color:var(--teal); color:var(--white); }
+  .wiz-nav { display:flex; justify-content:space-between; margin-top:1.6rem; gap:1rem; }
+  .wiz-back { background:transparent; border:1.5px solid var(--line); color:var(--muted); padding:.85rem 1.4rem; border-radius:999px; font:inherit; font-weight:700; cursor:pointer; }
+  .done-box { text-align:center; padding:1.4rem 0; }
+  .done-box .big { font-size:2.6rem; }
+  .done-box h4 { font-family:'Newsreader',serif; font-size:1.5rem; margin:.5rem 0 .4rem; }
+  .done-box p { color:var(--muted); font-size:.94rem; max-width:30rem; margin:0 auto 1.2rem; }
+
+  footer { border-top:1px solid var(--line); padding:2.2rem 0; }
+  .foot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--muted); font-size:.85rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--amber); color:var(--ink); font-size:.72rem; font-weight:700; letter-spacing:.1em; padding:.38rem .8rem; border-radius:4px; }
+
+  @media (max-width:920px){
+    .dept-grid { grid-template-columns:1fr; }
+    .choice-grid { grid-template-columns:1fr; }
+    nav { display:none; }
+  }
 </style>
 </head>
 <body>
@@ -66,94 +122,159 @@
 <div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">SELAM HEALTH CENTER<small>CLINIC · CONCEPT SAMPLE</small></a>
+  <div class="wrap hdr">
+    <a class="logo" href="#top"><span class="mark">SH</span> Selam Health Center</a>
     <nav>
-      <a href="#services">Services</a>
+      <a href="#departments">Departments</a>
       <a href="#book">Book</a>
-      <a href="#why">Why Us</a>
       <a class="nav-cta" href="#book">Book Appointment</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
+  <!-- CALM CENTERED HERO -->
   <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A concept sample clinic · Addis Ababa</p>
-        <h1>Care That Respects Your Time</h1>
-        <p class="hero-sub">Waiting 60-180 minutes is the #1 complaint about clinics. This sample shows how booking + reminders fix it for a fictional clinic.</p>
-        <div>
-          <a class="btn btn-solid" href="#book">Book an Appointment</a>
-          <a class="btn btn-ghost" href="#services">Our Services</a>
-        </div>
-      </div>
-      <div class="hero-fig">
-        <img src="../img/clinic.jpg" alt="Clinic at the sample center" />
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
     <div class="wrap">
-      <p class="section-label">Services</p>
-      <h2 class="section-title">Care Under One Roof</h2>
-      <div class="svc-grid">
-        <div class="svc"><h3>General Medicine</h3><p>Routine check-ups, diagnosis, and treatment plans.</p></div>
-        <div class="svc"><h3>Pediatrics</h3><p>Well-child visits, vaccinations, and growth tracking.</p></div>
-        <div class="svc"><h3>Laboratory</h3><p>Fast, reliable lab tests with same-day results.</p></div>
-        <div class="svc"><h3>Maternity</h3><p>Prenatal care, delivery, and postnatal support.</p></div>
-        <div class="svc"><h3>Dental</h3><p>Check-ups, cleaning, and treatment in one visit.</p></div>
-        <div class="svc"><h3>Pharmacy</h3><p>Medicines in stock and dispensed with your visit.</p></div>
+      <span class="kicker"><span class="dot"></span> Open today until 20:00</span>
+      <h1>Care that <em>respects your time.</em></h1>
+      <p class="lead">Waiting 60 to 180 minutes is the number one complaint about clinics in Addis. This sample shows the fix: pick a slot, get a reminder, walk in when it is your turn.</p>
+      <div class="trust-row">
+        <div><b>15 min</b><span>avg. wait</span></div>
+        <div><b>40+</b><span>doctors</span></div>
+        <div><b>24/7</b><span>pharmacy</span></div>
       </div>
-    </div>
-  </section>
 
-  <section class="book" id="book">
-    <div class="wrap" style="padding:1rem 0;">
-      <div>
-        <p class="section-label">Book online</p>
-        <h2 class="section-title">Skip the Waiting Room</h2>
-        <p>Pick a time, get a reminder, arrive when it's your turn. This sample form shows the flow; on order it connects to WhatsApp or a real calendar.</p>
-        <ul class="why-list">
-          <li><span class="w-dot"></span>Reminders reduce no-shows</li>
-          <li><span class="w-dot"></span>Staff stop managing paper diaries</li>
-          <li><span class="w-dot"></span>Patient records stay searchable</li>
+      <div class="book-card">
+        <div class="book-head"><b>Today at Selam</b><span class="wait">Short queue</span></div>
+        <ul class="today-list">
+          <li><span>General Medicine</span><b>Next slot 09:40</b></li>
+          <li><span>Pediatrics</span><b>Next slot 10:15</b></li>
+          <li><span>Laboratory</span><b>Walk-in OK</b></li>
+          <li><span>Dental</span><b>Next slot 11:00</b></li>
         </ul>
+        <a class="btn btn-primary btn-block" href="#book">Book an Appointment</a>
       </div>
-      <form class="book-form" onsubmit="return false;">
-        <h4>Book an appointment</h4>
-        <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="Sample name" /></div>
-        <div class="field"><label for="f-svc">Service</label><select id="f-svc"><option>General Medicine</option><option>Pediatrics</option><option>Laboratory</option><option>Maternity</option><option>Dental</option></select></div>
-        <div class="field"><label for="f-date">Preferred date</label><input id="f-date" type="date" /></div>
-        <div class="field"><label for="f-time">Preferred time</label><input id="f-time" type="time" /></div>
-        <button class="btn btn-solid" type="submit">Request Appointment</button>
-        <p class="book-note">Sample form, connects to WhatsApp on order</p>
-      </form>
     </div>
   </section>
 
-  <section id="why">
+  <!-- DEPARTMENTS -->
+  <section id="departments">
     <div class="wrap">
-      <p class="section-label">Why patients choose us</p>
-      <h2 class="section-title">Clean. Fast. Trusted.</h2>
-      <div class="svc-grid">
-        <div class="svc"><h3>On-time visits</h3><p>Appointments respected within 15 minutes.</p></div>
-        <div class="svc"><h3>Clean facilities</h3><p>Sanitized, organized, and welcoming.</p></div>
-        <div class="svc"><h3>24/7 pharmacy</h3><p>Medicines available when you need them.</p></div>
+      <p class="sec-label center-label">Departments</p>
+      <h2 style="text-align:center;">Care under one roof</h2>
+      <p class="sub" style="text-align:center;">Every department books its own slots, so no one spends the morning in a chair they do not need.</p>
+      <div class="clinic-shot"><img src="../img/clinic.jpg" alt="Inside Selam Health Center, concept sample" /></div>
+      <div class="dept-grid">
+        <div class="dept"><div class="ic">◐</div><h3>General Medicine</h3><p>Check-ups, diagnosis, treatment plans.</p><span class="when">Daily 08:00-20:00</span></div>
+        <div class="dept"><div class="ic">◉</div><h3>Pediatrics</h3><p>Well-child visits, vaccinations, growth tracking.</p><span class="when">Daily 08:00-18:00</span></div>
+        <div class="dept"><div class="ic">⚗</div><h3>Laboratory</h3><p>Same-day results on routine panels.</p><span class="when">Daily 07:30-19:00</span></div>
+        <div class="dept"><div class="ic">◇</div><h3>Maternity</h3><p>Prenatal care, delivery, postnatal support.</p><span class="when">By appointment</span></div>
+        <div class="dept"><div class="ic">◗</div><h3>Dental</h3><p>Check-ups, cleaning, and treatment.</p><span class="when">Mon-Sat 09:00-18:00</span></div>
+        <div class="dept"><div class="ic">✚</div><h3>Pharmacy</h3><p>Medicines dispensed with your visit.</p><span class="when">Open 24 hours</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING WIZARD -->
+  <section class="wizard" id="book">
+    <div class="wrap">
+      <p class="sec-label">Online booking</p>
+      <h2>Three taps, one reminder</h2>
+      <p class="sub">Choose a department, pick a time that works, and the clinic confirms on WhatsApp. On order this wires to a real calendar and SMS reminders.</p>
+
+      <div class="steps-dots">
+        <span class="step-dot active" id="sd0"><b>1</b>Department</span>
+        <span class="step-dot" id="sd1"><b>2</b>Time</span>
+        <span class="step-dot" id="sd2"><b>3</b>Confirm</span>
+      </div>
+
+      <div class="wiz-card">
+        <!-- Step 1 -->
+        <div class="wiz-step" id="ws0">
+          <h3>What do you need?</h3>
+          <div class="choice-grid">
+            <button class="choice sel" data-svc="General Medicine"><b>General Medicine</b><span>Routine check-up or new symptoms</span></button>
+            <button class="choice" data-svc="Pediatrics"><b>Pediatrics</b><span>Children under 15</span></button>
+            <button class="choice" data-svc="Laboratory"><b>Laboratory</b><span>Blood work, tests</span></button>
+            <button class="choice" data-svc="Dental"><b>Dental</b><span>Cleaning or treatment</span></button>
+          </div>
+          <div class="wiz-nav"><span></span><button class="btn btn-primary" id="wNext1">Choose a time</button></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="wiz-step" id="ws1" style="display:none;">
+          <h3>Pick a slot</h3>
+          <div class="chip-row" id="slotChips">
+            <button type="button" data-t="09:00">09:00</button>
+            <button type="button" data-t="10:30">10:30</button>
+            <button type="button" data-t="12:00">12:00</button>
+            <button type="button" data-t="14:30" class="sel">14:30</button>
+            <button type="button" data-t="16:00">16:00</button>
+            <button type="button" data-t="17:30">17:30</button>
+          </div>
+          <div class="wiz-nav"><button class="wiz-back" id="wBack1">Back</button><button class="btn btn-primary" id="wNext2">Confirm booking</button></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="wiz-step" id="ws2" style="display:none;">
+          <div class="done-box">
+            <div class="big">✓</div>
+            <h4>Slot reserved</h4>
+            <p id="doneText">General Medicine on the next available date at 14:30. A reminder goes to your phone before the visit.</p>
+            <button class="btn btn-primary" id="wDone">Send to WhatsApp</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
+  <div class="wrap foot">
     <div>© <span id="year"></span> Selam Health Center, a fictional concept sample</div>
-    <div>Sample address · Addis Ababa (fictional)</div>
+    <div>Kazanchis, near the African Union HQ, Addis Ababa · Open daily 08:00 - 20:00</div>
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+let svc = 'General Medicine';
+let slot = '14:30';
+
+function go(step) {
+  [0,1,2].forEach(i => {
+    document.getElementById('ws' + i).style.display = i === step ? '' : 'none';
+    const d = document.getElementById('sd' + i);
+    d.classList.toggle('active', i === step);
+    d.classList.toggle('done', i < step);
+  });
+  if (step === 2) {
+    document.getElementById('doneText').textContent = svc + ' reserved on the next available date at ' + slot + '. A reminder goes to your phone before the visit.';
+  }
+}
+document.querySelectorAll('.choice').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('.choice').forEach(x => x.classList.remove('sel'));
+    c.classList.add('sel');
+    svc = c.dataset.svc;
+  });
+});
+document.querySelectorAll('#slotChips button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#slotChips button').forEach(x => x.classList.remove('sel'));
+    b.classList.add('sel');
+    slot = b.dataset.t;
+  });
+});
+document.getElementById('wNext1').addEventListener('click', () => go(1));
+document.getElementById('wBack1').addEventListener('click', () => go(0));
+document.getElementById('wNext2').addEventListener('click', () => go(2));
+document.getElementById('wDone').addEventListener('click', () => {
+  const msg = 'Hello Selam Health Center, I would like to book: ' + svc + ' at ' + slot + ' (sample).';
+  window.open('https://wa.me/251911000004?text=' + encodeURIComponent(msg), '_blank');
+});
+</script>
 </body>
 </html>

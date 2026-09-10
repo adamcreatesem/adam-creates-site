@@ -11,12 +11,12 @@
   :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#1c130c; --side-ink:#d9c8ba; --accent:#ea580c; --accent-l:#f97316; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
 
   .topbar { background:var(--side); color:#fff; }
   .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
   .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
-  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#b5a392; font-weight:400; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:#b5a392; font-weight:400; }
   .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#d9c8ba; }
 
   .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
@@ -46,7 +46,7 @@
   .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
 
   table { width:100%; border-collapse:collapse; font-size:.84rem; }
-  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  th { text-align:left; font-size:.66rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
   td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
   tr:last-child td { border-bottom:none; }
   .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
@@ -93,6 +93,14 @@
     .kpis { grid-template-columns:repeat(2,1fr); }
     .settings-grid { grid-template-columns:1fr; }
     .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+  .layout { min-width:0; grid-template-columns:minmax(0,1fr); }
+  .main { min-width:0; }
+  .layout > * { min-width:0; }
+  .main > div { min-width:0; }
+  .card { min-width:0; }
+  .sidebar { min-width:0; }
+  .card { overflow-x:auto; }
+
     .side-item { margin:0; }
   }
 </style>
@@ -203,8 +211,8 @@
         <div class="settings-grid">
           <div>
             <div class="field"><label>Company name</label><input value="Meskel Construction" /></div>
-            <div class="field"><label>Phone</label><input value="+251 11 000 00 00" /></div>
-            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+            <div class="field"><label>Phone</label><input value="+251 11 200 00 01" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 200 00 02" /></div>
           </div>
           <div>
             <div class="switch-row"><div><b>Material low alerts</b><p>WhatsApp when a site material hits minimum</p></div><div class="switch on"></div></div>
@@ -232,7 +240,7 @@
 
   const PROJ = [
     { p:'Apartment Block B', c:'Private client', site:'Bole', dl:'Nov 2026', prog:64, status:'on-track' },
-    { p:'Office Fit-out', c:'Tahlia FEA', site:'CMC', dl:'Sep 2026', prog:82, status:'on-track' },
+    { p:'Office Fit-out', c:'Zemen Holdings', site:'CMC', dl:'Sep 2026', prog:82, status:'on-track' },
     { p:'Warehouse Shell', c:'Addis Warehouse', site:'Kality', dl:'Oct 2026', prog:41, status:'at-risk' },
     { p:'Guest House Build', c:'Daylin Group', site:'Bole', dl:'Jan 2027', prog:18, status:'on-track' },
     { p:'School Block C', c:'Kokebe Academy', site:'Piassa', dl:'Dec 2026', prog:55, status:'on-track' },
@@ -255,7 +263,7 @@
     { e:'Mixer MX-2', site:'Bole (Block B)', svc:'2 weeks ago', status:'working' },
     { e:'Crane CR-1', site:'Bole (Block B)', svc:'3 days ago', status:'working' },
     { e:'Dumper DP-3', site:'Kality', svc:'1 month ago', status:'working' },
-    { e:'Vibrator VR-1', site:'—', svc:'2 months ago', status:'idle' },
+    { e:'Vibrator VR-1', site:'-', svc:'2 months ago', status:'idle' },
   ];
   const EXP = [
     { d:'Aug 3', p:'Warehouse Shell', i:'Cement order', amt:340000 },
@@ -319,7 +327,7 @@
       <div class="form-actions"><button class="btn btn-accent btn-sm" id="saveAdd">Create project</button></div>`;
     $('saveAdd').onclick = () => {
       const name = $('fName').value.trim() || 'New Project';
-      PROJ.unshift({ p:name, c:$('fClient').value || '—', site:$('fSite').value, dl:$('fDl').value, prog:0, status:'on-track' });
+      PROJ.unshift({ p:name, c:$('fClient').value || '-', site:$('fSite').value, dl:$('fDl').value, prog:0, status:'on-track' });
       renderAll();
       $('addFormWrap').innerHTML = '';
     };

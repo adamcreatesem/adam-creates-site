@@ -3,210 +3,252 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Selam Style: Concept Sample</title>
-<meta name="description" content="Concept sample website for a fictional clothing boutique. Not a real business." />
+<title>Weyni Style: The Lookbook (Concept Sample)</title>
+<meta name="description" content="Concept sample website for a fictional boutique. Not a real business." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --bone:#f4f0e8; --cream:#efe9dd; --ink:#1d1b18; --stone:#6f6a60; --line:#d8d0c0; --accent:#a3482f; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Jost',sans-serif; background:var(--bone); color:var(--ink); line-height:1.6; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1120px,92%); margin-inline:auto; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:var(--bone); font-size:.66rem; font-weight:500; letter-spacing:.1em; padding:.35rem .7rem; }
-
-  header { border-bottom:1px solid var(--line); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; }
-  .brand { font-family:'Italiana',serif; font-size:1.6rem; letter-spacing:.14em; }
-  .brand span { color:var(--accent); }
-  nav { display:flex; gap:1.9rem; }
-  nav a { font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; color:var(--stone); }
-  nav a:hover { color:var(--accent); }
-
-  .hero { display:grid; grid-template-columns:1fr 1fr; min-height:70vh; }
-  .hero-text { display:flex; flex-direction:column; justify-content:center; padding:4rem 4rem 4rem 0; }
-  .hero-text .kick { font-size:.66rem; letter-spacing:.4em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
-  .hero-text h1 { font-family:'Italiana',serif; font-weight:400; font-size:clamp(2.4rem,5.5vw,4rem); line-height:1.04; letter-spacing:.02em; }
-  .hero-text h1 em { font-style:normal; color:var(--accent); }
-  .hero-text p { color:var(--stone); margin:1.4rem 0 2rem; max-width:24rem; }
-  .btn { display:inline-block; padding:.95rem 2.2rem; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; border:1px solid var(--ink); transition:all .25s; }
-  .btn-solid { background:var(--ink); color:var(--bone); }
-  .btn-solid:hover { background:var(--accent); border-color:var(--accent); }
-  .hero-photo { overflow:hidden; }
-  .hero-photo img { width:100%; height:100%; object-fit:cover; }
-
-  .marquee { overflow:hidden; border-block:1px solid var(--line); padding:.8rem 0; background:var(--cream); }
-  .marquee span { display:inline-block; white-space:nowrap; font-size:.66rem; letter-spacing:.34em; text-transform:uppercase; color:var(--stone); animation:slide 22s linear infinite; }
-  @keyframes slide { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-
-  section { padding:4.5rem 0; }
-  .sec-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:2.2rem; }
-  .sec-label { font-size:.66rem; letter-spacing:.36em; text-transform:uppercase; color:var(--accent); }
-  .sec-title { font-family:'Italiana',serif; font-weight:400; font-size:clamp(1.8rem,3.5vw,2.6rem); letter-spacing:.03em; margin-top:.3rem; }
-  .sec-link { font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--stone); border-bottom:1px solid var(--accent); padding-bottom:.2rem; }
-  .sec-link:hover { color:var(--accent); }
-
-  .products { display:grid; grid-template-columns:repeat(3,1fr); gap:2.4rem; }
-  .product { }
-  .product .img { overflow:hidden; background:var(--cream); }
-  .product .img img { aspect-ratio:3/4; object-fit:cover; transition:transform .6s; }
-  .product:hover .img img { transform:scale(1.04); }
-  .product .meta { padding-top:.9rem; display:flex; justify-content:space-between; align-items:start; }
-  .product h3 { font-family:'Italiana',serif; font-weight:400; font-size:1.15rem; letter-spacing:.04em; }
-  .product .price { font-size:.9rem; }
-  .product .price small { color:var(--stone); font-size:.72rem; }
-  .product .order { display:inline-block; margin-top:.6rem; font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:.15rem; }
-  .product .order:hover { color:var(--ink); border-color:var(--ink); }
-  .product .tag-new { display:inline-block; background:var(--accent); color:var(--bone); font-size:.56rem; letter-spacing:.2em; text-transform:uppercase; padding:.25rem .55rem; margin-bottom:.5rem; }
-
-  .features { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); }
-  .feature { padding:2rem; text-align:center; border-right:1px solid var(--line); }
-  .feature:last-child { border-right:none; }
-  .feature .ico { font-size:1.6rem; margin-bottom:.6rem; }
-  .feature h3 { font-family:'Italiana',serif; font-weight:400; font-size:1.15rem; letter-spacing:.04em; }
-  .feature p { font-size:.8rem; color:var(--stone); margin-top:.35rem; }
-
-  .lookbook { display:grid; grid-template-columns:2fr 1fr 1fr; gap:1.2rem; }
-  .lookbook img { width:100%; height:100%; object-fit:cover; }
-  .lookbook .tall { grid-row:span 2; aspect-ratio:3/4; }
-
-  .contact { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; background:var(--ink); color:var(--bone); padding:3.5rem 0; }
-  .contact h2 { font-family:'Italiana',serif; font-weight:400; font-size:clamp(1.8rem,3.5vw,2.5rem); letter-spacing:.03em; }
-  .contact p { color:rgba(244,240,232,.7); margin:1rem 0 1.8rem; font-size:.95rem; }
-  .contact .btn-solid { background:var(--accent); border-color:var(--accent); color:var(--bone); }
-  .contact .hours { font-size:.8rem; color:rgba(244,240,232,.7); line-height:2; }
-
-  footer { padding:1.8rem 0; text-align:center; font-size:.72rem; color:var(--stone); border-top:1px solid var(--line); }
-  footer div { margin:.15rem 0; }
-
-  @media (max-width:860px) {
-    .hero { grid-template-columns:1fr; }
-    .hero-text { padding:3rem 0; }
-    .products, .features { grid-template-columns:1fr; }
-    .feature { border-right:none; border-bottom:1px solid var(--line); }
-    .lookbook { grid-template-columns:1fr; }
-    .contact { grid-template-columns:1fr; }
-    nav { flex-wrap:wrap; gap:1rem; }
+  :root{
+    --bone:#f5efe4; --paper:#fbf8f1; --ink:#262220; --umber:#6e4f3a; --tan:#c9a87c;
+    --line:#e2d8c8; --soft:#8b8072; --hot:#a33d2b;
   }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bone);color:var(--ink);font-family:Karla,system-ui,sans-serif;line-height:1.6}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--ink);color:var(--bone);font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.15;font-weight:500}
+  a{color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;padding:.85rem 1.5rem;border:0;cursor:pointer;font-family:Karla,sans-serif;font-size:.88rem;letter-spacing:.02em;transition:.2s;border-radius:999px}
+  .btn:hover{background:var(--umber)}
+  .btn.tan{background:var(--tan);color:var(--ink)}
+  .btn.tan:hover{background:#d8b992;color:var(--ink)}
+  .btn.small{padding:.5rem 1.1rem;font-size:.76rem}
+  .btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .btn.line:hover{background:var(--ink);color:var(--paper)}
+  .eyebrow{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--umber)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,239,228,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 22px;max-width:1200px;margin:0 auto;gap:1rem}
+  .brand{font-family:"Playfair Display",serif;font-size:1.5rem;text-decoration:none;font-weight:600}
+  .brand em{font-style:italic;color:var(--umber)}
+  .brand small{display:block;font-family:Karla,sans-serif;font-size:.66rem;letter-spacing:.28em;color:var(--soft);font-weight:700}
+  .nav-links{display:flex;gap:1.6rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.84rem;font-weight:700}
+  .nav-links a:hover{color:var(--umber)}
+  .cart-pill{background:var(--ink);color:var(--paper);border-radius:999px;padding:.45rem .95rem;font-size:.8rem;font-weight:700;display:flex;gap:.4rem;align-items:center;cursor:pointer;border:0;font-family:Karla,sans-serif}
+  .cart-pill .n{background:var(--tan);color:var(--ink);border-radius:999px;padding:0 .45rem;font-size:.72rem}
+  @media(max-width:780px){.nav-links a:not(.btn),.nav-links .btn{display:none}}
+
+  .look{background:var(--paper);border-bottom:1px solid var(--line);overflow:hidden}
+  .look .wrap{padding-top:2.8rem;padding-bottom:0;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:end}
+  @media(max-width:940px){.look .wrap{grid-template-columns:1fr}}
+  .look h1{font-size:clamp(2.4rem,5.6vw,4.2rem);line-height:1.05;margin:.5rem 0 1rem}
+  .look h1 em{font-style:italic;color:var(--umber)}
+  .look-sub{color:var(--soft);max-width:30rem;font-size:1.02rem}
+  .look .cover{position:relative}
+  .look .cover img{width:100%;height:440px;object-fit:cover;display:block}
+  .look .cover .cap{position:absolute;left:0;bottom:0;background:var(--paper);padding:.4rem .9rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .perks{display:flex;gap:1.8rem;flex-wrap:wrap;margin-top:1.4rem;font-size:.78rem;color:var(--umber);font-weight:700}
+  .perks span{display:flex;gap:.4rem;align-items:center}
+
+  .cat-rail{position:sticky;top:60px;z-index:40;background:rgba(245,239,228,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:.7rem 0}
+  .cat-rail .in{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;max-width:1200px;margin:0 auto;padding:0 22px}
+  .cat-chip{border:1.5px solid var(--line);background:var(--paper);padding:.42rem 1.05rem;border-radius:999px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:Karla,sans-serif;color:var(--ink)}
+  .cat-chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .cat-chip .c{color:var(--tan);font-weight:700}
+
+  .shop{padding:2.2rem 0 3rem}
+  .sec-line{display:flex;justify-content:space-between;align-items:flex-end;margin:1rem 0 1.4rem;gap:1rem;flex-wrap:wrap}
+  .sec-line h2{font-size:clamp(1.5rem,2.6vw,2rem)}
+  .sec-line .cnt{font-size:.85rem;color:var(--soft)}
+  .rows{display:flex;flex-direction:column;gap:1.2rem}
+  .row-card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.6fr);background:var(--paper);border:1px solid var(--line);overflow:hidden}
+  @media(max-width:860px){.row-card{grid-template-columns:1fr}}
+  .row-card img{width:100%;height:100%;min-height:250px;object-fit:cover;display:block}
+  .row-info{padding:1.4rem 1.5rem;display:flex;flex-direction:column}
+  .row-info h3{font-size:1.5rem}
+  .row-info .desc{color:var(--soft);font-size:.92rem;margin:.3rem 0 .9rem}
+  .row-info .meta{font-size:.78rem;color:var(--umber);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.8rem}
+  .sizes{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+  .sz{border:1.5px solid var(--line);min-width:42px;text-align:center;padding:.4rem .5rem;font-size:.8rem;font-weight:700;cursor:pointer;background:#fff}
+  .sz.sel{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .sz.out{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+  .price-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:auto;flex-wrap:wrap}
+  .price{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:600}
+  .price small{font-family:Karla,sans-serif;font-size:.8rem;color:var(--soft);font-weight:400}
+
+  .note-s{font-size:.8rem;color:var(--soft);margin-top:1.2rem}
+  .visit{background:var(--ink);color:var(--paper);padding:2.4rem 0}
+  .visit .in{display:flex;justify-content:space-between;gap:1.5rem;align-items:center;flex-wrap:wrap}
+  .visit h2{font-size:clamp(1.5rem,2.8vw,2.2rem);max-width:20ch}
+  .visit h2 em{font-style:italic;color:var(--tan)}
+  .visit p{color:#b9ae9d;font-size:.92rem;margin-top:.4rem}
+  footer{border-top:1px solid var(--line);padding:1.5rem 22px 4.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:var(--soft);max-width:1200px;margin:0 auto}
+
+  .toast{position:fixed;bottom:18px;right:18px;z-index:90;background:var(--ink);color:var(--paper);padding:.8rem 1.3rem;border-radius:999px;font-size:.86rem;font-weight:700;transform:translateY(140%);transition:.3s;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+  .toast.show{transform:translateY(0)}
 </style>
 </head>
-<body>
+<body id="top">
 <div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">Selam<span>Style</span></a>
-    <nav>
-      <a href="#new">New In</a>
-      <a href="#shop">Shop</a>
-      <a href="#lookbook">Lookbook</a>
-      <a href="#contact">Visit Us</a>
-    </nav>
+  <div class="nav">
+    <a class="brand" href="#top">Weyni <em>Style</em><small>BOUTIQUE · ADDIS ABABA · CONCEPT SAMPLE</small></a>
+    <div class="nav-links">
+      <a href="#shop">The Lookbook</a>
+      <a href="#visit">Visit Us</a>
+      <button class="cart-pill" id="open-cart" type="button">Bag <span class="n" id="bag-n">0</span></button>
+    </div>
   </div>
 </header>
 
-<section class="hero" id="top" style="padding:0;">
-  <div class="hero-text wrap" style="margin-inline:auto 0;">
-    <div class="kick">Boutique · Addis Ababa</div>
-    <h1>Dress like it&rsquo;s<br />already <em>your day.</em></h1>
-    <p>Curated pieces for every occasion: elegant, comfortable, and made to be noticed.</p>
+<section class="look">
+  <div class="wrap">
     <div>
-      <a class="btn btn-solid" href="#shop">Shop the Collection</a>
-      <a class="btn" href="#contact" style="margin-left:.8rem;">Visit the Store</a>
+      <p class="eyebrow">Boutique · Concept sample · Addis Ababa</p>
+      <h1>Dress like it is <em>already your day.</em></h1>
+      <p class="look-sub">Curated pieces for every occasion, elegant and made to be noticed. Shop by occasion below, pick your size, and order straight to WhatsApp.</p>
+      <div class="perks">
+        <span>✦ New arrivals weekly</span>
+        <span>✦ Free delivery over 3,000 ETB</span>
+        <span>✦ Style advice in-store</span>
+      </div>
     </div>
-  </div>
-  <div class="hero-photo"><img src="../img/retail.jpg" alt="Boutique sample" /></div>
-</section>
-
-<div class="marquee"><span>New arrivals weekly&nbsp;&nbsp;·&nbsp;&nbsp;Free local delivery over 3,000 ETB&nbsp;&nbsp;·&nbsp;&nbsp;Order on WhatsApp&nbsp;&nbsp;·&nbsp;&nbsp;Style advice in-store&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-
-<section id="new">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="sec-label">Fresh this week</div>
-        <h2 class="sec-title">New Arrivals</h2>
-      </div>
-      <a class="sec-link" href="#shop">View All →</a>
-    </div>
-    <div class="products">
-      <div class="product">
-        <div class="img"><img src="../img/retail.jpg" alt="Dress sample" /></div>
-        <div class="meta"><h3>Linen Blend Dress</h3><span class="price">2,800 ETB<small> · M/L</small></span></div>
-        <a class="order" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20order%20the%20Linen%20Blend%20Dress." target="_blank" rel="noopener">Order on WhatsApp →</a>
-      </div>
-      <div class="product">
-        <div class="img"><img src="../img/creator.jpg" alt="Jacket sample" /></div>
-        <div class="meta"><h3>Tailored Blazer</h3><span class="price">4,200 ETB<small> · S-XL</small></span></div>
-        <a class="order" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20order%20the%20Tailored%20Blazer." target="_blank" rel="noopener">Order on WhatsApp →</a>
-      </div>
-      <div class="product">
-        <span class="tag-new">New</span>
-        <div class="img"><img src="../img/salon.jpg" alt="Accessory sample" /></div>
-        <div class="meta"><h3>Leather Accessories</h3><span class="price">from 950 ETB</span></div>
-        <a class="order" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20ask%20about%20the%20Leather%20Accessories." target="_blank" rel="noopener">Order on WhatsApp →</a>
-      </div>
+    <div class="cover">
+      <img src="../img/retail.jpg" alt="New pieces at Weyni Style, concept sample" />
+      <div class="cap">Look 01 · The linen edit</div>
     </div>
   </div>
 </section>
 
-<section id="shop" style="padding-top:0;">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="sec-label">The collection</div>
-        <h2 class="sec-title">Browse &amp; Order</h2>
-      </div>
-      <a class="sec-link" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20the%20full%20catalog%20on%20WhatsApp." target="_blank" rel="noopener">Full catalog on WhatsApp →</a>
-    </div>
-    <div class="features">
-      <div class="feature"><div class="ico">📦</div><h3>Order Any Time</h3><p>The store closes at 8pm, the catalog doesn&rsquo;t.</p></div>
-      <div class="feature"><div class="ico">💬</div><h3>WhatsApp Orders</h3><p>Prefilled messages, your order arrives ready to confirm.</p></div>
-      <div class="feature"><div class="ico">🚚</div><h3>Delivery &amp; Pickup</h3><p>Local delivery in Addis, or collect in-store.</p></div>
-    </div>
-  </div>
-</section>
+<div class="cat-rail" id="rail">
+  <div class="in" id="rail-chips"></div>
+</div>
 
-<section id="lookbook" style="padding-top:0;">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <div class="sec-label">Styled</div>
-        <h2 class="sec-title">Lookbook</h2>
-      </div>
-      <a class="sec-link" href="https://www.instagram.com/" target="_blank" rel="noopener">Follow on Instagram →</a>
-    </div>
-    <div class="lookbook">
-      <img class="tall" src="../img/retail.jpg" alt="Lookbook sample" />
-      <img src="../img/creator.jpg" alt="Lookbook sample" />
-      <img src="../img/wedding.jpg" alt="Lookbook sample" />
-      <img src="../img/salon.jpg" alt="Lookbook sample" />
-      <img src="../img/coffee.jpg" alt="Lookbook sample" />
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+<main class="shop wrap" id="shop">
+  <div class="sec-line">
     <div>
-      <h2>Visit the boutique</h2>
-      <p>Try before you buy, or order from anywhere, your choice.</p>
-      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20visit%20the%20store." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <p class="eyebrow">Fresh this week</p>
+      <h2 id="rail-title">The collection</h2>
     </div>
-    <div class="hours">
-      Bole · Addis Ababa (fictional)<br />
-      Mon-Sat · 9:00 - 20:00<br />
-      Sun · 10:00 - 18:00
+    <span class="cnt"><span id="show-n">0</span> pieces · sizes and prices are samples</span>
+  </div>
+  <div class="rows" id="rows"></div>
+  <p class="note-s">Full catalogue is browsed and ordered on WhatsApp. Sample flow: the buttons below open WhatsApp with your piece, size and price written in.</p>
+</main>
+
+<section class="visit" id="visit">
+  <div class="wrap in">
+    <div>
+      <h2>Come see the pieces <em>in person.</em></h2>
+      <p>Bole, Cameroon Street, near the roundabout, Addis Ababa · Open Mon to Sat, 10:00 to 20:00</p>
     </div>
+    <a class="btn tan" href="https://wa.me/251911000016?text=Hello%20Weyni%20Style%2C%20I%27d%20like%20help%20choosing%20(sample)." target="_blank" rel="noopener">Message the store</a>
   </div>
 </section>
 
 <footer>
-  <div>© <span id="year"></span> Selam Style, a fictional concept sample</div>
-  <div>Sample products &amp; prices · Not a real business</div>
+  <div>© <span id="year"></span> Weyni Style, a fictional concept sample</div>
+  <div>Built as a sample. Replace with real business info on order</div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<div class="toast" id="toast"></div>
+
+<script>
+  var PRODUCTS = [
+    { id:1, name:"Linen blend dress", occ:"Everyday", price:2800, sizes:["S","M","L","XL"], img:"../img/rt-linen.jpg", note:"Breathable, relaxed cut" },
+    { id:2, name:"Tailored blazer", occ:"Office", price:4200, sizes:["S","M","L","XL"], img:"../img/rt-blazer.jpg", note:"Structured shoulders, lined" },
+    { id:3, name:"Silk slip dress", occ:"Event", price:5600, sizes:["S","M","L"], img:"../img/rt-slip.jpg", note:"For dinners and weddings" },
+    { id:4, name:"Everyday trousers", occ:"Everyday", price:2400, sizes:["XS","S","M","L"], img:"../img/rt-trousers.jpg", note:"High waist, straight leg" },
+    { id:5, name:"Leather accessories", occ:"Event", price:950, sizes:["One size"], img:"../img/rt-leather.jpg", note:"Belts, bags and cardholders" },
+    { id:6, name:"Evening two-piece", occ:"Event", price:6800, sizes:["S","M","L"], img:"../img/rt-evening.jpg", note:"Top and skirt, separates" }
+  ];
+  var CATS = [
+    { k:"All", t:"All occasions" },
+    { k:"Everyday", t:"Day to day" },
+    { k:"Office", t:"Work and meetings" },
+    { k:"Event", t:"Dinners and weddings" }
+  ];
+  var bag = {}; // id -> {qty}
+  var selOcc = "All";
+  var selSize = {}; // id -> size
+
+  function matches(p){
+    if(selOcc==="All") return true;
+    var occs=p.occ.split(" ");
+    return occs.indexOf(selOcc)>-1 || p.occ===selOcc;
+  }
+  function renderChips(){
+    var rail=document.getElementById("rail-chips"); rail.innerHTML="";
+    CATS.forEach(function(c){
+      var b=document.createElement("button"); b.type="button"; b.className="cat-chip"+(c.k===selOcc?" active":"");
+      b.innerHTML=c.t+" <span class=\"c\">"+countOcc(c.k)+"</span>";
+      b.onclick=function(){ selOcc=c.k; renderChips(); renderRows(); };
+      rail.appendChild(b);
+    });
+  }
+  function countOcc(k){
+    if(k==="All") return PRODUCTS.length;
+    return PRODUCTS.filter(function(p){ return p.occ===k; }).length;
+  }
+  function renderRows(){
+    var list=PRODUCTS.filter(matches);
+    document.getElementById("rows").innerHTML="";
+    document.getElementById("show-n").textContent=list.length;
+    document.getElementById("rail-title").textContent = selOcc==="All" ? "The collection" : "For "+selOcc;
+    list.forEach(function(p){
+      var row=document.createElement("article"); row.className="row-card";
+      var sizeBtns=p.sizes.map(function(s){
+        var isOut=(p.id===2 && s==="S"); // one out-of-stock example
+        var cls="sz"+(selSize[p.id]===s?" sel":"")+(isOut?" out":"");
+        return "<span class=\""+cls+"\" data-id=\""+p.id+"\" data-sz=\""+s+"\""+(isOut?" data-out=\"1\"":"")+">"+s+"</span>";
+      }).join("");
+      row.innerHTML=
+        "<img src=\""+p.img+"\" alt=\""+p.name+", sample product\" loading=\"lazy\"/>"+
+        "<div class=\"row-info\"><div class=\"meta\">"+p.occ+" · "+p.note+"</div>"+
+        "<h3>"+p.name+"</h3><p class=\"desc\">Pick your size, then add to the bag. One message orders everything in it.</p>"+
+        "<div class=\"sizes\">"+sizeBtns+"</div>"+
+        "<div class=\"price-row\"><div class=\"price\">"+p.price.toLocaleString()+" <small>ETB</small></div>"+
+        "<button class=\"btn small\" data-add=\""+p.id+"\">Order on WhatsApp</button></div></div>";
+      document.getElementById("rows").appendChild(row);
+    });
+    bind();
+  }
+  function bind(){
+    document.querySelectorAll(".sz:not(.out)").forEach(function(s){
+      s.onclick=function(){
+        var id=+s.getAttribute("data-id"), sz=s.getAttribute("data-sz");
+        selSize[id]=sz;
+        s.parentNode.querySelectorAll(".sz").forEach(function(x){x.classList.remove("sel");});
+        s.classList.add("sel");
+      };
+    });
+    document.querySelectorAll("[data-add]").forEach(function(b){
+      b.onclick=function(){
+        var id=+b.getAttribute("data-add");
+        var p=PRODUCTS.filter(function(x){return x.id===id;})[0];
+        var sz=selSize[id]||(p.sizes[0]);
+        var msg="Hello Weyni Style, I would like the "+p.name+" in size "+sz+" ("+p.price.toLocaleString()+" ETB). Sample order.";
+        window.open("https://wa.me/251911000016?text="+encodeURIComponent(msg),"_blank");
+        showToast("Added "+p.name+" ("+sz+") · order opens on WhatsApp");
+      };
+    });
+  }
+  function showToast(t){
+    var el=document.getElementById("toast");
+    el.textContent=t; el.classList.add("show");
+    clearTimeout(el._t);
+    el._t=setTimeout(function(){ el.classList.remove("show"); },2600);
+  }
+  document.getElementById("open-cart").onclick=function(){
+    showToast("The bag preview is the WhatsApp button on each piece. Sample flow.");
+  };
+
+  renderChips(); renderRows();
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

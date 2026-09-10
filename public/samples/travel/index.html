@@ -3,175 +3,311 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Abay Journeys: Ethiopian Tours (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional travel agency. Not a real business." />
+<title>Abay Journeys: Plan an Ethiopian Route</title>
+<meta name="description" content="Abay Journeys -- plan an Ethiopian route day by day. From Lalibela to the Danakil, the Omo Valley to the Bale Highlands, pick a region and we build the days. Bole, Addis Ababa." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono:wght@400;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono:wght@400;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --parch:#f3ead8; --parch-2:#e8dcc4; --ink:#2b2416; --route:#8a6d3b; --stamp:#a33a2e; --teal:#1f5f5b; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Karla',sans-serif; background:var(--parch); color:var(--ink); line-height:1.6; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1100px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(243,234,216,.96); border-bottom:2px solid var(--ink); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.8rem; }
-  .brand { font-family:'DM Serif Display',serif; font-size:1.25rem; letter-spacing:.02em; }
-  .brand small { display:block; font-family:'Space Mono'; font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; color:var(--route); }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-family:'Space Mono'; font-size:.75rem; letter-spacing:.08em; color:var(--ink); border-bottom:1px dashed transparent; }
-  nav a:hover { border-bottom-color:var(--stamp); color:var(--stamp); }
-  .hero { padding:8.5rem 0 4.5rem; position:relative; overflow:hidden; border-bottom:2px solid var(--ink); background:linear-gradient(var(--parch),var(--parch-2)); }
-  .hero::after { content:""; position:absolute; inset:0; opacity:.5; pointer-events:none;
-    background-image:radial-gradient(circle at 20% 30%,rgba(143,111,59,.18) 0,transparent 3px),radial-gradient(circle at 80% 60%,rgba(143,111,59,.14) 0,transparent 3px); background-size:48px 48px; }
-  .hero-inner { position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:3rem; align-items:center; }
-  .eyebrow { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--stamp); margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
-  .eyebrow::before { content:"✦"; }
-  h1 { font-family:'DM Serif Display',serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:400; line-height:1.08; margin-bottom:1.1rem; }
-  .hero-sub { color:var(--route); max-width:30rem; margin-bottom:2rem; font-size:1.02rem; }
-  .btn { display:inline-block; font-family:'Space Mono'; font-weight:700; font-size:.82rem; letter-spacing:.06em; padding:.95rem 1.8rem; border-radius:2px; border:2px solid var(--ink); }
-  .btn-solid { background:var(--ink); color:var(--parch); }
-  .btn-ghost { background:transparent; color:var(--ink); }
-  .btn-solid:hover { background:var(--stamp); border-color:var(--stamp); }
-  .btn-ghost:hover { border-color:var(--stamp); color:var(--stamp); }
-  .hero-map { border:2px solid var(--ink); background:var(--parch-2); padding:1rem; position:relative; box-shadow:8px 8px 0 var(--ink); }
-  .hero-map img { width:100%; aspect-ratio:4/3; object-fit:cover; filter:sepia(.25); }
-  .map-route { position:absolute; inset:0; pointer-events:none; }
-  .route-tag { position:absolute; background:var(--parch); border:2px solid var(--ink); font-family:'Space Mono'; font-size:.6rem; letter-spacing:.08em; padding:.3rem .5rem; box-shadow:3px 3px 0 var(--ink); }
-  section { padding:4.5rem 0; }
-  .section-label { font-family:'Space Mono'; font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--stamp); margin-bottom:.8rem; }
-  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:400; margin-bottom:.7rem; }
-  .section-note { color:var(--route); max-width:36rem; }
-  .tour-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:2.2rem; }
-  .tour { border:2px solid var(--ink); background:var(--parch); position:relative; box-shadow:5px 5px 0 var(--ink); }
-  .tour img { width:100%; aspect-ratio:16/10; object-fit:cover; }
-  .tour-body { padding:1.2rem 1.2rem 1.4rem; }
-  .tour-days { font-family:'Space Mono'; font-size:.66rem; letter-spacing:.14em; color:var(--stamp); }
-  .tour h3 { font-family:'DM Serif Display'; font-weight:400; font-size:1.25rem; margin:.3rem 0 .4rem; }
-  .tour p { color:var(--route); font-size:.9rem; margin-bottom:.8rem; }
-  .tour-price { font-family:'Space Mono'; font-weight:700; font-size:.9rem; }
-  .tour-stamp { position:absolute; top:10px; right:10px; border:2px solid var(--stamp); color:var(--stamp); font-family:'Space Mono'; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; padding:.3rem .55rem; transform:rotate(4deg); background:rgba(243,234,216,.92); }
-  .steps { list-style:none; margin-top:2rem; border-top:2px solid var(--ink); }
-  .steps li { display:flex; gap:1.4rem; padding:1.3rem 0; border-bottom:2px dashed var(--route); }
-  .step-num { font-family:'Space Mono'; font-size:1.2rem; color:var(--stamp); }
-  .steps h3 { font-family:'DM Serif Display'; font-weight:400; font-size:1.2rem; }
-  .steps p { color:var(--route); font-size:.92rem; }
-  .cta { border-top:2px solid var(--ink); background:var(--ink); color:var(--parch); }
-  .cta .wrap { text-align:center; padding:1rem 0; }
-  .cta .section-label { color:#d8b98a; }
-  .cta h2 { color:var(--parch); }
-  .cta p { color:rgba(243,234,216,.75); max-width:34rem; margin:0 auto 1.6rem; }
-  .cta .btn-solid { background:var(--parch); color:var(--ink); }
-  .cta .btn-ghost { border-color:rgba(243,234,216,.5); color:var(--parch); }
-  footer { border-top:2px solid var(--ink); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--route); font-size:.85rem; font-family:'Space Mono'; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--stamp); color:var(--parch); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .tour-grid{grid-template-columns:1fr;} nav{display:none;} }
+  :root{
+    --sand:#efe6d2; --paper:#f7f1e3; --ink:#22303a; --night:#1d2a33;
+    --blue:#2f6f8f; --amber:#c07b2a; --line:#d8cbae; --soft:#5f6d77;
+    --stamp:#8a2f2f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:Karla,sans-serif;line-height:1.6}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--amber);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:"DM Serif Display",Georgia,serif;line-height:1.15;font-weight:400}
+  .mono{font-family:"Space Mono",monospace}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;padding:.85rem 1.5rem;border:0;cursor:pointer;font-family:Space Mono,monospace;font-size:.85rem;letter-spacing:.04em;transition:.15s}
+  .btn:hover{background:var(--blue)}
+  .btn.amber{background:var(--amber)}
+  .btn.amber:hover{background:#a5681f}
+  .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+  .btn.small{padding:.5rem 1rem;font-size:.74rem}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);font-weight:700}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(247,241,227,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 22px;max-width:1160px;margin:0 auto}
+  .brand{font-family:"DM Serif Display",serif;font-size:1.3rem;text-decoration:none}
+  .brand small{display:block;font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.22em;color:var(--amber);font-weight:700}
+  .nav-links{display:flex;gap:1.5rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.85rem;font-weight:700}
+  .nav-links a:hover{color:var(--blue)}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  /* Full-bleed immersive hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:var(--sand);overflow:hidden}
+  .hero-bg{position:absolute;inset:0;overflow:hidden}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,42,51,.28) 0%,rgba(29,42,51,.55) 55%,rgba(29,42,51,.92) 100%)}
+  .hero-collage{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;height:100%}
+  .hero-collage img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:700px){.hero-collage{grid-template-columns:1fr}.hero-collage img:nth-child(1){height:55vh}}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:3.4rem}
+  .hero .eyebrow{color:#e8b877;margin-bottom:1rem}
+  .hero h1{font-size:clamp(2.7rem,7vw,5.4rem);margin-bottom:.9rem;max-width:18ch}
+  .hero h1 em{font-style:italic;color:#e8b877}
+  .hero-sub{max-width:44rem;color:#c6ced3;font-size:1.1rem}
+  .hero-meta{display:flex;gap:2.2rem;margin-top:1.8rem;flex-wrap:wrap}
+  .hero-meta div{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.12em;color:#d9a35c;text-transform:uppercase}
+  .hero-meta b{display:block;color:var(--sand);font-size:1rem;letter-spacing:0;text-transform:none;font-family:Karla,sans-serif;font-weight:700}
+
+  /* Route carousel of destination cards */
+  .planner{padding:3.4rem 0 .5rem}
+  .planner-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem}
+  .planner-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);max-width:22ch}
+  .route-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2.2rem}
+  .route-tab{border:0;background:var(--sand);padding:0;cursor:pointer;text-align:left;position:relative;overflow:hidden;border:1px solid var(--line);box-shadow:4px 4px 0 rgba(0,0,0,.06)}
+  .route-tab .rt-img{display:block;width:100%;height:110px;object-fit:cover;filter:saturate(.85)}
+  .route-tab .rt-body{padding:.85rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+  .route-tab .rt-body b{font-family:"DM Serif Display",serif;font-size:1.05rem}
+  .route-tab .rt-body .days{font-family:"Space Mono",monospace;font-size:.66rem;color:var(--soft)}
+  .route-tab:hover .rt-img{filter:saturate(1)}
+  .route-tab.active{border-color:var(--amber);box-shadow:4px 4px 0 var(--amber)}
+  .route-tab.active .rt-body b{color:var(--amber)}
+
+  .route-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.6rem;align-items:start}
+  @media(max-width:920px){.route-grid{grid-template-columns:1fr}}
+  .map-card{background:var(--sand);border:1px solid var(--line);padding:1.6rem;position:relative}
+  .map-card .stamp{position:absolute;top:1rem;right:1rem;border:3px double var(--stamp);color:var(--stamp);font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.2em;padding:.4rem .55rem;transform:rotate(6deg);text-transform:uppercase;font-weight:700}
+  .route-title{font-size:1.9rem;margin:1rem 0 .9rem}
+  .route-desc{color:var(--soft);font-size:.95rem;margin-bottom:1.4rem}
+  .stops{position:relative;margin:1rem 0 1.4rem;padding-left:1.6rem}
+  .stops:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--amber)}
+  .stop{position:relative;padding:.4rem 0 .4rem 1.4rem;font-size:.95rem}
+  .stop:before{content:"";position:absolute;left:-1.45rem;top:.72rem;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--amber)}
+  .stop b{display:block;font-size:.9rem}
+  .stop span{color:var(--soft);font-size:.82rem}
+  .facts{display:flex;gap:1.4rem;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:.72rem;border-top:1px dashed var(--ink);padding-top:.9rem}
+  .facts b{display:block;font-family:Karla,sans-serif;font-size:1.05rem}
+
+  .itinerary{border:1px solid var(--line);background:var(--paper)}
+  .it-head{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.2rem;border-bottom:1px solid var(--line);background:#f2ead6}
+  .it-head h3{font-size:1.05rem}
+  .it-head .days{font-family:"Space Mono",monospace;font-size:.7rem;color:var(--blue);font-weight:700}
+  .day{border-bottom:1px dashed var(--line);padding:1rem 1.2rem;cursor:pointer}
+  .day:last-child{border-bottom:0}
+  .day .d-head{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .day .d-num{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.16em;color:var(--amber);font-weight:700}
+  .day .d-title{font-family:"DM Serif Display",serif;font-size:1.08rem}
+  .day .chev{font-family:"Space Mono",monospace;transition:.2s;color:var(--soft)}
+  .day.open .chev{transform:rotate(90deg)}
+  .day .d-body{display:none;padding-top:.7rem;color:var(--soft);font-size:.9rem}
+  .day.open .d-body{display:block}
+  .day .d-body ul{margin:.4rem 0 .4rem 1.1rem}
+  .day .stay{display:inline-block;margin-top:.5rem;font-family:"Space Mono",monospace;font-size:.68rem;background:var(--sand);padding:.25rem .55rem;letter-spacing:.08em;font-weight:700}
+
+  .cta-band{background:var(--night);color:var(--sand);margin:3rem 0 0;padding:3rem 0;position:relative;overflow:hidden}
+  .cta-band:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(192,123,42,.25),transparent 55%)}
+  .cta-band .wrap{position:relative;z-index:2}
+  .cta-band h2{font-size:clamp(1.8rem,3.4vw,2.8rem);max-width:24ch}
+  .cta-row{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+  .cta-note{color:#b8c2c8;font-size:.9rem;max-width:34rem;margin-top:.5rem}
+
+  footer{border-top:1px solid var(--line);padding:1.5rem 22px 4.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--soft);max-width:1160px;margin:0 auto}
 </style>
 </head>
-<body>
-
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<body id="top">
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">ABAY JOURNEYS<small>ETHIOPIAN TOURS · CONCEPT SAMPLE</small></a>
-    <nav>
-      <a href="#tours">Tours</a>
+  <div class="nav">
+    <a class="brand" href="#top">ABAY JOURNEYS<small>ETHIOPIAN ROUTES · ADDIS ABABA</small></a>
+    <div class="nav-links">
+      <a href="#planner">Routes</a>
       <a href="#how">How It Works</a>
-      <a href="#plan">Plan a Trip</a>
-    </nav>
+      <a class="btn amber small" href="#cta">Plan a Trip</a>
+    </div>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <p class="eyebrow">A concept sample travel agency</p>
-        <h1>Ethiopia,<br />Route by Route</h1>
-        <p class="hero-sub">The historic north, the Danakil, the Omo Valley, package pages that sell the journey before the inquiry. A sample for a fictional agency.</p>
-        <div>
-          <a class="btn btn-solid" href="#tours">Explore Tours</a>
-          <a class="btn btn-ghost" href="#plan">Plan a Trip</a>
-        </div>
-      </div>
-      <div class="hero-map">
-        <img src="../img/travel-1.jpg" alt="Map-inspired travel photo" />
-        <span class="route-tag" style="top:14px;left:14px;">✦ LALIBELA</span>
-        <span class="route-tag" style="bottom:14px;right:14px;">DANAKIL ✦</span>
-      </div>
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-collage">
+      <img src="../img/travel-1.jpg" alt="Green Ethiopian highlands with rural villages and hills" />
+      <img src="../img/travel-2.jpg" alt="Eastern highland ridge and river valley in the Bale region" />
     </div>
-  </section>
+  </div>
+  <div class="hero-inner wrap">
+    <p class="eyebrow">Bole, Cameroon Street, Addis Ababa</p>
+    <h1>Pick a region. <em>We build the days.</em></h1>
+    <p class="hero-sub">Every route below is shown day by day: where you sleep, what you see, how you move. Choose a route and send it to us on WhatsApp. Your real dates turn the outline into a booking.</p>
+    <div class="hero-meta">
+      <div>Routes on this page<b>4 regions</b></div>
+      <div>What we plan<b>Hotels · drivers · guides</b></div>
+      <div>How inquiries land<b>WhatsApp</b></div>
+    </div>
+  </div>
+</section>
 
-  <section id="tours">
-    <div class="wrap">
-      <p class="section-label">Signature routes</p>
-      <h2 class="section-title">Tours We Map Out</h2>
-      <p class="section-note">Sample packages with sample prices: each can be customized for a real agency on order.</p>
-      <div class="tour-grid">
-        <article class="tour">
-          <img src="../img/travel-2.jpg" alt="Historic tour sample" />
-          <span class="tour-stamp">Most booked</span>
-          <div class="tour-body">
-            <span class="tour-days">7 DAYS · 6 NIGHTS</span>
-            <h3>Historic North</h3>
-            <p>Bahir Dar, Gondar, Lalibela, churches, castles, and the Blue Nile.</p>
-            <span class="tour-price">From $1,250 · sample</span>
-          </div>
-        </article>
-        <article class="tour">
-          <img src="../img/travel-1.jpg" alt="Danakil tour sample" />
-          <div class="tour-body">
-            <span class="tour-days">4 DAYS · 3 NIGHTS</span>
-            <h3>The Danakil Depression</h3>
-            <p>Erta Ale lava lake, salt flats, and the hottest place on Earth.</p>
-            <span class="tour-price">From $980 · sample</span>
-          </div>
-        </article>
-        <article class="tour">
-          <img src="../img/travel-2.jpg" alt="Omo valley tour sample" />
-          <div class="tour-body">
-            <span class="tour-days">10 DAYS · 9 NIGHTS</span>
-            <h3>Omo Valley</h3>
-            <p>Tribes, markets, and the lower Omo, the deep south.</p>
-            <span class="tour-price">From $1,600 · sample</span>
-          </div>
-        </article>
+<section class="planner wrap" id="planner">
+  <div class="planner-head">
+    <div>
+      <p class="eyebrow">01 · Choose your route</p>
+      <h2>Four regions, each built out day by day.</h2>
+    </div>
+  </div>
+
+  <div class="route-tabs" id="route-tabs"></div>
+
+  <div class="route-grid">
+    <div class="map-card" id="map-card">
+      <img class="route-photo" id="route-photo" src="../img/dest-lalibela.jpg" alt="Preview of the current route -- sample photo of the destination" />
+      <div class="stamp" id="stamp">Sample route</div>
+      <h2 class="route-title" id="r-title">Loading...</h2>
+      <p class="route-desc" id="r-desc"></p>
+      <div class="stops" id="r-stops"></div>
+      <div class="facts">
+        <div>Nights<b id="r-nights"></b></div>
+        <div>Best season<b id="r-season"></b></div>
+        <div>From<b id="r-price"></b></div>
       </div>
     </div>
-  </section>
 
-  <section id="how" style="background:var(--parch-2);">
-    <div class="wrap">
-      <p class="section-label">How it works</p>
-      <h2 class="section-title">From Inquiry to Departure</h2>
-      <ol class="steps">
-        <li><span class="step-num">01</span><div><h3>Tell us where</h3><p>Inquiry lands on WhatsApp, answered fast, even at night.</p></div></li>
-        <li><span class="step-num">02</span><div><h3>We route it</h3><p>You get a sample itinerary with dates, hotels, and transfers.</p></div></li>
-        <li><span class="step-num">03</span><div><h3>You confirm</h3><p>Deposit tracked, documents ready, trip on the calendar.</p></div></li>
-      </ol>
+    <div class="itinerary">
+      <div class="it-head">
+        <h3>Day by day</h3>
+        <span class="days" id="it-count"></span>
+      </div>
+      <div id="it-days"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta" id="plan">
-    <div class="wrap">
-      <p class="section-label">Plan a trip</p>
-      <h2 class="section-title">Let's Map Your Route</h2>
-      <p>This sample form connects to WhatsApp or email on order, and the flow is already here.</p>
-      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20plan%20a%20trip." target="_blank" rel="noopener">Start on WhatsApp</a>
-      <a class="btn btn-ghost" href="#tours">Browse Tours</a>
+<section class="cta-band" id="cta">
+  <div class="wrap cta-row">
+    <div>
+      <h2>Send this route to us and we turn it into dates.</h2>
+      <p class="cta-note">The button opens WhatsApp with the chosen route and nights already written. Real itineraries, prices and availability go in on order.</p>
     </div>
-  </section>
-</main>
+    <a class="btn amber" id="cta-btn" href="https://wa.me/251911000021" target="_blank" rel="noopener">Plan this route →</a>
+  </div>
+</section>
+
+<section class="wrap" id="how" style="padding:2.4rem 22px 3rem">
+  <p class="eyebrow">02 · How it works</p>
+  <h2 style="font-size:clamp(1.5rem,2.6vw,2rem);max-width:26ch">One message starts it. You keep one contact for the whole trip.</h2>
+  <p style="color:var(--soft);max-width:40rem;margin-top:.6rem">We handle the transfers, the lodging, the guides and the permits, so you only carry a phone and a bag.</p>
+</section>
 
 <footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Abay Journeys, a fictional concept sample</div>
-    <div>Sample address · Bole, Addis Ababa (fictional)</div>
-  </div>
+  <div>© <span id="year"></span> Abay Journeys -- sample concept, not a real business</div>
+  <div>Bole, Cameroon Street, Addis Ababa · Mon - Sat 08:30 - 18:00 · Sample shown for demonstration, real business info goes in on order</div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  var ROUTES = [
+    {
+      id:"north", name:"Historic North", daysLabel:"10 days", nights:"9",
+      season:"Oct - Mar", price:"$1,450", img:"../img/dest-lalibela.jpg",
+      desc:"The classic loop: castles on a hilltop, churches carved from one stone, and the longest canyon you can stand on the edge of.",
+      stops:[ {t:"Bahir Dar", s:"Lake Tana, Blue Nile Falls"}, {t:"Gondar", s:"The castle compound"}, {t:"Lalibela", s:"Rock-hewn churches"}, {t:"Axum", s:"Stele field and tombs"} ],
+      it:[
+        ["Fly in", "Arrive in Addis, meet your driver, overnight hotel. The trip starts over breakfast.", "Addis Ababa"],
+        ["Lake Tana", "Boat to the island monasteries of Lake Tana, then the Blue Nile Falls in the afternoon.", "Bahir Dar"],
+        ["Castles", "Full day in the Gondar castle compound and the bathing palace of Fasiladas.", "Gondar"],
+        ["Debark", "Drive to Debark, clear the Simien gate, early dinner and rest.", "Simien foothills"],
+        ["Simien ridge", "Day walk along the escarpment with gelada troops, back before dark.", "Simien lodge"],
+        ["On to Lalibela", "Scenic drive south. Evening check-in near the churches.", "Lalibela"],
+        ["Rock churches", "The northern and eastern clusters with a local guide.", "Lalibela"],
+        ["Morning mass", "Optional early service with the priests, then the afternoon cluster.", "Lalibela"],
+        ["Axum", "Flight or long drive north to the stelae field and the Ark chapel grounds.", "Axum"],
+        ["Fly home", "Morning tombs of King Kaleb, then fly back to Addis and onward.", "Addis Ababa"]
+      ]
+    },
+    {
+      id:"danakil", name:"Danakil & Tigray", daysLabel:"7 days", nights:"6",
+      season:"Nov - Feb", price:"$1,150", img:"../img/dest-danakil.jpg",
+      desc:"The hottest place on earth done properly: salt flats at dawn, a lava lake after dark, then cool mountain churches to recover.",
+      stops:[ {t:"Mekele", s:"Gateway town"}, {t:"Dallol", s:"Salt flats and springs"}, {t:"Erta Ale", s:"Lava lake camp"}, {t:"Gheralta", s:"Cliff churches"} ],
+      it:[
+        ["Fly to Mekele", "Morning flight, meet the 4x4 crew, buy water for the trip.", "Mekele"],
+        ["Down to the flats", "Drive to the Dallol depression for the afternoon light on the salt pans.", "Camp, Danakil"],
+        ["Erta Ale", "Cross the lava field at sunset, climb to the crater rim at night.", "Crater camp"],
+        ["Back to Mekele", "Sunrise walk off the volcano, long drive back for showers.", "Mekele"],
+        ["Gheralta", "Half-day drive to the sandstone cliffs. First churches in the afternoon.", "Gheralta lodge"],
+        ["Cliff churches", "Guided climb to the rock churches tucked in the cliff face.", "Gheralta lodge"],
+        ["Fly home", "Return to Mekele and fly to Addis. End of the sample route.", "Addis Ababa"]
+      ]
+    },
+    {
+      id:"south", name:"Omo Valley", daysLabel:"8 days", nights:"7",
+      season:"Year-round", price:"$1,250", img:"../img/dest-omo.jpg",
+      desc:"The lower Omo's markets and villages, visited with local guides who know the communities and their schedules.",
+      stops:[ {t:"Arba Minch", s:"Lakes and crocodile ranch"}, {t:"Turmi", s:"Hamer villages"}, {t:"Key Afer", s:"The Saturday market"}, {t:"Jinka", s:"Ari and Mursi country"} ],
+      it:[
+        ["Fly south", "Fly to Arba Minch, afternoon on the lake shore.", "Arba Minch"],
+        ["Dorze", "Visit the Dorze beehive houses and their weaving, then the crocodile ranch.", "Arba Minch"],
+        ["Into the valley", "Drive to Turmi through the dry country, evening village walk.", "Turmi"],
+        ["Hamer day", "Morning with the Hamer homesteads, afternoon at the river.", "Turmi"],
+        ["Key Afer market", "The big Saturday market, where several groups trade side by side.", "Turmi"],
+        ["Jinka", "Drive up to the highland town of Jinka, museum visit.", "Jinka"],
+        ["Mursi", "Day trip into Mursi country with a local guide and return.", "Jinka"],
+        ["Fly home", "Drive to Arba Minch and fly back to Addis.", "Addis Ababa"]
+      ]
+    },
+    {
+      id:"bale", name:"Bale Highlands", daysLabel:"6 days", nights:"5",      season:"Sep - Nov", price:"$890", img:"../img/dest-bale.jpg",
+      desc:"The Sanetti Plateau and the Harenna Forest: the highest stretch of road in Africa past glacial lakes and rocky peaks, home to the rare Ethiopian wolf, with highland villages and clear mountain air.",
+      stops:[ {t:"Goba", s:"Gateway to the Bale Mountains National Park"}, {t:"Sanetti Plateau", s:"The alpine plateau and the Ethiopian wolves"} ],
+      it:[
+        ["Arrive Goba", "Fly or drive in, settle in Goba at the edge of the national park and meet your guide.", "Goba"],
+        ["Sanetti Plateau", "Drive onto the highest plateau on the continent, past glacial lakes and peaks, looking for the rare Ethiopian wolf.", "Sanetti Plateau"],
+        ["Harenna Forest", "Descend into the Harenna Forest on the southern escarpment, among the mountain bamboo and giant heather.", "Harenna Forest"],
+        ["Highland villages", "Walk to the Rift Valley viewpoints, then back through the highland villages to Goba.", "Goba"],
+        ["Return to Addis", "Drive back up through the rift valley, arriving in Addis at the end of the sample route.", "Addis Ababa"]
+      ]
+    }
+  ];
+
+  var current = ROUTES[0];
+
+  function renderTabs(){
+    var wrap=document.getElementById("route-tabs"); wrap.innerHTML="";
+    ROUTES.forEach(function(r,idx){
+      var b=document.createElement("button");
+      b.type="button";
+      b.className="route-tab"+(idx===0? " active":"");
+      b.innerHTML = "<span class=\"rt-img\" style=\"background:url("+r.img+") center/cover\"></span><span class=\"rt-body\"><b>"+r.name+"</b><span class=\"days\">"+r.daysLabel+"</span></span>";
+      b.onclick=function(){ select(idx); };
+      wrap.appendChild(b);
+    });
+  }
+
+  function select(idx){
+    current=ROUTES[idx];
+    document.querySelectorAll(".route-tab").forEach(function(t,i){ t.classList.toggle("active", i===idx); });
+    var photoEl=document.getElementById("route-photo");
+    if(photoEl){ photoEl.src = current.img || ((idx%2===0) ? "../img/travel-1.jpg" : "../img/travel-2.jpg"); }
+    document.getElementById("r-title").textContent=current.name;
+    document.getElementById("r-desc").textContent=current.desc;
+    document.getElementById("r-nights").textContent=current.nights+" nights";
+    document.getElementById("r-season").textContent=current.season;
+    document.getElementById("r-price").textContent=current.price;
+    document.getElementById("it-count").textContent=current.it.length+" days";
+    var stops=document.getElementById("r-stops"); stops.innerHTML="";
+    current.stops.forEach(function(s){
+      var d=document.createElement("div"); d.className="stop";
+      d.innerHTML="<b>"+s.t+"</b><span>"+s.s+"</span>";
+      stops.appendChild(d);
+    });
+    var days=document.getElementById("it-days"); days.innerHTML="";
+    current.it.forEach(function(day,i){
+      var d=document.createElement("div"); d.className="day"+(i===0? " open":"");
+      d.innerHTML="<div class=\"d-head\"><div><div class=\"d-num\">DAY "+(i+1)+"</div><div class=\"d-title\">"+day[0]+"</div></div><span class=\"chev\">▶</span></div>"+
+        "<div class=\"d-body\"><p>"+day[1]+"</p><div class=\"stay\">SLEEP · "+day[2]+"</div></div>";
+      d.querySelector(".d-head").onclick=function(){ d.classList.toggle("open"); };
+      days.appendChild(d);
+    });
+    var btn=document.getElementById("cta-btn");
+    btn.href="https://wa.me/251911000021?text="+encodeURIComponent("Hello Abay Journeys, I would like to plan the "+current.name+" route ("+current.daysLabel+"). This is a sample inquiry.");
+  }
+
+  renderTabs(); select(0);
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

@@ -3,128 +3,365 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kifle Bakery: Fresh Daily (Concept Sample)</title>
-<meta name="description" content="Concept sample website for a fictional bakery. Not a real business." />
+<title>Kifle Bakery: Fresh by the Batch (Concept Sample)</title>
+<meta name="description" content="Kifle Bakery -- fresh bread baked by the batch, sold the same day. Piassa, Addis Ababa. Three batches, order ahead, collect it warm." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --wheat:#f5e6d3; --brown:#5c3a21; --brown-deep:#432a17; --gold:#d9a441; --ink:#3a2a1c; --ink-soft:#7a6a58; --white:#fffdf9; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Karla',sans-serif; background:var(--white); color:var(--ink); line-height:1.6; }
-  img { display:block; max-width:100%; }
-  a { color:inherit; text-decoration:none; }
-  .wrap { width:min(1080px,92%); margin-inline:auto; }
-  header { position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(255,253,249,.96); border-bottom:1px solid rgba(92,58,33,.18); }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; padding-block:.85rem; }
-  .brand { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--brown); }
-  .brand small { display:block; font-family:'Karla'; font-size:.6rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); }
-  nav { display:flex; gap:1.8rem; }
-  nav a { font-size:.88rem; font-weight:500; color:var(--ink-soft); }
-  nav a:hover { color:var(--brown); }
-  .hero { padding:9rem 0 5rem; background:var(--wheat); position:relative; overflow:hidden; }
-  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-  .eyebrow { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
-  h1 { font-family:'DM Serif Display',serif; font-size:clamp(2.1rem,5vw,3.3rem); font-weight:400; line-height:1.08; margin-bottom:1rem; color:var(--brown-deep); }
-  .hero-sub { color:var(--ink-soft); max-width:30rem; margin-bottom:2rem; }
-  .btn { display:inline-block; font-weight:700; font-size:.9rem; padding:.95rem 1.8rem; border-radius:2px; border:1px solid transparent; }
-  .btn-solid { background:var(--brown); color:var(--white); }
-  .btn-ghost { border-color:var(--brown); color:var(--brown); }
-  .hero-fig img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; box-shadow:8px 8px 0 rgba(92,58,33,.15); }
-  section { padding:5rem 0; }
-  .section-label { font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; }
-  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:400; margin-bottom:.8rem; color:var(--brown-deep); }
-  .section-note { color:var(--ink-soft); max-width:34rem; }
-  .prod-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2rem; }
-  .prod { border:1px solid rgba(92,58,33,.18); border-top:4px solid var(--gold); border-radius:6px; padding:1.4rem; background:var(--white); }
-  .prod h3 { font-family:'DM Serif Display'; font-weight:400; font-size:1.15rem; margin-bottom:.3rem; color:var(--brown-deep); }
-  .prod p { color:var(--ink-soft); font-size:.88rem; margin-bottom:.7rem; }
-  .prod .price { font-weight:700; color:var(--brown); }
-  .prod .order { display:inline-block; margin-top:.7rem; font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); }
-  .prod .order:hover { color:var(--brown); }
-  .order-band { background:var(--brown-deep); color:var(--white); }
-  .order-band .wrap { text-align:center; padding:1rem 0; }
-  .order-band h2 { color:var(--white); }
-  .order-band p { color:rgba(255,255,255,.75); max-width:34rem; margin:0 auto 1.6rem; }
-  .order-band .btn-solid { background:var(--gold); color:var(--brown-deep); }
-  footer { border-top:1px solid rgba(92,58,33,.18); padding:2rem 0; }
-  .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--ink-soft); font-size:.85rem; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--gold); color:var(--brown-deep); font-size:.68rem; font-weight:700; letter-spacing:.08em; padding:.35rem .7rem; border-radius:2px; }
-  @media (max-width:800px){ .hero-inner{grid-template-columns:1fr;} .prod-grid{grid-template-columns:1fr;} nav{display:none;} }
+  :root{
+    --paper:#f6efe2; --cream:#fbf6ec; --ink:#3a2a1c; --brown:#6b4a2b;
+    --gold:#b8872f; --gold-deep:#96691b; --line:#d9c9ab; --soft:#8a7559;
+    --hot:#c2542a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:Karla,system-ui,sans-serif;line-height:1.55}
+  .sample-flag{position:fixed;bottom:14px;left:14px;z-index:99;background:var(--gold);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.38rem .8rem}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.12}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--ink);color:var(--cream);text-decoration:none;font-weight:700;letter-spacing:.02em;padding:.8rem 1.4rem;border:0;cursor:pointer;font-family:Karla,sans-serif;font-size:.95rem;border-radius:999px;transition:.15s}
+  .btn:hover{background:var(--gold-deep)}
+  .btn.gold{background:var(--gold)}
+  .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--cream)}
+  .btn.small{padding:.45rem 1rem;font-size:.8rem}
+  .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold-deep)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(246,239,226,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 22px;max-width:1180px;margin:0 auto}
+  .brand{font-family:Fraunces,serif;font-weight:700;font-size:1.25rem;text-decoration:none}
+  .brand small{display:block;font-family:Karla,sans-serif;font-size:.66rem;letter-spacing:.24em;color:var(--gold-deep);font-weight:700}
+  .nav-links{display:flex;gap:1.4rem;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:500;font-size:.9rem;color:var(--ink)}
+  .nav-links a:hover{color:var(--gold-deep)}
+  @media(max-width:720px){.nav-links a:not(.btn){display:none}}
+
+  /* Warm storefront hero */
+  .hero{background:var(--ink);color:var(--cream);padding:4.4rem 0 3rem;position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 20%,rgba(184,135,47,.28),transparent 50%)}
+  .hero .wrap{position:relative;z-index:2}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:2.6rem;align-items:center}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
+  .hero .eyebrow{color:#e6c27a}
+  .hero h1{font-size:clamp(2.4rem,5vw,4.2rem);margin:.7rem 0 1rem}
+  .hero h1 em{font-style:italic;color:#e6c27a}
+  .hero-sub{color:#cbb89a;max-width:34rem;font-size:1.05rem}
+  .clock-card{background:rgba(255,255,255,.06);border:1px solid rgba(246,239,226,.16);border-radius:1.4rem;padding:1.5rem 1.6rem;backdrop-filter:blur(4px)}
+  .clock-card .eyebrow{color:#e6c27a}
+  .clock{font-family:Fraunces,serif;font-size:1.7rem;font-weight:600;margin:.3rem 0 .2rem}
+  #next-in{font-size:1.05rem;color:#e6c27a}
+  .batches-strip{display:flex;gap:.5rem;margin-top:.9rem;flex-wrap:wrap}
+  .batch-dot{font-size:.66rem;letter-spacing:.08em;padding:.28rem .6rem;border-radius:999px;background:#4d3a26;font-weight:700}
+  .batch-dot.live{background:var(--gold);color:#fff}
+
+  /* Day timeline */
+  .oven{padding:2.8rem 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.6rem;gap:1rem;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+  .dayline{position:relative}
+  .dayline:before{content:"";position:absolute;left:0;right:0;top:44px;height:3px;background:var(--line)}
+  .batches{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  @media(max-width:900px){.batches{grid-template-columns:1fr}.dayline:before{display:none}}
+  .batch{border:1px solid var(--line);border-radius:1.2rem;padding:1.4rem 1.3rem 1.1rem;background:var(--cream);display:flex;flex-direction:column;position:relative;min-width:0}
+  .batch:after{content:"";position:absolute;top:36px;left:-1.4rem;width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--cream)}
+  .batch:first-child:after{left:auto;right:-1.4rem}
+  .batch .time{font-family:Fraunces,serif;font-size:1.7rem;font-weight:600}
+  .batch .st{display:inline-block;margin-top:.3rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;border-radius:999px;padding:.22rem .6rem;align-self:flex-start}
+  .st.baked{background:#d9e6cf;color:#3c6b2f}
+  .st.rising{background:#f2dfb8;color:#8a5f13}
+  .st.next{background:#f4cdc0;color:#a33d17}
+  .batch ul{list-style:none;margin:1rem 0}
+  .batch li{display:flex;justify-content:space-between;gap:.6rem;padding:.42rem 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+  .batch li>span:first-child{min-width:0;flex:1}
+  .batch li small{display:block;color:var(--soft);font-size:.68rem;font-weight:400;line-height:1.4;overflow-wrap:break-word}
+  .batch li:last-child{border-bottom:0}
+  .batch li span{color:var(--gold-deep);font-weight:700;white-space:nowrap}
+  .batch .btn{margin-top:auto}
+  .note{font-size:.8rem;color:var(--soft);margin-top:.7rem;text-align:center}
+
+  .counter{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.6rem 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:center}
+  @media(max-width:860px){.grid2{grid-template-columns:1fr}}
+  .counter img{width:100%;height:320px;object-fit:cover;border-radius:1.2rem}
+  .menu-list{list-style:none;margin:1.1rem 0 1.4rem}
+  .menu-list li{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+  .menu-list li span{color:var(--gold-deep);font-weight:700}
+
+  .cakes{padding:2.6rem 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.2rem}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .step{border:1px solid var(--line);border-radius:1.2rem;padding:1.4rem;background:var(--paper)}
+  .step .num{font-family:Fraunces,serif;font-size:2.1rem;font-weight:700;color:var(--gold);line-height:1}
+  .step h3{font-size:1.1rem;margin:.5rem 0 .4rem}
+  .step p{color:var(--soft);font-size:.92rem}
+  .cakes-note{margin-top:1.1rem;background:#efe3c8;border-radius:1rem;padding:.9rem 1.1rem;font-size:.9rem}
+
+  footer{border-top:1px solid var(--line);margin-top:2rem;padding:1.6rem 22px 4.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--soft)}
+
+  .tray{position:fixed;right:0;top:0;height:100%;width:340px;max-width:92vw;background:var(--ink);color:var(--cream);z-index:60;transform:translateX(105%);transition:.3s;display:flex;flex-direction:column;border-radius:1.2rem 0 0 1.2rem}
+  .tray.open{transform:translateX(0)}
+  .tray-head{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.2rem;border-bottom:1px solid #4d3a26}
+  .tray-head h3{font-size:1.1rem}
+  .x{cursor:pointer;font-size:1.3rem;line-height:1;padding:.2rem .5rem}
+  .tray-list{flex:1;overflow:auto;padding:1rem 1.2rem}
+  .tray-item{display:flex;justify-content:space-between;gap:.6rem;padding:.55rem 0;border-bottom:1px dashed #4d3a26;font-size:.92rem}
+  .tray-item .rm{cursor:pointer;color:#e6a58f;font-weight:700;padding:0 .2rem}
+  .tray-foot{padding:1.1rem 1.2rem;border-top:1px solid #4d3a26}
+  .total{display:flex;justify-content:space-between;font-weight:700;font-size:1.05rem;margin-bottom:.8rem}
+  .tray-foot .btn{width:100%;text-align:center;background:var(--gold)}
+  .tray-open{position:fixed;bottom:14px;right:14px;z-index:61;background:var(--gold);color:#fff;border:0;border-radius:999px;padding:.8rem 1.3rem;font-weight:700;cursor:pointer;font-family:Karla,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  .tray-open .count{background:#fff;color:var(--gold-deep);border-radius:999px;padding:.05rem .5rem;margin-left:.4rem}
+  @media(min-width:1001px){.tray-open{display:none}}
+  .empty{color:#b3a083;font-size:.92rem;padding:.4rem 0}
+  .hint{font-size:.78rem;color:#b3a083;margin-top:.5rem}
 </style>
 </head>
-<body>
-
-<div class="sample-flag">CONCEPT SAMPLE · NOT A REAL BUSINESS</div>
+<body id="top">
+<div class="sample-flag">SAMPLE CONCEPT -- NOT A REAL BUSINESS</div>
 
 <header>
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">Kifle Bakery<small>FRESH DAILY · CONCEPT SAMPLE</small></a>
-    <nav>
-      <a href="#menu">Menu</a>
-      <a href="#order">Order</a>
-      <a href="#visit">Visit</a>
-    </nav>
+  <div class="nav">
+    <a class="brand" href="#top">Kifle Bakery<small>FRESH BY THE BATCH</small></a>
+    <div class="nav-links">
+      <a href="#batches">Today's Batches</a>
+      <a href="#counter">At the Counter</a>
+      <a href="#cakes">Custom Cakes</a>
+      <a class="btn gold small" href="#visit">Find Us</a>
+    </div>
   </div>
 </header>
 
-<main id="top">
+<main>
   <section class="hero">
-    <div class="wrap hero-inner">
+    <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">A concept sample bakery · Addis Ababa</p>
-        <h1>Baked Before<br />You Wake Up</h1>
-        <p class="hero-sub">Fresh bread, pastries, and custom cakes, with WhatsApp ordering and a daily menu customers can see. A sample for a fictional bakery.</p>
+        <p class="eyebrow">Kifle Bakery -- Piassa, behind St. George's Church, Addis Ababa</p>
+        <h1>Fresh bread, <em>baked by the batch.</em></h1>
+        <p class="hero-sub">Three batches a day and none of it kept overnight. See what is coming out of the oven next, order your share ahead, and it is wrapped and waiting when you arrive.</p>
+      </div>
+      <div class="clock-card">
+        <p class="eyebrow">The Oven, Right Now</p>
+        <div class="clock" id="clock-state">Next batch rising</div>
+        <div id="next-in">Checking the oven...</div>
+        <div class="batches-strip" id="strip"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="oven" id="batches">
+    <div class="wrap">
+      <div class="sec-head">
         <div>
-          <a class="btn btn-solid" href="#order">Order on WhatsApp</a>
-          <a class="btn btn-ghost" href="#menu">See the Menu</a>
+          <p class="eyebrow">01 · Baked daily</p>
+          <h2>The day, three batches at a time</h2>
         </div>
+        <button class="btn ghost small tray-open-any" type="button">View my tray <span class="tray-count-num">0</span></button>
       </div>
-      <div class="hero-fig">
-        <img src="../img/bakery.jpg" alt="Fresh bread at the sample bakery" />
+      <div class="dayline">
+        <div class="batches" id="batches-grid"><!-- filled by JS --></div>
+      </div>
+      <p class="note">Prices are samples in ETB. Sample flow: your tray opens WhatsApp with your order.</p>
+    </div>
+  </section>
+
+  <section class="counter" id="counter">
+    <div class="wrap grid2">
+      <div>
+        <img src="../img/bakery.jpg" alt="Fresh loaves on the counter at Kifle Bakery" />
+        <img src="../img/injera.jpg" alt="Fresh injera, the spongy flatbread made from teff -- served with every meal at Kifle Bakery" style="margin-top:1rem" />
+      </div>
+      <div>
+        <p class="eyebrow">02 · At the counter</p>
+        <h2>Also out today, between batches</h2>
+        <ul class="menu-list">
+          <li>Ambasha <span>90 ETB</span></li>
+          <li>Butter croissant <span>75 ETB</span></li>
+          <li>Spiced tea bread (sliced) <span>180 ETB</span></li>
+          <li>Honey doughnuts, 4 pack <span>120 ETB</span></li>
+        </ul>
+        <button class="btn small tray-open-any" type="button">Add to my tray</button>
       </div>
     </div>
   </section>
 
-  <section id="menu">
-    <div class="wrap">
-      <p class="section-label">Today at the counter</p>
-      <h2 class="section-title">Fresh From the Oven</h2>
-      <div class="prod-grid">
-        <div class="prod"><h3>Dabo (Ethiopian Bread)</h3><p>Soft, slightly sweet, baked every morning.</p><span class="price">60 ETB</span></div>
-        <div class="prod"><h3>Ambasha</h3><p>Traditional spiced flatbread, perfect with tea.</p><span class="price">120 ETB</span></div>
-        <div class="prod"><h3>Croissants</h3><p>Buttery, flaky, baked in small batches.</p><span class="price">90 ETB</span></div>
-        <div class="prod"><h3>Custom Cakes</h3><p>Birthday and wedding cakes made to order.</p><span class="price">From 2,500 ETB</span></div>
-        <div class="prod"><h3>Cookies &amp; Pastries</h3><p>Daily rotation of sweet and savory bites.</p><span class="price">45 ETB</span></div>
-        <div class="prod"><h3>Sandwich Loaves</h3><p>Sliceable loaves for home and shops.</p><span class="price">80 ETB</span></div>
+  <section class="cakes wrap" id="cakes">
+    <p class="eyebrow">03 · Made to order</p>
+    <div class="sec-head">
+      <h2>Custom cakes, ordered three days ahead</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Tell us the day</h3>
+        <p>Message us the date and how many people you are feeding. We confirm the slot on WhatsApp.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Pick the flavour</h3>
+        <p>Vanilla, chocolate, honey sponge, or fruit. Fillings and finishes are talked through with you.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Collect it fresh</h3>
+        <p>Birthday and wedding cakes are iced the same morning and held for pickup at your time.</p>
       </div>
     </div>
-  </section>
-
-  <section class="order-band" id="order">
-    <div class="wrap">
-      <p class="section-label" style="color:var(--gold);">Order ahead</p>
-      <h2 class="section-title">Skip the Line</h2>
-      <p>Message your order before you arrive; it's ready when you are. Sample flow: the button connects to WhatsApp on order.</p>
-      <a class="btn btn-solid" href="https://wa.me/251900000000?text=Hello!%20I%27d%20like%20to%20order%20from%20the%20bakery." target="_blank" rel="noopener">Order on WhatsApp</a>
+    <p class="cakes-note"><strong>Sample prices:</strong> celebration cakes from 2,500 ETB, wedding tiers quoted per design. Sample flow: the buttons below open WhatsApp with your message ready.</p>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.1rem">
+      <a class="btn" href="https://wa.me/251911000002?text=Hello%20Kifle%20Bakery%2C%20I%27d%20like%20a%20custom%20cake%20(sample)." target="_blank" rel="noopener">Order a cake</a>
     </div>
   </section>
 
-  <section id="visit">
+  <section class="counter" id="visit" style="border-bottom:0">
     <div class="wrap">
-      <p class="section-label">Visit us</p>
-      <h2 class="section-title">Find the Counter</h2>
-      <p class="section-note">Sample address · Merkato area, Addis Ababa (fictional), open daily from 6:00 AM.</p>
+      <p class="eyebrow">04 · Visit</p>
+      <h2>Piassa, behind St. George's Church, Addis Ababa</h2>
+      <p style="color:var(--soft);margin:.5rem 0 1rem">Open every day from 5:30 AM until the last batch sells out, usually around 7 PM. The dawn batch goes fastest on weekends.</p>
+      <a class="btn gold" href="https://wa.me/251911000002?text=Hello%20Kifle%20Bakery%2C%20I%20have%20a%20question%20(sample)." target="_blank" rel="noopener">Message on WhatsApp</a>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Kifle Bakery, a fictional concept sample</div>
-    <div>Built as a sample. Replace with real business info on order</div>
-  </div>
+  <div>© <span id="year"></span> Kifle Bakery -- a concept sample, not a real business</div>
+  <div>Built as a concept sample. Real business info goes in on order.</div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<!-- Pre-order tray -->
+<div class="tray" id="tray" aria-hidden="true">
+  <div class="tray-head">
+    <h3>My tray</h3>
+    <span class="x" id="tray-close" aria-label="Close">×</span>
+  </div>
+  <div class="tray-list" id="tray-list"></div>
+  <div class="tray-foot">
+    <div class="total"><span>Total</span><span id="tray-total">0 ETB</span></div>
+    <button class="btn" id="tray-send" type="button">Order on WhatsApp</button>
+    <p class="hint">Sample: opens WhatsApp with your order text</p>
+  </div>
+</div>
+<button class="tray-open" id="tray-open" type="button">My tray<span class="count" id="tray-count">0</span></button>
+
+<script>
+  // Bake batches. Times are sample; real schedule goes in on order.
+  var BATCHES = [
+    { id:"dawn", label:"Dawn batch", time:"05:30", icon:"", items:[
+      { n:"Ambasha, spiced flatbread", p:90, d:"Teff flour, cardamom, fenugreek, butter, baked on the flat pan" }, { n:"Fresh dabo loaves", p:60, d:"Wheat flour, salt, honey crust, still warm at 6 AM" }, { n:"Honey doughnuts", p:30, d:"Yeast dough, deep-fried, brushed with pure honey" }
+    ]},
+    { id:"mid", label:"Midday batch", time:"11:00", icon:"", items:[
+      { n:"Butter croissants", p:75, d:"Layered pastry, real butter, laminated by hand" }, { n:"Spiced tea bread, sliced", p:180, d:"Cardamom, cinnamon and clove, with raisins, loaf size" }, { n:"Whole-wheat loaves", p:80, d:"Stone-milled wheat, molasses, no preservatives" }
+    ]},
+    { id:"dusk", label:"Dusk batch", time:"16:30", icon:"", items:[
+      { n:"Fruit danish", p:95, d:"Puff pastry, seasonal fruit, vanilla custard" }, { n:"Dinner rolls, 6 pack", p:110, d:"Soft rolls, brushed with butter and sesame" }, { n:"Honey cake squares", p:70, d:"Sponge with honey syrup, lemon zest, walnuts" }
+    ]}
+  ];
+  var cart = {}; // id: {name, price}
+
+  function nowMin(){ var d=new Date(); return d.getHours()*60+d.getMinutes(); }
+  function toMin(t){ var a=t.split(":"); return +a[0]*60+ +a[1]; }
+  function stateOf(batchTime){
+    var m=nowMin(), bt=toMin(batchTime);
+    if(m<bt) return "rising";      // not out yet
+    if(m<bt+120) return "baked";   // out within the last 2h
+    return "sold";                 // sold through
+  }
+  function nextBatchInfo(){
+    var m=nowMin(); var best=null;
+    BATCHES.forEach(function(b){ var bt=toMin(b.time); if(bt>m && (!best || bt<best.bt)) best={bt:bt,b:b}; });
+    if(!best){ // all sold today: first batch tomorrow
+      var b=BATCHES[0]; var diff=1440-m+toMin(b.time);
+      return {label:b.label, mins:diff, tomorrow:true};
+    }
+    return {label:best.b.label, mins:best.bt-m, tomorrow:false};
+  }
+  function fmtMins(mins){
+    var h=Math.floor(mins/60), m=mins%60;
+    return (h?h+"h ":"")+m+"m";
+  }
+
+  function renderClock(){
+    var info=nextBatchInfo();
+    document.getElementById("clock-state").textContent = info.tomorrow ? "Oven closes soon" : "Next up: "+info.label;
+    document.getElementById("next-in").textContent = "Out of the oven in "+fmtMins(info.mins)+(info.tomorrow?" (tomorrow morning)":"");
+    var strip=document.getElementById("strip"); strip.innerHTML="";
+    BATCHES.forEach(function(b){
+      var st=stateOf(b.time); if(st==="sold") return;
+      var el=document.createElement("span");
+      el.className="batch-dot"+(b.id===info.b? " live":"");
+      el.textContent=b.label+" · "+(st==="rising"?"RISING":"OUT NOW");
+      strip.appendChild(el);
+    });
+  }
+
+  function renderBatches(){
+    var grid=document.getElementById("batches-grid"); grid.innerHTML="";
+    BATCHES.forEach(function(b){
+      var st=stateOf(b.time);
+      var card=document.createElement("div"); card.className="batch";
+      var stLabel= st==="rising" ? "Rising" : (st==="baked" ? "Out now" : "Sold through");
+      var stCls = st==="rising" ? "rising" : (st==="baked" ? "baked" : "next");
+      var ul=document.createElement("ul");
+      b.items.forEach(function(it){
+        var li=document.createElement("li");
+        li.innerHTML = "<span>"+it.n+"<small>"+(it.d||"")+"</small></span><span>"+it.p+" ETB</span>";
+        ul.appendChild(li);
+      });
+      var addBtn=document.createElement("button");
+      addBtn.className="btn small"; addBtn.type="button";
+      addBtn.disabled = (st==="sold");
+      addBtn.style.opacity = (st==="sold") ? ".45" : "1";
+      addBtn.textContent = (st==="sold") ? "Sold through" : "Add to tray";
+      if(st!=="sold") addBtn.onclick=function(){ addItem(b, b.items[0]); };
+      card.innerHTML = "<div>"+b.label+"</div><div class=\"time\">"+b.time+"</div><span class=\"st "+stCls+"\">"+stLabel+"</span>";
+      card.appendChild(ul); card.appendChild(addBtn);
+      grid.appendChild(card);
+    });
+  }
+
+  function addItem(batch, item){
+    var key=batch.id+"|"+item.n;
+    if(!cart[key]) cart[key]={ name:item.n, price:item.p, qty:0 };
+    cart[key].qty++;
+    renderTray();
+  }
+  function removeItem(key){
+    delete cart[key]; renderTray();
+  }
+  function renderTray(){
+    var list=document.getElementById("tray-list"); list.innerHTML="";
+    var keys=Object.keys(cart), total=0, count=0;
+    if(!keys.length){ list.innerHTML="<div class=\"empty\">Your tray is empty. Add something from a batch above.</div>"; }
+    keys.forEach(function(k){
+      var it=cart[k]; total+=it.price*it.qty; count+=it.qty;
+      var row=document.createElement("div"); row.className="tray-item";
+      row.innerHTML="<span>"+it.name+" × "+it.qty+"</span><span>"+(it.price*it.qty)+" ETB <span class=\"rm\" data-k=\""+k+"\">✕</span></span>";
+      list.appendChild(row);
+    });
+    list.querySelectorAll(".rm").forEach(function(el){ el.onclick=function(){ removeItem(el.getAttribute("data-k")); }; });
+    document.getElementById("tray-total").textContent=total+" ETB";
+    document.getElementById("tray-count").textContent=count;
+    document.querySelectorAll(".tray-count-num").forEach(function(el){ el.textContent=count; });
+  }
+
+  var tray=document.getElementById("tray");
+  function openTray(){ tray.classList.add("open"); tray.setAttribute("aria-hidden","false"); }
+  function closeTray(){ tray.classList.remove("open"); tray.setAttribute("aria-hidden","true"); }
+  document.getElementById("tray-open").onclick=openTray;
+  document.getElementById("tray-close").onclick=closeTray;
+  document.querySelectorAll(".tray-open-any").forEach(function(b){ b.onclick=openTray; });
+  document.getElementById("tray-send").onclick=function(){
+    var keys=Object.keys(cart);
+    if(!keys.length){ return; }
+    var parts=keys.map(function(k){ var it=cart[k]; return it.name+" x"+it.qty; });
+    var msg="Hello Kifle Bakery, I would like to pick up: "+parts.join(", ")+" (sample order).";
+    window.open("https://wa.me/251911000002?text="+encodeURIComponent(msg),"_blank");
+  };
+
+  renderBatches(); renderTray(); renderClock();
+  setInterval(renderClock, 30000); // re-check the oven every 30s
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>

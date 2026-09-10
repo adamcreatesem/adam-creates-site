@@ -11,12 +11,12 @@
   :root { --bg:#f4f6fa; --panel:#ffffff; --ink:#161e2e; --dim:#5b6b7f; --line:#e3e8ef; --side:#101827; --side-ink:#cbd5e1; --accent:#059669; --accent-l:#10b981; --ok:#047857; --ok-bg:#e7f6ef; --warn:#b45309; --warn-bg:#fdf3e3; --danger:#b91c1c; --danger-bg:#fdecec; --gold:#b8860b; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
-  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.66rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
+  .sample-flag { position:fixed; bottom:14px; left:14px; z-index:99; background:var(--ink); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.08em; padding:.35rem .7rem; }
 
   .topbar { background:var(--side); color:#fff; }
   .topbar-inner { width:min(1200px,94%); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
   .brand { font-weight:800; font-size:1.02rem; letter-spacing:-.01em; }
-  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
+  .brand small { display:block; font-family:'JetBrains Mono'; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:#94a3b8; font-weight:400; }
   .today { font-family:'JetBrains Mono'; font-size:.68rem; color:#cbd5e1; }
 
   .layout { width:min(1200px,94%); margin:1.5rem auto 4rem; display:grid; grid-template-columns:230px 1fr; gap:1.5rem; }
@@ -46,7 +46,7 @@
   .btn-sm { padding:.4rem .75rem; font-size:.71rem; }
 
   table { width:100%; border-collapse:collapse; font-size:.84rem; }
-  th { text-align:left; font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
+  th { text-align:left; font-size:.66rem; letter-spacing:.09em; text-transform:uppercase; color:var(--dim); padding:.75rem 1.25rem; border-bottom:1px solid var(--line); background:var(--bg); }
   td { padding:.8rem 1.25rem; border-bottom:1px solid var(--line); vertical-align:middle; }
   tr:last-child td { border-bottom:none; }
   .pill { display:inline-block; font-size:.65rem; font-weight:600; padding:.24rem .6rem; border-radius:99px; white-space:nowrap; }
@@ -93,6 +93,14 @@
     .kpis { grid-template-columns:repeat(2,1fr); }
     .settings-grid { grid-template-columns:1fr; }
     .sidebar { position:static; display:flex; flex-wrap:wrap; gap:.3rem; }
+  .layout { min-width:0; grid-template-columns:minmax(0,1fr); }
+  .main { min-width:0; }
+  .layout > * { min-width:0; }
+  .main > div { min-width:0; }
+  .card { min-width:0; }
+  .sidebar { min-width:0; }
+  .card { overflow-x:auto; }
+
     .side-item { margin:0; }
   }
 </style>
@@ -208,8 +216,8 @@
           <div>
             <div class="field"><label>Business name</label><input value="Kiros Trading" /></div>
             <div class="field"><label>Default supplier</label><input value="Awash Wholesale" /></div>
-            <div class="field"><label>Phone</label><input value="+251 91 000 00 00" /></div>
-            <div class="field"><label>WhatsApp number</label><input value="+251 91 000 00 00" /></div>
+            <div class="field"><label>Phone</label><input value="+251 91 200 00 04" /></div>
+            <div class="field"><label>WhatsApp number</label><input value="+251 91 200 00 04" /></div>
           </div>
           <div>
             <div class="switch-row"><div><b>Low-stock alerts</b><p>WhatsApp message when an item hits reorder level</p></div><div class="switch on"></div></div>
@@ -240,12 +248,12 @@
     { item:'Rice 10kg', sku:'RICE-10', cat:'Groceries', qty:18, reorder:40, exp:'2027-03', price:980 },
     { item:'Sugar 2kg', sku:'SUG-2K', cat:'Groceries', qty:320, reorder:80, exp:'2027-01', price:240 },
     { item:'Cement 50kg', sku:'CEM-50', cat:'Construction', qty:140, reorder:100, exp:'2027-12', price:850 },
-    { item:'Rebar 12mm', sku:'REB-12', cat:'Construction', qty:5, reorder:30, exp:'—', price:1450 },
+    { item:'Rebar 12mm', sku:'REB-12', cat:'Construction', qty:5, reorder:30, exp:'-', price:1450 },
     { item:'Paint white 4L', sku:'PNT-4L', cat:'Construction', qty:46, reorder:20, exp:'2026-09', price:1100 },
     { item:'Detergent 1kg', sku:'DET-1K', cat:'Home', qty:210, reorder:60, exp:'2026-12', price:180 },
     { item:'Soap bar', sku:'SOAP-B', cat:'Home', qty:900, reorder:200, exp:'2026-10', price:45 },
     { item:'Tea 500g', sku:'TEA-5G', cat:'Groceries', qty:0, reorder:50, exp:'2026-08', price:320 },
-    { item:'Water pump', sku:'PMP-1', cat:'Hardware', qty:12, reorder:5, exp:'—', price:6800 },
+    { item:'Water pump', sku:'PMP-1', cat:'Hardware', qty:12, reorder:5, exp:'-', price:6800 },
   ];
   const SUPPLIERS = [
     { name:'Awash Wholesale', phone:'+251 91 111 22 33', cats:'Groceries', lead:'2 days', last:'3 days ago', status:'active' },
@@ -272,7 +280,7 @@
     $('kValue').textContent = 'ETB ' + STOCK.reduce((a, s) => a + s.qty * s.price, 0).toLocaleString();
     $('kItems').textContent = STOCK.length;
     $('kLow').textContent = low.length;
-    $('kExp').textContent = STOCK.filter(s => s.exp !== '—' && s.exp.startsWith('2026')).length;
+    $('kExp').textContent = STOCK.filter(s => s.exp !== '-' && s.exp.startsWith('2026')).length;
     $('lowRows').innerHTML = low.map(s =>
       `<tr><td><b>${s.item}</b></td><td class="mono dim">${s.sku}</td><td><b>${s.qty}</b></td><td class="dim">${s.reorder}</td><td class="dim">${Math.max(s.reorder * 2, 20)}</td><td>${stPill(s.qty, s.reorder)}</td></tr>`).join('');
     const cats = {};
