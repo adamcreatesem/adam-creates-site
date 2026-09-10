@@ -8,3 +8,5 @@
 dist/
 node_modules/
 src-backup/
+.review-live.html
+.review/
