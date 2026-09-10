@@ -2,6 +2,72 @@
    ADAM CREATES: Main Stylesheet
    ======================================== */
 
+/* --- HIGH-END CRAFT LAYER (keeps brand, adds agency polish) --- */
+
+/* Premium motion physics: every transition uses mass-like easing, never default ease */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-press: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Display typography: Space Grotesk carries all headings; Inter stays for body */
+h1, h2, h3, .hero-title-line, .section-title, .founder-name, .ops-num, .whyb-tag, .nav-cta {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.hero-title-line {
+  letter-spacing: -0.045em;
+  animation: heroRise 1s var(--ease-out-expo) both;
+}
+
+.hero-title-line.text-highlight { animation-delay: 0.12s; }
+
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Cinematic scroll reveals: see .reveal definition near end of file (single source) */
+
+/* Machined card depth: subtle inner highlight makes borders feel like fitted metal */
+.srv-card, .ops-stat, .ops-body, .whyb-story, .whyb-card, .work-card, .about-card {
+  transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+}
+
+.srv-card:hover, .ops-stat:hover, .whyb-card:hover {
+  transform: translate(-2px, -2px);
+}
+
+/* Button press physics: pill-radius CTA with scale-down + arrow glide */
+.btn {
+  border-radius: 999px;
+  transition: transform 0.45s var(--ease-press), box-shadow 0.45s var(--ease-press), background 0.3s ease;
+  will-change: transform;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: scale(0.97); }
+
+.btn i {
+  transition: transform 0.45s var(--ease-spring);
+}
+
+.btn:hover i { transform: translateX(4px); }
+
+/* Focus rings worthy of the craft (a11y + premium feel) */
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.btn:focus-visible { border-radius: 999px; }
+
+/* --- END HIGH-END CRAFT LAYER --- */
+
 /* --- Business-Type Modal --- */
 .fit-modal {
   position: fixed;
@@ -1852,12 +1918,12 @@ ul { list-style: none; }
 /* --- SCROLL REVEAL --- */
 .reveal {
   opacity: 0;
-  transform: translateY(30px) perspective(800px) rotateX(2deg);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(36px);
+  transition: opacity 0.9s var(--ease-out-expo),
+              transform 0.9s var(--ease-out-expo);
 }
 
-.reveal.visible { opacity: 1; transform: translateY(0) perspective(800px) rotateX(0deg); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 .skill-card.reveal:nth-child(1) { transition-delay: 0s; }
 .skill-card.reveal:nth-child(2) { transition-delay: 0.05s; }
