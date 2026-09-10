@@ -1885,6 +1885,7 @@ ul { list-style: none; }
     background: var(--color-white); border-left: 3px solid var(--color-border);
     flex-direction: column; padding: 90px 20px 24px; gap: 2px;
     transition: right 0.3s ease; align-items: stretch; box-shadow: -6px 0 0 var(--shadow-color);
+    z-index: 1002; /* must stack above the backdrop (999) or the backdrop eats every tap */
   }
   .nav-links.active { right: 0; }
   .nav-links a { color: var(--color-text-secondary); padding: 12px 14px; font-size: 0.9rem; }
