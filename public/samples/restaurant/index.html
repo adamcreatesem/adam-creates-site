@@ -50,14 +50,10 @@
   .btn-line { border:2px solid var(--ink); color:var(--ink); }
   .btn-line:hover { background:var(--ink); color:var(--paper); }
   .hero-fig { position:relative; }
-  .hero-fig img { width:100%; aspect-ratio:4/5; object-fit:cover; }
+  .hero-fig img { width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 62%; }
   .hero-fig::after { content:""; position:absolute; inset:14px -14px -14px 14px; border:2px solid var(--gold); pointer-events:none; }
   .fade-strip { height:2.6rem; }
 
-  /* The room -- real interior at Mesob Nights */
-  .room { position:relative; }
-  .room img { width:100%; height:440px; object-fit:cover; display:block; }
-  .room figcaption { position:absolute; left:0; right:0; bottom:0; padding:2rem 1.4rem 1.3rem; background:linear-gradient(transparent, rgba(26,16,10,.82)); color:var(--paper); font-size:.78rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-align:center; }
 
 
   /* Menu / Order section */
@@ -97,6 +93,9 @@
   .story h2 { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(1.9rem,3.4vw,2.8rem); line-height:1.1; margin-bottom:1.4rem; }
   .story p.body { color:var(--ink-2); margin-bottom:1.6rem; font-size:1.05rem; }
   .story p.body b { color:var(--ink); }
+  .story-fig { margin:2.2rem 0 0; border:5px solid var(--ink); box-shadow:12px 12px 0 rgba(26,16,10,.9); background:#fff; }
+  .story-fig img { width:100%; display:block; }
+  .story-fig figcaption { padding:.85rem 1rem; font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2); text-align:center; border-top:2px solid var(--ink); }
   .pullquote { border-left:4px solid var(--gold); padding:.4rem 0 .4rem 1.4rem; font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; line-height:1.45; margin:2.2rem 0; color:var(--ink); }
 
   /* Coffee / Ceremony */
@@ -172,17 +171,12 @@
         </div>
       </div>
       <div class="hero-fig">
-        <img src="../img/restaurant.jpg" alt="A spread of traditional Ethiopian dishes on a mesob table at Mesob Nights" />
+        <img src="../img/restaurant-interior.jpg" alt="Inside Mesob Nights -- wooden tables and warm light" />
       </div>
     </div>
   </section>
   <div class="fade-strip" aria-hidden="true"></div>
 
-  <!-- ROOM -->
-  <figure class="room">
-    <img src="../img/restaurant-interior.jpg" alt="Inside Mesob Nights -- wooden tables and warm light" loading="lazy" decoding="async" />
-    <figcaption>The room &mdash; wood, warm light, slow fire</figcaption>
-  </figure>
 
   <!-- MENU / ORDER -->
   <section class="menu-section" id="menu">
@@ -244,6 +238,10 @@
       <h2>Food With Time In It</h2>
       <p class="body">Mesob Nights was built for the way people actually eat in Addis -- gathered around one big plate, sharing, talking, staying long enough for the coffee to come out. Every dish on the menu is made from scratch, including the injera, which is baked fresh each day in the back.</p>
       <p class="body"><b>Traditional menu.</b> Doro wat, kitfo, and a fasting platter that covers vegetarian and vegan needs. No fusion, no shortcuts -- the flavors are the ones people expect from a real Ethiopian table.</p>
+      <figure class="story-fig">
+        <img src="../img/restaurant.jpg" alt="A spread of traditional Ethiopian dishes on a mesob table at Mesob Nights" loading="lazy" decoding="async" />
+        <figcaption>The table -- doro wat, kitfo, fasting platter, all on fresh injera</figcaption>
+      </figure>
       <blockquote class="pullquote">"We sat for three hours and nobody rushed us. Coffee came at the end, the way it should."</blockquote>
     </div>
   </section>

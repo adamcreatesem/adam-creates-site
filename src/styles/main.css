@@ -921,12 +921,12 @@ ul { list-style: none; }
   justify-content: space-between;
   gap: 12px;
   padding: 10px 14px;
-  background: rgba(26, 26, 26, 0.88);
-  color: var(--color-white);
+  background: rgba(20, 20, 20, 0.88);
+  color: #F5F5F5;
 }
 
-.founder-name { font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; }
-.founder-role { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
+.founder-name { font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; color: #FFFFFF; }
+.founder-role { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; color: #F5F5F5; }
 
 .about-card {
   background: var(--color-bg);
